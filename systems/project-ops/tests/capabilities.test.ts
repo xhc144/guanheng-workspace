@@ -169,6 +169,20 @@ test("同一路径的不同真实HTTP方法均保留，源码注释不能伪造�
   assert.deepEqual(rows.map((r: { method: string }) => r.method).sort(), ["GET", "POST"]);
 });
 
+test("正式favicon本地只读HEAD别名可追溯，未知或可变别名仍拒绝", t => {
+  const { directory, put } = sourceFixture(t);
+  const path = "systems/project-ops/app/favicon.ico/route.ts";
+  put(path, "export function GET(){return new Response(null,{status:204})}\nexport const HEAD=GET;");
+  const result = extract(directory); assert.equal(result.status, 0, result.stderr);
+  const rows = JSON.parse(result.stdout).filter((r: { route: string }) => r.route === "/favicon.ico");
+  assert.deepEqual(rows.map((r: { method: string }) => r.method).sort(), ["GET", "HEAD"]);
+  assert.equal(rows.find((r: { method: string }) => r.method === "HEAD").symbol, "HEAD=GET");
+  for (const declaration of ["export const HEAD=unknownHandler;", "export let HEAD=GET;"]) {
+    put(path, `export function GET(){return new Response(null,{status:204})}\n${declaration}`);
+    const invalid = extract(directory); assert.equal(invalid.status, 1); assert.match(invalid.stderr, /变量形式/);
+  }
+});
+
 function sourceFixture(t: TestContext) {
   const directory = mkdtempSync(join(tmpdir(), "guanheng-wp04-source-"));
   t.after(() => rmSync(directory, { recursive: true, force: true }));

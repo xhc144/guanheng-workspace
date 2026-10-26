@@ -40,10 +40,17 @@ export function scan(root, python=pythonEvidence(root)) {
     if(!/\/(?:page\.tsx|route\.ts|actions\.ts)$/.test(path))continue;
     const {source,text}=ast(root,path);
     const route='/'+relative(app,dirname(path)).replaceAll('\\','/');
+    const httpFunctions=new Map(source.statements.filter(n=>ts.isFunctionDeclaration(n)&&exported(n)&&n.name&&/^(GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS)$/.test(n.name.text)).map(n=>[n.name.text,n]));
     const before=records.length;
     for(const node of source.statements) {
       if(ts.isExportDeclaration(node))throw Error(`请显式审查转导出路由/动作：${path}`);
-      if(ts.isVariableStatement(node)&&exported(node)&&path.endsWith('/route.ts')&&node.declarationList.declarations.some(d=>/^(GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS)$/.test(d.name.getText(source))))throw Error(`请显式审查变量形式的HTTP方法：${path}`);
+      if(ts.isVariableStatement(node)&&exported(node)&&path.endsWith('/route.ts'))for(const declaration of node.declarationList.declarations) {
+        const method=declaration.name.getText(source);
+        if(!/^(GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS)$/.test(method))continue;
+        if(!(node.declarationList.flags&ts.NodeFlags.Const)||!declaration.initializer||!ts.isIdentifier(declaration.initializer)||!httpFunctions.has(declaration.initializer.text))throw Error(`请显式审查变量形式的HTTP方法：${path}`);
+        const target=declaration.initializer.text;
+        add('主线','http',method,route,path,source,text,httpFunctions.get(target),`${method}=${target}`);
+      }
       if(!ts.isFunctionDeclaration(node)||!exported(node))continue;
       const symbol=node.name?.text??'default';
       if(path.endsWith('/page.tsx')&&node.modifiers.some(m=>m.kind===ts.SyntaxKind.DefaultKeyword)) add('主线','page','PAGE',route,path,source,text,node,symbol);
@@ -132,7 +139,7 @@ export function build(root=repoRoot) {
       referenceTestStatus:'按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖',
       owner:rule.owner};
   });
-  return {schemaVersion:1,sourceBase:'22aab8477eeef3cb498f3be3c739b631b295ea12',
+  return {schemaVersion:1,sourceBase:'875fb80613e7626c774d4d7ec3a9eadafb7ae66f',
     sourceDigest:digest(JSON.stringify(entries)),dataKind:'静态源码盘点，非实时经营数据',
     scope:'Next页面/显式HTTP方法/server actions；三版PMS挂载HTTP路由及前端页面/状态视图；不包含隐式HEAD/OPTIONS、CLI或每个业务字段',
     verification:'源码解析及覆盖检查不证明业务运行；旧文档114项完成未经本次逐项验证',entries};

@@ -532,5 +532,41 @@
       "systems/project-ops/tests/reporting.test.ts"
     ],
     "referenceTestPattern": "dashboard|workbench|report"
+  },
+  {
+    "id": "foundation",
+    "label": "共享G0地基与集成状态",
+    "pattern": "^/integration-health$",
+    "decision": "主线已有",
+    "owner": "WP24",
+    "rationale": "G0已有嵌套同步事务、迁移声明白名单校验、PROJECT/WORK_ITEM解析和管理员集成摘要；预算入口明确NOT_CONFIGURED。REGISTERED仅指静态登记，迁移runner/G1、真实预算provider、新主体和通知通道尚未接入，不能把校验或登记叫全业务运行通过。",
+    "primarySources": [
+      "systems/project-ops/lib/db.ts",
+      "systems/project-ops/lib/extension-contracts.ts",
+      "systems/project-ops/lib/extension-registry.ts",
+      "systems/project-ops/app/integration-health/page.tsx"
+    ],
+    "relatedTests": [
+      "systems/project-ops/tests/integration-foundation.test.ts",
+      "systems/project-ops/tests/primary-business-flow.test.ts"
+    ],
+    "referenceTestPattern": "(?!)"
+  },
+  {
+    "id": "favicon",
+    "label": "站点图标空响应",
+    "pattern": "^/favicon\\.ico$",
+    "decision": "主线已有",
+    "owner": "WP24",
+    "rationale": "正式源码GET及HEAD别名返回204零字节，force-dynamic避免特殊路径静态缓存重建；图标元数据支持部署前缀，不生成图片或SVG。本条为静态盘点，严格浏览器网络结果另见本轮日志。",
+    "primarySources": [
+      "systems/project-ops/app/favicon.ico/route.ts",
+      "systems/project-ops/lib/base-path.ts",
+      "systems/project-ops/app/layout.tsx"
+    ],
+    "relatedTests": [
+      "systems/project-ops/tests/favicon-routing.test.ts"
+    ],
+    "referenceTestPattern": "(?!)"
   }
 ]

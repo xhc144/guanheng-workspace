@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "sourceBase": "22aab8477eeef3cb498f3be3c739b631b295ea12",
-  "sourceDigest": "3f9c8386e24b5eb57b8f58a26b1f1d7a5a6d758ed332673f1f9a080302a5d558",
+  "sourceBase": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+  "sourceDigest": "3ef611554d6c85bdf172f2d09a1b4e4c83867e7d229feb7cacd14473549f36c8",
   "dataKind": "静态源码盘点，非实时经营数据",
   "scope": "Next页面/显式HTTP方法/server actions；三版PMS挂载HTTP路由及前端页面/状态视图；不包含隐式HEAD/OPTIONS、CLI或每个业务字段",
   "verification": "源码解析及覆盖检查不证明业务运行；旧文档114项完成未经本次逐项验证",
@@ -17503,6 +17503,42 @@
       "system": "主线",
       "kind": "http",
       "method": "GET",
+      "route": "/api/integration-health",
+      "path": "systems/project-ops/app/api/integration-health/route.ts",
+      "line": 10,
+      "symbol": "GET",
+      "sourceCalls": [
+        "Response.json",
+        "getDb",
+        "getIntegrationHealth",
+        "request.cookies.get",
+        "requireApiUser"
+      ],
+      "sha256": "ab605e031daed14434ad715c6cb472ec5f4308945812c84a26ec0c95307c286f",
+      "domain": "foundation",
+      "label": "共享G0地基与集成状态",
+      "decision": "主线已有",
+      "rationale": "G0已有嵌套同步事务、迁移声明白名单校验、PROJECT/WORK_ITEM解析和管理员集成摘要；预算入口明确NOT_CONFIGURED。REGISTERED仅指静态登记，迁移runner/G1、真实预算provider、新主体和通知通道尚未接入，不能把校验或登记叫全业务运行通过。",
+      "primarySources": [
+        "systems/project-ops/lib/db.ts",
+        "systems/project-ops/lib/extension-contracts.ts",
+        "systems/project-ops/lib/extension-registry.ts",
+        "systems/project-ops/app/integration-health/page.tsx"
+      ],
+      "relatedTests": [
+        "systems/project-ops/tests/integration-foundation.test.ts",
+        "systems/project-ops/tests/primary-business-flow.test.ts"
+      ],
+      "runtimeStatus": "未逐项运行",
+      "testStatus": "存在主线相关测试，覆盖程度需复核",
+      "referenceTests": [],
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
+      "owner": "WP24"
+    },
+    {
+      "system": "主线",
+      "kind": "http",
+      "method": "GET",
       "route": "/api/runtime-health",
       "path": "systems/project-ops/app/api/runtime-health/route.ts",
       "line": 10,
@@ -17565,6 +17601,62 @@
       "referenceTests": [],
       "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP22"
+    },
+    {
+      "system": "主线",
+      "kind": "http",
+      "method": "GET",
+      "route": "/favicon.ico",
+      "path": "systems/project-ops/app/favicon.ico/route.ts",
+      "line": 4,
+      "symbol": "GET",
+      "sourceCalls": [],
+      "sha256": "2e8d9f9d365a20156cb610190b25a1b30bbcd358ad060a5c335db4ec27ff01de",
+      "domain": "favicon",
+      "label": "站点图标空响应",
+      "decision": "主线已有",
+      "rationale": "正式源码GET及HEAD别名返回204零字节，force-dynamic避免特殊路径静态缓存重建；图标元数据支持部署前缀，不生成图片或SVG。本条为静态盘点，严格浏览器网络结果另见本轮日志。",
+      "primarySources": [
+        "systems/project-ops/app/favicon.ico/route.ts",
+        "systems/project-ops/lib/base-path.ts",
+        "systems/project-ops/app/layout.tsx"
+      ],
+      "relatedTests": [
+        "systems/project-ops/tests/favicon-routing.test.ts"
+      ],
+      "runtimeStatus": "未逐项运行",
+      "testStatus": "存在主线相关测试，覆盖程度需复核",
+      "referenceTests": [],
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
+      "owner": "WP24"
+    },
+    {
+      "system": "主线",
+      "kind": "http",
+      "method": "HEAD",
+      "route": "/favicon.ico",
+      "path": "systems/project-ops/app/favicon.ico/route.ts",
+      "line": 4,
+      "symbol": "HEAD=GET",
+      "sourceCalls": [],
+      "sha256": "2e8d9f9d365a20156cb610190b25a1b30bbcd358ad060a5c335db4ec27ff01de",
+      "domain": "favicon",
+      "label": "站点图标空响应",
+      "decision": "主线已有",
+      "rationale": "正式源码GET及HEAD别名返回204零字节，force-dynamic避免特殊路径静态缓存重建；图标元数据支持部署前缀，不生成图片或SVG。本条为静态盘点，严格浏览器网络结果另见本轮日志。",
+      "primarySources": [
+        "systems/project-ops/app/favicon.ico/route.ts",
+        "systems/project-ops/lib/base-path.ts",
+        "systems/project-ops/app/layout.tsx"
+      ],
+      "relatedTests": [
+        "systems/project-ops/tests/favicon-routing.test.ts"
+      ],
+      "runtimeStatus": "未逐项运行",
+      "testStatus": "存在主线相关测试，覆盖程度需复核",
+      "referenceTests": [],
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
+      "owner": "WP24"
     },
     {
       "system": "主线",
@@ -18120,6 +18212,47 @@
       "referenceTests": [],
       "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
+    },
+    {
+      "system": "主线",
+      "kind": "page",
+      "method": "PAGE",
+      "route": "/integration-health",
+      "path": "systems/project-ops/app/integration-health/page.tsx",
+      "line": 13,
+      "symbol": "IntegrationHealthPage",
+      "sourceCalls": [
+        "(await cookies()).get",
+        "cookies",
+        "getDb",
+        "getIntegrationHealth",
+        "getSessionUser",
+        "health.modules.map",
+        "module.routes.map",
+        "new Date(health.checkedAt).toLocaleString",
+        "redirect",
+        "route.methods.join"
+      ],
+      "sha256": "7322c83f7c5b9fb3c61e18e8fb77edc5346e1b4a17738cdacf8d07418d20c1a1",
+      "domain": "foundation",
+      "label": "共享G0地基与集成状态",
+      "decision": "主线已有",
+      "rationale": "G0已有嵌套同步事务、迁移声明白名单校验、PROJECT/WORK_ITEM解析和管理员集成摘要；预算入口明确NOT_CONFIGURED。REGISTERED仅指静态登记，迁移runner/G1、真实预算provider、新主体和通知通道尚未接入，不能把校验或登记叫全业务运行通过。",
+      "primarySources": [
+        "systems/project-ops/lib/db.ts",
+        "systems/project-ops/lib/extension-contracts.ts",
+        "systems/project-ops/lib/extension-registry.ts",
+        "systems/project-ops/app/integration-health/page.tsx"
+      ],
+      "relatedTests": [
+        "systems/project-ops/tests/integration-foundation.test.ts",
+        "systems/project-ops/tests/primary-business-flow.test.ts"
+      ],
+      "runtimeStatus": "未逐项运行",
+      "testStatus": "存在主线相关测试，覆盖程度需复核",
+      "referenceTests": [],
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
+      "owner": "WP24"
     },
     {
       "system": "主线",

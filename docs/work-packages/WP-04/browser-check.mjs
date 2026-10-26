@@ -33,18 +33,33 @@ try {
  for(let i=0;i<80;i++){try{ready=(await fetch(`${base}/login`)).ok}catch{}if(ready)break;if(server.exitCode!==null)throw Error('临时服务启动失败');await new Promise(r=>setTimeout(r,250));}
  assert.ok(ready,'临时服务未就绪');
  browser=await chromium.launch({executablePath:process.argv[3],headless:true});
- const context=await browser.newContext(),page=await context.newPage(),errors=[];
+ const context=await browser.newContext(),page=await context.newPage(),errors=[],failedResponses=[],requestFailures=[];
  page.on('pageerror',e=>errors.push(e.message));
  page.on('console',m=>{if(m.type()==='error')errors.push({message:m.text(),location:m.location().url})});
- page.on('response',response=>{if(response.status()>=400)console.log(JSON.stringify({resourceStatus:response.status(),path:new URL(response.url()).pathname}));});
+ page.on('response',response=>{if(response.status()>=400){const failure={resourceStatus:response.status(),path:new URL(response.url()).pathname};failedResponses.push(failure);console.log(JSON.stringify(failure));}});
+ page.on('requestfailed',request=>requestFailures.push({path:new URL(request.url()).pathname,error:request.failure()?.errorText}));
  assert.equal((await context.request.get(`${base}/api/capabilities`)).status(),401);
  assert.equal((await context.request.head(`${base}/api/capabilities`)).status(),401);
+ assert.equal((await context.request.get(`${base}/api/integration-health`)).status(),401);
  await page.goto(`${base}/capabilities`);assert.equal(new URL(page.url()).pathname,'/login');
  results.push({check:'匿名GET/HEAD拒绝、页面跳转登录',status:'通过'});
  async function login(role){await context.clearCookies();await page.goto(`${base}/login`);await page.getByLabel('用户名或邮箱').fill(`wp04_${role.toLowerCase()}`);await page.getByLabel('密码',{exact:true}).fill(password);await page.getByRole('button',{name:'登录',exact:true}).click();await page.waitForURL(url=>url.pathname==='/');await page.locator('.app-shell').waitFor();}
  async function headers(){const cookie=(await context.cookies()).find(c=>c.name==='pms_session');assert.ok(cookie?.httpOnly&&cookie.secure);return {cookie:`${cookie.name}=${cookie.value}`};}
  await login('ADMIN');
  const adminHeaders=await headers();
+ for(const method of ['get','head']){
+  const response=await context.request[method](`${base}/favicon.ico`);
+  assert.equal(response.status(),204);assert.equal((await response.body()).length,0);
+  assert.doesNotMatch(response.headers()['content-type']??'',/image\//);
+ }
+ assert.equal(await page.locator('link[rel="icon"]').first().getAttribute('href'),'/favicon.ico');
+ const integration=await context.request.get(`${base}/api/integration-health`,{headers:adminHeaders});assert.equal(integration.status(),200);
+ const health=await integration.json();assert.equal(health.phase,'G0');assert.deepEqual(health.migrationRunner,{status:'NOT_REGISTERED',applied:null});
+ assert.equal(health.providers.budget,'NOT_CONFIGURED');assert.deepEqual(health.providers.approvalSubjects,['PROJECT','WORK_ITEM']);assert.deepEqual(health.providers.notificationChannels,[]);
+ await page.setViewportSize({width:375,height:900});await page.goto(`${base}/integration-health`);
+ await page.getByRole('heading',{name:'G0 地基 · 基线模块已登记',exact:true}).waitFor();assert.match(await page.locator('main').innerText(),/迁移执行器：尚未注册/);
+ assert.ok(await page.evaluate(()=>document.body.scrollWidth<=375&&document.documentElement.scrollWidth<=375));
+ results.push({check:'正式favicon GET/HEAD204零字节、元数据路径；真实G0状态API与375px页面，runner/预算/通道未配置状态真实',status:'通过'});
  const ok=await context.request.get(`${base}/api/capabilities`,{headers:adminHeaders});assert.equal(ok.status(),200);
  assert.equal(ok.headers()['cache-control'],'private, no-store');assert.ok(ok.headers()['vary'].split(',').map(v=>v.trim().toLowerCase()).includes('cookie'));
  const data=await ok.json();assert.equal(data.entries.length,25);assert.ok(data.total>25);assert.ok(data.entries.every(e=>e.runtimeStatus==='未逐项运行'));
@@ -81,9 +96,11 @@ try {
  for(const role of ['FINANCE','DEPARTMENT_MANAGER','PROJECT_MEMBER']){
   await login(role);const denied=await context.request.get(`${base}/api/capabilities`,{headers:await headers()});assert.equal(denied.status(),403);assert.deepEqual(await denied.json(),{error:'仅管理员可查看能力目录'});
   await page.goto(`${base}/capabilities`);await page.getByRole('heading',{name:'仅管理员可查看能力目录',exact:true}).waitFor();assert.equal(await page.locator('ul[aria-label="能力来源记录"]').count(),0);
+  const deniedHealth=await context.request.get(`${base}/api/integration-health`,{headers:await headers()});assert.equal(deniedHealth.status(),403);
  }
  results.push({check:'三个非管理员角色中文拒绝、无目录数据展示',status:'通过'});
  const normalFlowErrors=errors.slice();
+ const normalFlowFailedResponses=failedResponses.slice(),normalFlowRequestFailures=requestFailures.slice();
  await login('ADMIN');
  await page.setViewportSize({width:375,height:900});
  const brokenHeaders=await headers();
@@ -104,8 +121,10 @@ try {
  assert.equal(check.prepare('SELECT COUNT(*) count FROM customers').get().count,0);
  assert.equal(check.prepare('SELECT COUNT(*) count FROM projects').get().count,0);
  check.close();
- console.log(JSON.stringify({runtime,port,results,normalFlowConsoleErrors:normalFlowErrors,scope:'仅本包目录交互，不证明被盘点业务或Windows通过'},null,2));
+ console.log(JSON.stringify({runtime,port,results,normalFlowConsoleErrors:normalFlowErrors,normalFlowFailedResponses,normalFlowRequestFailures,scope:'本包目录交互及G0诊断/正式favicon检查，不证明全部被盘点业务或Windows通过'},null,2));
  // Preserve any existing shared-asset failures; never turn them green by interception or filtering.
  assert.deepEqual(normalFlowErrors,[],'正常流程存在控制台错误，业务断言结果已完整记录');
+ assert.deepEqual(normalFlowFailedResponses,[],'正常流程存在失败网络响应');
+ assert.deepEqual(normalFlowRequestFailures,[],'正常流程存在网络请求错误');
 }catch(error){console.error(error);console.error(output.slice(-4000));process.exitCode=1}
 finally{await browser?.close();server.kill('SIGTERM');}
