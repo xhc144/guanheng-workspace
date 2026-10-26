@@ -60,7 +60,9 @@ export default async function CapabilitiesPage({ searchParams }: { searchParams:
           <div><dt>运行验证</dt><dd>{entry.runtimeStatus}</dd></div><div><dt>测试线索</dt><dd>{entry.testStatus}</dd></div></dl>
         <p>{entry.rationale}</p><details><summary>查看主线对应、测试与来源摘要</summary>
           <p>主线来源：{entry.primarySources.length ? entry.primarySources.join("；") : "尚未实现"}</p>
+          <p>来源调用线索（静态，最多32项）：{entry.sourceCalls.join("；") || "未提取调用"}。</p>
           <p>相关测试：{entry.relatedTests.length ? entry.relatedTests.join("；") : "未定位主线测试"}。测试文件存在不能证明此旧版接口已通过。</p>
+          <p>参考版测试：{entry.referenceTests.length ? entry.referenceTests.map(test => `${test.path}:${test.line} · ${test.symbol}`).join("；") : "未定位相关测试名"}。{entry.referenceTestStatus}。</p>
           <p>源码 SHA-256：<code>{entry.sha256}</code></p>
         </details>
       </li>)}</ul>

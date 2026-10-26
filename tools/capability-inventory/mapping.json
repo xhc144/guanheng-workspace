@@ -1,5 +1,111 @@
 [
   {
+    "id": "document-versions",
+    "label": "文档多版本",
+    "pattern": "^/documents/.*/versions(?:/|$)",
+    "decision": "待用户决定",
+    "owner": "WP05协调",
+    "rationale": "DeepSeek pmo.py list_versions/upload_version/download_version及Documents.tsx有真实多版本实现；主线只有单档案上传/位置/备注，没有版本链，保留待确认。",
+    "primarySources": [
+      "systems/project-ops/lib/documents.ts"
+    ],
+    "relatedTests": [
+      "systems/project-ops/tests/documents.test.ts"
+    ],
+    "referenceTestPattern": "document_version"
+  },
+  {
+    "id": "customer-health",
+    "label": "客户健康度",
+    "pattern": "^/customers/.*/health$",
+    "decision": "待用户决定",
+    "owner": "WP05协调",
+    "rationale": "Kimi customers.py客户健康度依赖项目进度/逾期口径，主线客户经营全景不能替代评分，规则和是否保留待确认。",
+    "primarySources": [
+      "systems/project-ops/lib/customer-insights.ts"
+    ],
+    "relatedTests": [
+      "systems/project-ops/tests/customer-insights.test.ts"
+    ],
+    "referenceTestPattern": "customer_health"
+  },
+  {
+    "id": "report-extensions",
+    "label": "项目周报、负载与组合健康",
+    "pattern": "^/reports/(project|workload|portfolio)|^/projects/summary$",
+    "decision": "待用户决定",
+    "owner": "WP05协调",
+    "rationale": "旧版周报、项目组合健康与负载报表有源码，主线应收报表不等价；保留指标口径待确认，资源负载参考归WP12。",
+    "primarySources": [
+      "systems/project-ops/lib/reporting.ts"
+    ],
+    "relatedTests": [
+      "systems/project-ops/tests/reporting.test.ts"
+    ],
+    "referenceTestPattern": "report"
+  },
+  {
+    "id": "import-projects",
+    "label": "项目导入与业务台账导出扩展",
+    "pattern": "^/imports?/projects|^/exports?/(projects|customers|contracts|receipts|finance|aging)",
+    "decision": "待用户决定",
+    "owner": "WP05协调",
+    "rationale": "旧版项目导入/客户合同项目票款CSV或账龄导出不等于主线客户Excel导入/应收导出。保留逐项扩展需求；不可照搬未经鉴权的下载链接。",
+    "primarySources": [
+      "systems/project-ops/lib/excel.ts"
+    ],
+    "relatedTests": [
+      "systems/project-ops/tests/excel.test.ts"
+    ],
+    "referenceTestPattern": "import|export"
+  },
+  {
+    "id": "dynamic-roles",
+    "label": "可维护角色权限",
+    "pattern": "^/(org/)?(roles|permissions)(?:/|$)",
+    "decision": "待用户决定",
+    "owner": "WP05/WP24协调",
+    "rationale": "PMS可维护角色/权限列表与主线固定四角色不同；不修改users CHECK、不直接复制通配权限，是否需要动态角色由用户确认。",
+    "primarySources": [
+      "systems/project-ops/lib/permissions.ts"
+    ],
+    "relatedTests": [
+      "systems/project-ops/tests/auth-permissions.test.ts"
+    ],
+    "referenceTestPattern": "permission|org"
+  },
+  {
+    "id": "password-change",
+    "label": "个人改密",
+    "pattern": "^/auth/change-password$",
+    "decision": "待用户决定",
+    "owner": "WP05协调",
+    "rationale": "DeepSeek有改密API，主线个人中心只改姓名邮箱；管理员重置不等价于个人改密。保留需求，不因登录存在标为已有。",
+    "primarySources": [
+      "systems/project-ops/lib/profile.ts",
+      "systems/project-ops/lib/organization.ts"
+    ],
+    "relatedTests": [
+      "systems/project-ops/tests/profile.test.ts"
+    ],
+    "referenceTestPattern": "password"
+  },
+  {
+    "id": "notification-extensions",
+    "label": "通知批量已读与删除",
+    "pattern": "^/notifications/read-all$",
+    "decision": "待用户决定",
+    "owner": "WP19/WP05协调",
+    "rationale": "主线仅按当前用户逐条标已读；三版批量已读保留扩展待确认，物理删除通知的留存口径亦待确认。",
+    "primarySources": [
+      "systems/project-ops/app/notifications/actions.ts"
+    ],
+    "relatedTests": [
+      "systems/project-ops/tests/notifications.test.ts"
+    ],
+    "referenceTestPattern": "notification"
+  },
+  {
     "id": "portal",
     "label": "客户门户",
     "pattern": "portal",
@@ -7,22 +113,24 @@
     "owner": "WP15",
     "rationale": "保留客户授权项目/里程碑/票款摘要的能力；DeepSeek portal.py与Portal.tsx可参考。不能搬client角色、共用JWT或默认portal123；按公共契约建立独立principal/session/cookie。可见字段、客户账号授权人待确认。",
     "primarySources": [],
-    "relatedTests": []
+    "relatedTests": [],
+    "referenceTestPattern": "portal"
   },
   {
     "id": "approvals",
     "label": "审批",
-    "pattern": "approv",
+    "pattern": "^/approvals(?:/|$)",
     "decision": "移植",
     "owner": "WP28",
     "rationale": "参考DeepSeek approval.py模板/步骤/撤回与基础版governance.py审批实码；基础版仅项目类型做范围检查，不能复制任意object_type放行。主线尚无审批域；审批顺序/会签/权限规则待确认。",
     "primarySources": [],
-    "relatedTests": []
+    "relatedTests": [],
+    "referenceTestPattern": "approval"
   },
   {
     "id": "planning",
     "label": "里程碑、依赖与计划视图",
-    "pattern": "gantt|calendar|dependenc|milestone|/progress",
+    "pattern": "^/(gantt|calendar|milestones)(?:/|$)|/(dependencies|milestones|progress)(?:/|$)",
     "decision": "移植",
     "owner": "WP11",
     "rationale": "主线已有MILESTONE及计划/实际日期，但未见依赖图、环检测、甘特或日历。参考DeepSeek pmo.py _task_payload/get_gantt、Gantt.tsx/CalendarView.tsx与基础版tasks.py依赖操作；保留单一work_items主档，不复制Python ORM与进度算法。",
@@ -32,12 +140,13 @@
     ],
     "relatedTests": [
       "systems/project-ops/tests/work-items.test.ts"
-    ]
+    ],
+    "referenceTestPattern": "gantt|calendar|milestone|dependency|project_task"
   },
   {
     "id": "timesheets",
     "label": "工时审批与资源负载",
-    "pattern": "timesheet|resource|work-log",
+    "pattern": "^/(timesheets|resource-load|resources)(?:/|$)|/work-log",
     "decision": "移植",
     "owner": "WP12",
     "rationale": "主线addWorkLog已有整数分钟并累计actual_minutes；旧版提交/批准/驳回及资源汇总可参考DeepSeek pmo.py、Timesheets.tsx/Resources.tsx，Kimi timesheets.py。不能复制小时浮点计算、硬编码人工费率或双写旧work服务。",
@@ -47,7 +156,8 @@
     ],
     "relatedTests": [
       "systems/project-ops/tests/work-items.test.ts"
-    ]
+    ],
+    "referenceTestPattern": "timesheet|resource|workload"
   },
   {
     "id": "risks",
@@ -57,7 +167,8 @@
     "owner": "WP13",
     "rationale": "参考三版风险CRUD及DeepSeek business.py risk_followup_router；概率/影响/等级/状态必须重新校验并限定项目范围，不能把旧版列表可访问当授权已正确。主线尚无风险域。",
     "primarySources": [],
-    "relatedTests": []
+    "relatedTests": [],
+    "referenceTestPattern": "risk"
   },
   {
     "id": "budget",
@@ -67,7 +178,8 @@
     "owner": "WP14",
     "rationale": "参考DeepSeek Budget.tsx/report.py budget_vs_actual和Kimi budgets.py分类/阈值；主线无预算版本，旧版可变预算不等于发布快照。按G0 provider发布不可变整数分快照；阈值和含税口径待确认。",
     "primarySources": [],
-    "relatedTests": []
+    "relatedTests": [],
+    "referenceTestPattern": "budget"
   },
   {
     "id": "cost",
@@ -77,7 +189,8 @@
     "owner": "WP29",
     "rationale": "参考DeepSeek pmo.py费用登记及CostProfit.tsx、基础版governance.py成本。主线尚无成本域；不能把合同额直接当确认收入，不能搬float金额或工时乘假定单价；利润在收入/税率/人工口径未定时为null。",
     "primarySources": [],
-    "relatedTests": []
+    "relatedTests": [],
+    "referenceTestPattern": "cost|expense"
   },
   {
     "id": "knowledge",
@@ -87,17 +200,19 @@
     "owner": "WP05协调",
     "rationale": "基础版governance.py知识库版本、Kimi wiki.py均为真实参考，主线尚无；保留到待确认清单，不擅自舍弃或用档案上传代替知识版本。",
     "primarySources": [],
-    "relatedTests": []
+    "relatedTests": [],
+    "referenceTestPattern": "wiki"
   },
   {
     "id": "templates",
     "label": "项目模板",
-    "pattern": "^/(templates|project-templates)|/apply-template",
+    "pattern": "^/(templates|project-templates)(?:/|$)|/(from-template|apply-template)$",
     "decision": "待用户决定",
     "owner": "WP05协调",
     "rationale": "基础版governance.py与Kimi templates.py有项目模板及应用实码；主线Excel模板是不同能力，不能替代。是否重写项目模板由用户决定。",
     "primarySources": [],
-    "relatedTests": []
+    "relatedTests": [],
+    "referenceTestPattern": "template"
   },
   {
     "id": "dicts",
@@ -107,7 +222,8 @@
     "owner": "WP05协调",
     "rationale": "基础版governance.py和Kimi dicts.py有字典CRUD；主线枚举/规则不等价于可维护字典，保留需求待确认。",
     "primarySources": [],
-    "relatedTests": []
+    "relatedTests": [],
+    "referenceTestPattern": "dict"
   },
   {
     "id": "savedviews",
@@ -117,12 +233,13 @@
     "owner": "WP05协调",
     "rationale": "DeepSeek pmo.py保存视图按用户存储筛选配置；主线仅URL筛选，未见持久保存视图，不擅自舍弃。",
     "primarySources": [],
-    "relatedTests": []
+    "relatedTests": [],
+    "referenceTestPattern": "saved_view"
   },
   {
     "id": "changes",
     "label": "问题与变更",
-    "pattern": "issue|change",
+    "pattern": "^/(issues|changes)(?:/|$)",
     "decision": "待用户决定",
     "owner": "WP05协调",
     "rationale": "主线研发BUG/历史只覆盖部分语义；基础版governance.py有独立问题及变更，DeepSeek business.py有问题记录，是否合并到研发域及审批影响待确认。",
@@ -131,7 +248,8 @@
     ],
     "relatedTests": [
       "systems/project-ops/tests/work-items.test.ts"
-    ]
+    ],
+    "referenceTestPattern": "issue|change"
   },
   {
     "id": "auth",
@@ -148,12 +266,31 @@
     "relatedTests": [
       "systems/project-ops/tests/auth-permissions.test.ts",
       "systems/project-ops/tests/profile.test.ts"
-    ]
+    ],
+    "referenceTestPattern": "login|auth"
+  },
+  {
+    "id": "data",
+    "label": "导入导出与备份",
+    "pattern": "^/(data|imports?|exports?|backups?)(?:/|$)|^/excel|^/admin/backup$",
+    "decision": "主线已有",
+    "owner": "WP23/WP24",
+    "rationale": "主线客户Excel预览确认/错误报告及应收导出已有；PMS项目导入/CSV和在线恢复不等价，保留扩展待确认；备份恢复运行验收归WP23。本清单不扫描真实文件。",
+    "primarySources": [
+      "systems/project-ops/lib/excel.ts",
+      "systems/project-ops/app/data/page.tsx",
+      "systems/project-ops/scripts/backup.ts"
+    ],
+    "relatedTests": [
+      "systems/project-ops/tests/excel.test.ts",
+      "systems/project-ops/tests/legacy-import.test.ts"
+    ],
+    "referenceTestPattern": "import|export|backup"
   },
   {
     "id": "organization",
     "label": "组织与人员",
-    "pattern": "^/(org|users|departments|roles|permissions|admin)",
+    "pattern": "^/(org|organization|users|departments|roles|permissions|admin)(?:/|$)|^/auth/(register|users)(?:/|$)",
     "decision": "主线已有",
     "owner": "WP24",
     "rationale": "主线四值角色、部门及管理员维护已有；不把PMS角色权限表搬入users，客户身份另域。",
@@ -163,7 +300,8 @@
     ],
     "relatedTests": [
       "systems/project-ops/tests/organization-audit.test.ts"
-    ]
+    ],
+    "referenceTestPattern": "org|permission"
   },
   {
     "id": "customers",
@@ -181,7 +319,8 @@
       "systems/project-ops/tests/customer-fields.test.ts",
       "systems/project-ops/tests/customer-insights.test.ts",
       "systems/project-ops/tests/customer-list.test.ts"
-    ]
+    ],
+    "referenceTestPattern": "customer"
   },
   {
     "id": "documents",
@@ -189,31 +328,15 @@
     "pattern": "^/(documents|files)",
     "decision": "主线已有",
     "owner": "WP24",
-    "rationale": "主线上传/路径/实物柜位/下载鉴权已有；DeepSeek文档多版本不等于已移植，需由WP05协调保留版本化需求。不得读真实附件。",
+    "rationale": "主线上传/路径/实物柜位/下载鉴权已有；DeepSeek多版本另列待确认。不得读真实附件。",
     "primarySources": [
       "systems/project-ops/lib/documents.ts",
       "systems/project-ops/app/documents/page.tsx"
     ],
     "relatedTests": [
       "systems/project-ops/tests/documents.test.ts"
-    ]
-  },
-  {
-    "id": "data",
-    "label": "导入导出与备份",
-    "pattern": "^/(data|import|export|backup)|^/excel",
-    "decision": "主线已有",
-    "owner": "WP23/WP24",
-    "rationale": "主线客户Excel预览确认/错误报告及应收导出已有；PMS项目导入/CSV和在线恢复不等价，保留扩展待确认；备份恢复运行验收归WP23。本清单不扫描真实文件。",
-    "primarySources": [
-      "systems/project-ops/lib/excel.ts",
-      "systems/project-ops/app/data/page.tsx",
-      "systems/project-ops/scripts/backup.ts"
     ],
-    "relatedTests": [
-      "systems/project-ops/tests/excel.test.ts",
-      "systems/project-ops/tests/legacy-import.test.ts"
-    ]
+    "referenceTestPattern": "document|file"
   },
   {
     "id": "finance",
@@ -230,7 +353,24 @@
     "relatedTests": [
       "systems/project-ops/tests/finance.test.ts",
       "systems/project-ops/tests/money.test.ts"
-    ]
+    ],
+    "referenceTestPattern": "finance|receipt|invoice|payment"
+  },
+  {
+    "id": "work",
+    "label": "研发事项与日志",
+    "pattern": "^/(work|tasks|comments)(?:/|$)|^/projects/[^/]+/tasks$",
+    "decision": "主线已有",
+    "owner": "WP11/WP12",
+    "rationale": "主线需求/任务/BUG/MILESTONE、评论/历史/整数分钟已有；旧版任务依赖与工时审批另列移植，不能用work存在宣称其全部完成。",
+    "primarySources": [
+      "systems/project-ops/lib/work-items.ts",
+      "systems/project-ops/app/work/page.tsx"
+    ],
+    "relatedTests": [
+      "systems/project-ops/tests/work-items.test.ts"
+    ],
+    "referenceTestPattern": "task|project_lifecycle"
   },
   {
     "id": "projects",
@@ -245,22 +385,8 @@
     ],
     "relatedTests": [
       "systems/project-ops/tests/projects.test.ts"
-    ]
-  },
-  {
-    "id": "work",
-    "label": "研发事项与日志",
-    "pattern": "^/(work|tasks|comments)",
-    "decision": "主线已有",
-    "owner": "WP11/WP12",
-    "rationale": "主线需求/任务/BUG/MILESTONE、评论/历史/整数分钟已有；旧版任务依赖与工时审批另列移植，不能用work存在宣称其全部完成。",
-    "primarySources": [
-      "systems/project-ops/lib/work-items.ts",
-      "systems/project-ops/app/work/page.tsx"
     ],
-    "relatedTests": [
-      "systems/project-ops/tests/work-items.test.ts"
-    ]
+    "referenceTestPattern": "project"
   },
   {
     "id": "services",
@@ -275,7 +401,8 @@
     ],
     "relatedTests": [
       "systems/project-ops/tests/service-fees.test.ts"
-    ]
+    ],
+    "referenceTestPattern": "(?!)"
   },
   {
     "id": "commissions",
@@ -290,7 +417,8 @@
     ],
     "relatedTests": [
       "systems/project-ops/tests/commissions.test.ts"
-    ]
+    ],
+    "referenceTestPattern": "(?!)"
   },
   {
     "id": "rules",
@@ -305,7 +433,8 @@
     ],
     "relatedTests": [
       "systems/project-ops/tests/rules.test.ts"
-    ]
+    ],
+    "referenceTestPattern": "(?!)"
   },
   {
     "id": "notifications",
@@ -320,7 +449,8 @@
     ],
     "relatedTests": [
       "systems/project-ops/tests/notifications.test.ts"
-    ]
+    ],
+    "referenceTestPattern": "notification"
   },
   {
     "id": "audit",
@@ -335,7 +465,8 @@
     ],
     "relatedTests": [
       "systems/project-ops/tests/organization-audit.test.ts"
-    ]
+    ],
+    "referenceTestPattern": "audit"
   },
   {
     "id": "search",
@@ -351,7 +482,8 @@
     "relatedTests": [
       "systems/project-ops/tests/customer-insights.test.ts",
       "systems/project-ops/tests/search-options.test.ts"
-    ]
+    ],
+    "referenceTestPattern": "search"
   },
   {
     "id": "runtime",
@@ -359,14 +491,15 @@
     "pattern": "^/(runtime-health|health|config|status)",
     "decision": "主线已有",
     "owner": "WP01",
-    "rationale": "运行版本检查已有；不代表业务、Windows或CI验收通过。",
+    "rationale": "运行版本检查已有；不代表业务、Windows或CI验收通过。 DeepSeek /config静态true功能开关与/status计数/异常回显，不等于主线诊断，也不作为运行证据，禁止照搬公开经营计数。",
     "primarySources": [
       "systems/project-ops/lib/runtime-health.ts",
       "systems/project-ops/app/runtime-health/page.tsx"
     ],
     "relatedTests": [
       "systems/project-ops/tests/runtime-health.test.ts"
-    ]
+    ],
+    "referenceTestPattern": "health|status|config"
   },
   {
     "id": "capabilities",
@@ -380,7 +513,8 @@
     ],
     "relatedTests": [
       "systems/project-ops/tests/capabilities.test.ts"
-    ]
+    ],
+    "referenceTestPattern": "(?!)"
   },
   {
     "id": "reporting",
@@ -396,6 +530,7 @@
     ],
     "relatedTests": [
       "systems/project-ops/tests/reporting.test.ts"
-    ]
+    ],
+    "referenceTestPattern": "dashboard|workbench|report"
   }
 ]

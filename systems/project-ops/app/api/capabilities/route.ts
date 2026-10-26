@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
 import { ApiError, requireApiUser, SESSION_COOKIE } from "../../../lib/api.ts";
-import { CapabilityError, getCapabilities } from "../../../lib/capabilities/service.ts";
+import { assertCapabilityAdmin, CapabilityError, getCapabilities } from "../../../lib/capabilities/service.ts";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -9,6 +9,7 @@ export function GET(request: NextRequest) {
   try {
     if (!request.cookies.get(SESSION_COOKIE)?.value) throw new ApiError(401, "请先登录");
     const actor = requireApiUser(request);
+    assertCapabilityAdmin(actor);
     const query = request.nextUrl.searchParams;
     // Reject ambiguous/repeated or unknown parameters, rather than silently choosing one.
     if ([...query.keys()].some(key => !["q", "system", "decision", "page"].includes(key) || query.getAll(key).length > 1)) {

@@ -18,7 +18,7 @@ export function getCapabilities(actor: SessionUser | null, query: CapabilityQuer
   if (q.length > 100) throw new CapabilityError(400, "搜索内容最多100个字");
   if (system && !systems.some(value => value === system)) throw new CapabilityError(400, "系统筛选值不正确");
   if (decision && !decisions.some(value => value === decision)) throw new CapabilityError(400, "移植决定筛选值不正确");
-  if (query.page && (!/^[1-9]\d{0,5}$/.test(query.page))) throw new CapabilityError(400, "页码须为1到999999的整数");
+  if (query.page !== undefined && !/^[1-9]\d{0,5}$/.test(query.page)) throw new CapabilityError(400, "页码须为1到999999的整数");
   const normalized = q.toLocaleLowerCase("zh-CN");
   const filtered = catalogData.entries.filter(entry => (!system || entry.system === system)
     && (!decision || entry.decision === decision)

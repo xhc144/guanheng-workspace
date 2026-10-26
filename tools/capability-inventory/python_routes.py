@@ -7,6 +7,7 @@ import sys
 
 root = pathlib.Path(sys.argv[1]).resolve()
 records = []
+tests = []
 for system in ('基础版', 'Kimi版', 'DeepSeek版'):
     app = root / 'systems/pms-suite' / system / 'backend/app'
     main = ast.parse((app / 'main.py').read_text())
@@ -54,5 +55,12 @@ for system in ('基础版', 'Kimi版', 'DeepSeek版'):
                 route = mount + prefixes[dec.func.value.id] + ast.literal_eval(dec.args[0])
                 records.append(dict(system=system, kind='http', method=dec.func.attr.upper(), route=route or '/',
                     path=str(path.relative_to(root)), line=node.lineno, symbol=node.name,
+                    sourceCalls=sorted(set(ast.unparse(x.func) for x in ast.walk(node) if isinstance(x, ast.Call)))[:32],
                     sha256=hashlib.sha256(text.encode()).hexdigest()))
-print(json.dumps(records, ensure_ascii=False))
+    for path in sorted((app.parent / 'tests').rglob('test_*.py')):
+        text = path.read_text()
+        for node in ast.walk(ast.parse(text)):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name.startswith('test_'):
+                tests.append(dict(system=system, path=str(path.relative_to(root)), line=node.lineno,
+                    symbol=node.name, sha256=hashlib.sha256(text.encode()).hexdigest()))
+print(json.dumps(dict(routes=records, tests=tests), ensure_ascii=False))

@@ -1,6 +1,6 @@
 // Offline source inventory. TS compiler AST + Python ast; no application execution.
 import { createHash } from 'node:crypto';
-import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, join, relative, resolve } from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -24,24 +24,35 @@ function ast(root,path) {
 function visit(node, fn) { fn(node); ts.forEachChild(node,child=>visit(child,fn)); }
 function exported(node) { return node.modifiers?.some(m=>m.kind===ts.SyntaxKind.ExportKeyword); }
 function line(source,node) { return source.getLineAndCharacterOfPosition(node.getStart(source)).line+1; }
-export function scan(root) {
+function pythonEvidence(root) {
+  return JSON.parse(execFileSync('python3',[join(here,'python_routes.py'),root],{encoding:'utf8',maxBuffer:4*1024*1024}));
+}
+export function scan(root, python=pythonEvidence(root)) {
   const records=[];
-  const add=(system,kind,method,route,path,source,text,node,symbol)=>records.push({system,kind,method,route,path,line:line(source,node),symbol,sha256:digest(text)});
+  const add=(system,kind,method,route,path,source,text,node,symbol)=>{
+    const calls=new Set();
+    visit(node,n=>{if(ts.isCallExpression(n))calls.add(n.expression.getText(source));});
+    records.push({system,kind,method,route,path,line:line(source,node),symbol,sourceCalls:[...calls].sort().slice(0,32),sha256:digest(text)});
+  };
   const app='systems/project-ops/app';
   for(const abs of walk(join(root,app))) {
     const path=relative(root,abs).replaceAll('\\','/');
-    if(!/(?:page\.tsx|route\.ts|actions\.ts)$/.test(path))continue;
+    if(!/\/(?:page\.tsx|route\.ts|actions\.ts)$/.test(path))continue;
     const {source,text}=ast(root,path);
     const route='/'+relative(app,dirname(path)).replaceAll('\\','/');
+    const before=records.length;
     for(const node of source.statements) {
+      if(ts.isExportDeclaration(node))throw Error(`请显式审查转导出路由/动作：${path}`);
+      if(ts.isVariableStatement(node)&&exported(node)&&path.endsWith('/route.ts')&&node.declarationList.declarations.some(d=>/^(GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS)$/.test(d.name.getText(source))))throw Error(`请显式审查变量形式的HTTP方法：${path}`);
       if(!ts.isFunctionDeclaration(node)||!exported(node))continue;
       const symbol=node.name?.text??'default';
       if(path.endsWith('/page.tsx')&&node.modifiers.some(m=>m.kind===ts.SyntaxKind.DefaultKeyword)) add('主线','page','PAGE',route,path,source,text,node,symbol);
       if(path.endsWith('/route.ts')&&/^(GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS)$/.test(symbol)) add('主线','http',symbol,route,path,source,text,node,symbol);
       if(path.endsWith('/actions.ts'))add('主线','action','ACTION',route+'#'+symbol,path,source,text,node,symbol);
     }
+    if(records.length===before)throw Error(`没有可解析的显式页面/接口/动作：${path}`);
   }
-  records.push(...JSON.parse(execFileSync('python3',[join(here,'python_routes.py'),root],{encoding:'utf8',maxBuffer:4*1024*1024})));
+  records.push(...python.routes);
   for(const system of ['DeepSeek版','Kimi版','基础版']) {
     const base=`systems/pms-suite/${system}/frontend/src`;
     const path=base+(system==='基础版'?'/App.jsx':'/App.tsx');
@@ -53,7 +64,16 @@ export function scan(root) {
         const module=imports.get(symbol);
         pagePath=relative(root,resolve(root,base,module+'.tsx')).replaceAll('\\','/');
         const parsed=ast(root,pagePath);pageSource=parsed.source;pageText=parsed.text;
-        pageNode=pageSource.statements.find(n=>ts.isFunctionDeclaration(n)&&exported(n))??pageSource.statements[0];
+        pageNode=pageSource.statements.find(n=>ts.isFunctionDeclaration(n)&&exported(n));
+        if(!pageNode) {
+          const assignment=pageSource.statements.find(n=>ts.isExportAssignment(n)&&ts.isIdentifier(n.expression));
+          const name=assignment?.expression.text;
+          for(const statement of pageSource.statements)if(ts.isVariableStatement(statement)) {
+            const declaration=statement.declarationList.declarations.find(d=>d.name.getText(pageSource)===name);
+            if(declaration)pageNode=declaration;
+          }
+        }
+        if(!pageNode)throw Error(`无法定位页面组件：${pagePath}`);
       }
       add(system,'page','PAGE',route,pagePath,pageSource,pageText,pageNode,symbol);
     }
@@ -75,13 +95,14 @@ export function scan(root) {
       }
       // Basic is state-based navigation; preserve view keys, never invent HTTP URLs.
       if(system==='基础版'&&ts.isBinaryExpression(node)&&node.operatorToken.kind===ts.SyntaxKind.EqualsEqualsEqualsToken&&node.left.getText(source)==='view'&&ts.isStringLiteral(node.right))addPage('view:'+node.right.text,'App',node);
+      if(system==='基础版'&&ts.isIfStatement(node)&&node.expression.getText(source)==='!token || !user')addPage('state:login','App',node);
+      if(system==='基础版'&&ts.isConditionalExpression(node)&&node.condition.getText(source)==='projectId'&&ts.isJsxSelfClosingElement(node.whenTrue)&&node.whenTrue.tagName.getText(source)==='ProjectDetail')addPage('state:project-detail','ProjectDetail',node.whenTrue);
+      if(system==='基础版'&&ts.isJsxSelfClosingElement(node)&&node.tagName.getText(source)==='ActionPage'&&node.attributes.properties.some(a=>ts.isJsxAttribute(a)&&a.name.getText(source)==='title'&&a.initializer&&ts.isStringLiteral(a.initializer)&&a.initializer.text==='组织权限'))addPage('view:org','App',node);
     });
-    if(system==='基础版') {
-      const appNode=source.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='App');
-      addPage('state:login','App',appNode);addPage('state:project-detail','ProjectDetail',source.statements.find(n=>ts.isFunctionDeclaration(n)&&n.name?.text==='ProjectDetail'));
-      // final org branch is the menu's explicit fallback, extracted from the menu array.
-      const menu=source.statements.find(n=>ts.isVariableStatement(n)&&n.declarationList.declarations.some(d=>d.name.getText(source)==='menu'));
-      visit(menu,n=>{if(ts.isArrayLiteralExpression(n)&&n.elements.length===2&&ts.isStringLiteral(n.elements[0])&&n.elements[0].text==='org')addPage('view:org','App',n);});
+    const pageDirectory=join(root,base,'pages');
+    if(existsSync(pageDirectory))for(const page of walk(pageDirectory).filter(p=>/\.tsx$/.test(p)&&!p.endsWith('.test.tsx'))) {
+      const local=relative(root,page).replaceAll('\\','/');
+      if(!records.some(r=>r.system===system&&r.kind==='page'&&r.path===local))throw Error(`未挂载页面：${local}`);
     }
   }
   const keys=new Set();
@@ -93,19 +114,22 @@ export function scan(root) {
   return records.sort((a,b)=>[a.system,a.kind,a.route,a.method].join('|').localeCompare([b.system,b.kind,b.route,b.method].join('|'),'en'));
 }
 export function classify(record,rules) {
-  const route=record.route.replace(/^\/api\/v1/,'').replace(/^\/api/,'').replace(/^view:|^state:/,'/');
+  const route=record.route.replace(/#.*$/,'').replace(/^\/api\/v1/,'').replace(/^\/api/,'').replace(/^view:|^state:/,'/');
   const rule=rules.find(r=>new RegExp(r.pattern).test(route));
   if(!rule)throw Error(`未分类：${record.system} ${record.route}`);
   return rule;
 }
 export function build(root=repoRoot) {
   const rules=JSON.parse(readFileSync(join(here,'mapping.json'),'utf8'));
-  const entries=scan(root).map(record=>{
+  const python=pythonEvidence(root);
+  const entries=scan(root,python).map(record=>{
     const rule=classify(record,rules);
     for(const path of [...rule.primarySources,...rule.relatedTests]) readFileSync(join(root,path),'utf8');
     return {...record,domain:rule.id,label:rule.label,decision:record.system==='主线'?'主线已有':rule.decision,
       rationale:rule.rationale,primarySources:rule.primarySources,relatedTests:rule.relatedTests,
-      runtimeStatus:'未逐项运行',testStatus:rule.relatedTests.length?'存在相关测试，覆盖程度需复核':'未定位主线测试',
+      runtimeStatus:'未逐项运行',testStatus:rule.relatedTests.length?'存在主线相关测试，覆盖程度需复核':'未定位主线测试',
+      referenceTests:python.tests.filter(t=>t.system===record.system&&rule.referenceTestPattern&&new RegExp(rule.referenceTestPattern).test(t.symbol)).map(({system,...test})=>test),
+      referenceTestStatus:'按测试名提取的参考线索；未运行，不证明此接口被覆盖',
       owner:rule.owner};
   });
   return {schemaVersion:1,sourceBase:'1e36bfce8c13e33f671c95902d23ce2ddabe92ca',
