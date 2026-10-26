@@ -22,3 +22,25 @@ test('only exact verified payment queues an order, transaction cannot pay twice'
  assert.equal(s.confirmPayment(a.id,payment).events.length,1);
  assert.throws(()=>s.confirmPayment(b.id,payment),{status:409});
 });
+test('免费重试按本人和已付款失败状态校验，重复请求只保留一条事件',t=>{
+ const s=setup(t),a=s.create('a@example.invalid',profile,'retry_request_12345');
+ assert.throws(()=>s.retry(a.id,'a@example.invalid'),{status:409});
+ assert.throws(()=>s.retry(a.id,'b@example.invalid'),{status:404});
+ s.confirmPayment(a.id,{amountFen:9900,transactionId:'synthetic-retry',operator:'synthetic-test'});
+ const failed=s.read(a.id);failed.state='failed';s.save(failed);
+ const first=s.retry(a.id,'a@example.invalid');
+ assert.equal(first.state,'queued');
+ assert.deepEqual(s.retry(a.id,'a@example.invalid'),first);
+ assert.equal(s.read(a.id).events.filter(e=>e.type==='generation_retry_requested').length,1);
+ const reloaded=new OrderStore(s.dir);
+ assert.equal(reloaded.all().length,1);
+ assert.deepEqual(reloaded.read(a.id).payment,first.payment);
+ const completed=reloaded.read(a.id);completed.state='completed';reloaded.save(completed);
+ assert.throws(()=>reloaded.retry(a.id,'a@example.invalid'),{status:409});
+});
+test('完成状态仍不能让未支付订单公开下载，畸形UUID与路径穿越均拒绝',t=>{
+ const s=setup(t),a=s.create('a@example.invalid',profile,'download_request_12345');
+ a.state='completed';s.save(a);
+ assert.equal(s.public(s.read(a.id)).downloadReady,false);
+ for(const id of ['../outside','12345678-'+'-'.repeat(27),'a'.repeat(36),null])assert.throws(()=>s.file(id),{status:404});
+});
