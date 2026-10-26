@@ -26,8 +26,6 @@ backups/
 guanheng-video/output/
 guanheng-video/build/
 .hyperframes/
-tasks/
-reports/
 *-worktrees/
 # 只上传代码：媒体与文档成品不入库
 *.mp4

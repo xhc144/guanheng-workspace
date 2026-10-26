@@ -93,14 +93,25 @@
 
 ```powershell
 # 前提：已安装 git、Python 3.10+、Codex CLI（npm i -g @openai/codex）并登录
-python orchestrator/run.py --repo E:\项目\03_效率工具\项目经营管理系统 --queue tasks/queue.json --max-workers 24
+python orchestrator/run.py --repo . --queue tasks/queue.json --max-workers 24
 ```
 
 脚本见 [`orchestrator/run.py`](../orchestrator/run.py)。它只负责“开 worktree + 启动子 AI + 收集日志”，
 拆包、复审、合并由总管 AI 自己完成。若你用的是 GPT API 而不是 Codex CLI，把脚本里的
 `build_command()` 换成你自己的调用即可。
 
-## 7. 成本与风险提示
+## 7. 只能访问 GitHub 时的运行方式
+
+GPT 如果只能看到 GitHub 仓库、不能在本机执行脚本，那就不用 `run.py`，改走 PR 流程：
+
+1. 总管在 `orchestrator/plan` 分支写 `reports/00-盘点.md`、`tasks/queue.json`，每个工作包一份自成一体的 `tasks/WP-XX.md`。
+2. 从 main 建 `integration` 分支，把计划合进去。
+3. 每个子 AI（并行的 Codex 任务或子代理）读一份 `tasks/WP-XX.md`，在 `wp/XX-简称` 分支上完成，然后向 `integration` 提 PR。
+4. 总管复审并按依赖顺序合并 PR，最后提 `integration → main` 的 PR，由人来合并。
+
+总管如果自己开不了子任务，就输出一份启动清单，每行一句：“在仓库 xhc144/guanheng-workspace 的 integration 分支上，完整执行 tasks/WP-XX.md”，由人逐个开新任务执行。
+
+## 8. 成本与风险提示
 
 - 24 个子 AI 各跑 30–90 分钟，token 消耗很大，先用 3–5 个包试跑一轮再放开。
 - worktree 共享同一个 `.git`，但 `node_modules`、`.venv` 各自独立，磁盘占用会成倍增加。
