@@ -15,4 +15,7 @@
 .action:focus-visible { outline: 3px solid #176442; outline-offset: 3px; }
 .steps { margin: 0; padding-left: 22px; line-height: 1.9; }
 .steps code { white-space: normal; overflow-wrap: anywhere; }
+.failure { max-width: 720px; margin: 48px auto; padding: 0 16px; }
+.failure h1 { margin: 0 0 16px; font-size: 24px; line-height: 1.4; }
+.failureActions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
 @media (max-width: 480px) { .panel { padding: 16px; } }
