@@ -52,6 +52,14 @@ def ready_after(queue, completed):
     return [item["id"] for item in queue if item["id"] not in completed and set(item["depends_on"]) <= completed]
 
 
+def ready_phases_after(queue, completed, completed_phases=(), runtime_gates=()):
+    return [f"{item['id']}:{phase['id']}" for item in queue if item["id"] not in completed
+            for phase in item.get("phase_gates", [])
+            if set(phase["depends_on"]) <= set(completed)
+            and set(phase.get("after_phases", [])) <= set(completed_phases)
+            and set(phase.get("runtime_gates", [])) <= set(runtime_gates)]
+
+
 def validate():
     queue = json.loads((ROOT / "tasks/queue.json").read_text())
     errors = []
@@ -74,6 +82,25 @@ def validate():
         for dep in entry["depends_on"]:
             if dep not in by_id or dep == ident:
                 errors.append(f"{ident}: unknown/self dependency {dep}")
+        phases = entry.get("phase_gates", [])
+        if phases:
+            names = {phase["id"] for phase in phases}
+            if len(names) != len(phases) or set().union(*(set(phase["depends_on"]) for phase in phases)) != set(entry["depends_on"]):
+                errors.append(f"{ident}: phase/completion dependencies disagree")
+            if any(set(phase.get("after_phases", [])) - names for phase in phases):
+                errors.append(f"{ident}: unknown prerequisite phase")
+            phase_order = reachability([{"id": phase["id"], "depends_on": phase.get("after_phases", [])} for phase in phases])
+            if any(name in phase_order[name] for name in names):
+                errors.append(f"{ident}: phase dependency cycle")
+        if ident == "WP-02":
+            phase_map = {phase["id"]: phase for phase in phases}
+            if set(phase_map) != {"PMS", "MAIN", "WINDOWS"} or set(phase_map.get("PMS", {}).get("depends_on", [])) != {"WP-03"}:
+                errors.append("WP-02: PMS must remain independently startable after WP03")
+            main_phase = phase_map.get("MAIN", {})
+            if not {"WP-01", "WP-23"} <= set(main_phase.get("depends_on", [])) or "WP-24:G1-runner" not in main_phase.get("runtime_gates", []):
+                errors.append("WP-02: MAIN must wait for version lock, upgrade contract and actual G1")
+            if not {"PMS", "MAIN"} <= set(phase_map.get("WINDOWS", {}).get("after_phases", [])):
+                errors.append("WP-02: real Windows verification requires both implementations")
         document = (ROOT / "tasks" / f"{ident}.md").read_text()
         for token in [ident, entry["branch"], SELF_CHECK, "## 最低真实断言", "## done_when", "reports/" + ident + ".md"]:
             if token not in document:
@@ -110,6 +137,13 @@ def validate():
         "systems/project-ops/lib/migrations/": "WP-23",
         ".github/workflows/": "WP-06",
         "docs/待确认问题.md": "WP-05",
+        "systems/project-ops/README.md": "WP-23",
+        "systems/project-ops/.env.example": "WP-24",
+        "systems/project-ops/一键启动-主线.bat": "WP-02",
+        "systems/project-ops/start-helper.ps1": "WP-02",
+        "systems/project-ops/scripts/bootstrap/": "WP-02",
+        "systems/project-ops/app/favicon.ico/route.ts": "WP-24",
+        "systems/project-ops/lib/base-path.ts": "WP-24",
     }
     for path, owner in locked.items():
         owners = [entry["id"] for entry in queue if any(x == path or (x.endswith("/") and path.startswith(x)) for x in entry["owns"])]
@@ -154,6 +188,7 @@ def validate():
     print(f"Independent parallel wave after actual G0/runner/G1 gate: {len(declared)}: {', '.join(declared)}")
     print(f"Optional separately ready package: {', '.join(sorted(extra))}; Windows is a final experience gate, not a dependency of the 22.")
     print("PASS: dispatched WP01/03/18 instructions and full queue entries unchanged.")
+    print(f"Partial phase allowed after WP03 only: {', '.join(ready_phases_after(queue, {'WP-03'}))}; MAIN still requires WP01/WP23 and actual G1.")
     print("WP24 dependency means G0 only; actual WP23 runner + same-owner G1 approval is mandatory before the declared parallel wave.")
     return 0
 
