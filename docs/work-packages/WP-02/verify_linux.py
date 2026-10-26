@@ -32,11 +32,24 @@ def http(url, body=None, token=None):
     if token:
         headers['Authorization'] = 'Bearer ' + token
     request = urllib.request.Request(url, data=json.dumps(body).encode() if body is not None else None, headers=headers)
+    started=time.monotonic()
+    event={'url':url,'method':'POST' if body is not None else 'GET','timeout_seconds':15}
     try:
-        with urllib.request.urlopen(request, timeout=3) as response:
-            return response.status, response.read().decode()
+        with urllib.request.urlopen(request, timeout=15) as response:
+            code,content=response.status,response.read().decode()
+        event['status']=code
+        return code,content
     except urllib.error.HTTPError as exc:
-        return exc.code, exc.read().decode()
+        event['status']=exc.code
+        return exc.code,exc.read().decode()
+    except Exception as exc:
+        event['error_type']=type(exc).__name__
+        raise RuntimeError(f'HTTP transport failed: {url}: {type(exc).__name__}') from exc
+    finally:
+        event['elapsed_seconds']=round(time.monotonic()-started,3)
+        # Record targets/timing/status only: no request body, headers or token.
+        with (EVIDENCE/'http-events.jsonl').open('a') as log:
+            log.write(json.dumps(event)+'\n')
 
 
 def is_open(port):

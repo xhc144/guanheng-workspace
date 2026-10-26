@@ -3,7 +3,7 @@
 本目录只服务 WP02 的 PMS 启动切片。MAIN 仍依赖 WP23 与 WP24 G1，Windows 实机和三版 BAT 双击仍需另行验收。
 
 - `run_command.py`：记录单条实际命令的 cwd、参数、开始/结束时间、退出码、执行前后文件 SHA-256 和当前 Git HEAD；不收集环境变量。保存命令原始输出，仅脱敏 URL 中的认证信息。
-- `verify_linux.py`：把实际受版本控制的 PMS 文件复制到全新中文空格临时目录。真实 helper 自行创建各版 venv、按 requirements 和原 lock 安装，真实启动 Python/Node。核对直连/前端代理健康、401/401/200 登录、身份读取、服务实际 cwd、重复启动拒绝、Ctrl+C 清理、重启保留用户密码和合成标记、子进程退出码传播及原生 pip 失败。受保护的 app.db/pms.db 仅为临时文本哨兵，不是任何真实数据库。
+- `verify_linux.py`：把实际受版本控制的 PMS 文件复制到全新中文空格临时目录。真实 helper 自行创建各版 venv、按 requirements 和原 lock 安装，真实启动 Python/Node。以每次15秒的传输预算核对直连/前端代理健康、401/401/200 登录，并记录请求目标/耗时/状态（不记录正文和令牌）、身份读取、服务实际 cwd、重复启动拒绝、Ctrl+C 清理、重启保留用户密码和合成标记、子进程退出码传播及原生 pip 失败。受保护的 app.db/pms.db 仅为临时文本哨兵，不是任何真实数据库。
 - `verify_boundaries.py`：复用上一次成功的**合成**副本并重新绑定当前 owned 脚本；验证 WhatIf、Kimi Prepare/Reset 拒绝、缺 Node、真实损坏 node_modules 后正常 npm ci 修复、合成损坏锁的正常拒绝、前端启动失败时清理自有后端、调用环境恢复、基础版两个旧入口和全栈入口互斥、运行中拒绝重置。另建干净副本验证 DeepSeek setup 只安装、修复残缺 `.venv` 并保留旧 `venv` 哨兵。
 - `audit.py`：核对实际 diff/owns、冻结 package/lock/requirements 与其他包、UTF-8 BOM、无禁止命令、文本产物/敏感模式、源码绑定、最终测试结果、报告链接和验收端口释放。它是静态与证据核查，不替代真实 API 或 Windows 测试。
 
