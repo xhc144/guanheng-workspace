@@ -1,0 +1,8 @@
+UTC_START: 2026-10-26T18:48:16.761834+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: gh pr create --repo xhc144/guanheng-workspace --base integration --head wp/24-browser-stability --draft --title '[WP-24] 隔离验收连接并补齐浏览器失败证据' --body-file /tmp/wp24-stability-pr-body.md
+https://github.com/xhc144/guanheng-workspace/pull/11
+
+EXIT_CODE: 0
+UTC_END: 2026-10-26T18:48:20.311232+00:00
+ELAPSED_SECONDS: 3.550
