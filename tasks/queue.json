@@ -189,8 +189,7 @@
       "reports/WP-06.md"
     ],
     "depends_on": [
-      "WP-01",
-      "WP-25"
+      "WP-01"
     ],
     "done_when": [
       "python3 -m unittest discover -s tests -p repository_hygiene_test.py",
@@ -388,15 +387,13 @@
   },
   {
     "id": "WP-13",
-    "title": "风险跟进与审批流程",
-    "branch": "wp/13-risks-approvals",
+    "title": "风险登记、跟进与到期处置",
+    "branch": "wp/13-risks",
     "owns": [
-      "systems/project-ops/lib/risks-approvals/",
+      "systems/project-ops/lib/risks/",
       "systems/project-ops/app/risks/",
-      "systems/project-ops/app/approvals/",
       "systems/project-ops/app/api/risks/",
-      "systems/project-ops/app/api/approvals/",
-      "systems/project-ops/tests/risks-approvals.test.ts",
+      "systems/project-ops/tests/risks.test.ts",
       "docs/work-packages/WP-13/",
       "reports/WP-13.md"
     ],
@@ -415,18 +412,18 @@
       "连续两轮自查无新问题，reports/WP-13.md记录范围、命令/退出码、输出与未决项。"
     ],
     "min_minutes": 30,
-    "estimated_minutes": 120,
+    "estimated_minutes": 100,
     "kind": "业务纵向切片"
   },
   {
     "id": "WP-14",
-    "title": "预算与成本登记及利润口径",
-    "branch": "wp/14-budget-cost",
+    "title": "项目预算版本与发布追溯",
+    "branch": "wp/14-budget-versions",
     "owns": [
-      "systems/project-ops/lib/budget-cost/",
-      "systems/project-ops/app/budget-cost/",
-      "systems/project-ops/app/api/budget-cost/",
-      "systems/project-ops/tests/budget-cost.test.ts",
+      "systems/project-ops/lib/budget-versions/",
+      "systems/project-ops/app/budgets/",
+      "systems/project-ops/app/api/budgets/",
+      "systems/project-ops/tests/budget-versions.test.ts",
       "docs/work-packages/WP-14/",
       "reports/WP-14.md"
     ],
@@ -445,7 +442,7 @@
       "连续两轮自查无新问题，reports/WP-14.md记录范围、命令/退出码、输出与未决项。"
     ],
     "min_minutes": 30,
-    "estimated_minutes": 110,
+    "estimated_minutes": 100,
     "kind": "财务纵向切片"
   },
   {
@@ -524,8 +521,7 @@
     ],
     "depends_on": [
       "WP-24",
-      "WP-23",
-      "WP-11"
+      "WP-23"
     ],
     "done_when": [
       "cd systems/project-ops/ && pnpm install --frozen-lockfile",
@@ -562,15 +558,15 @@
   },
   {
     "id": "WP-19",
-    "title": "通知适配器与可靠邮件outbox",
-    "branch": "wp/19-notifications",
+    "title": "系统通知与可靠邮件outbox",
+    "branch": "wp/19-email-outbox",
     "owns": [
       "systems/project-ops/lib/notifications.ts",
-      "systems/project-ops/lib/notification-channels/",
+      "systems/project-ops/lib/email-delivery/",
       "systems/project-ops/app/notifications/",
-      "systems/project-ops/app/api/notification-channels/",
+      "systems/project-ops/app/api/email-outbox/",
       "systems/project-ops/tests/notifications.test.ts",
-      "systems/project-ops/tests/notification-channels.test.ts",
+      "systems/project-ops/tests/email-outbox.test.ts",
       "docs/work-packages/WP-19/",
       "reports/WP-19.md"
     ],
@@ -588,7 +584,7 @@
       "连续两轮自查无新问题，reports/WP-19.md记录范围、命令/退出码、输出与未决项。"
     ],
     "min_minutes": 30,
-    "estimated_minutes": 100,
+    "estimated_minutes": 110,
     "kind": "业务纵向切片"
   },
   {
@@ -706,7 +702,9 @@
       "systems/project-ops/tests/fixtures/migrations/",
       "systems/project-ops/README.md",
       "docs/work-packages/WP-23/",
-      "reports/WP-23.md"
+      "reports/WP-23.md",
+      "systems/project-ops/scripts/verify-migration-workspace.ts",
+      "systems/project-ops/tests/migration-isolation.test.ts"
     ],
     "depends_on": [
       "WP-24"
@@ -717,9 +715,7 @@
       "cd systems/project-ops/ && pnpm typecheck",
       "cd systems/project-ops/ && pnpm lint",
       "cd systems/project-ops/ && pnpm build",
-      "cd systems/project-ops/ && DATABASE_FILENAME=wp23-verify.db pnpm db:seed",
-      "cd systems/project-ops/ && DATABASE_FILENAME=wp23-verify.db pnpm db:seed",
-      "cd systems/project-ops/ && DATABASE_FILENAME=wp23-verify.db pnpm db:backup",
+      "cd systems/project-ops/ && node --experimental-strip-types scripts/verify-migration-workspace.ts",
       "新增至少3个有真实结果/拒绝/回滚断言的测试，至少5个有实质内容的变更文件；不得用空文件/空assert/快照文件凑数。",
       "连续两轮自查无新问题，reports/WP-23.md记录范围、命令/退出码、输出与未决项。"
     ],
@@ -771,34 +767,20 @@
   },
   {
     "id": "WP-25",
-    "title": "PMS归档前可信回归与引用说明",
-    "branch": "wp/25-pms-archive",
+    "title": "基础版可信回归与归档",
+    "branch": "wp/25-basic-archive",
     "owns": [
       "systems/pms-suite/基础版/README.md",
-      "systems/pms-suite/DeepSeek版/README.md",
-      "systems/pms-suite/Kimi版/README.md",
       "systems/pms-suite/基础版/backend/tests/test_full_flow.py",
       "systems/pms-suite/基础版/backend/tests/test_extended_features.py",
       "systems/pms-suite/基础版/backend/tests/conftest.py",
-      "systems/pms-suite/Kimi版/backend/app/services.py",
-      "systems/pms-suite/Kimi版/backend/app/routers/risks.py",
-      "systems/pms-suite/Kimi版/backend/app/routers/timesheets.py",
-      "systems/pms-suite/Kimi版/backend/app/routers/imports.py",
-      "systems/pms-suite/Kimi版/backend/tests/test_core_flow.py",
-      "systems/pms-suite/Kimi版/backend/tests/test_services.py",
-      "systems/pms-suite/Kimi版/backend/tests/test_archive_regressions.py",
+      "systems/pms-suite/基础版/backend/tests/test_archive_regressions.py",
       "systems/pms-suite/基础版/frontend/src/main.jsx",
-      "systems/pms-suite/DeepSeek版/frontend/src/main.tsx",
-      "systems/pms-suite/Kimi版/frontend/src/main.tsx",
       "systems/pms-suite/基础版/frontend/src/components/archive/",
-      "systems/pms-suite/DeepSeek版/frontend/src/components/archive/",
-      "systems/pms-suite/Kimi版/frontend/src/components/archive/",
-      "docs/PMS归档验收.md",
       "docs/work-packages/WP-25/",
       "reports/WP-25.md"
     ],
     "depends_on": [
-      "WP-02",
       "WP-03",
       "WP-04"
     ],
@@ -809,23 +791,170 @@
       "cd /tmp/guanheng-WP-25-basic/backend && PYTHONPATH=. /tmp/guanheng-WP-25-basic/venv/bin/python -m pytest",
       "cd 'systems/pms-suite/基础版/frontend' && npm ci",
       "cd 'systems/pms-suite/基础版/frontend' && npm run build",
-      "python3 -c 'import shutil; shutil.copytree(\"systems/pms-suite/DeepSeek版/backend\", \"/tmp/guanheng-WP-25-deepseek/backend\", ignore=shutil.ignore_patterns(\".venv\", \"__pycache__\", \".demo\", \".pytest_cache\", \".env*\"))'",
-      "python3 -m venv /tmp/guanheng-WP-25-deepseek/venv",
-      "cd /tmp/guanheng-WP-25-deepseek/backend && /tmp/guanheng-WP-25-deepseek/venv/bin/python -m pip install -r requirements.txt",
-      "cd /tmp/guanheng-WP-25-deepseek/backend && PYTHONPATH=. /tmp/guanheng-WP-25-deepseek/venv/bin/python -m pytest",
-      "cd 'systems/pms-suite/DeepSeek版/frontend' && npm ci",
-      "cd 'systems/pms-suite/DeepSeek版/frontend' && npm run build",
-      "python3 -c 'import shutil; shutil.copytree(\"systems/pms-suite/Kimi版/backend\", \"/tmp/guanheng-WP-25-kimi/backend\", ignore=shutil.ignore_patterns(\".venv\", \"__pycache__\", \".demo\", \".pytest_cache\", \".env*\"))'",
-      "python3 -m venv /tmp/guanheng-WP-25-kimi/venv",
-      "cd /tmp/guanheng-WP-25-kimi/backend && /tmp/guanheng-WP-25-kimi/venv/bin/python -m pip install -r requirements.txt",
-      "cd /tmp/guanheng-WP-25-kimi/backend && PYTHONPATH=. /tmp/guanheng-WP-25-kimi/venv/bin/python -m pytest",
-      "cd 'systems/pms-suite/Kimi版/frontend' && npm ci",
-      "cd 'systems/pms-suite/Kimi版/frontend' && npm run build",
       "新增至少3个有真实结果/拒绝/回滚断言的测试，至少5个有实质内容的变更文件；不得用空文件/空assert/快照文件凑数。",
       "连续两轮自查无新问题，reports/WP-25.md记录范围、命令/退出码、输出与未决项。"
     ],
     "min_minutes": 30,
+    "estimated_minutes": 100,
+    "kind": "存量归档纵向切片"
+  },
+  {
+    "id": "WP-26",
+    "title": "Kimi版五项可信回归与归档",
+    "branch": "wp/26-kimi-archive",
+    "owns": [
+      "systems/pms-suite/Kimi版/README.md",
+      "systems/pms-suite/Kimi版/backend/app/services.py",
+      "systems/pms-suite/Kimi版/backend/app/routers/risks.py",
+      "systems/pms-suite/Kimi版/backend/app/routers/timesheets.py",
+      "systems/pms-suite/Kimi版/backend/app/routers/imports.py",
+      "systems/pms-suite/Kimi版/backend/tests/test_core_flow.py",
+      "systems/pms-suite/Kimi版/backend/tests/test_services.py",
+      "systems/pms-suite/Kimi版/backend/tests/test_archive_regressions.py",
+      "systems/pms-suite/Kimi版/frontend/src/main.tsx",
+      "systems/pms-suite/Kimi版/frontend/src/components/archive/",
+      "docs/work-packages/WP-26/",
+      "reports/WP-26.md"
+    ],
+    "depends_on": [
+      "WP-03",
+      "WP-04"
+    ],
+    "done_when": [
+      "python3 -c 'import shutil; shutil.copytree(\"systems/pms-suite/Kimi版/backend\", \"/tmp/guanheng-WP-26-kimi/backend\", ignore=shutil.ignore_patterns(\".venv\", \"__pycache__\", \".demo\", \".pytest_cache\", \".env*\"))'",
+      "python3 -m venv /tmp/guanheng-WP-26-kimi/venv",
+      "cd /tmp/guanheng-WP-26-kimi/backend && /tmp/guanheng-WP-26-kimi/venv/bin/python -m pip install -r requirements.txt",
+      "cd /tmp/guanheng-WP-26-kimi/backend && PYTHONPATH=. /tmp/guanheng-WP-26-kimi/venv/bin/python -m pytest",
+      "cd 'systems/pms-suite/Kimi版/frontend' && npm ci",
+      "cd 'systems/pms-suite/Kimi版/frontend' && npm run build",
+      "新增至少3个有真实结果/拒绝/回滚断言的测试，至少5个有实质内容的变更文件；不得用空文件/空assert/快照文件凑数。",
+      "连续两轮自查无新问题，reports/WP-26.md记录范围、命令/退出码、输出与未决项。"
+    ],
+    "min_minutes": 30,
     "estimated_minutes": 120,
     "kind": "存量归档纵向切片"
+  },
+  {
+    "id": "WP-27",
+    "title": "DeepSeek版可信回归与归档",
+    "branch": "wp/27-deepseek-archive",
+    "owns": [
+      "systems/pms-suite/DeepSeek版/README.md",
+      "systems/pms-suite/DeepSeek版/FINAL_STATUS.md",
+      "systems/pms-suite/DeepSeek版/IMPROVEMENTS.md",
+      "systems/pms-suite/DeepSeek版/backend/tests/test_archive_lifecycle.py",
+      "systems/pms-suite/DeepSeek版/frontend/src/main.tsx",
+      "systems/pms-suite/DeepSeek版/frontend/src/components/archive/",
+      "systems/pms-suite/DeepSeek版/frontend/src/archive.test.tsx",
+      "docs/work-packages/WP-27/",
+      "reports/WP-27.md"
+    ],
+    "depends_on": [
+      "WP-03",
+      "WP-04"
+    ],
+    "done_when": [
+      "python3 -c 'import shutil; shutil.copytree(\"systems/pms-suite/DeepSeek版/backend\", \"/tmp/guanheng-WP-27-deepseek/backend\", ignore=shutil.ignore_patterns(\".venv\", \"__pycache__\", \".demo\", \".pytest_cache\", \".env*\"))'",
+      "python3 -m venv /tmp/guanheng-WP-27-deepseek/venv",
+      "cd /tmp/guanheng-WP-27-deepseek/backend && /tmp/guanheng-WP-27-deepseek/venv/bin/python -m pip install -r requirements.txt",
+      "cd /tmp/guanheng-WP-27-deepseek/backend && PYTHONPATH=. /tmp/guanheng-WP-27-deepseek/venv/bin/python -m pytest",
+      "cd 'systems/pms-suite/DeepSeek版/frontend' && npm ci",
+      "cd 'systems/pms-suite/DeepSeek版/frontend' && npm run build",
+      "cd 'systems/pms-suite/DeepSeek版/frontend' && npm test",
+      "新增至少3个有真实结果/拒绝/回滚断言的测试，至少5个有实质内容的变更文件；不得用空文件/空assert/快照文件凑数。",
+      "连续两轮自查无新问题，reports/WP-27.md记录范围、命令/退出码、输出与未决项。"
+    ],
+    "min_minutes": 30,
+    "estimated_minutes": 100,
+    "kind": "存量归档纵向切片"
+  },
+  {
+    "id": "WP-28",
+    "title": "通用审批提交与决定历史",
+    "branch": "wp/28-approvals",
+    "owns": [
+      "systems/project-ops/lib/approvals/",
+      "systems/project-ops/app/approvals/",
+      "systems/project-ops/app/api/approvals/",
+      "systems/project-ops/tests/approvals.test.ts",
+      "docs/work-packages/WP-28/",
+      "reports/WP-28.md"
+    ],
+    "depends_on": [
+      "WP-24",
+      "WP-23",
+      "WP-04"
+    ],
+    "done_when": [
+      "cd systems/project-ops/ && pnpm install --frozen-lockfile",
+      "cd systems/project-ops/ && pnpm test",
+      "cd systems/project-ops/ && pnpm typecheck",
+      "cd systems/project-ops/ && pnpm lint",
+      "cd systems/project-ops/ && pnpm build",
+      "新增至少3个有真实结果/拒绝/回滚断言的测试，至少5个有实质内容的变更文件；不得用空文件/空assert/快照文件凑数。",
+      "连续两轮自查无新问题，reports/WP-28.md记录范围、命令/退出码、输出与未决项。"
+    ],
+    "min_minutes": 30,
+    "estimated_minutes": 110,
+    "kind": "业务纵向切片"
+  },
+  {
+    "id": "WP-29",
+    "title": "成本登记、预算对照与利润口径",
+    "branch": "wp/29-cost-profit",
+    "owns": [
+      "systems/project-ops/lib/cost-profit/",
+      "systems/project-ops/app/cost-profit/",
+      "systems/project-ops/app/api/cost-profit/",
+      "systems/project-ops/tests/cost-profit.test.ts",
+      "docs/work-packages/WP-29/",
+      "reports/WP-29.md"
+    ],
+    "depends_on": [
+      "WP-24",
+      "WP-23",
+      "WP-04"
+    ],
+    "done_when": [
+      "cd systems/project-ops/ && pnpm install --frozen-lockfile",
+      "cd systems/project-ops/ && pnpm test",
+      "cd systems/project-ops/ && pnpm typecheck",
+      "cd systems/project-ops/ && pnpm lint",
+      "cd systems/project-ops/ && pnpm build",
+      "新增至少3个有真实结果/拒绝/回滚断言的测试，至少5个有实质内容的变更文件；不得用空文件/空assert/快照文件凑数。",
+      "连续两轮自查无新问题，reports/WP-29.md记录范围、命令/退出码、输出与未决项。"
+    ],
+    "min_minutes": 30,
+    "estimated_minutes": 110,
+    "kind": "财务纵向切片"
+  },
+  {
+    "id": "WP-30",
+    "title": "企业微信适配器与关闭优先配置",
+    "branch": "wp/30-wecom-channel",
+    "owns": [
+      "systems/project-ops/lib/wecom-channel/",
+      "systems/project-ops/app/wecom-channel/",
+      "systems/project-ops/app/api/wecom-channel/",
+      "systems/project-ops/tests/wecom-channel.test.ts",
+      "docs/work-packages/WP-30/",
+      "reports/WP-30.md"
+    ],
+    "depends_on": [
+      "WP-24",
+      "WP-23"
+    ],
+    "done_when": [
+      "cd systems/project-ops/ && pnpm install --frozen-lockfile",
+      "cd systems/project-ops/ && pnpm test",
+      "cd systems/project-ops/ && pnpm typecheck",
+      "cd systems/project-ops/ && pnpm lint",
+      "cd systems/project-ops/ && pnpm build",
+      "新增至少3个有真实结果/拒绝/回滚断言的测试，至少5个有实质内容的变更文件；不得用空文件/空assert/快照文件凑数。",
+      "连续两轮自查无新问题，reports/WP-30.md记录范围、命令/退出码、输出与未决项。"
+    ],
+    "min_minutes": 30,
+    "estimated_minutes": 100,
+    "kind": "业务配置纵向切片"
   }
 ]

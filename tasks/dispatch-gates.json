@@ -1,0 +1,54 @@
+{
+  "source_sha": "d14f98939429e4f860fd82ac6c48ea4fbf1629a4",
+  "foundation_ids": [
+    "WP-01",
+    "WP-03",
+    "WP-18",
+    "WP-04",
+    "WP-24",
+    "WP-23"
+  ],
+  "required_runtime_gates": [
+    "WP-24:G0 actual implementation merged and tested",
+    "WP-23:declarative runner and temporary-cwd rehearsal merged and tested",
+    "WP-24:G1 runner registration merged and tested"
+  ],
+  "minimum_parallel": 20,
+  "parallel_candidates": [
+    "WP-05",
+    "WP-06",
+    "WP-07",
+    "WP-08",
+    "WP-09",
+    "WP-10",
+    "WP-11",
+    "WP-12",
+    "WP-13",
+    "WP-14",
+    "WP-15",
+    "WP-16",
+    "WP-17",
+    "WP-19",
+    "WP-20",
+    "WP-21",
+    "WP-25",
+    "WP-26",
+    "WP-27",
+    "WP-28",
+    "WP-29",
+    "WP-30"
+  ],
+  "sequential_remaining": {
+    "WP-22": [
+      "WP-16"
+    ]
+  },
+  "not_execution_evidence": "Foundation is not yet complete. Root must record exact approved G0/G1 SHAs before dispatch; this file does not launch tasks.",
+  "optional_foundation_ids": [
+    "WP-02"
+  ],
+  "additional_ready_not_in_wave": [
+    "WP-02"
+  ],
+  "windows_policy": "WP02 technical implementation and true Windows double-click evidence are tracked separately; neither blocks the 22 Linux-capable independent slices. Windows remains required before final full delivery."
+}
