@@ -46,8 +46,8 @@ def main():
         if path.endswith('.ps1') and not p.read_bytes().startswith(b'\xef\xbb\xbf'): findings.append('missing Windows Unicode BOM: '+path)
         if path.endswith(('.ps1','.bat')) and re.search(r'(?i)ExecutionPolicy\s+Bypass|Set-ExecutionPolicy|taskkill|E:\\',p.read_text(encoding='utf-8-sig')): findings.append('unsafe startup command: '+path)
     # New tests use actual processes/API/files. Review of their source remains separate.
-    pester=EVIDENCE/'pester-final.log'
-    if not pester.exists() or 'Tests Passed: 8, Failed: 0, Skipped: 0' not in pester.read_text(): findings.append('final Pester result missing')
+    pester=EVIDENCE/'pester-verified.log'
+    if not pester.exists() or 'Tests Passed: 9, Failed: 0, Skipped: 0' not in pester.read_text(): findings.append('final Pester result missing')
     runs=sorted(EVIDENCE.glob('linux-20*/linux-results.json'))
     if not runs: findings.append('Linux integration missing')
     else:

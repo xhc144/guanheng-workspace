@@ -48,15 +48,20 @@ function Find-Application([string[]]$Names, [string]$Description) {
 function Invoke-Step([string]$Name, [string]$Executable, [string[]]$Arguments, [string]$Directory) {
     Write-Stage $Name
     $outLog = Join-Path $logDirectory ($Name + '.log')
+    if (-not $isWindowsHost -and (([int][IO.File]::GetUnixFileMode($Executable) -band 73) -eq 0)) {
+        throw '无法启动子命令：文件没有执行权限；拒绝通过文件关联打开它。'
+    }
     Push-Location -LiteralPath $Directory
     try {
         # Native stderr must be logged without terminating on Windows PowerShell 5.1.
         $oldPreference = $ErrorActionPreference
         $ErrorActionPreference = 'Continue'
-        try { & $Executable @Arguments > $outLog 2>&1; $code = $LASTEXITCODE }
+        $global:LASTEXITCODE = $null
+        try { & $Executable @Arguments > $outLog 2>&1; $code = $global:LASTEXITCODE }
         finally { $ErrorActionPreference = $oldPreference }
         $record = @{ cwd = $Directory; executable = $Executable; arguments = $Arguments; step = $Name; exit = $code } | ConvertTo-Json -Compress
         Add-Content -LiteralPath (Join-Path $logDirectory 'startup.log') -Encoding UTF8 -Value $record
+        if ($null -eq $code) { throw "无法启动子命令，未返回退出码；详情：$outLog" }
         if ($code -ne 0) {
             $script:exitCode = if ($code -gt 0 -and $code -le 255) { $code } else { 1 }
             throw "子命令失败，退出码 $code；详情：$outLog"
@@ -256,7 +261,10 @@ finally {
     foreach ($process in $ownedProcesses) {
         try { if (-not $process.HasExited) { $process.Kill(); $process.WaitForExit(5000) | Out-Null } } catch { }
     }
-    foreach ($key in $savedEnvironment.Keys) { [Environment]::SetEnvironmentVariable($key, $savedEnvironment[$key], 'Process') }
+    foreach ($key in $savedEnvironment.Keys) {
+        if ($null -eq $savedEnvironment[$key]) { Remove-Item -LiteralPath ('Env:' + $key) -ErrorAction SilentlyContinue }
+        else { [Environment]::SetEnvironmentVariable($key, $savedEnvironment[$key], 'Process') }
+    }
     if ($null -ne $installLock) { $installLock.Dispose() }
     if ($null -ne $lockStream) { $lockStream.Dispose() }
     if ($null -ne $sessionLock) { $sessionLock.Dispose() }

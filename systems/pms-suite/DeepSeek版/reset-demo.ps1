@@ -69,7 +69,9 @@ try {
     finally { Pop-Location }
 }
 finally {
-    [Environment]::SetEnvironmentVariable('DEMO_MODE', $oldDemoMode, 'Process')
-    [Environment]::SetEnvironmentVariable('DATABASE_URL', $oldDatabaseUrl, 'Process')
+    if ($null -eq $oldDemoMode) { Remove-Item Env:DEMO_MODE -ErrorAction SilentlyContinue }
+    else { [Environment]::SetEnvironmentVariable('DEMO_MODE', $oldDemoMode, 'Process') }
+    if ($null -eq $oldDatabaseUrl) { Remove-Item Env:DATABASE_URL -ErrorAction SilentlyContinue }
+    else { [Environment]::SetEnvironmentVariable('DATABASE_URL', $oldDatabaseUrl, 'Process') }
     foreach ($guard in $guardLocks) { $guard.Dispose() }
 }

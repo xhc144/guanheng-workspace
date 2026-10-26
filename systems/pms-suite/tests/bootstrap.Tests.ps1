@@ -122,4 +122,20 @@ Describe 'PMS bootstrap real refusal paths (no mocked service success)' {
         finally { $lease.Dispose() }
     }
 
+    It '残缺venv中不可执行的Python不能沿用旧成功码，必须在安装阶段拒绝' {
+        $venv = Join-Path $fixture '基础版/.venv'
+        $relative = if ($env:OS -eq 'Windows_NT') { 'Scripts/python.exe' } else { 'bin/python' }
+        $broken = Join-Path $venv $relative
+        New-Item -ItemType Directory -Path (Split-Path -Parent $broken) -Force | Out-Null
+        [IO.File]::WriteAllText($broken, 'WP02 synthetic invalid executable')
+        try {
+            $result = Invoke-Fixture
+            $result.Code | Should -Be 1
+            $result.Output | Should -Match '安装Python依赖'
+            $result.Output | Should -Match '无法启动子命令'
+            Test-Path -LiteralPath (Join-Path $fixture '基础版/frontend/node_modules') | Should -BeFalse
+        }
+        finally { Remove-Item -LiteralPath $venv -Recurse -Force }
+    }
+
 }
