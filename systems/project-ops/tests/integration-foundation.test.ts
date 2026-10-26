@@ -286,7 +286,7 @@ test("匿名API在全新临时cwd拒绝且不创建数据库目录", () => {
 
 test("同一临时库两个并发连接抢占回款：只成功一笔且业务/审计一起提交", { timeout: 15_000 }, async t => {
   const directory = mkdtempSync(join(tmpdir(), "gh-wp24-contention-")), filename = join(directory, "synthetic.db");
-  const workers: Worker[] = []; let verify: DatabaseSync | undefined;
+  const workers: Worker[] = []; let verify: DatabaseSync | undefined = undefined;
   t.after(async () => {
     await Promise.all(workers.map(w => w.terminate()));
     verify?.close(); rmSync(directory, { recursive: true, force: true });

@@ -14,7 +14,9 @@ import { hashPassword } from "../../../systems/project-ops/lib/auth.ts";
 assert.ok(process.argv.length === 4 || process.argv.length === 5, "请指定已安装的Playwright模块和Chromium，可选basePath");
 const basePath = process.argv[4] ?? "";
 assert.match(basePath, /^(?:\/[a-zA-Z0-9_-]+)*$/);
-const { chromium } = await import(pathToFileURL(process.argv[2]).href);
+const playwrightModule = await import(pathToFileURL(process.argv[2]).href);
+const chromium = playwrightModule.chromium ?? playwrightModule.default?.chromium;
+assert.ok(chromium, "指定的已安装Playwright模块未提供chromium");
 const project = fileURLToPath(new URL("../../../systems/project-ops/", import.meta.url));
 const runtime = mkdtempSync(join(tmpdir(), "guanheng-wp24-browser-"));
 cpSync(join(project, ".next/standalone"), runtime, { recursive: true, verbatimSymlinks: true });
@@ -64,6 +66,16 @@ try {
     assert.equal((await context.request.head(`${base}/api/${path}`)).status(), 401);
     await page.goto(`${base}/${path}`); assert.equal(new URL(page.url()).pathname, `${basePath}/login`);
   }
+  const favicon = await page.evaluate(async () => {
+    const icon = document.querySelector('link[rel~="icon"]');
+    if (!icon) throw new Error("页面缺少favicon元数据");
+    const href = icon.getAttribute("href"), url = new URL(href, location.href);
+    const response = await fetch(url, { cache: "no-store" });
+    return { href, path: url.pathname, status: response.status, bytes: (await response.arrayBuffer()).byteLength };
+  });
+  assert.equal(favicon.path, `${basePath}/favicon.ico`); assert.equal(favicon.status, 204); assert.equal(favicon.bytes, 0);
+  assert.equal((await context.request.head(`${base}/favicon.ico`)).status(), 204);
+  results.push({ check: "页面元数据解析正确，真实浏览器请求favicon204且零字节，HEAD204", status: "通过", favicon });
   results.push({ check: "匿名页面转登录，两个诊断API GET/HEAD均401", status: "通过" });
   async function login(role) {
     await context.clearCookies(); await page.goto(`${base}/login`);
@@ -135,8 +147,10 @@ try {
   await login("ADMIN");
   const faultContext = await browser.newContext({ storageState: await context.storageState(), viewport: { width: 375, height: 1000 } });
   await page.close(); // Prevent normal navigation prefetch while the isolated fault is active.
-  const faultPage = await faultContext.newPage(), faultErrors = [];
+  const faultPage = await faultContext.newPage(), faultErrors = [], faultPageErrors = [], faultResources = [];
   faultPage.on("console", message => { if (message.type() === "error") faultErrors.push(message.text()); });
+  faultPage.on("pageerror", error => faultPageErrors.push(error.message));
+  faultPage.on("response", response => { if (response.status() >= 400) faultResources.push({ status: response.status(), path: new URL(response.url()).pathname }); });
   const faultDb = new DatabaseSync(join(runtime, "data/wp24-synthetic.db"));
   try {
     faultDb.exec("ALTER TABLE users RENAME COLUMN role TO wp24_synthetic_role");
@@ -159,11 +173,14 @@ try {
   await faultPage.getByRole("heading", { name: "G0 地基 · 基线模块已登记", exact: true }).waitFor();
   assert.equal((await faultContext.request.get(`${base}/api/integration-health`, { headers: await sessionHeaders() })).status(), 200);
   assert.doesNotMatch(faultErrors.join("\n"), /wp24_synthetic_role|no such column|SELECT|WP24_SYNTHETIC_CONFIG/);
+  assert.deepEqual(faultPageErrors, [], "预期的服务端故障不应导致未处理客户端异常");
+  assert.ok(faultResources.every(response => response.status === 500 && response.path === `${basePath}/integration-health`), JSON.stringify(faultResources));
   results.push({ check: "纯临时库故障注入：API固定中文500、375px中文错误页、恢复后真实retry重取成功", status: "通过", expectedFaultConsoleCount: faultErrors.length });
   await faultContext.close();
   results.push({ check: "严格浏览器控制台与页面异常", status: errors.length ? "失败" : "通过", errors, resources });
   console.log(JSON.stringify({ runtime, base, results }, null, 2));
   assert.deepEqual(errors, [], "浏览器存在控制台错误或页面异常；保留favicon失败，不忽略断言");
+  assert.deepEqual(resources, [], "正常页面存在>=400网络响应");
 } finally {
   if (browser) await browser.close();
   const stopped = new Promise(resolve => server.once("exit", resolve));
