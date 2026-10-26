@@ -36,6 +36,31 @@ function fixture() {
   return { db, actor };
 }
 const count = (db: DatabaseSync, table: string) => Number(db.prepare(`SELECT COUNT(*) n FROM ${table}`).get()!.n);
+
+type WorkerResult = { success: boolean; error?: string; closed?: boolean };
+function waitForWorkerResult(worker: Worker, onReady: () => void = () => {}): Promise<WorkerResult> {
+  return new Promise((resolve, reject) => {
+    let result: WorkerResult | undefined, ready = false;
+    worker.once("error", reject);
+    worker.once("exit", code => {
+      if (code !== 0) reject(new Error(`worker退出${code}`));
+      else if (!result) reject(new Error("worker正常退出但未返回结果"));
+      else resolve(result);
+    });
+    worker.on("message", (message: unknown) => {
+      if (message && typeof message === "object" && "ready" in message && message.ready === true) {
+        if (ready || result) reject(new Error("worker重复或迟到的ready消息"));
+        else { ready = true; onReady(); }
+      } else if (message && typeof message === "object" && "success" in message
+        && typeof message.success === "boolean"
+        && (message.success || ("error" in message && typeof message.error === "string"))) {
+        if (result) reject(new Error("worker重复返回结果"));
+        else result = message as WorkerResult;
+      } else reject(new Error("worker返回了无效结果"));
+    });
+  });
+}
+
 function insert(db: DatabaseSync, id: string) {
   db.prepare("INSERT INTO customers(id,name) VALUES (?,?)").run(id, `合成-${id}`);
   writeAudit(db, { action: "CREATE", entityType: "CUSTOMER", entityId: id });
@@ -287,11 +312,56 @@ test("匿名API在全新临时cwd拒绝且不创建数据库目录", () => {
   } finally { rmSync(directory, { recursive: true, force: true }); }
 });
 
+test("worker结果先于关闭时必须等退出；真实锁释放后才能验证数据库", { timeout: 15_000 }, async t => {
+  const directory = mkdtempSync(join(tmpdir(), "gh-wp24-worker-close-")), filename = join(directory, "synthetic.db");
+  const barrier = new SharedArrayBuffer(4), gate = new Int32Array(barrier);
+  const worker = new Worker(`
+    const {parentPort,workerData}=require('node:worker_threads');
+    const {DatabaseSync}=require('node:sqlite');
+    const db=new DatabaseSync(workerData.filename);
+    db.exec('PRAGMA locking_mode=EXCLUSIVE; PRAGMA journal_mode=WAL; CREATE TABLE example(value INTEGER); INSERT INTO example VALUES(1)');
+    parentPort.postMessage({success:true});
+    Atomics.wait(new Int32Array(workerData.barrier),0,0);
+    db.close();
+  `, { eval: true, workerData: { filename, barrier } });
+  t.after(async () => {
+    Atomics.store(gate, 0, 1); Atomics.notify(gate, 0);
+    await worker.terminate(); rmSync(directory, { recursive: true, force: true });
+  });
+  let settled = false;
+  const completion = waitForWorkerResult(worker);
+  void completion.then(() => { settled = true; }, () => { settled = true; });
+  await new Promise<void>((resolve, reject) => { worker.once("message", () => resolve()); worker.once("error", reject); });
+  await new Promise<void>(resolve => setImmediate(resolve));
+  assert.equal(settled, false, "结果消息不代表worker已经关闭并退出");
+  const early = new DatabaseSync(filename);
+  try { assert.throws(() => early.prepare("SELECT * FROM example").all(), { errcode: 5 }); }
+  finally { early.close(); }
+  Atomics.store(gate, 0, 1); Atomics.notify(gate, 0);
+  assert.equal((await completion).success, true);
+  assert.equal(worker.threadId, -1);
+  const verify = new DatabaseSync(filename);
+  try { assert.equal(verify.prepare("SELECT value FROM example").get()!.value, 1); }
+  finally { verify.close(); }
+});
+
+test("worker结果后的异常退出或未返回结果都不能被当成成功", { timeout: 15_000 }, async t => {
+  for (const [source, expected] of [
+    ["require('node:worker_threads').parentPort.postMessage({success:true}); process.exitCode=7", /worker退出7/],
+    ["require('node:worker_threads').parentPort.postMessage({success:true}); throw new Error('合成关闭失败')", /合成关闭失败/],
+    ["process.exitCode=0", /未返回结果/],
+  ] as const) {
+    const worker = new Worker(source, { eval: true });
+    t.after(() => worker.terminate());
+    await assert.rejects(waitForWorkerResult(worker), expected);
+  }
+});
+
 test("同一临时库两个并发连接抢占回款：只成功一笔且业务/审计一起提交", { timeout: 15_000 }, async t => {
   const directory = mkdtempSync(join(tmpdir(), "gh-wp24-contention-")), filename = join(directory, "synthetic.db");
   const workers: Worker[] = []; let verify: DatabaseSync | undefined = undefined;
   t.after(async () => {
-    await Promise.all(workers.map(w => w.terminate()));
+    await Promise.all(workers.filter(w => w.threadId !== -1).map(w => w.terminate()));
     verify?.close(); rmSync(directory, { recursive: true, force: true });
   });
   const db = openDatabase(filename);
@@ -308,21 +378,23 @@ test("同一临时库两个并发连接抢占回款：只成功一笔且业务/�
       const {writeAudit}=await import(workerData.auditModule);
       const db=new DatabaseSync(workerData.filename); db.exec('PRAGMA foreign_keys=ON; PRAGMA busy_timeout=5000');
       parentPort.postMessage({ready:true}); const gate=new Int32Array(workerData.barrier); Atomics.wait(gate,0,0);
-      try { inTransaction(db,()=>{ const id=createReceiptWithAllocations(db,{idempotencyKey:workerData.key,customerId:'c',receivedDate:'2026-01-02',amountCents:60000,allocations:[{receivableId:'r',amountCents:60000}]}); writeAudit(db,{action:'CREATE',entityType:'RECEIPT',entityId:id}); }); parentPort.postMessage({success:true}); }
-      catch(e){parentPort.postMessage({success:false,error:e.message});} finally{db.close();}
+      let result;
+      try { inTransaction(db,()=>{ const id=createReceiptWithAllocations(db,{idempotencyKey:workerData.key,customerId:'c',receivedDate:'2026-01-02',amountCents:60000,allocations:[{receivableId:'r',amountCents:60000}]}); writeAudit(db,{action:'CREATE',entityType:'RECEIPT',entityId:id}); }); result={success:true}; }
+      catch(e){result={success:false,error:e.message};} finally{db.close();}
+      parentPort.postMessage({...result,closed:!db.isOpen});
     })().catch(e=>{throw e});`;
   let ready = 0;
-  const results = await Promise.all(["one", "two"].map(key => new Promise<{ success: boolean; error?: string }>((resolve, reject) => {
+  const results = await Promise.all(["one", "two"].map(key => {
     const w = new Worker(source, { eval: true, workerData: { filename, key, barrier,
       dbModule: new URL("../lib/db.ts", import.meta.url).href,
       financeModule: new URL("../lib/finance.ts", import.meta.url).href,
       auditModule: new URL("../lib/audit.ts", import.meta.url).href } }); workers.push(w);
-    w.on("error", reject); w.on("exit", code => { if (code) reject(new Error(`worker退出${code}`)); });
-    w.on("message", message => {
-      if (message.ready) { ready++; if (ready === 2) { Atomics.store(gate, 0, 1); Atomics.notify(gate, 0, 2); } }
-      else resolve(message);
+    return waitForWorkerResult(w, () => {
+      ready++; if (ready === 2) { Atomics.store(gate, 0, 1); Atomics.notify(gate, 0, 2); }
     });
-  })));
+  }));
+  assert.ok(results.every(result => result.closed === true));
+  assert.ok(workers.every(worker => worker.threadId === -1));
   assert.equal(results.filter(r => r.success).length, 1);
   assert.match(results.find(r => !r.success)!.error!, /超过应收余额/);
   verify = new DatabaseSync(filename);
