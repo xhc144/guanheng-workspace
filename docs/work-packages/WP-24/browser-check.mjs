@@ -35,7 +35,8 @@ await new Promise(resolve => reservation.listen(0, "127.0.0.1", resolve));
 const port = reservation.address().port;
 await new Promise(resolve => reservation.close(resolve));
 const base = `http://127.0.0.1:${port}${basePath}`;
-const server = spawn(process.execPath, [join(runtime, "server.js")], {
+const observer = fileURLToPath(new URL("./browser-observer.cjs", import.meta.url));
+const server = spawn(process.execPath, ["--require", observer, join(runtime, "server.js")], {
   cwd: runtime, env: { PATH: process.env.PATH, NODE_ENV: "production", PORT: String(port), HOSTNAME: "127.0.0.1",
     DATABASE_FILENAME: "wp24-synthetic.db", SESSION_SECRET: sentinel, SMTP_PASSWORD: sentinel },
   stdio: ["ignore", "pipe", "pipe"],
