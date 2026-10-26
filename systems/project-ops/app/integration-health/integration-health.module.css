@@ -1,0 +1,9 @@
+.panel { padding: 24px; min-width: 0; overflow-wrap: anywhere; }
+.panel h2, .panel h3 { margin: 0 0 12px; }
+.panel p { line-height: 1.7; }
+.action { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 10px 16px; border: 1px solid currentColor; border-radius: 8px; font: inherit; background: transparent; color: inherit; }
+.action:focus-visible { outline: 3px solid #157657; outline-offset: 3px; }
+.modules { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+.routes { padding-left: 20px; line-height: 1.8; }
+.routes code { overflow-wrap: anywhere; white-space: normal; }
+@media (max-width: 600px) { .panel { padding: 16px; } }
