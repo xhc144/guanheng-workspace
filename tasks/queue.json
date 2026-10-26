@@ -31,7 +31,7 @@
   },
   {
     "id": "WP-02",
-    "title": "PMS三版本新机启动与中文故障诊断",
+    "title": "主线与PMS新机启动及中文故障诊断",
     "branch": "wp/02-pms-bootstrap",
     "owns": [
       "systems/pms-suite/start-helper.ps1",
@@ -47,22 +47,68 @@
       "systems/pms-suite/Kimi版/start.ps1",
       "systems/pms-suite/Kimi版/demo.ps1",
       "docs/work-packages/WP-02/",
-      "reports/WP-02.md"
+      "reports/WP-02.md",
+      "systems/project-ops/一键启动-主线.bat",
+      "systems/project-ops/start-helper.ps1",
+      "systems/project-ops/scripts/bootstrap/",
+      "systems/project-ops/scripts/verify-bootstrap-workspace.ts",
+      "systems/project-ops/tests/bootstrap-isolation.test.ts",
+      "systems/project-ops/tests/bootstrap.Tests.ps1"
     ],
     "depends_on": [
-      "WP-03"
+      "WP-01",
+      "WP-03",
+      "WP-23"
     ],
     "done_when": [
       "pwsh -NoProfile -Command \"Invoke-Pester systems/pms-suite/tests/bootstrap.Tests.ps1 -Output Detailed\"",
       "powershell.exe -NoProfile -File systems/pms-suite/start-helper.ps1 -Edition Basic -NoBrowser -NoPopup",
       "powershell.exe -NoProfile -File systems/pms-suite/start-helper.ps1 -Edition DeepSeek -NoBrowser -NoPopup",
       "powershell.exe -NoProfile -File systems/pms-suite/start-helper.ps1 -Edition Kimi -NoBrowser -NoPopup",
+      "cd systems/project-ops/ && pnpm test",
+      "cd systems/project-ops/ && node --experimental-strip-types scripts/verify-bootstrap-workspace.ts",
+      "pwsh -NoProfile -Command \"Invoke-Pester systems/project-ops/tests/bootstrap.Tests.ps1 -Output Detailed\"",
+      "powershell.exe -NoProfile -File systems/project-ops/start-helper.ps1 -Mode Demo -NoBrowser",
+      "powershell.exe -NoProfile -File systems/project-ops/start-helper.ps1 -Mode Demo -BasePath /pms -NoBrowser",
       "新增至少3个有真实结果/拒绝/回滚断言的测试，至少5个有实质内容的变更文件；不得用空文件/空assert/快照文件凑数。",
       "连续两轮自查无新问题，reports/WP-02.md记录范围、命令/退出码、输出与未决项。"
     ],
     "min_minutes": 30,
-    "estimated_minutes": 110,
-    "kind": "Windows启动纵向切片"
+    "estimated_minutes": 120,
+    "kind": "Windows启动纵向切片",
+    "phase_gates": [
+      {
+        "id": "PMS",
+        "depends_on": [
+          "WP-03"
+        ],
+        "purpose": "PMS可先做，完成此阶段不等于整包完成"
+      },
+      {
+        "id": "MAIN",
+        "depends_on": [
+          "WP-01",
+          "WP-23"
+        ],
+        "runtime_gates": [
+          "WP-24:G1-runner"
+        ],
+        "purpose": "主线使用WP01冻结版本与WP23受控升级/同库README契约，不改package/lock/README/env/db"
+      },
+      {
+        "id": "WINDOWS",
+        "depends_on": [
+          "WP-01",
+          "WP-03",
+          "WP-23"
+        ],
+        "purpose": "PMS和MAIN实现后分别真实双击；无Windows仍是未完成的最终体验门",
+        "after_phases": [
+          "PMS",
+          "MAIN"
+        ]
+      }
+    ]
   },
   {
     "id": "WP-03",
@@ -747,7 +793,12 @@
       "systems/project-ops/tests/primary-business-flow.test.ts",
       "docs/公共契约.md",
       "docs/work-packages/WP-24/",
-      "reports/WP-24.md"
+      "reports/WP-24.md",
+      "systems/project-ops/app/favicon.ico/route.ts",
+      "systems/project-ops/lib/base-path.ts",
+      "systems/project-ops/proxy.ts",
+      "systems/project-ops/tests/favicon-routing.test.ts",
+      "systems/project-ops/tests/favicon-browser.mjs"
     ],
     "depends_on": [
       "WP-01"
@@ -758,6 +809,7 @@
       "cd systems/project-ops/ && pnpm typecheck",
       "cd systems/project-ops/ && pnpm lint",
       "cd systems/project-ops/ && pnpm build",
+      "cd systems/project-ops/ && node tests/favicon-browser.mjs",
       "新增至少3个有真实结果/拒绝/回滚断言的测试，至少5个有实质内容的变更文件；不得用空文件/空assert/快照文件凑数。",
       "连续两轮自查无新问题，reports/WP-24.md记录范围、命令/退出码、输出与未决项。"
     ],

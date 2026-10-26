@@ -12,6 +12,24 @@ import validate_plan as plan
 
 
 class PlanTests(unittest.TestCase):
+    def test_pms_phase_can_start_without_main_but_main_requires_upgrade_and_g1(self):
+        queue = json.loads((plan.ROOT / "tasks/queue.json").read_text())
+        self.assertNotIn("WP-02", plan.ready_after(queue, {"WP-03"}))
+        self.assertIn("WP-02:PMS", plan.ready_phases_after(queue, {"WP-03"}))
+        self.assertNotIn("WP-02:MAIN", plan.ready_phases_after(queue, {"WP-01", "WP-03"}))
+        done = {"WP-01", "WP-03", "WP-23"}
+        self.assertNotIn("WP-02:MAIN", plan.ready_phases_after(queue, done))
+        self.assertIn("WP-02:MAIN", plan.ready_phases_after(queue, done, runtime_gates={"WP-24:G1-runner"}))
+        self.assertNotIn("WP-02:WINDOWS", plan.ready_phases_after(queue, done))
+        self.assertIn("WP-02:WINDOWS", plan.ready_phases_after(queue, done, completed_phases={"PMS", "MAIN"}))
+        with tempfile.TemporaryDirectory(prefix="guanheng-phase-negative-") as temp:
+            root = Path(temp)
+            shutil.copytree(plan.ROOT / "tasks", root / "tasks")
+            item = next(item for item in queue if item["id"] == "WP-02")
+            next(phase for phase in item["phase_gates"] if phase["id"] == "MAIN")["depends_on"] = ["WP-01"]
+            (root / "tasks/queue.json").write_text(json.dumps(queue))
+            self.assertEqual(self.run_validation(root), 1)
+
     def test_transitive_order_and_width(self):
         chain = [{"id": "a", "depends_on": []}, {"id": "b", "depends_on": ["a"]}, {"id": "c", "depends_on": ["b"]}]
         self.assertEqual(plan.maximum_antichain_size(chain), 1)

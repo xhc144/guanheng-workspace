@@ -50,5 +50,31 @@
   "additional_ready_not_in_wave": [
     "WP-02"
   ],
-  "windows_policy": "WP02 technical implementation and true Windows double-click evidence are tracked separately; neither blocks the 22 Linux-capable independent slices. Windows remains required before final full delivery."
+  "windows_policy": "WP02 technical implementation and true Windows double-click evidence are tracked separately; neither blocks the 22 Linux-capable independent slices. Windows remains required before final full delivery.",
+  "latest_plan_base_sha": "f49b8f7e218ac288bf7f815d8dbcb023fd37e85b",
+  "partial_phase_policy": {
+    "WP-02": {
+      "PMS": [
+        "WP-03"
+      ],
+      "MAIN": [
+        "WP-01",
+        "WP-23",
+        "WP-24:G1-runner"
+      ],
+      "WINDOWS": [
+        "WP-02:PMS",
+        "WP-02:MAIN",
+        "real Windows verification"
+      ]
+    }
+  },
+  "shared_open_requests": [
+    {
+      "owner": "WP-24",
+      "request": "favicon HTTP204 source route and basePath metadata, strict browser verification for default and /pms; ADMIN runtime-health navigation",
+      "status": "plan only; WP01 browser completion not claimed"
+    }
+  ],
+  "latest_supplement_publish_base_sha": "1e36bfce8c13e33f671c95902d23ce2ddabe92ca"
 }
