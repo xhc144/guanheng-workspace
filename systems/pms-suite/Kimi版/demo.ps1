@@ -1,57 +1,56 @@
-param(
-  [ValidateSet('Seed', 'Reset', 'Verify')]
-  [string]$Action = 'Verify'
-)
+﻿[CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'High')]
+param([ValidateSet('Prepare', 'Seed', 'Reset', 'Verify')][string]$Action = 'Prepare')
 
 $ErrorActionPreference = 'Stop'
-$root = Split-Path -Parent $MyInvocation.MyCommand.Path
-$backend = Join-Path $root 'backend'
-$demoDir = Join-Path $backend '.demo'
-$demoDb = Join-Path $demoDir 'demo.db'
-$protectedDb = Join-Path $backend 'app.db'
-$py = Join-Path $backend '.venv\Scripts\python.exe'
-if (-not (Test-Path -LiteralPath $py)) { throw "Python virtual environment not found: $py" }
-$protectedResolved = Resolve-Path -LiteralPath $protectedDb -ErrorAction SilentlyContinue
-$demoResolved = Resolve-Path -LiteralPath $demoDb -ErrorAction SilentlyContinue
-if ($null -ne $protectedResolved -and $null -ne $demoResolved -and $protectedResolved.Path -eq $demoResolved.Path) {
-  throw 'Refusing to operate: demo database resolves to app.db.'
+$backend = Join-Path $PSScriptRoot 'backend'
+$demoDirectory = Join-Path $backend '.demo'
+$demoDatabase = Join-Path $demoDirectory 'demo.db'
+foreach ($path in @($backend, $demoDirectory, $demoDatabase, "$demoDatabase-wal", "$demoDatabase-shm")) {
+    if ((Test-Path -LiteralPath $path) -and ((Get-Item -LiteralPath $path -Force).Attributes -band [IO.FileAttributes]::ReparsePoint)) { throw '演示操作拒绝链接或重解析路径。' }
 }
-
-$oldDemoMode = $env:DEMO_MODE
-$oldDatabaseUrl = $env:DATABASE_URL
-$env:DEMO_MODE = '1'
-Remove-Item Env:DATABASE_URL -ErrorAction SilentlyContinue
-try {
-  if ($Action -eq 'Reset') {
-    New-Item -ItemType Directory -Force -Path $demoDir | Out-Null
-    foreach ($path in @($demoDb, "$demoDb-wal", "$demoDb-shm")) {
-      if (Test-Path -LiteralPath $path) { Remove-Item -LiteralPath $path -Force }
+foreach ($directory in @($PSScriptRoot, $backend)) {
+    foreach ($name in @('.env', '.env.local')) {
+        if (Test-Path -LiteralPath (Join-Path $directory $name)) { throw '检测到本地环境文件；请在独立的干净源码目录运行演示，不读取或覆盖配置。' }
     }
-    Push-Location $backend
+}
+if ($env:ENVIRONMENT -and $env:ENVIRONMENT.Trim().ToLowerInvariant() -notin @('development', 'test')) { throw '演示操作拒绝当前 ENVIRONMENT。' }
+$demoUrl = 'sqlite:///' + $demoDatabase.Replace('\', '/')
+if ($env:DATABASE_URL -and $env:DATABASE_URL -ne $demoUrl) { throw '演示操作拒绝其他 DATABASE_URL，不连接或覆盖配置。' }
+$python = if ($env:OS -eq 'Windows_NT') { Join-Path $backend '.venv/Scripts/python.exe' } else { Join-Path $backend '.venv/bin/python' }
+if (-not (Test-Path -LiteralPath $python)) { throw '缺少 backend/.venv；请先运行统一 helper 的 -InstallOnly。' }
+$oldDemoMode = [Environment]::GetEnvironmentVariable('DEMO_MODE', 'Process')
+$oldDatabaseUrl = [Environment]::GetEnvironmentVariable('DATABASE_URL', 'Process')
+try {
+    $env:DEMO_MODE = 'true'
+    $env:DATABASE_URL = $demoUrl
+    Push-Location -LiteralPath $backend
     try {
-      & $py -m alembic upgrade head
-      if ($LASTEXITCODE -ne 0) { throw 'Alembic migration failed.' }
-    } finally { Pop-Location }
-    Push-Location $backend
-    try {
-      & $py -m app.demo_cli seed
-      if ($LASTEXITCODE -ne 0) { throw 'Demo seed failed.' }
-    } finally { Pop-Location }
-  }
-  if ($Action -eq 'Seed') {
-    Push-Location $backend
-    try {
-      & $py -m app.demo_cli seed
-      if ($LASTEXITCODE -ne 0) { throw 'Demo seed failed.' }
-    } finally { Pop-Location }
-  }
-  Push-Location $backend
-  try {
-    & $py -m app.demo_cli verify
-    if ($LASTEXITCODE -ne 0) { throw 'Demo verification failed.' }
-  } finally { Pop-Location }
-  if ($LASTEXITCODE -ne 0) { throw 'Demo verification failed.' }
-} finally {
-  if ($null -eq $oldDemoMode) { Remove-Item Env:DEMO_MODE -ErrorAction SilentlyContinue } else { $env:DEMO_MODE = $oldDemoMode }
-  if ($null -eq $oldDatabaseUrl) { Remove-Item Env:DATABASE_URL -ErrorAction SilentlyContinue } else { $env:DATABASE_URL = $oldDatabaseUrl }
+
+        & $python -c 'from app.config import settings; settings.require_controlled_demo_database()'
+        if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+        $newDatabase = -not (Test-Path -LiteralPath $demoDatabase)
+        if ($Action -eq 'Reset') {
+            if (-not $PSCmdlet.ShouldProcess($demoDatabase, '清空受控演示库并重新初始化')) { return }
+            foreach ($path in @($demoDatabase, "$demoDatabase-wal", "$demoDatabase-shm")) {
+                if (Test-Path -LiteralPath $path) { Remove-Item -LiteralPath $path -Force }
+            }
+            $newDatabase = $true
+        }
+        if ($Action -ne 'Verify' -and $newDatabase) {
+            & $python -m alembic upgrade head
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+        }
+        if ($Action -in @('Seed', 'Reset') -or ($Action -eq 'Prepare' -and $newDatabase)) {
+            & $python -m app.demo_cli seed
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+        }
+        & $python -m app.demo_cli verify
+        if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+    }
+    finally { Pop-Location }
+}
+finally {
+    [Environment]::SetEnvironmentVariable('DEMO_MODE', $oldDemoMode, 'Process')
+    [Environment]::SetEnvironmentVariable('DATABASE_URL', $oldDatabaseUrl, 'Process')
 }

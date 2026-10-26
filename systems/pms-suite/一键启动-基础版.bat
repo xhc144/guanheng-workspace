@@ -1,4 +1,6 @@
 @echo off
-title One-Click Start - Basic Edition
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0start-helper.ps1" -Edition Basic
-exit /b %errorlevel%
+setlocal EnableExtensions
+powershell.exe -NoProfile -File "%~dp0start-helper.ps1" -Edition Basic
+set "PMS_EXIT=%errorlevel%"
+if not "%PMS_EXIT%"=="0" pause
+exit /b %PMS_EXIT%
