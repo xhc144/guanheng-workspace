@@ -99,7 +99,7 @@ try {
  const repaired=openDatabase(join(runtime,'data/wp04-synthetic.db'));repaired.close();
  await page.getByRole('button',{name:'重试读取',exact:true}).click();
  await page.waitForURL(url=>url.pathname==='/login');
- results.push({check:'合成库移除会话表触发真实500及中文错误边界；恢复表后重试回登录',status:'通过',expectedFrameworkErrors:errors.slice()});
+ results.push({check:'合成库移除会话表触发真实500及中文错误边界；恢复表后重试回登录',status:'通过',faultPhaseConsoleErrors:errors.slice(normalFlowErrors.length)});
  const check=openDatabase(join(runtime,'data/wp04-synthetic.db'));
  assert.equal(check.prepare('SELECT COUNT(*) count FROM customers').get().count,0);
  assert.equal(check.prepare('SELECT COUNT(*) count FROM projects').get().count,0);
