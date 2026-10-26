@@ -1,0 +1,7 @@
+{
+  "unavailableAtUtc": "2026-10-26T19:13:17Z",
+  "action": "read/poll selected environment during existing browser run",
+  "error": "No usable execution environment is available. Wait for an environment to become available before using this tool.",
+  "outcome": "Environment became available again; original session 7301 polled successfully, exit 0; existing 22-final-browser.log complete, no retry or rerun",
+  "source": "2521b5878b5d3b76ceaf809ddce5790db93219ec"
+}
