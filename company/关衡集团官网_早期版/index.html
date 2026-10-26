@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>关衡集团 | 全球关务数智化合规管理领航者</title>
+<meta name="description" content="关衡集团始于1997年，近三十年专注关务信息化。GH&GTM全球关务一体化平台以AI智能制单、全球鹰风险预警、AEO全流程支撑，服务全球12个国家、212个细分行业的进出口企业。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============ Tokens (ui-contract.md) ============ */
+:root{
+  --paper:#F4F1EA;
+  --paper-2:#EBE6DA;
+  --ink:#101C24;
+  --ink-2:#3D4A53;
+  --ink-3:#7A838A;
+  --brand:#0E2A3A;
+  --brand-2:#16405A;
+  --accent:#B33A24;
+  --accent-deep:#8F2C1A;
+  --line:rgba(16,28,36,.14);
+  --line-dark:rgba(244,241,234,.16);
+  --gold-pale:#C8BFA9;
+  --font-serif:"Noto Serif SC","Songti SC","STSong","SimSun",serif;
+  --font-sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  --fs-display:clamp(2.6rem,6.2vw,5rem);
+  --fs-h2:clamp(2rem,4vw,3.1rem);
+  --fs-h3:clamp(1.25rem,2vw,1.6rem);
+  --fs-body:1.0625rem;
+  --fs-small:.875rem;
+  --space-section:clamp(5rem,11vw,9rem);
+  --space-gutter:clamp(1.25rem,5vw,4.5rem);
+  --radius:2px;
+  --shadow-card:0 24px 60px -32px rgba(16,28,36,.28);
+  --motion:260ms cubic-bezier(.22,.61,.36,1);
+}
+/* ============ Base ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+body{
+  font-family:var(--font-sans);
+  font-size:var(--fs-body);
+  line-height:1.9;
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,svg{display:block}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+h1,h2,h3,.serif{font-family:var(--font-serif);font-weight:700;line-height:1.28}
+::selection{background:var(--accent);color:var(--paper)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--brand);color:var(--paper);padding:.6rem 1.2rem;z-index:200}
+.skip-link:focus{left:0}
+.wrap{max-width:76rem;margin-inline:auto;padding-inline:var(--space-gutter)}
+section{padding-block:var(--space-section);position:relative}
+/* ============ 组件:印章 ============ */
+.seal{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--accent);color:var(--paper);
+  font-family:var(--font-serif);font-weight:900;
+  border-radius:4px;
+  writing-mode:vertical-rl;letter-spacing:.18em;
+  box-shadow:inset 0 0 0 2px rgba(244,241,234,.35);
+  user-select:none;flex:none;
+}
+.seal-sm{width:2.5rem;height:2.5rem;font-size:.95rem}
+.seal-lg{width:6.5rem;height:6.5rem;font-size:2.2rem;transform:rotate(3deg)}
+/* ============ 组件:按钮 ============ */
+.btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.85rem 1.9rem;
+  font-size:1rem;font-weight:500;letter-spacing:.06em;
+  border-radius:var(--radius);
+  transition:background var(--motion),color var(--motion),border-color var(--motion);
+  cursor:pointer;border:1px solid transparent;
+}
+.btn-primary{background:var(--brand);color:var(--paper)}
+.btn-primary:hover{background:var(--brand-2)}
+.btn-red{background:var(--accent);color:var(--paper)}
+.btn-red:hover{background:var(--accent-deep)}
+.btn-ghost{border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn .arr{font-family:var(--font-sans);transition:transform var(--motion)}
+.btn:hover .arr{transform:translateX(4px)}
+/* ============ 导航 ============ */
+.nav{position:fixed;inset:0 0 auto 0;z-index:100;transition:background var(--motion),box-shadow var(--motion)}
+.nav-inner{
+  max-width:76rem;margin-inline:auto;
+  padding:.9rem var(--space-gutter);
+  display:flex;align-items:center;gap:2rem;
+}
+.nav.scrolled{background:var(--brand);box-shadow:0 1px 0 var(--line-dark)}
+.nav.scrolled,.nav.scrolled a{color:var(--paper)}
+.nav.scrolled .nav-cta{background:var(--paper);color:var(--brand)}
+.nav.scrolled .nav-cta:hover{background:var(--paper-2)}
+.brand{display:flex;align-items:center;gap:.75rem;margin-right:auto}
+.brand-text{font-family:var(--font-serif);font-weight:900;font-size:1.35rem;letter-spacing:.08em;line-height:1.1}
+.brand-text i{display:block;font-style:normal;font-family:var(--font-sans);font-weight:500;font-size:.58rem;letter-spacing:.32em;opacity:.72}
+.nav-links{display:flex;gap:1.75rem;font-size:.95rem}
+.nav-links a{position:relative;padding-block:.3rem;opacity:.85;transition:opacity var(--motion)}
+.nav-links a:hover{opacity:1}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--accent);transition:width var(--motion)}
+.nav-links a:hover::after,.nav-links a[aria-current="true"]::after{width:100%}
+.nav-links a[aria-current="true"]{opacity:1}
+.nav-cta{padding:.55rem 1.3rem;font-size:.9rem}
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:.4rem}
+.nav-toggle span{display:block;width:1.5rem;height:2px;background:currentColor;margin:.32rem 0;transition:transform var(--motion),opacity var(--motion)}
+/* ============ Hero ============ */
+.hero{min-height:100svh;display:flex;align-items:center;padding-top:7rem;overflow:hidden}
+.hero-watermark{
+  position:absolute;right:-4rem;top:50%;transform:translateY(-50%);
+  font-family:var(--font-serif);font-weight:900;
+  font-size:clamp(20rem,42vw,38rem);line-height:1;
+  color:var(--ink);opacity:.045;pointer-events:none;user-select:none;
+}
+.hero-inner{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;width:100%}
+.kicker{
+  font-size:var(--fs-small);letter-spacing:.28em;color:var(--accent);font-weight:500;
+  display:flex;align-items:center;gap:.9rem;margin-bottom:1.6rem;
+}
+.kicker::before{content:"";width:2.4rem;height:1px;background:var(--accent)}
+.hero h1{font-size:var(--fs-display);font-weight:900;letter-spacing:.02em}
+.hero h1 em{font-style:normal;color:var(--accent);position:relative}
+.hero .lead{max-width:38rem;margin-top:1.8rem;color:var(--ink-2)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.6rem}
+.hero-side{display:flex;flex-direction:column;align-items:center;gap:2.2rem;padding-right:1rem}
+.vertical{writing-mode:vertical-rl;font-family:var(--font-serif);font-size:1.5rem;letter-spacing:.9em;color:var(--ink-2);font-weight:600}
+.hero-facts{writing-mode:vertical-rl;font-size:var(--fs-small);letter-spacing:.42em;color:var(--ink-3)}
+.hero-scroll{
+  position:absolute;left:var(--space-gutter);bottom:2rem;
+  font-size:.75rem;letter-spacing:.3em;color:var(--ink-3);
+  display:flex;align-items:center;gap:.7rem;
+}
+.hero-scroll::after{content:"";width:1px;height:2.6rem;background:var(--ink-3);animation:drip 2.2s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+/* ============ 数据带 ============ */
+.stats{background:var(--brand);color:var(--paper);padding-block:clamp(3.5rem,7vw,5.5rem)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.stat{border-left:1px solid var(--line-dark);padding-left:1.6rem}
+.stat b{display:block;font-family:var(--font-serif);font-weight:900;font-size:clamp(2.4rem,4.5vw,3.6rem);line-height:1.1}
+.stat b sup{font-size:.42em;font-weight:700;margin-left:.15em;color:var(--gold-pale)}
+.stat span{display:block;margin-top:.5rem;font-size:var(--fs-small);color:rgba(244,241,234,.78)}
+.stats-note{margin-top:2.8rem;padding-top:1.6rem;border-top:1px solid var(--line-dark);font-size:var(--fs-small);letter-spacing:.12em;color:rgba(244,241,234,.78);display:flex;flex-wrap:wrap;gap:.5rem 2.2rem}
+.stats-note i{font-style:normal;color:var(--gold-pale)}
+/* ============ 通用节头 ============ */
+.sec-head{max-width:44rem;margin-bottom:clamp(2.5rem,6vw,4.5rem)}
+.sec-head h2{font-size:var(--fs-h2);font-weight:900;margin-top:.4rem}
+.sec-head .sub{margin-top:1.1rem;color:var(--ink-2)}
+.eyebrow{font-size:var(--fs-small);letter-spacing:.28em;color:var(--accent);font-weight:500;display:flex;align-items:center;gap:.9rem}
+.eyebrow::before{content:"";width:2.4rem;height:1px;background:var(--accent)}
+.sec-index{font-family:var(--font-serif);font-size:var(--fs-small);color:var(--ink-3);letter-spacing:.2em}
+.sec-index-dark{color:var(--gold-pale)}
+/* ============ 关于 ============ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-block:1px solid var(--line)}
+.about-col{padding:clamp(1.8rem,4vw,3rem)}
+.about-col:first-child{border-right:1px solid var(--line)}
+.about-col h3{font-size:var(--fs-h3);display:flex;align-items:baseline;gap:.8rem}
+.about-col h3 small{font-family:var(--font-sans);font-size:.8rem;letter-spacing:.14em;color:var(--accent);font-weight:500}
+.about-col p{margin-top:1rem;color:var(--ink-2);font-size:1rem}
+.people{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+.person{background:var(--paper-2);padding:clamp(1.6rem,3vw,2.4rem);border-radius:var(--radius);border-top:3px solid var(--accent)}
+.person h4{font-family:var(--font-serif);font-size:1.3rem;display:flex;align-items:baseline;gap:.8rem}
+.person h4 small{font-family:var(--font-sans);font-size:.85rem;color:var(--ink-2);font-weight:500}
+.person p{margin-top:.8rem;font-size:.95rem;color:var(--ink-2)}
+/* ============ 历程 ============ */
+#history{background:var(--paper-2)}
+.timeline{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1.5rem;border-top:2px solid var(--ink)}
+.tl-node{min-width:17rem;flex:1;padding:1.8rem 1.6rem 0 0;scroll-snap-align:start;position:relative}
+.tl-node::before{content:"";position:absolute;top:-6px;left:0;width:10px;height:10px;background:var(--paper-2);border:2px solid var(--ink)}
+.tl-node:first-child::before,.tl-node:hover::before{background:var(--accent);border-color:var(--accent)}
+.tl-year{font-family:var(--font-serif);font-weight:900;font-size:1.9rem;line-height:1}
+.tl-year small{font-size:.85rem;font-family:var(--font-sans);font-weight:500;color:var(--accent);margin-left:.5rem;letter-spacing:.1em}
+.tl-node p{margin-top:.8rem;font-size:.92rem;color:var(--ink-2);line-height:1.8}
+.tl-hint{font-size:.78rem;letter-spacing:.24em;color:var(--ink-3);margin-top:1rem;display:flex;align-items:center;gap:.6rem}
+.tl-hint::after{content:"→";letter-spacing:0}
+/* ============ 资质(索引表) ============ */
+.certs{margin-top:1rem;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.cert{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.8rem 1.7rem;position:relative;transition:background var(--motion)}
+.cert:hover{background:var(--paper-2)}
+.cert i{font-style:normal;font-family:var(--font-serif);font-size:.85rem;color:var(--ink-3);letter-spacing:.15em}
+.cert h3{font-size:1.12rem;margin-top:.55rem}
+.cert p{font-size:.88rem;color:var(--ink-2);margin-top:.5rem;line-height:1.75}
+/* ============ 产品 ============ */
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem 2rem;margin-bottom:clamp(3rem,7vw,5rem)}
+.cap{display:flex;gap:1.1rem;align-items:flex-start}
+.cap svg{width:2rem;height:2rem;flex:none;stroke:var(--brand);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;margin-top:.3rem}
+.cap h3{font-size:1.15rem}
+.cap p{font-size:.92rem;color:var(--ink-2);margin-top:.4rem;line-height:1.8}
+.versions{border-top:2px solid var(--ink)}
+.ver{display:grid;grid-template-columns:11rem 1fr auto;gap:1.5rem;align-items:baseline;padding:1.3rem .4rem;border-bottom:1px solid var(--line);transition:background var(--motion)}
+.ver:hover{background:var(--paper-2)}
+.ver b{font-family:var(--font-serif);font-size:1.2rem}
+.ver b small{font-family:var(--font-sans);font-size:.78rem;color:var(--accent);margin-left:.6rem;letter-spacing:.12em;font-weight:500}
+.ver p{font-size:.93rem;color:var(--ink-2)}
+.ver .tag{font-size:.75rem;letter-spacing:.2em;color:var(--ink-3);white-space:nowrap}
+/* ============ 解决方案 ============ */
+#solution{background:var(--brand);color:var(--paper)}
+#solution .sec-head .sub{color:rgba(244,241,234,.8)}
+#solution .eyebrow{color:var(--gold-pale)}
+#solution .eyebrow::before{background:var(--gold-pale)}
+.sol-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line-dark)}
+.sol{display:flex;gap:1.4rem;padding:1.7rem 1.5rem 1.7rem 0;border-bottom:1px solid var(--line-dark)}
+.sol:nth-child(odd){border-right:1px solid var(--line-dark);padding-right:2rem}
+.sol:nth-child(even){padding-left:2rem}
+.sol i{font-style:normal;font-family:var(--font-serif);font-weight:900;font-size:1.6rem;color:var(--accent);line-height:1.2}
+.sol h3{font-size:1.15rem}
+.sol p{font-size:.9rem;color:rgba(244,241,234,.78);margin-top:.3rem;line-height:1.8}
+/* ============ 技术 ============ */
+.tech-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2.5rem,6vw,5rem)}
+.tech-group{border-top:2px solid var(--ink);padding-top:1.4rem}
+.tech-group+.tech-group{margin-top:2.6rem}
+.tech-group h3{font-size:var(--fs-h3);margin-bottom:1.1rem}
+.tech-rows li{display:grid;grid-template-columns:6.5rem 1fr;gap:1.2rem;padding:.85rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.tech-rows li:last-child{border-bottom:0}
+.tech-rows b{font-family:var(--font-serif);font-size:.95rem}
+.tech-rows span{color:var(--ink-2);line-height:1.8}
+.ms-list{columns:2;column-gap:2rem;border-top:2px solid var(--ink);padding-top:1.2rem}
+.ms-list li{break-inside:avoid;display:flex;gap:.7rem;padding:.5rem 0;font-size:.92rem;border-bottom:1px solid var(--line)}
+.ms-list i{font-style:normal;font-family:var(--font-serif);color:var(--accent);font-size:.85rem;min-width:1.6rem}
+.erp-chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.erp-chips span{border:1px solid var(--line);padding:.35rem .95rem;font-size:.85rem;border-radius:var(--radius);color:var(--ink-2)}
+.ha-list li{padding:1rem 0;border-bottom:1px solid var(--line);font-size:.93rem;color:var(--ink-2)}
+.ha-list li:last-child{border-bottom:0}
+.ha-list b{color:var(--ink);font-family:var(--font-serif)}
+/* ============ 案例 ============ */
+#cases{background:var(--paper-2)}
+.case-feature{display:grid;grid-template-columns:7fr 5fr;gap:0;border:1px solid var(--line);background:var(--paper);box-shadow:var(--shadow-card)}
+.case-feature .cf-main{padding:clamp(1.8rem,4vw,3.2rem)}
+.case-tag{font-size:.78rem;letter-spacing:.22em;color:var(--accent);font-weight:500}
+.case-feature h3,.case-sm h3{font-size:var(--fs-h3);margin-top:.6rem}
+.case-feature .cf-main>p{margin-top:1rem;color:var(--ink-2);font-size:.98rem}
+.case-metrics{border-left:1px solid var(--line);display:flex;flex-direction:column}
+.case-metrics li{flex:1;padding:1.6rem 2rem;border-bottom:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}
+.case-metrics li:last-child{border-bottom:0}
+.case-metrics b{font-family:var(--font-serif);font-size:1.35rem;color:var(--accent)}
+.case-metrics span{font-size:.88rem;color:var(--ink-2);margin-top:.3rem}
+.case-row{display:grid;grid-template-columns:5fr 7fr;gap:2rem;margin-top:2rem}
+.case-row-rev{grid-template-columns:7fr 5fr}
+.case-sm,.cf-main,.case-metrics li{min-width:0}
+.case-sm{border:1px solid var(--line);background:var(--paper);padding:clamp(1.6rem,3vw,2.4rem);border-radius:var(--radius)}
+.case-sm p{font-size:.93rem;color:var(--ink-2);margin-top:.8rem}
+.case-steps{margin-top:1.2rem}
+.case-steps li{display:grid;grid-template-columns:4.5rem 1fr;gap:1rem;padding:.7rem 0;border-top:1px solid var(--line);font-size:.9rem;color:var(--ink-2)}
+.case-steps b{font-family:var(--font-serif);color:var(--ink)}
+.clients{margin-top:clamp(3rem,7vw,4.5rem);text-align:center}
+.clients p{font-family:var(--font-serif);font-size:clamp(1.05rem,2vw,1.4rem);line-height:2.2;color:var(--ink-2)}
+.clients p b{color:var(--ink);font-weight:700}
+.clients .sep{color:var(--gold-pale);padding-inline:.4em}
+.clients small{display:block;margin-top:1.2rem;font-size:var(--fs-small);letter-spacing:.16em;color:var(--ink-3)}
+/* ============ 生态 ============ */
+.eco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+.eco{border-top:3px solid var(--brand);padding-top:1.4rem}
+.eco:first-child{border-top-color:var(--accent)}
+.eco h3{font-size:1.2rem}
+.eco p{margin-top:.7rem;font-size:.93rem;color:var(--ink-2)}
+/* ============ 三大理由 ============ */
+.why-list{border-top:2px solid var(--ink)}
+.why{display:grid;grid-template-columns:8rem 12rem 1fr;gap:2rem;align-items:baseline;padding:1.9rem .4rem;border-bottom:1px solid var(--line)}
+.why i{font-style:normal;font-family:var(--font-serif);font-weight:900;font-size:2.2rem;color:var(--accent);line-height:1}
+.why h3{font-size:var(--fs-h3)}
+.why p{color:var(--ink-2);font-size:.97rem}
+/* ============ 联系 / 页脚 ============ */
+#contact{background:var(--brand);color:var(--paper);overflow:hidden}
+#contact .contact-watermark{position:absolute;left:-3rem;bottom:-9rem;font-family:var(--font-serif);font-weight:900;font-size:clamp(14rem,30vw,26rem);line-height:1;color:var(--paper);opacity:.05;pointer-events:none;user-select:none}
+.contact-inner{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:center}
+.contact-inner h2{font-size:var(--fs-h2);font-weight:900}
+.contact-inner .lead{margin-top:1.2rem;color:rgba(244,241,234,.82);max-width:32rem}
+.contact-card{border:1px solid var(--line-dark);padding:clamp(1.8rem,4vw,2.6rem);background:rgba(244,241,234,.04)}
+.contact-card small{display:block;font-size:var(--fs-small);letter-spacing:.2em;color:rgba(244,241,234,.72)}
+.contact-card .tel{display:block;font-family:var(--font-serif);font-weight:900;font-size:clamp(1.9rem,4vw,2.8rem);margin-top:.7rem;letter-spacing:.04em}
+.contact-card .tel:hover{color:var(--gold-pale)}
+.contact-card p{margin-top:.6rem;font-size:.92rem;color:rgba(244,241,234,.78)}
+.contact-card .btn{margin-top:1.6rem;width:100%;justify-content:center}
+.contact-meta{margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--line-dark);font-size:.88rem;color:rgba(244,241,234,.78);display:grid;gap:.4rem}
+.contact-meta b{color:var(--paper);font-weight:500}
+footer{background:var(--ink);color:rgba(244,241,234,.75);padding:2.8rem 0 2.2rem;font-size:.88rem}
+.foot-inner{display:flex;flex-wrap:wrap;gap:1.6rem;align-items:center;justify-content:space-between}
+.foot-brand{display:flex;align-items:center;gap:.8rem}
+.foot-brand b{font-family:var(--font-serif);font-size:1.15rem;color:var(--paper);letter-spacing:.08em}
+.foot-links{display:flex;flex-wrap:wrap;gap:1.4rem}
+.foot-links a:hover{color:var(--paper)}
+.foot-note{margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--line-dark);display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between;font-size:.8rem;color:rgba(244,241,234,.55)}
+/* ============ 揭示动画 ============ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity var(--motion),transform var(--motion)}
+.reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:.08s}.reveal-d2{transition-delay:.16s}.reveal-d3{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .hero-scroll::after{animation:none}
+  *{transition:none!important;animation:none!important}
+}
+/* ============ 响应式 ============ */
+@media (max-width:1024px){
+  .cap-grid{grid-template-columns:1fr 1fr}
+  .certs{grid-template-columns:1fr 1fr}
+  .tech-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:2.2rem}
+  .contact-inner{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .nav-links,.nav-cta{display:none}
+  .nav-toggle{display:block;color:inherit}
+  .nav-links.open{
+    display:flex;position:fixed;inset:0;background:var(--brand);color:var(--paper);
+    flex-direction:column;align-items:center;justify-content:center;gap:2rem;
+    font-family:var(--font-serif);font-size:1.6rem;z-index:-1;
+  }
+  .nav.menu-open{background:var(--brand);color:var(--paper)}
+  .nav.menu-open .nav-toggle span:nth-child(1){transform:translateY(.44rem) rotate(45deg)}
+  .nav.menu-open .nav-toggle span:nth-child(2){opacity:0}
+  .nav.menu-open .nav-toggle span:nth-child(3){transform:translateY(-.44rem) rotate(-45deg)}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-side{flex-direction:row;justify-content:flex-start;gap:1.6rem;padding-right:0}
+  .vertical,.hero-facts{writing-mode:horizontal-tb;letter-spacing:.3em;font-size:.95rem}
+  .seal-lg{width:4.2rem;height:4.2rem;font-size:1.4rem}
+  .about-grid,.people{grid-template-columns:1fr}
+  .about-col:first-child{border-right:0;border-bottom:1px solid var(--line)}
+  .sol-grid{grid-template-columns:1fr}
+  .sol:nth-child(odd){border-right:0;padding-right:1.5rem}
+  .sol:nth-child(even){padding-left:1.5rem}
+  .case-feature,.case-row,.case-row-rev{grid-template-columns:1fr}
+  .case-metrics{border-left:0;border-top:1px solid var(--line)}
+  .eco-grid{grid-template-columns:1fr}
+  .why{grid-template-columns:4rem 1fr;gap:1.2rem}
+  .why p{grid-column:2}
+  .ms-list{columns:1}
+  .hero-scroll{display:none}
+}
+@media (max-width:560px){
+  .cap-grid,.certs{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:1.6rem}
+  .ver{grid-template-columns:1fr;gap:.3rem}
+  .ver .tag{order:-1}
+  .tech-rows li{grid-template-columns:1fr;gap:.2rem}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<!-- ================= 导航 ================= -->
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="关衡集团 · 返回顶部">
+      <span class="seal seal-sm" aria-hidden="true">关衡</span>
+      <span class="brand-text">关衡集团<i>GUANHENG GROUP</i></span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="主导航">
+      <a href="#about">关于关衡</a>
+      <a href="#history">发展历程</a>
+      <a href="#product">全球产品</a>
+      <a href="#tech">技术底座</a>
+      <a href="#cases">客户案例</a>
+      <a href="#contact">联系我们</a>
+    </nav>
+    <a class="btn btn-primary nav-cta" href="#contact">预约演示</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="打开或关闭菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<!-- ================= Hero ================= -->
+<section class="hero" id="top">
+  <div class="hero-watermark" aria-hidden="true">衡</div>
+  <div class="wrap hero-inner">
+    <div class="hero-main reveal">
+      <p class="kicker">始于 1997 · 中国关务信息化先行者</p>
+      <h1>全球关务数智化<br>合规的<em>领航者</em></h1>
+      <p class="lead">关衡集团近三十年专注关务信息化，以 GH&amp;GTM 全球关务一体化平台融合 AI 技术与贸易大数据，助力进出口企业贸易合规、防范关务风险、提升通关效率。系统已在全球 12 个国家、212 个细分行业落地应用。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">预约方案演示<span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#product">了解全球产品</a>
+      </div>
+    </div>
+    <div class="hero-side reveal reveal-d2">
+      <p class="vertical">通天下 · 合全球</p>
+      <span class="seal seal-lg" aria-hidden="true">关衡</span>
+      <p class="hero-facts">12 个国家 · 212 个细分行业 · 200+ 国贸易规则</p>
+    </div>
+  </div>
+  <p class="hero-scroll" aria-hidden="true">SCROLL</p>
+</section>
+
+<!-- ================= 数据带 ================= -->
+<section class="stats" aria-label="关衡集团核心数据">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat reveal"><b>30<sup>年+</sup></b><span>关务信息化行业积淀</span></div>
+      <div class="stat reveal reveal-d1"><b>10000<sup>+</sup></b><span>核心企业客户</span></div>
+      <div class="stat reveal reveal-d2"><b>300<sup>+</sup></b><span>专业服务团队</span></div>
+      <div class="stat reveal reveal-d3"><b>98<sup>+</sup></b><span>核心软件著作权</span></div>
+    </div>
+    <p class="stats-note reveal">
+      <span><i>·</i> 客户满意度连续三年达 99%</span>
+      <span><i>·</i> 服务覆盖 30+ 省市与 20+ 国家</span>
+      <span><i>·</i> 国家级高新技术企业与双软认定</span>
+    </p>
+  </div>
+</section>
+
+<!-- ================= 关于 ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-index">01 / 关于关衡</p>
+      <h2>国企积淀之上<br>贸易合规领域的领航者</h2>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-col">
+        <h3>润衡软件产业集团 <small>30 年国企积淀</small></h3>
+        <p>成立于 1992 年，是经营稳健、实力雄厚的国有企业，在职员工超 1000 人。业务版图覆盖关务、物流、财务、ERP 及教育信息化等多个核心领域，具备全产业链服务能力。关衡信息技术有限公司为润衡软件产业集团关务软件事业部。</p>
+      </div>
+      <div class="about-col">
+        <h3>关衡集团 <small>贸易合规领域领航者</small></h3>
+        <p>自 1997 年成立以来专注关务信息化近三十年，是国家级高新技术企业、国内头部进出口贸易合规系统服务商。总部扎根广东，分支机构辐射深圳、江苏、山东及东南亚，始终深耕关务场景，为企业提供专业、高效、合规的一体化信息化解决方案。</p>
+      </div>
+    </div>
+    <div class="people">
+      <article class="person reveal">
+        <h4>薛国银 <small>创始人 · 集团董事长 · 关务系统总设计师</small></h4>
+        <p>精通财税、关务、ERP 等系统，专注关务行业信息化 20 余年。深度参与华为超聚变、创维、TCL、长虹、大族激光、中国外运等超 200 家知名企业关务信息化项目的调研、方案设计与落地监管，获评进出口合规专家。</p>
+      </article>
+      <article class="person reveal reveal-d1">
+        <h4>郑红芬 <small>关衡全球合规 AI 团队负责人</small></h4>
+        <p>27 年全球化海关领域工作经验，先后任职黄埔海关 17 年，及百事中国、阿里巴巴 ICBU、华为全球合规管理专家。精通国际贸易与进出口业务，主导 AI 辅助海关政策解读项目，擅长以数字化手段和大模型管理全球进出口事务。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 历程 ================= -->
+<section id="history">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-index">02 / 发展历程</p>
+      <h2>近三十年<br>只为关务数字化一件事</h2>
+      <p class="sub">率先实现全流程数字化风控，不断突破行业技术边界，引领关务数字化发展。</p>
+    </div>
+    <div class="timeline reveal" role="list" aria-label="发展历程时间轴">
+      <div class="tl-node" role="listitem"><p class="tl-year">1997<small>初创</small></p><p>国内最早一批从事关务软件研发的公司，推出第一代「进出口业务处理系统」。</p></div>
+      <div class="tl-node" role="listitem"><p class="tl-year">2002<small>成长</small></p><p>最早一批研发关务风险管理系统的公司，发布第二代「关务风险分析系统」。</p></div>
+      <div class="tl-node" role="listitem"><p class="tl-year">2010<small>突破</small></p><p>最早研发关务全供应链信息协同平台的公司，推出第三代协同平台系统。</p></div>
+      <div class="tl-node" role="listitem"><p class="tl-year">2013<small>成熟</small></p><p>最早实现大型企业关务业务处理的流程化风险信息化管控。</p></div>
+      <div class="tl-node" role="listitem"><p class="tl-year">2014<small>扩张</small></p><p>承接当时关务平台系统研发单一项目合同金额最大的项目。</p></div>
+      <div class="tl-node" role="listitem"><p class="tl-year">2017<small>全球化</small></p><p>发布 GTM 全球关务一体化版本，多语言全球化企业境内外一体化协同合规。</p></div>
+      <div class="tl-node" role="listitem"><p class="tl-year">2018<small>品牌化</small></p><p>成为关务内控流程化协同信息化管理行业第一品牌。</p></div>
+      <div class="tl-node" role="listitem"><p class="tl-year">2024<small>新愿景</small></p><p>获粤港澳大湾区全球贸易数字化领航优秀案例，迈向全球领先的数字化服务商。</p></div>
+    </div>
+    <p class="tl-hint" aria-hidden="true">横向滑动浏览</p>
+  </div>
+</section>
+
+<!-- ================= 资质 ================= -->
+<section id="certs">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-index">03 / 资质认证</p>
+      <h2>行业领先的资质<br>技术实力与服务质量之证</h2>
+    </div>
+    <div class="certs reveal">
+      <div class="cert"><i>01</i><h3>高新技术企业认证</h3><p>国家权威认定，彰显科技创新、研发投入及成果转化方面的核心竞争力。</p></div>
+      <div class="cert"><i>02</i><h3>CMMI3 级软件成熟度认证</h3><p>软件研发过程能力达到国际标准，确保项目交付的高质量、高效率与可控性。</p></div>
+      <div class="cert"><i>03</i><h3>ISO 27001 信息安全认证</h3><p>系统化信息安全管理体系，全方位保障客户核心数据资产的机密性与完整性。</p></div>
+      <div class="cert"><i>04</i><h3>ISO 20000 IT 服务认证</h3><p>标准化 IT 服务流程管理，确保服务交付规范，持续提升客户服务体验。</p></div>
+      <div class="cert"><i>05</i><h3>等保二级信息安全认证</h3><p>非银行机构的最高等级认证，验证系统在物理、网络、数据层面的高安全性。</p></div>
+      <div class="cert"><i>06</i><h3>98+ 核心软件著作权</h3><p>自主知识产权的核心技术积累，构建深厚的技术壁垒与产品护城河。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 产品 ================= -->
+<section id="product">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">04 / GH&amp;GTM 全球关务一体化平台</p>
+      <h2>一套系统<br>承载全球关务协同</h2>
+      <p class="sub">以 AI 识别、AI 归类、AI 预警、AI 内审为引擎，覆盖贸易合规、商品归类、进出通关、保税监管、AEO 认证与费用管理全场景。</p>
+    </div>
+    <div class="cap-grid">
+      <div class="cap reveal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M4 12h16"/></svg>
+        <div><h3>OCR 智能制单</h3><p>发票、箱单单证智能识别，自动生成与审核报关单据，制单效率提升数倍。</p></div>
+      </div>
+      <div class="cap reveal reveal-d1">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12l-8 8-8-8V4h8l8 8z"/><circle cx="9" cy="9" r="1.6"/></svg>
+        <div><h3>AI 智能归类</h3><p>HS 编码自动归类与逻辑校验，多物品一体化归类管理，结果全程可追溯。</p></div>
+      </div>
+      <div class="cap reveal reveal-d2">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/><path d="M12 4V2M12 22v-2M4 12H2M22 12h-2"/></svg>
+        <div><h3>「全球鹰」风险预警</h3><p>嵌入 200+ 国家贸易规则，事前预警、事中监控、事后追溯的实时风控引擎。</p></div>
+      </div>
+      <div class="cap reveal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div><h3>AEO 全流程支撑</h3><p>五项管理体系与内控审计闭环，持续符合 AEO 高级认证标准。</p></div>
+      </div>
+      <div class="cap reveal reveal-d1">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.5 1.5M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7L12.5 18.5"/></svg>
+        <div><h3>保税全链路追溯</h3><p>料件入库、成品出口、余料核算一体化管理，保税货物平衡合规可追溯。</p></div>
+      </div>
+      <div class="cap reveal reveal-d2">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.7 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.7-4-9s1.3-6.4 4-9z"/></svg>
+        <div><h3>FTA 原产地管理</h3><p>覆盖 200+ 原产地规则，关税测算、原产地证与全球税则联动管理。</p></div>
+      </div>
+    </div>
+    <div class="versions reveal">
+      <div class="ver"><b>GTM 一体化版<small>旗舰</small></b><p>多语言版本，实现全球化企业境内境外一体化协同合规管理。</p><span class="tag">多语言 · 多国别</span></div>
+      <div class="ver"><b>GTM 中国版</b><p>29 年专注打磨，满足不同场景进出口企业的贸易合规管理。</p><span class="tag">一般贸易 · 加工贸易</span></div>
+      <div class="ver"><b>GTM 越南版</b><p>面向 EPE 企业的保税平衡管理方案，与越南海关系统对接。</p><span class="tag">EPE</span></div>
+      <div class="ver"><b>GTM 印尼版</b><p>为印尼保税工厂企业提供合规系统化方案，与印尼海关全面对接，一键申报。</p><span class="tag">保税工厂</span></div>
+      <div class="ver"><b>GTM 泰国版</b><p>为 IEAT&amp;BOI 保税企业提供合规的保税平衡管理系统化解决方案。</p><span class="tag">IEAT · BOI</span></div>
+      <div class="ver"><b>GTM 墨西哥版</b><p>为 IMMEX 保税企业提供合规的保税平衡管理系统化解决方案。</p><span class="tag">IMMEX</span></div>
+      <div class="ver"><b>GTM 印度版</b><p>为 IGCR&amp;Moowr 保税企业提供合规的保税平衡管理系统化解决方案。</p><span class="tag">IGCR · Moowr</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 解决方案 ================= -->
+<section id="solution">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-index sec-index-dark">05 / 全球贸易合规 · 六大关注</p>
+      <h2>直面全球合规的核心问题</h2>
+      <p class="sub">从商品归类到保税管控，从境内进出口到全球通关，构建一体化的贸易合规管理。</p>
+    </div>
+    <div class="sol-grid reveal">
+      <div class="sol"><i>01</i><div><h3>税费成本</h3><p>出口商品对应全球不同进口国家的关税成本测算，支撑全球销售定价。</p></div></div>
+      <div class="sol"><i>02</i><div><h3>贸易管制</h3><p>对应全球贸易管制的禁止与限制交易实体清单，实时校验贸易制裁名单。</p></div></div>
+      <div class="sol"><i>03</i><div><h3>全球商品库</h3><p>出口商品在全球不同进口国的正确归类申报、申报要求与管制许可证管理。</p></div></div>
+      <div class="sol"><i>04</i><div><h3>保税管控</h3><p>中国区保税业务与境外保税工厂，经营全过程的保税货物风险平衡追溯。</p></div></div>
+      <div class="sol"><i>05</i><div><h3>进口管理</h3><p>境内进口全过程的一体化贸易合规管理。</p></div></div>
+      <div class="sol"><i>06</i><div><h3>出口管理</h3><p>境内出口全过程管理与全球进口通关的一体化贸易合规管理。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 技术 ================= -->
+<section id="tech">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-index">06 / 自主可控的技术底座</p>
+      <h2>稳定、高效、智能<br>源于持续创新的研发积累</h2>
+      <p class="sub">100+ 研发团队，涵盖产品研发、项目开发与 AI 创新技术。所有技术与组件均采用标准及开源协议，无合规风险。</p>
+    </div>
+    <div class="tech-grid">
+      <div>
+        <div class="tech-group reveal">
+          <h3>平台架构</h3>
+          <ul class="tech-rows">
+            <li><b>前台底座</b><span>Vue / React / JQuery 框架与 iView 开源组件（兼容 Ant / Element），WebApi + WebSocket 加密传输与实时通讯；移动端 UniApp 一套代码多端运行。</span></li>
+            <li><b>后台底座</b><span>Spring Cloud Alibaba 微服务框架，GateWay 网关与 Nacos 注册配置中心，Java 11 开发，pf4j 插件化架构，自研参数化二次开发平台。</span></li>
+            <li><b>数据库</b><span>支持 PostgreSQL / MySQL / Oracle / SQL Server / 人大金仓 / GaussDB / 达梦 / 神通等多种数据库。</span></li>
+            <li><b>中间件</b><span>Redis 分布式缓存与三级缓存，RabbitMQ / Kafka 消息中间件，MinIO 分布式附件系统。</span></li>
+            <li><b>部署运维</b><span>支持 Windows / Linux / 麒麟，私有云、公有云与 Docker / K8S 虚拟化部署，Prometheus + Grafana 实时监控，Jenkins + Git 持续集成交付。</span></li>
+          </ul>
+        </div>
+        <div class="tech-group reveal">
+          <h3>高可用方案</h3>
+          <ul class="ha-list">
+            <li><b>SQL Server 一主多从</b> · AlwaysOn 配置读写分离，Nginx 负载均衡，正常情况下秒级实时。</li>
+            <li><b>Oracle 多主</b> · GoldenGate 双向同步，按预设比例均衡分配读写。</li>
+            <li><b>MySQL 多主</b> · Dual Master、Galera、Group Replication、Canal 多种方案双向同步。</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="tech-group reveal reveal-d1">
+          <h3>微服务体系 <small style="font-family:var(--font-sans);font-size:.8rem;color:var(--ink-3);letter-spacing:.1em">11 项核心服务</small></h3>
+          <ul class="ms-list">
+            <li><i>01</i>系统管理服务</li>
+            <li><i>02</i>基础功能服务</li>
+            <li><i>03</i>全球贸易管理服务</li>
+            <li><i>04</i>AEO 管理服务</li>
+            <li><i>05</i>账册 / 手册服务</li>
+            <li><i>06</i>通关服务</li>
+            <li><i>07</i>报表服务</li>
+            <li><i>08</i>API 交互服务</li>
+            <li><i>09</i>海关对接交互服务</li>
+            <li><i>10</i>预警服务</li>
+            <li><i>11</i>AI 服务</li>
+          </ul>
+        </div>
+        <div class="tech-group reveal reveal-d2">
+          <h3>系统集成生态</h3>
+          <p style="font-size:.93rem;color:var(--ink-2)">标准 EAI 接口覆盖主数据、进出口业务单证与生产相关业务凭证，统一 JSON 报文与 Token 验证，支持同步与异步调用。</p>
+          <div class="erp-chips">
+            <span>SAP</span><span>Oracle ERP</span><span>用友 U8</span><span>金蝶 K3 / 云</span><span>浪潮</span><span>鼎捷</span><span>WMS / TMS / MES / SRM</span>
+          </div>
+        </div>
+        <div class="tech-group reveal reveal-d3">
+          <h3>低代码开发平台</h3>
+          <p style="font-size:.93rem;color:var(--ink-2)">集成数十年多企业个性化功能、跨境贸易 5 万多项合规规则与全系定制报表，依据新客户需求快速组合应用，并支持界面风格与登录验证机制的个性化配置。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 案例 ================= -->
+<section id="cases">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-index">07 / 与世界 500 强企业同行</p>
+      <h2>客户案例</h2>
+      <p class="sub">服务超 200 家知名企业的关务信息化项目，深刻理解大型跨国企业的复杂需求与高标准要求。</p>
+    </div>
+    <article class="case-feature reveal">
+      <div class="cf-main">
+        <p class="case-tag">零售出海 · 自动化作业 + 全流程风控</p>
+        <h3>名创优品</h3>
+        <p>以 OCR 单证识别与 AI 智能制单替代人工录入，「全球鹰」引擎嵌入 200+ 国家贸易规则实现风险实时预警，内控闭环全面支撑 AEO 高级认证，保税物料全链路追溯管理。</p>
+      </div>
+      <ul class="case-metrics">
+        <li><b>通关时间大幅缩短</b><span>AI 智能制单 · OCR 替代人工录入</span></li>
+        <li><b>申报差错率降幅显著</b><span>智能归类 · 逻辑校验 · 全程可追溯</span></li>
+        <li><b>AEO 合规全面支撑</b><span>内控闭环 · 满足 AEO 高级认证标准</span></li>
+      </ul>
+    </article>
+    <div class="case-row">
+      <article class="case-sm reveal">
+        <p class="case-tag">科技制造 · 合规出海</p>
+        <h3>华为系 / 超聚变</h3>
+        <p>构建全球统一通关协同平台，整合全球资源、优化跨境物流；以 AI 与大数据精准预测关税变动，提供实时数据分析与智能决策支持。境内团队统筹全球通关，联动亚太、欧美、日本、美国团队协同作业。</p>
+      </article>
+      <article class="case-sm reveal reveal-d1">
+        <p class="case-tag">跨国集团 · 中国 / 越南 / 墨西哥</p>
+        <h3>兆驰集团 · 三期共建全球关务</h3>
+        <ul class="case-steps">
+          <li><b>2017</b><span>集团化版本替换原关务软件，11 家公司同时上线，覆盖保税备案、生产过程管理、平衡核销与一般贸易进出口管理。</span></li>
+          <li><b>2022</b><span>升级保税 + ERP 联网监管，与海关实时对接。</span></li>
+          <li><b>2024</b><span>采用 GTM 全球版实现中越一体化管理，越南 EPE 企业保税全过程管理。</span></li>
+        </ul>
+      </article>
+    </div>
+    <div class="case-row case-row-rev">
+      <article class="case-sm reveal">
+        <p class="case-tag">果链制造 · 集团化中央关务</p>
+        <h3>立讯精密 · 伯恩光学 · 蓝思科技 · 信濠光电</h3>
+        <p>全球关务中心管理模式与集团统一关务标准，多物品一体化归类；中国、印尼、越南、墨西哥一体化通关单证协同，覆盖保税、一般贸易、EPE、FTZ 多贸易模式的全过程追溯管理。</p>
+      </article>
+      <article class="case-sm reveal reveal-d1">
+        <p class="case-tag">电子制造 · 集团化协同</p>
+        <h3>创维 · TCL · 长虹</h3>
+        <p>以关衡全流程化内控管理系统承载集团关务协同，实现关务、物流的企业内部与外部服务机构一体化管理，进出口业务处理效率与合规水平同步提升。</p>
+      </article>
+    </div>
+    <div class="clients reveal">
+      <p><b>华为超聚变</b><span class="sep">·</span><wbr><b>创维</b><span class="sep">·</span><wbr><b>TCL</b><span class="sep">·</span><wbr><b>长虹</b><span class="sep">·</span><wbr><b>兆驰</b><span class="sep">·</span><wbr><b>大族激光</b><span class="sep">·</span><wbr><b>深南电路</b><span class="sep">·</span><wbr><b>三安光电</b><span class="sep">·</span><wbr><b>中国外运</b><span class="sep">·</span><wbr><b>立讯精密</b><span class="sep">·</span><wbr>Fujifilm<span class="sep">·</span><wbr>YKK<span class="sep">·</span><wbr>Panasonic<span class="sep">·</span><wbr>TOYOTA<span class="sep">·</span><wbr>HONDA<span class="sep">·</span><wbr>KYOCERA<span class="sep">·</span><wbr>CASIO<span class="sep">·</span><wbr>TOTAL</p>
+      <small>超 200 家知名企业的共同选择 · 日韩 / 欧美 / 国企 / 央企 / 民企</small>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 生态 ================= -->
+<section id="ecosystem">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-index">08 / 行业生态</p>
+      <h2>关企融合 · 政企桥梁<br>与行业共同生长</h2>
+    </div>
+    <div class="eco-grid">
+      <div class="eco reveal">
+        <h3>粤港澳大湾区国际关务节</h3>
+        <p>连续四届承办，展示技术实力，促进行业交流与合作，为企业国际化发展积累宝贵经验与资源。</p>
+      </div>
+      <div class="eco reveal reveal-d1">
+        <h3>参与海关与外贸营商环境建设</h3>
+        <p>参与关检融合二步申报优化建设，助力内地企业 AEO 发展，获海关与广东省商务厅高度认可，董事长薛国银获评进出口合规专家。</p>
+      </div>
+      <div class="eco reveal reveal-d2">
+        <h3>协会与商会专家任职</h3>
+        <p>受聘广州报关协会顾问、深圳进出口商会专家、深圳报关协会专家，持续分享贸易合规信息化管理与全球最新监管政策。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 三大理由 ================= -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-index">09 / 选择关衡</p>
+      <h2>选择关衡的三大核心理由</h2>
+    </div>
+    <div class="why-list reveal">
+      <div class="why"><i>01</i><h3>专业深度</h3><p>深耕行业三十余年，顾问团队拥有丰富的保税监管及关务合规实战经验，深刻理解业务挑战与管理诉求，提供「最懂业务」的关务解决方案。</p></div>
+      <div class="why"><i>02</i><h3>技术领先</h3><p>依托持续创新的技术实力与深厚的研发积累，构建稳定、高效、智能的关务管理数字化体系，以技术驱动业务变革，提升通关效率与合规水平。</p></div>
+      <div class="why"><i>03</i><h3>价值承诺</h3><p>坚持以客户成功为最终目标，提供从项目实施到长期运维的全生命周期专业服务，确保解决方案真正落地并实现商业价值。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 联系 ================= -->
+<section id="contact">
+  <div class="contact-watermark" aria-hidden="true">合</div>
+  <div class="wrap contact-inner">
+    <div class="reveal">
+      <p class="sec-index sec-index-dark">10 / 开启全球关务数字化</p>
+      <h2>让中国企业在<br>全球贸易中行稳致远</h2>
+      <p class="lead">告诉我们您的关务数字化目标，关衡顾问团队将在一个工作日内与您联系，为您提供贴合业务场景的解决方案。</p>
+    </div>
+    <div class="contact-card reveal reveal-d1">
+      <small>方案咨询 · 预约演示</small>
+      <a class="tel" href="tel:+8613751123918">137 5112 3918</a>
+      <p>薛国银 · 集团董事长</p>
+      <a class="btn btn-red" href="tel:+8613751123918">拨打电话预约演示<span class="arr" aria-hidden="true">→</span></a>
+      <div class="contact-meta">
+        <span><b>总部</b> · 广东</span>
+        <span><b>分支机构</b> · 深圳 / 江苏 / 山东 / 东南亚</span>
+        <span><b>服务范围</b> · 全球 20+ 国家与地区</span>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= 页脚 ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <span class="seal seal-sm" aria-hidden="true">关衡</span>
+        <div><b>关衡集团</b><br><span style="font-size:.78rem">关衡信息技术有限公司 · 润衡软件产业集团关务软件事业部</span></div>
+      </div>
+      <nav class="foot-links" aria-label="页脚导航">
+        <a href="#about">关于关衡</a>
+        <a href="#history">发展历程</a>
+        <a href="#product">全球产品</a>
+        <a href="#tech">技术底座</a>
+        <a href="#cases">客户案例</a>
+        <a href="#contact">联系我们</a>
+      </nav>
+    </div>
+    <div class="foot-note">
+      <span>© 1997-2026 关衡集团 版权所有</span>
+      <span>国家级高新技术企业 · CMMI3 · ISO 27001 · ISO 20000 · 等保二级 · 98+ 软件著作权</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* 导航滚动态:IntersectionObserver 驱动,不用 scroll 监听 */
+  var nav = document.getElementById("siteNav");
+  var hero = document.querySelector(".hero");
+  new IntersectionObserver(function(entries){
+    nav.classList.toggle("scrolled", !entries[0].isIntersecting);
+  }, {rootMargin:"-72px 0px 0px 0px"}).observe(hero);
+
+  /* 移动端菜单 */
+  var toggle = document.getElementById("navToggle");
+  var links = document.getElementById("navLinks");
+  toggle.addEventListener("click", function(){
+    var open = links.classList.toggle("open");
+    nav.classList.toggle("menu-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    document.body.style.overflow = open ? "hidden" : "";
+  });
+  links.addEventListener("click", function(e){
+    if (e.target.tagName === "A") {
+      links.classList.remove("open");
+      nav.classList.remove("menu-open");
+      toggle.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+  });
+
+  /* 滚动揭示 */
+  var revealEls = document.querySelectorAll(".reveal");
+  if (reduce) {
+    revealEls.forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, {threshold:.12, rootMargin:"0px 0px -6% 0px"});
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  /* 当前导航高亮 */
+  var secIds = ["about","history","product","tech","cases","contact"];
+  var navAs = links.querySelectorAll("a");
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting) {
+        navAs.forEach(function(a){
+          a.setAttribute("aria-current", a.getAttribute("href") === "#" + en.target.id ? "true" : "false");
+        });
+      }
+    });
+  }, {rootMargin:"-40% 0px -55% 0px"});
+  secIds.forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) spy.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
