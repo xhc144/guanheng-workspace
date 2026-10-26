@@ -1,0 +1,7 @@
+{"url": "http://127.0.0.1:8100/api/health", "method": "GET", "timeout_seconds": 15, "status": 200, "elapsed_seconds": 0.019}
+{"url": "http://127.0.0.1:5180/api/health", "method": "GET", "timeout_seconds": 15, "status": 200, "elapsed_seconds": 0.01}
+{"url": "http://127.0.0.1:5180/", "method": "GET", "timeout_seconds": 15, "status": 200, "elapsed_seconds": 0.003}
+{"url": "http://127.0.0.1:5180/api/auth/me", "method": "GET", "timeout_seconds": 15, "status": 401, "elapsed_seconds": 0.007}
+{"url": "http://127.0.0.1:5180/api/auth/login", "method": "POST", "timeout_seconds": 15, "status": 401, "elapsed_seconds": 0.726}
+{"url": "http://127.0.0.1:5180/api/auth/login", "method": "POST", "timeout_seconds": 15, "status": 200, "elapsed_seconds": 0.456}
+{"url": "http://127.0.0.1:5180/api/auth/me", "method": "GET", "timeout_seconds": 15, "status": 200, "elapsed_seconds": 0.008}

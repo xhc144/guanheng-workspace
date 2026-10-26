@@ -1,0 +1,26 @@
+2026-10-26T18:15:27.1222650+00:00 [Basic][检查目录与演示边界]
+2026-10-26T18:15:27.2201402+00:00 [Basic][检查端口]
+2026-10-26T18:15:27.2737301+00:00 [Basic][检查运行时]
+2026-10-26T18:15:27.3757141+00:00 [Basic][检查Python版本]
+{"exit":0,"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版","step":"检查Python版本","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python","arguments":["-c","import sys; sys.exit(0 if sys.version_info >= (3,10) else 2)"]}
+2026-10-26T18:15:27.5809019+00:00 [Basic][检查Node版本]
+{"exit":0,"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版","step":"检查Node版本","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node","arguments":["-e","process.exit(Number(process.versions.node.split(String.fromCharCode(46))[0])>=22 && (Number(process.versions.node.split(String.fromCharCode(46))[0])>22 || Number(process.versions.node.split(String.fromCharCode(46))[1])>=12)?0:2)"]}
+2026-10-26T18:15:27.6692149+00:00 [Basic][安装Python依赖]
+{"exit":0,"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版/backend","step":"安装Python依赖","executable":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版/.venv/bin/python","arguments":["-m","pip","install","-r","requirements.txt"]}
+2026-10-26T18:15:28.7069612+00:00 [Basic][检查Python依赖]
+{"exit":0,"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版/backend","step":"检查Python依赖","executable":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版/.venv/bin/python","arguments":["-m","pip","check"]}
+2026-10-26T18:15:29.3259352+00:00 [Basic][按原锁安装前端]
+{"exit":0,"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版/frontend","step":"按原锁安装前端","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/npm","arguments":["ci","--no-audit","--no-fund"]}
+2026-10-26T18:15:35.1506190+00:00 [Basic][检查前端依赖]
+{"exit":0,"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版/frontend","step":"检查前端依赖","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/npm","arguments":["ls","--depth=0"]}
+2026-10-26T18:15:35.8025236+00:00 [Basic][准备受控演示库（保留已有数据）]
+2026-10-26T18:15:35.8140421+00:00 [Basic][启动后端]
+cwd=/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版/backend; service=后端; pid=6577
+{"service":"后端","cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版/backend","executable":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版/.venv/bin/python","pid":6577,"arguments":["-m","uvicorn","app.main:app","--host","127.0.0.1","--port","8100"]}
+2026-10-26T18:15:35.8479018+00:00 [Basic][检查后端]
+2026-10-26T18:15:39.6520666+00:00 [Basic][启动前端]
+cwd=/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版/frontend; service=前端; pid=6600
+{"service":"前端","cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版/frontend","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node","pid":6600,"arguments":["node_modules/vite/bin/vite.js","--host","127.0.0.1","--port","5180","--strictPort"]}
+2026-10-26T18:15:39.6561737+00:00 [Basic][检查前端]
+2026-10-26T18:15:41.2247265+00:00 [Basic][就绪]
+启动失败 [Basic][就绪]：服务 PID 6577 已退出，退出码 143。；日志：/tmp/WP02 中文 空格 md0c6g06/PMS 系列/logs/basic-20261026-181527-111-6452

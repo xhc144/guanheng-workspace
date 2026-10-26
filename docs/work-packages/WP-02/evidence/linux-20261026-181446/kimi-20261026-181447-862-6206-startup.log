@@ -1,0 +1,33 @@
+2026-10-26T18:14:47.8950447+00:00 [Kimi][检查目录与演示边界]
+2026-10-26T18:14:48.0521138+00:00 [Kimi][检查端口]
+2026-10-26T18:14:48.1245481+00:00 [Kimi][检查运行时]
+2026-10-26T18:14:48.2342490+00:00 [Kimi][检查Python版本]
+{"arguments":["-c","import sys; sys.exit(0 if sys.version_info >= (3,10) else 2)"],"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版","exit":0,"step":"检查Python版本","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python"}
+2026-10-26T18:14:48.3483128+00:00 [Kimi][检查Node版本]
+{"arguments":["-e","process.exit(Number(process.versions.node.split(String.fromCharCode(46))[0])>=22 && (Number(process.versions.node.split(String.fromCharCode(46))[0])>22 || Number(process.versions.node.split(String.fromCharCode(46))[1])>=12)?0:2)"],"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版","exit":0,"step":"检查Node版本","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node"}
+2026-10-26T18:14:48.4206093+00:00 [Kimi][创建隔离venv]
+{"arguments":["-m","venv",".venv"],"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/backend","exit":0,"step":"创建隔离venv","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python"}
+2026-10-26T18:14:53.4694843+00:00 [Kimi][安装Python依赖]
+{"arguments":["-m","pip","install","-r","requirements.txt"],"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/backend","exit":0,"step":"安装Python依赖","executable":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/backend/.venv/bin/python"}
+2026-10-26T18:15:10.7724236+00:00 [Kimi][检查Python依赖]
+{"arguments":["-m","pip","check"],"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/backend","exit":0,"step":"检查Python依赖","executable":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/backend/.venv/bin/python"}
+2026-10-26T18:15:12.0994660+00:00 [Kimi][按原锁安装前端]
+{"arguments":["ci","--no-audit","--no-fund"],"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/frontend","exit":0,"step":"按原锁安装前端","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/npm"}
+2026-10-26T18:15:27.0498645+00:00 [Kimi][检查前端依赖]
+{"arguments":["ls","--depth=0"],"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/frontend","exit":0,"step":"检查前端依赖","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/npm"}
+2026-10-26T18:15:28.6100353+00:00 [Kimi][准备受控演示库（保留已有数据）]
+2026-10-26T18:15:28.6128751+00:00 [Kimi][迁移新Kimi演示库]
+{"arguments":["-m","alembic","upgrade","head"],"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/backend","exit":0,"step":"迁移新Kimi演示库","executable":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/backend/.venv/bin/python"}
+2026-10-26T18:15:30.4849067+00:00 [Kimi][初始化新Kimi演示库]
+{"arguments":["-m","app.demo_cli","seed"],"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/backend","exit":0,"step":"初始化新Kimi演示库","executable":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/backend/.venv/bin/python"}
+2026-10-26T18:15:38.7317598+00:00 [Kimi][验证Kimi演示库]
+{"arguments":["-m","app.demo_cli","verify"],"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/backend","exit":0,"step":"验证Kimi演示库","executable":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/backend/.venv/bin/python"}
+2026-10-26T18:15:43.6740520+00:00 [Kimi][启动后端]
+cwd=/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/backend; service=后端; pid=6634
+{"arguments":["-m","uvicorn","app.main:app","--host","127.0.0.1","--port","8101"],"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/backend","service":"后端","pid":6634,"executable":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/backend/.venv/bin/python"}
+2026-10-26T18:15:43.6981017+00:00 [Kimi][检查后端]
+2026-10-26T18:15:45.4746994+00:00 [Kimi][启动前端]
+cwd=/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/frontend; service=前端; pid=6662
+{"arguments":["node_modules/vite/bin/vite.js","--host","127.0.0.1","--port","5181","--strictPort"],"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/frontend","service":"前端","pid":6662,"executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node"}
+2026-10-26T18:15:45.4805632+00:00 [Kimi][检查前端]
+2026-10-26T18:15:47.2325811+00:00 [Kimi][就绪]

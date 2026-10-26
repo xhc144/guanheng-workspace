@@ -1,0 +1,15 @@
+pms-frontend@0.1.0 /tmp/WP02 中文 空格 kod81oim/PMS 系列/Kimi版/frontend
+├── @types/react-dom@18.3.7
+├── @types/react@18.3.31
+├── @vitejs/plugin-react@4.7.0
+├── antd@5.29.3
+├── axios@1.18.1
+├── dayjs@1.11.21
+├── echarts-for-react@3.0.6
+├── echarts@5.6.0
+├── react-dom@18.3.1
+├── react-router-dom@6.30.4
+├── react@18.3.1
+├── typescript@5.9.3
+└── vite@5.4.21
+

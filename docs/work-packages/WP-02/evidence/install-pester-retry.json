@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+    "-NoProfile",
+    "-Command",
+    "Save-Module -Name Pester -RequiredVersion 5.7.1 -Path /tmp/guanheng-wp02-tools/modules -Repository PSGallery -ErrorAction Stop"
+  ],
+  "cwd": "/workspace/guanheng-wp02",
+  "start": "2026-10-26T17:52:23.246681+00:00",
+  "end": "2026-10-26T17:52:31.966384+00:00",
+  "exit_code": 0,
+  "head": "22aab8477eeef3cb498f3be3c739b631b295ea12",
+  "before": {
+    "systems/pms-suite/start-helper.ps1": "6f81f00d711ec40134c53c58dece87357115344e7947282272b953f0705965af",
+    "systems/pms-suite/tests/bootstrap.Tests.ps1": "91473a3b3ff4b38ce3f30a861435526bc39d3c73658feb5f799d4ff927a8318d"
+  },
+  "after": {
+    "systems/pms-suite/start-helper.ps1": "6f81f00d711ec40134c53c58dece87357115344e7947282272b953f0705965af",
+    "systems/pms-suite/tests/bootstrap.Tests.ps1": "91473a3b3ff4b38ce3f30a861435526bc39d3c73658feb5f799d4ff927a8318d"
+  }
+}

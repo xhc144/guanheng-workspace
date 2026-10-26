@@ -1,0 +1,10 @@
+2026-10-26T18:15:45.6423246+00:00 [Basic][检查目录与演示边界]
+2026-10-26T18:15:45.7026193+00:00 [Basic][检查端口]
+2026-10-26T18:15:45.7375650+00:00 [Basic][检查运行时]
+2026-10-26T18:15:45.8162276+00:00 [Basic][检查Python版本]
+{"arguments":["-c","import sys; sys.exit(0 if sys.version_info >= (3,10) else 2)"],"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版","exit":0,"step":"检查Python版本","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python"}
+2026-10-26T18:15:45.8761252+00:00 [Basic][检查Node版本]
+{"arguments":["-e","process.exit(Number(process.versions.node.split(String.fromCharCode(46))[0])>=22 && (Number(process.versions.node.split(String.fromCharCode(46))[0])>22 || Number(process.versions.node.split(String.fromCharCode(46))[1])>=12)?0:2)"],"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版","exit":0,"step":"检查Node版本","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node"}
+2026-10-26T18:15:45.9231206+00:00 [Basic][安装Python依赖]
+{"arguments":["-m","pip","install","-r","requirements.txt"],"cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版/backend","exit":1,"step":"安装Python依赖","executable":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/基础版/.venv/bin/python"}
+启动失败 [Basic][安装Python依赖]：子命令失败，退出码 1；详情：/tmp/WP02 中文 空格 md0c6g06/PMS 系列/logs/basic-20261026-181545-636-6637/安装Python依赖.log；日志：/tmp/WP02 中文 空格 md0c6g06/PMS 系列/logs/basic-20261026-181545-636-6637

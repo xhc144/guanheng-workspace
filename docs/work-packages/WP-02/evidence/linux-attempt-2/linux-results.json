@@ -1,0 +1,142 @@
+{
+  "platform": "linux",
+  "fixture": "/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列",
+  "results": [
+    {
+      "edition": "Basic",
+      "fixture": "/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/基础版",
+      "start_epoch": 1793037237.8117468,
+      "fresh_command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/start-helper.ps1",
+        "-Edition",
+        "Basic",
+        "-NoBrowser",
+        "-NoPopup"
+      ],
+      "fresh_cwd": "/tmp",
+      "fresh_api": {
+        "health": [
+          {
+            "port": 8100,
+            "health": 200
+          },
+          {
+            "port": 5180,
+            "health": 200
+          }
+        ],
+        "frontend": 200,
+        "anonymous_identity": 401,
+        "wrong_password": 401,
+        "login": 200,
+        "identity": 200
+      },
+      "created_venv": true,
+      "protected_file_unchanged": true,
+      "actual_child_cwds": [
+        "/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/基础版/backend",
+        "/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/基础版/frontend"
+      ],
+      "duplicate_refused_and_owner_alive": true,
+      "ctrl_c_cleanup": true,
+      "restart_api": {
+        "health": [
+          {
+            "port": 8100,
+            "health": 200
+          },
+          {
+            "port": 5180,
+            "health": 200
+          }
+        ],
+        "frontend": 200,
+        "anonymous_identity": 401,
+        "wrong_password": 401,
+        "login": 200,
+        "identity": 200
+      },
+      "restart_preserves_users_password_marker": true,
+      "owned_child_failure_exit": 143,
+      "owned_child_failure_cleans_peer": true,
+      "frozen_manifests_unchanged": true,
+      "native_install_failure_exit": 1,
+      "end_epoch": 1793037319.1965604,
+      "status": "passed"
+    },
+    {
+      "edition": "DeepSeek",
+      "fixture": "/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/DeepSeek版",
+      "start_epoch": 1793037237.8181462,
+      "fresh_command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/start-helper.ps1",
+        "-Edition",
+        "DeepSeek",
+        "-NoBrowser",
+        "-NoPopup"
+      ],
+      "fresh_cwd": "/tmp",
+      "fresh_api": {
+        "health": [
+          {
+            "port": 8102,
+            "health": 200
+          },
+          {
+            "port": 5182,
+            "health": 200
+          }
+        ],
+        "frontend": 200,
+        "anonymous_identity": 401,
+        "wrong_password": 401,
+        "login": 200,
+        "identity": 200
+      },
+      "created_venv": true,
+      "protected_file_unchanged": true,
+      "actual_child_cwds": [
+        "/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/DeepSeek版/backend",
+        "/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/DeepSeek版/frontend"
+      ],
+      "duplicate_refused_and_owner_alive": true,
+      "ctrl_c_cleanup": true,
+      "restart_api": {
+        "health": [
+          {
+            "port": 8102,
+            "health": 200
+          },
+          {
+            "port": 5182,
+            "health": 200
+          }
+        ],
+        "frontend": 200,
+        "anonymous_identity": 401,
+        "wrong_password": 401,
+        "login": 200,
+        "identity": 200
+      },
+      "restart_preserves_users_password_marker": true,
+      "owned_child_failure_exit": 143,
+      "owned_child_failure_cleans_peer": true,
+      "frozen_manifests_unchanged": true,
+      "native_install_failure_exit": 1,
+      "end_epoch": 1793037350.5897946,
+      "status": "passed"
+    }
+  ],
+  "failures": [
+    {
+      "edition": "Kimi",
+      "error": "helper exited 1: 2026-10-26T17:53:59.9357404+00:00 [Kimi][检查目录与演示边界]\n2026-10-26T17:54:00.3338765+00:00 [Kimi][检查端口]\n2026-10-26T17:54:00.4696657+00:00 [Kimi][检查运行时]\n2026-10-26T17:54:01.7038230+00:00 [Kimi][检查Python版本]\n2026-10-26T17:54:01.8658964+00:00 [Kimi][检查Node版本]\n2026-10-26T17:54:01.9760761+00:00 [Kimi][创建隔离venv]\n2026-10-26T17:54:08.3456269+00:00 [Kimi][安装Python依赖]\n2026-10-26T17:54:31.9784597+00:00 [Kimi][检查Python依赖]\n2026-10-26T17:54:32.4298221+00:00 [Kimi][按原锁安装前端]\n2026-10-26T17:54:58.5197985+00:00 [Kimi][检查前端依赖]\n2026-10-26T17:54:59.9002094+00:00 [Kimi][准备受控演示库（保留已有数据）]\n2026-10-26T17:54:59.9014352+00:00 [Kimi][迁移新Kimi演示库]\n启动失败 [Kimi][迁移新Kimi演示库]：子命令失败，退出码 1；详情：/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/logs/kimi-20261026-175359-917-1322/迁移新Kimi演示库.log；日志：/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/logs/kimi-20261026-175359-917-1322\n"
+    }
+  ]
+}

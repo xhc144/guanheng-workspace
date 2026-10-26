@@ -1,0 +1,26 @@
+2026-10-26T18:19:31.4682161+00:00 [Basic][检查目录与演示边界]
+2026-10-26T18:19:31.6691290+00:00 [Basic][检查端口]
+2026-10-26T18:19:31.7993762+00:00 [Basic][检查运行时]
+2026-10-26T18:19:32.0971989+00:00 [Basic][检查Python版本]
+{"step":"检查Python版本","exit":0,"executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python","arguments":["-c","import sys; sys.exit(0 if sys.version_info >= (3,10) else 2)"],"cwd":"/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版"}
+2026-10-26T18:19:32.1951688+00:00 [Basic][检查Node版本]
+{"step":"检查Node版本","exit":0,"executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node","arguments":["-e","process.exit(Number(process.versions.node.split(String.fromCharCode(46))[0])>=22 && (Number(process.versions.node.split(String.fromCharCode(46))[0])>22 || Number(process.versions.node.split(String.fromCharCode(46))[1])>=12)?0:2)"],"cwd":"/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版"}
+2026-10-26T18:19:32.2953863+00:00 [Basic][安装Python依赖]
+{"step":"安装Python依赖","exit":0,"executable":"/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版/.venv/bin/python","arguments":["-m","pip","install","-r","requirements.txt"],"cwd":"/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版/backend"}
+2026-10-26T18:19:33.3909649+00:00 [Basic][检查Python依赖]
+{"step":"检查Python依赖","exit":0,"executable":"/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版/.venv/bin/python","arguments":["-m","pip","check"],"cwd":"/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版/backend"}
+2026-10-26T18:19:36.7126344+00:00 [Basic][按原锁安装前端]
+{"step":"按原锁安装前端","exit":0,"executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/npm","arguments":["ci","--no-audit","--no-fund"],"cwd":"/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版/frontend"}
+2026-10-26T18:19:39.7676221+00:00 [Basic][检查前端依赖]
+{"step":"检查前端依赖","exit":0,"executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/npm","arguments":["ls","--depth=0"],"cwd":"/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版/frontend"}
+2026-10-26T18:19:40.8680972+00:00 [Basic][准备受控演示库（保留已有数据）]
+2026-10-26T18:19:40.8863074+00:00 [Basic][启动后端]
+cwd=/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版/backend; service=后端; pid=7271
+{"pid":7271,"service":"后端","executable":"/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版/.venv/bin/python","arguments":["-m","uvicorn","app.main:app","--host","127.0.0.1","--port","8100"],"cwd":"/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版/backend"}
+2026-10-26T18:19:40.9253086+00:00 [Basic][检查后端]
+2026-10-26T18:19:44.2756626+00:00 [Basic][启动前端]
+cwd=/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版/frontend; service=前端; pid=7305
+{"pid":7305,"service":"前端","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node","arguments":["node_modules/vite/bin/vite.js","--host","127.0.0.1","--port","5180","--strictPort"],"cwd":"/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版/frontend"}
+2026-10-26T18:19:44.2807375+00:00 [Basic][检查前端]
+2026-10-26T18:19:44.8450638+00:00 [Basic][就绪]
+启动失败 [Basic][就绪]：服务 PID 7271 已退出，退出码 143。；日志：/tmp/WP02 中文 空格 kod81oim/PMS 系列/logs/basic-20261026-181931-430-7158

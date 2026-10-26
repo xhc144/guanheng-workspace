@@ -1,0 +1,6 @@
+2026-10-26 17:58:53 [INFO] pms: Initializing database...
+2026-10-26 17:58:53 [INFO] pms: Database tables created
+2026-10-26 17:58:54 [INFO] pms: Seed data loaded, application ready
+2026-10-26 17:58:54 [INFO] pms: 数据完整性检查通过
+2026-10-26 17:58:59 [INFO] pms: Shutting down...
+2026-10-26 17:58:59 [INFO] pms: Database connections disposed

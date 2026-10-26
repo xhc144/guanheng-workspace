@@ -1,0 +1,19 @@
+{
+  "command": [
+    "python3",
+    "docs/work-packages/WP-02/verify_linux.py"
+  ],
+  "cwd": "/workspace/guanheng-wp02",
+  "start": "2026-10-26T17:53:36.286385+00:00",
+  "end": "2026-10-26T17:53:36.501855+00:00",
+  "exit_code": 1,
+  "head": "e9d052b0abb196b785aa698e5896d890c34d89d2",
+  "before": {
+    "systems/pms-suite/start-helper.ps1": "6f81f00d711ec40134c53c58dece87357115344e7947282272b953f0705965af",
+    "systems/pms-suite/tests/bootstrap.Tests.ps1": "91473a3b3ff4b38ce3f30a861435526bc39d3c73658feb5f799d4ff927a8318d"
+  },
+  "after": {
+    "systems/pms-suite/start-helper.ps1": "6f81f00d711ec40134c53c58dece87357115344e7947282272b953f0705965af",
+    "systems/pms-suite/tests/bootstrap.Tests.ps1": "91473a3b3ff4b38ce3f30a861435526bc39d3c73658feb5f799d4ff927a8318d"
+  }
+}

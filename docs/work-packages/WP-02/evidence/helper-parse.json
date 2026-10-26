@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+    "-NoProfile",
+    "-Command",
+    "$errors = @(); Get-ChildItem systems/pms-suite -Recurse -Filter *.ps1 | ForEach-Object { $e = $null; [System.Management.Automation.Language.Parser]::ParseFile($_.FullName, [ref]$null, [ref]$e) > $null; $errors += $e }; $errors | Format-List; if ($errors.Count) { exit 1 }; Write-Output \"PowerShell parse passed\""
+  ],
+  "cwd": "/workspace/guanheng-wp02",
+  "start": "2026-10-26T17:50:54.092899+00:00",
+  "end": "2026-10-26T17:50:54.908987+00:00",
+  "exit_code": 0,
+  "head": "22aab8477eeef3cb498f3be3c739b631b295ea12",
+  "before": {
+    "systems/pms-suite/start-helper.ps1": "8b9c2b50fa8a45dcbb4472938ee53650387e9b1d7324b8e6800a2a7a1a866d97"
+  },
+  "after": {
+    "systems/pms-suite/start-helper.ps1": "8b9c2b50fa8a45dcbb4472938ee53650387e9b1d7324b8e6800a2a7a1a866d97"
+  }
+}

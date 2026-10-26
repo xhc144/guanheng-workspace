@@ -1,0 +1,10 @@
+2026-10-26T18:09:29.5659991+00:00 [Basic][检查目录与演示边界]
+2026-10-26T18:09:29.6261133+00:00 [Basic][检查端口]
+2026-10-26T18:09:29.6666740+00:00 [Basic][检查运行时]
+2026-10-26T18:09:29.7751859+00:00 [Basic][检查Python版本]
+{"cwd":"/tmp/WP02 中文 空格 ro94st5x/PMS 系列/基础版","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python","arguments":["-c","import sys; sys.exit(0 if sys.version_info >= (3,10) else 2)"],"step":"检查Python版本","exit":0}
+2026-10-26T18:09:29.8429327+00:00 [Basic][检查Node版本]
+{"cwd":"/tmp/WP02 中文 空格 ro94st5x/PMS 系列/基础版","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node","arguments":["-e","process.exit(Number(process.versions.node.split(String.fromCharCode(46))[0])>=22 && (Number(process.versions.node.split(String.fromCharCode(46))[0])>22 || Number(process.versions.node.split(String.fromCharCode(46))[1])>=12)?0:2)"],"step":"检查Node版本","exit":0}
+2026-10-26T18:09:29.8980288+00:00 [Basic][安装Python依赖]
+{"cwd":"/tmp/WP02 中文 空格 ro94st5x/PMS 系列/基础版/backend","executable":"/tmp/WP02 中文 空格 ro94st5x/PMS 系列/基础版/.venv/bin/python","arguments":["-m","pip","install","-r","requirements.txt"],"step":"安装Python依赖","exit":1}
+启动失败 [Basic][安装Python依赖]：子命令失败，退出码 1；详情：/tmp/WP02 中文 空格 ro94st5x/PMS 系列/logs/basic-20261026-180929-553-4947/安装Python依赖.log；日志：/tmp/WP02 中文 空格 ro94st5x/PMS 系列/logs/basic-20261026-180929-553-4947

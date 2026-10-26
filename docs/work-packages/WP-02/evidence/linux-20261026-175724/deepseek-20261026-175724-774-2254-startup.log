@@ -1,0 +1,25 @@
+2026-10-26T17:57:24.7869972+00:00 [DeepSeek][检查目录与演示边界]
+2026-10-26T17:57:24.8500563+00:00 [DeepSeek][检查端口]
+2026-10-26T17:57:24.9093076+00:00 [DeepSeek][检查运行时]
+2026-10-26T17:57:25.0031186+00:00 [DeepSeek][检查Python版本]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/DeepSeek版; step=检查Python版本; exit=0
+2026-10-26T17:57:25.0437155+00:00 [DeepSeek][检查Node版本]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/DeepSeek版; step=检查Node版本; exit=0
+2026-10-26T17:57:25.1350726+00:00 [DeepSeek][创建隔离venv]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/DeepSeek版/backend; step=创建隔离venv; exit=0
+2026-10-26T17:57:30.7421216+00:00 [DeepSeek][安装Python依赖]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/DeepSeek版/backend; step=安装Python依赖; exit=0
+2026-10-26T17:57:48.2692209+00:00 [DeepSeek][检查Python依赖]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/DeepSeek版/backend; step=检查Python依赖; exit=0
+2026-10-26T17:57:49.1080946+00:00 [DeepSeek][按原锁安装前端]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/DeepSeek版/frontend; step=按原锁安装前端; exit=0
+2026-10-26T17:58:05.5481754+00:00 [DeepSeek][检查前端依赖]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/DeepSeek版/frontend; step=检查前端依赖; exit=0
+2026-10-26T17:58:06.2450843+00:00 [DeepSeek][准备受控演示库（保留已有数据）]
+2026-10-26T17:58:06.2577769+00:00 [DeepSeek][启动后端]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/DeepSeek版/backend; service=后端; pid=2581
+2026-10-26T17:58:06.2880159+00:00 [DeepSeek][检查后端]
+2026-10-26T17:58:16.1474446+00:00 [DeepSeek][启动前端]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/DeepSeek版/frontend; service=前端; pid=2632
+2026-10-26T17:58:16.1548967+00:00 [DeepSeek][检查前端]
+2026-10-26T17:58:17.6006945+00:00 [DeepSeek][就绪]

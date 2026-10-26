@@ -1,0 +1,5 @@
+2026-10-26 18:09:14 [INFO] pms: Initializing database...
+2026-10-26 18:09:14 [INFO] pms: Database tables created
+2026-10-26 18:09:20 [INFO] pms: Seed data loaded, application ready
+2026-10-26 18:09:20 [INFO] pms: 数据完整性检查通过
+2026-10-26 18:09:23 [WARNING] middleware: 慢请求: POST /api/auth/login (1215ms)

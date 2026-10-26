@@ -1,0 +1,26 @@
+2026-10-26T17:58:25.7928686+00:00 [Kimi][检查目录与演示边界]
+2026-10-26T17:58:26.4592855+00:00 [Kimi][检查端口]
+2026-10-26T17:58:26.5667337+00:00 [Kimi][检查运行时]
+2026-10-26T17:58:26.6730618+00:00 [Kimi][检查Python版本]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/Kimi版; step=检查Python版本; exit=0
+2026-10-26T17:58:26.7517622+00:00 [Kimi][检查Node版本]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/Kimi版; step=检查Node版本; exit=0
+2026-10-26T17:58:26.8892419+00:00 [Kimi][安装Python依赖]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/Kimi版/backend; step=安装Python依赖; exit=0
+2026-10-26T17:58:28.8730158+00:00 [Kimi][检查Python依赖]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/Kimi版/backend; step=检查Python依赖; exit=0
+2026-10-26T17:58:29.4619653+00:00 [Kimi][按原锁安装前端]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/Kimi版/frontend; step=按原锁安装前端; exit=0
+2026-10-26T17:58:41.7581167+00:00 [Kimi][检查前端依赖]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/Kimi版/frontend; step=检查前端依赖; exit=0
+2026-10-26T17:58:43.8200659+00:00 [Kimi][准备受控演示库（保留已有数据）]
+2026-10-26T17:58:43.8214257+00:00 [Kimi][验证Kimi演示库]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/Kimi版/backend; step=验证Kimi演示库; exit=0
+2026-10-26T17:58:48.8116861+00:00 [Kimi][启动后端]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/Kimi版/backend; service=后端; pid=2928
+2026-10-26T17:58:48.8656578+00:00 [Kimi][检查后端]
+2026-10-26T17:58:51.3555257+00:00 [Kimi][启动前端]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/Kimi版/frontend; service=前端; pid=2964
+2026-10-26T17:58:51.3587604+00:00 [Kimi][检查前端]
+2026-10-26T17:58:51.9707687+00:00 [Kimi][就绪]
+启动失败 [Kimi][就绪]：服务 PID 2928 已退出，退出码 143。；日志：/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/logs/kimi-20261026-175825-787-2748
