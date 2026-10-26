@@ -1,4 +1,8 @@
 ﻿BeforeAll {
+    $script:originalEnvironment = @{}
+    foreach ($key in @('DATABASE_URL', 'ENVIRONMENT', 'DEMO_MODE', 'SECRET_KEY', 'PATH')) {
+        $script:originalEnvironment[$key] = @{ Value = [Environment]::GetEnvironmentVariable($key, 'Process'); Present = (Test-Path -LiteralPath ('Env:' + $key)) }
+    }
     $script:helperSource = Join-Path (Split-Path -Parent $PSScriptRoot) 'start-helper.ps1'
     $script:hostExecutable = (Get-Process -Id $PID).Path
     $script:fixture = Join-Path $TestDrive '中文 空格 PMS'
@@ -12,7 +16,7 @@
         try {
             foreach ($key in @('DATABASE_URL', 'ENVIRONMENT', 'DEMO_MODE')) {
                 $saved[$key] = [Environment]::GetEnvironmentVariable($key, 'Process')
-                [Environment]::SetEnvironmentVariable($key, $null, 'Process')
+                Remove-Item -LiteralPath ('Env:' + $key) -ErrorAction SilentlyContinue
             }
             foreach ($key in $Environment.Keys) {
                 if (-not $saved.ContainsKey($key)) { $saved[$key] = [Environment]::GetEnvironmentVariable($key, 'Process') }
@@ -21,7 +25,12 @@
             $output = & $hostExecutable -NoProfile -File (Join-Path $fixture 'start-helper.ps1') -Edition $Edition -NoBrowser -NoPopup 2>&1
             return @{ Code = $LASTEXITCODE; Output = ($output | Out-String) }
         }
-        finally { foreach ($key in $saved.Keys) { [Environment]::SetEnvironmentVariable($key, $saved[$key], 'Process') } }
+        finally {
+            foreach ($key in $saved.Keys) {
+                if ($null -eq $saved[$key]) { Remove-Item -LiteralPath ('Env:' + $key) -ErrorAction SilentlyContinue }
+                else { [Environment]::SetEnvironmentVariable($key, $saved[$key], 'Process') }
+            }
+        }
     }
 }
 
@@ -138,4 +147,16 @@ Describe 'PMS bootstrap real refusal paths (no mocked service success)' {
         finally { Remove-Item -LiteralPath $venv -Recurse -Force }
     }
 
+}
+
+AfterAll {
+    $unchanged = $true
+    foreach ($key in $script:originalEnvironment.Keys) {
+        $original = $script:originalEnvironment[$key]
+        if (([Environment]::GetEnvironmentVariable($key, 'Process') -cne $original.Value) -or ((Test-Path -LiteralPath ('Env:' + $key)) -ne $original.Present)) { $unchanged = $false }
+        if ($original.Present) { [Environment]::SetEnvironmentVariable($key, $original.Value, 'Process') }
+        else { Remove-Item -LiteralPath ('Env:' + $key) -ErrorAction SilentlyContinue }
+    }
+    # Compare only a boolean: a failing assertion must never print inherited secrets.
+    $unchanged | Should -BeTrue
 }
