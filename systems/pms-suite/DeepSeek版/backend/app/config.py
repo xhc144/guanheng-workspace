@@ -54,13 +54,16 @@ settings = Settings()
 
 def validate_demo_database_url(database_url: str) -> None:
     """Ensure demo mode can never point at a normal application database."""
+    demo_path = BACKEND_DIR / ".demo" / "demo.db"
+    if demo_path.is_symlink() or demo_path.parent.is_symlink():
+        raise RuntimeError("拒绝访问演示库：backend/.demo 或 demo.db 不能是符号链接")
     prefix = "sqlite:///"
     if not database_url.startswith(prefix):
         raise RuntimeError("DEMO_MODE 只允许使用受控 SQLite 演示库")
     database_path = Path(database_url.removeprefix(prefix))
     if not database_path.is_absolute():
         database_path = (Path.cwd() / database_path).resolve()
-    if database_path != DEMO_DATABASE_PATH:
+    if database_path.resolve() != DEMO_DATABASE_PATH:
         raise RuntimeError("DEMO_MODE 只允许使用 backend/.demo/demo.db")
 
 

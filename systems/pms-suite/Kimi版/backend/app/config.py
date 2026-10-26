@@ -49,6 +49,10 @@ class Settings(BaseSettings):
                 raise RuntimeError("生产环境必须通过进程环境变量 SECRET_KEY 提供至少32位的随机密钥；拒绝空值、默认值、重复值及占位口令")
             if self.demo_mode:
                 raise RuntimeError("生产环境禁止启用 DEMO_MODE，不能自动创建演示账号")
+        elif self.admin_username != "admin" or self.admin_password != "Admin@123456":
+            raise RuntimeError("本地演示身份固定为 admin；不支持通过 ADMIN_USERNAME 或 ADMIN_PASSWORD 初始化真实账号")
+        if self.demo_mode:
+            self.require_controlled_demo_database()
         return self
 
     @property
@@ -62,6 +66,9 @@ class Settings(BaseSettings):
             raise RuntimeError("生产环境禁止播种或重置演示数据")
         if not self.demo_mode:
             raise RuntimeError("演示数据库操作必须设置 DEMO_MODE=1")
+        demo_path = BACKEND_DIR / ".demo" / "demo.db"
+        if demo_path.is_symlink() or demo_path.parent.is_symlink():
+            raise RuntimeError("拒绝访问演示库：backend/.demo 或 demo.db 不能是符号链接")
         if Path(DEMO_DB_PATH).parent != (BACKEND_DIR / ".demo").resolve():
             raise RuntimeError("演示数据库路径超出受控目录")
 

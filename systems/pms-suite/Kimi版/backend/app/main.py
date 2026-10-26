@@ -71,6 +71,8 @@ def seed_demo_data() -> None:
 def _startup():
     # App startup never creates tables or seed records. The demo CLI owns those
     # explicit actions and is restricted to backend/.demo/demo.db.
+    if settings.is_production:
+        return  # 归档演示服务不在生产启动时启动写库的提醒线程。
     if settings.demo_mode:
         settings.require_controlled_demo_database()
     from .notifier import start_scheduler

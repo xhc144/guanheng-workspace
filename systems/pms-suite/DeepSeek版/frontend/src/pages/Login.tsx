@@ -1,26 +1,35 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Alert, Card, Form, Input, Button, message, Typography, Checkbox } from 'antd';
+import { Alert, Card, Form, Input, Button, message, Typography } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { login } from '../api';
 
 const LoginPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const onFinish = async (values: { username: string; password: string; remember?: boolean }) => {
+  const onFinish = async (values: { username: string; password: string }) => {
     setLoading(true);
     setError('');
     try {
-      await login(values.username, values.password);
-      localStorage.setItem('rememberMe', values.remember ? 'true' : 'false');
-      if (!values.remember) localStorage.setItem('sessionOnly', 'true');
-      else localStorage.removeItem('sessionOnly');
+      // 登录失败应在当前表单结束，避免进入业务 API 的 401 刷新等待队列。
+      const base = (import.meta.env.VITE_API_BASE || '/api').replace(/\/$/, '');
+      const response = await fetch(`${base}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+        signal: AbortSignal.timeout(15000),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(typeof data.detail === 'string' ? data.detail : '登录失败，请稍后重试');
+      if (typeof data.access_token !== 'string' || !data.user) throw new Error('登录响应不完整，请联系管理员');
+      localStorage.setItem('token', data.access_token);
+      localStorage.setItem('user', JSON.stringify(data.user));
       message.success('登录成功');
       navigate('/workbench');
-    } catch (err: any) {
-      setError(typeof err.response?.data?.detail === 'string' ? err.response.data.detail : '登录失败，请检查本地服务是否启动后重试');
+    } catch (err: unknown) {
+      setError(err instanceof Error && !['TypeError', 'SyntaxError', 'TimeoutError', 'AbortError'].includes(err.name)
+        ? err.message : '登录失败，请检查本地服务是否启动后重试');
     } finally {
       setLoading(false);
     }
@@ -32,21 +41,16 @@ const LoginPage: React.FC = () => {
         <Typography.Title level={3} style={{ textAlign: 'center', marginBottom: 24 }}>
           📊 综合项目管理系统
         </Typography.Title>
-        <Form onFinish={onFinish} layout="vertical" size="large" disabled={loading} initialValues={{ remember: localStorage.getItem('rememberMe') === 'true' }}>
+        <Form onFinish={onFinish} layout="vertical" size="large" disabled={loading}>
           <Form.Item name="username" label="用户名" rules={[{ required: true, message: '请输入用户名' }]}>
-            <Input prefix={<UserOutlined />} autoComplete="username" placeholder="用户名" />
+            <Input prefix={<UserOutlined />} autoComplete="username" style={{ minHeight: 44 }} placeholder="用户名" />
           </Form.Item>
           <Form.Item name="password" label="密码" rules={[{ required: true, message: '请输入密码' }]}>
-            <Input.Password prefix={<LockOutlined />} autoComplete="current-password" placeholder="密码" />
+            <Input.Password prefix={<LockOutlined />} autoComplete="current-password" style={{ minHeight: 44 }} placeholder="密码" />
           </Form.Item>
           {error && <Alert type="error" showIcon message={error} role="alert" style={{ marginBottom: 16 }} />}
           <Form.Item>
-            <Form.Item name="remember" valuePropName="checked" noStyle>
-              <Checkbox>记住登录</Checkbox>
-            </Form.Item>
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit" block loading={loading}>登录</Button>
+            <Button type="primary" htmlType="submit" block loading={loading} style={{ minHeight: 44 }}>登录</Button>
           </Form.Item>
         </Form>
         <Typography.Text type="secondary" style={{ display: 'block', textAlign: 'center', fontSize: 12 }}>

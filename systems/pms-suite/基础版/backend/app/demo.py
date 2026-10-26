@@ -19,6 +19,8 @@ def ensure_demo_database_url() -> None:
     settings = get_settings()
     if settings.is_production:
         raise RuntimeError("基础版仅提供本地演示；生产模式禁止启动演示库、播种或重置账号")
+    if DEMO_DB_PATH.is_symlink() or DEMO_DB_PATH.parent.is_symlink():
+        raise RuntimeError("拒绝访问演示库：backend/.demo 或 demo.db 不能是符号链接")
     configured_url = settings.DATABASE_URL
     if configured_url != DEMO_DATABASE_URL:
         raise RuntimeError(
