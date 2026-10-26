@@ -1,0 +1,8 @@
+开始时间: 2026-10-26T16:43:57.737110+00:00
+实际cwd: /workspace/guanheng-wp01/systems/project-ops
+完整命令: pnpm typecheck
+$ tsc --noEmit
+
+退出码: 0
+结束时间: 2026-10-26T16:44:13.067182+00:00
+用时秒: 15.33

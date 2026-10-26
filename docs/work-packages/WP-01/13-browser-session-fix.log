@@ -1,0 +1,32 @@
+开始时间: 2026-10-26T16:39:13.000357+00:00
+实际cwd: /workspace/guanheng-wp01
+完整命令: node --experimental-strip-types docs/work-packages/WP-01/browser-check.mjs /opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs /usr/bin/chromium
+临时服务已停止；合成数据库与截图：/tmp/guanheng-wp01-browser-4jdGL7
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: 浏览器存在控制台错误或页面异常
++ actual - expected
+
++ [
++   'Failed to load resource: the server responded with a status of 404 (Not Found)'
++ ]
+- []
+
+    at file:///workspace/guanheng-wp01/docs/work-packages/WP-01/browser-check.mjs:137:10 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+    'Failed to load resource: the server responded with a status of 404 (Not Found)'
+  ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
+
+退出码: 1
+结束时间: 2026-10-26T16:39:27.984238+00:00
+用时秒: 14.98

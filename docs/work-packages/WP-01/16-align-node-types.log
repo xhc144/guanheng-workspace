@@ -1,0 +1,33 @@
+开始时间: 2026-10-26T16:41:36.088359+00:00
+实际cwd: /workspace/guanheng-wp01/systems/project-ops
+完整命令: pnpm add -D --save-exact @types/node@24.19.2
+✓ Lockfile passes supply-chain policies (verified 7m ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+[WARN] deprecated eslint@9.39.2: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+Progress: resolved 11, reused 9, downloaded 0, added 0
+Progress: resolved 12, reused 11, downloaded 1, added 0
+Progress: resolved 65, reused 17, downloaded 1, added 0
+Progress: resolved 75, reused 73, downloaded 2, added 0
+Progress: resolved 79, reused 74, downloaded 2, added 0
+Progress: resolved 87, reused 78, downloaded 2, added 0
+Progress: resolved 203, reused 139, downloaded 2, added 0
+Progress: resolved 325, reused 216, downloaded 2, added 0
+Progress: resolved 362, reused 298, downloaded 2, added 0
+Progress: resolved 414, reused 318, downloaded 3, added 0
+Progress: resolved 473, reused 410, downloaded 5, added 0
+Progress: resolved 483, reused 423, downloaded 9, added 0
+[WARN] 6 deprecated subdependencies found: fstream@1.0.12, glob@7.2.3, inflight@1.0.6, lodash.isequal@4.5.0, rimraf@2.7.1, uuid@8.3.2
+Packages: +4 -2
+++++--
+Progress: resolved 483, reused 423, downloaded 9, added 1
+Progress: resolved 483, reused 423, downloaded 9, added 4, done
+
+devDependencies:
+- @types/node 26.4.0
++ @types/node 24.19.2 (26.6.5 is available)
+
+Done in 15.9s using pnpm v11.19.0
+
+退出码: 0
+结束时间: 2026-10-26T16:41:52.261182+00:00
+用时秒: 16.17

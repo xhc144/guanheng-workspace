@@ -1,0 +1,37 @@
+开始时间: 2026-10-26T16:46:39.052596+00:00
+实际cwd: /workspace/guanheng-wp01/systems/project-ops
+完整命令: node --experimental-strip-types --test '--test-name-pattern=无会话请求' tests/runtime-health.test.ts
+✖ 无会话请求在全新目录返回401且不会初始化数据库或创建data目录 (522.530017ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 990.437826
+
+✖ failing tests:
+
+test at tests/runtime-health.test.ts:199:1
+✖ 无会话请求在全新目录返回401且不会初始化数据库或创建data目录 (522.530017ms)
+  AssertionError [ERR_ASSERTION]: 未登录诊断不得初始化数据库
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/guanheng-wp01/systems/project-ops/tests/runtime-health.test.ts:215:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+退出码: 1
+结束时间: 2026-10-26T16:46:40.120910+00:00
+用时秒: 1.07

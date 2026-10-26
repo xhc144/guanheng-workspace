@@ -1,0 +1,13 @@
+开始时间: 2026-10-26T16:33:53.596694+00:00
+实际cwd: /workspace/guanheng-wp01/systems/project-ops
+完整命令: pnpm install --frozen-lockfile
+? Verifying lockfile against supply-chain policies (481 entries)...
+Lockfile is up to date, resolution step is skipped
+Already up to date
+✓ Lockfile passes supply-chain policies (481 entries in 13.1s)
+
+Done in 14.3s using pnpm v11.19.0
+
+退出码: 0
+结束时间: 2026-10-26T16:34:08.014369+00:00
+用时秒: 14.42

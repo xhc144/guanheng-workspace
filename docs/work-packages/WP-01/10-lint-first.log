@@ -1,0 +1,8 @@
+开始时间: 2026-10-26T16:35:25.461768+00:00
+实际cwd: /workspace/guanheng-wp01/systems/project-ops
+完整命令: pnpm lint
+$ eslint .
+
+退出码: 0
+结束时间: 2026-10-26T16:35:48.093723+00:00
+用时秒: 22.63
