@@ -1,0 +1,11 @@
+{"cwd": "/tmp/guanheng-WP-03-basic/backend", "command": "PYTHONPATH=. /tmp/guanheng-WP-03-basic/venv/bin/python -m pytest tests/test_auth_config.py tests/test_login_flow.py", "start": "2026-10-26T16:43:50.602685+00:00", "end": "2026-10-26T16:44:32.201259+00:00", "exit_code": 0}
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.7.0
+rootdir: /tmp/guanheng-WP-03-basic/backend
+plugins: anyio-4.15.1
+collected 19 items
+
+tests/test_auth_config.py ..................                             [ 94%]
+tests/test_login_flow.py .                                               [100%]
+
+============================= 19 passed in 40.84s ==============================

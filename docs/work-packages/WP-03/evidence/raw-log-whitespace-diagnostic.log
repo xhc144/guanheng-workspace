@@ -1,0 +1,238 @@
+{"cwd": "/workspace/guanheng-wp03", "command": "git diff --cached --check", "start": "2026-10-26T16:49:15.985326+00:00", "end": "2026-10-26T16:49:17.307759+00:00", "exit_code": 2}
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:31: trailing whitespace.
++    
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:37: trailing whitespace.
++/tmp/guanheng-WP-03-basic/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:149: 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:38: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:75: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:95: trailing whitespace.
++tests/test_extended_features.py:25: 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:96: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:271: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:303: trailing whitespace.
++    
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:309: trailing whitespace.
++/tmp/guanheng-WP-03-basic/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:149: 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:310: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:347: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:367: trailing whitespace.
++tests/test_extended_features.py:44: 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:368: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:543: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:575: trailing whitespace.
++    
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:581: trailing whitespace.
++/tmp/guanheng-WP-03-basic/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:149: 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:582: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:619: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:639: trailing whitespace.
++tests/test_extended_features.py:66: 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:640: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:815: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:847: trailing whitespace.
++    
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:853: trailing whitespace.
++/tmp/guanheng-WP-03-basic/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:149: 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:854: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:891: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:911: trailing whitespace.
++tests/test_full_flow.py:16: 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:912: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:1087: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:1119: trailing whitespace.
++    
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:1125: trailing whitespace.
++/tmp/guanheng-WP-03-basic/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:149: 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:1126: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:1163: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:1183: trailing whitespace.
++tests/test_full_flow.py:45: 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:1184: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-baseline.log:1359: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:32: trailing whitespace.
++    
+docs/work-packages/WP-03/evidence/basic-full-current.log:38: trailing whitespace.
++/tmp/guanheng-WP-03-basic/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:149: 
+docs/work-packages/WP-03/evidence/basic-full-current.log:39: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:76: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:96: trailing whitespace.
++tests/test_extended_features.py:25: 
+docs/work-packages/WP-03/evidence/basic-full-current.log:97: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:272: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:304: trailing whitespace.
++    
+docs/work-packages/WP-03/evidence/basic-full-current.log:310: trailing whitespace.
++/tmp/guanheng-WP-03-basic/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:149: 
+docs/work-packages/WP-03/evidence/basic-full-current.log:311: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:348: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:368: trailing whitespace.
++tests/test_extended_features.py:44: 
+docs/work-packages/WP-03/evidence/basic-full-current.log:369: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:544: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:576: trailing whitespace.
++    
+docs/work-packages/WP-03/evidence/basic-full-current.log:582: trailing whitespace.
++/tmp/guanheng-WP-03-basic/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:149: 
+docs/work-packages/WP-03/evidence/basic-full-current.log:583: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:620: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:640: trailing whitespace.
++tests/test_extended_features.py:66: 
+docs/work-packages/WP-03/evidence/basic-full-current.log:641: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:816: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:848: trailing whitespace.
++    
+docs/work-packages/WP-03/evidence/basic-full-current.log:854: trailing whitespace.
++/tmp/guanheng-WP-03-basic/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:149: 
+docs/work-packages/WP-03/evidence/basic-full-current.log:855: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:892: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:912: trailing whitespace.
++tests/test_full_flow.py:16: 
+docs/work-packages/WP-03/evidence/basic-full-current.log:913: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:1088: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:1120: trailing whitespace.
++    
+docs/work-packages/WP-03/evidence/basic-full-current.log:1126: trailing whitespace.
++/tmp/guanheng-WP-03-basic/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:149: 
+docs/work-packages/WP-03/evidence/basic-full-current.log:1127: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:1164: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:1184: trailing whitespace.
++tests/test_full_flow.py:45: 
+docs/work-packages/WP-03/evidence/basic-full-current.log:1185: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/basic-full-current.log:1360: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/deepseek-final-build-attempt-2.log:24: trailing whitespace.
++✨ [vite-plugin-compression]:algorithm=gzip - compressed file successfully: 
+docs/work-packages/WP-03/evidence/deepseek-final-build-attempt-2.log:33: trailing whitespace.
++✨ [vite-plugin-compression]:algorithm=brotliCompress - compressed file successfully: 
+docs/work-packages/WP-03/evidence/deepseek-final-build-attempt-2.log:39: new blank line at EOF.
+docs/work-packages/WP-03/evidence/deepseek-final-build.log:24: trailing whitespace.
++✨ [vite-plugin-compression]:algorithm=gzip - compressed file successfully: 
+docs/work-packages/WP-03/evidence/deepseek-final-build.log:33: trailing whitespace.
++✨ [vite-plugin-compression]:algorithm=brotliCompress - compressed file successfully: 
+docs/work-packages/WP-03/evidence/deepseek-final-build.log:39: new blank line at EOF.
+docs/work-packages/WP-03/evidence/deepseek-frontend-2.log:24: trailing whitespace.
++✨ [vite-plugin-compression]:algorithm=gzip - compressed file successfully: 
+docs/work-packages/WP-03/evidence/deepseek-frontend-2.log:33: trailing whitespace.
++✨ [vite-plugin-compression]:algorithm=brotliCompress - compressed file successfully: 
+docs/work-packages/WP-03/evidence/deepseek-frontend-2.log:39: new blank line at EOF.
+docs/work-packages/WP-03/evidence/kimi-final-typecheck.log:5: new blank line at EOF.
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:36: trailing whitespace.
++    
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:47: trailing whitespace.
++    
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:52: trailing whitespace.
++/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1806: 
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:53: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:56: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:90: trailing whitespace.
++tests/test_core_flow.py:129: 
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:91: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:232: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:288: trailing whitespace.
++tests/test_core_flow.py:316: 
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:289: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:393: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:419: trailing whitespace.
++    
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:446: trailing whitespace.
++tests/test_services.py:40: 
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:447: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:472: trailing whitespace.
++  /tmp/guanheng-WP-03-regression/baseline/kimi/backend/app/main.py:67: DeprecationWarning: 
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:474: trailing whitespace.
++  
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:477: trailing whitespace.
++          
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:481: trailing whitespace.
++  /tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/applications.py:4723: DeprecationWarning: 
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:483: trailing whitespace.
++  
+docs/work-packages/WP-03/evidence/kimi-full-baseline.log:486: trailing whitespace.
++          
+docs/work-packages/WP-03/evidence/kimi-full-current.log:37: trailing whitespace.
++    
+docs/work-packages/WP-03/evidence/kimi-full-current.log:48: trailing whitespace.
++    
+docs/work-packages/WP-03/evidence/kimi-full-current.log:53: trailing whitespace.
++/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1806: 
+docs/work-packages/WP-03/evidence/kimi-full-current.log:54: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/kimi-full-current.log:57: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/kimi-full-current.log:91: trailing whitespace.
++tests/test_core_flow.py:129: 
+docs/work-packages/WP-03/evidence/kimi-full-current.log:92: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/kimi-full-current.log:233: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/kimi-full-current.log:289: trailing whitespace.
++tests/test_core_flow.py:316: 
+docs/work-packages/WP-03/evidence/kimi-full-current.log:290: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/kimi-full-current.log:394: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/kimi-full-current.log:420: trailing whitespace.
++    
+docs/work-packages/WP-03/evidence/kimi-full-current.log:447: trailing whitespace.
++tests/test_services.py:40: 
+docs/work-packages/WP-03/evidence/kimi-full-current.log:448: trailing whitespace.
++_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+docs/work-packages/WP-03/evidence/kimi-full-current.log:473: trailing whitespace.
++  /tmp/guanheng-WP-03-regression/current/kimi/backend/app/main.py:70: DeprecationWarning: 
+docs/work-packages/WP-03/evidence/kimi-full-current.log:475: trailing whitespace.
++  
+docs/work-packages/WP-03/evidence/kimi-full-current.log:478: trailing whitespace.
++          
+docs/work-packages/WP-03/evidence/kimi-full-current.log:482: trailing whitespace.
++  /tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/applications.py:4723: DeprecationWarning: 
+docs/work-packages/WP-03/evidence/kimi-full-current.log:484: trailing whitespace.
++  
+docs/work-packages/WP-03/evidence/kimi-full-current.log:487: trailing whitespace.
++          
+docs/work-packages/WP-03/evidence/kimi-typecheck.log:5: new blank line at EOF.

@@ -1,0 +1,516 @@
+{"cwd": "/tmp/guanheng-WP-03-regression/baseline/kimi/backend", "command": "PYTHONPATH=. /tmp/guanheng-WP-03-kimi/venv/bin/python -m pytest", "start": "2026-10-26T16:42:01.902496+00:00", "end": "2026-10-26T16:42:15.732036+00:00", "exit_code": 1}
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.7.0
+rootdir: /tmp/guanheng-WP-03-regression/baseline/kimi/backend
+plugins: anyio-4.15.1
+collected 23 items
+
+tests/test_auth_smoke.py .                                               [  4%]
+tests/test_core_flow.py ....F...F.....F...F.                             [ 91%]
+tests/test_services.py .F                                                [100%]
+
+=================================== FAILURES ===================================
+________________________ test_risk_workbench_dashboard _________________________
+
+self = <sqlalchemy.engine.base.Connection object at 0x7f7eee50dcd0>
+dialect = <sqlalchemy.dialects.sqlite.pysqlite.SQLiteDialect_pysqlite object at 0x7f7ef0c2f890>
+constructor = <bound method DefaultExecutionContext._init_compiled of <class 'sqlalchemy.dialects.sqlite.base.SQLiteExecutionContext'>>
+statement = <sqlalchemy.dialects.sqlite.base.SQLiteCompiler object at 0x7f7eee50e450>
+parameters = [{'promise_date': '2020-01-01', 'author_id': 1, 'risk_id': 1, 'content': '跟进中'}]
+execution_options = immutabledict({'compiled_cache': <sqlalchemy.util._collections.LRUCache object at 0x7f7eee502de0>})
+args = (<sqlalchemy.dialects.sqlite.base.SQLiteCompiler object at 0x7f7eee50e450>, [{'promise_date': '2020-01-01', 'author_id': 1, 'risk_id': 1, 'content': '跟进中'}], <sqlalchemy.sql.dml.Insert object at 0x7f7eee50e480>, [])
+kw = {'cache_hit': <CacheStats.CACHE_MISS: 1>, 'param_dict': None}
+
+    def _execute_context(
+        self,
+        dialect: Dialect,
+        constructor: Callable[..., ExecutionContext],
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+        execution_options: _ExecuteOptions,
+        *args: Any,
+        **kw: Any,
+    ) -> CursorResult[Unpack[TupleAny]]:
+        """Create an :class:`.ExecutionContext` and execute, returning
+        a :class:`_engine.CursorResult`."""
+    
+        if execution_options:
+            yp = execution_options.get("yield_per", None)
+            if yp:
+                execution_options = execution_options.union(
+                    {"stream_results": True, "max_row_buffer": yp}
+                )
+        try:
+            conn = self._dbapi_connection
+            if conn is None:
+                conn = self._revalidate_connection()
+    
+>           context = constructor(
+                dialect, self, conn, execution_options, *args, **kw
+            )
+
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1806: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py:1750: in _init_compiled
+    flattened_processors[key](compiled_params[key])
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '2020-01-01'
+
+    def process(value):
+        if value is None:
+            return None
+        elif isinstance(value, datetime_date):
+            return format_ % {
+                "year": value.year,
+                "month": value.month,
+                "day": value.day,
+            }
+        else:
+>           raise TypeError(
+                "SQLite Date type only accepts Python "
+                "date objects as input."
+            )
+E           TypeError: SQLite Date type only accepts Python date objects as input.
+
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/base.py:1341: TypeError
+
+The above exception was the direct cause of the following exception:
+
+    def test_risk_workbench_dashboard():
+        token, pid = T["admin"], T["pid"]
+        r = client.post("/api/v1/risks", json={"project_id": pid, "title": "进度风险",
+                                               "probability": "高", "impact": "高",
+                                               "due_date": "2030-01-01"}, headers=auth(token))
+        assert r.json()["level"] == "高" and "判定" in r.json()["level_reason"]
+        rid = r.json()["id"]
+>       client.post(f"/api/v1/risks/{rid}/followups",
+                    json={"content": "跟进中", "promise_date": "2020-01-01"}, headers=auth(token))
+
+tests/test_core_flow.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/httpx/_client.py:1144: in post
+    return self.request(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/testclient.py:518: in request
+    return super().request(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/httpx/_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/httpx/_client.py:928: in send
+    raise exc
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/httpx/_client.py:922: in send
+    response.read()
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/httpx/_models.py:881: in read
+    self._content = b"".join(self.iter_bytes())
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/httpx/_models.py:897: in iter_bytes
+    for raw_bytes in self.iter_raw():
+                     ^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/httpx/_models.py:951: in iter_raw
+    for raw_stream_bytes in self.stream:
+                            ^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/httpx/_client.py:153: in __iter__
+    for chunk in self._stream:
+                 ^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/testclient.py:384: in iter_body
+    exit_stack.close()
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py:618: in close
+    self.__exit__(None, None, None)
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py:610: in __exit__
+    raise exc_details[1]
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py:595: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/testclient.py:399: in close_app
+    raise exception
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/anyio/from_thread.py:265: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/testclient.py:366: in run_app
+    await self.app(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/applications.py:1194: in __call__
+    await super().__call__(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/applications.py:96: in __call__
+    await self.middleware_stack(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/middleware/errors.py:186: in __call__
+    raise exc
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/middleware/errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/telemetry/_asgi.py:151: in __call__
+    await self.app(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/middleware/cors.py:91: in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/middleware/cors.py:149: in simple_response
+    await self.app(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/_exception_handler.py:53: in wrapped_app
+    raise exc
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/routing.py:683: in __call__
+    await self.middleware_stack(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:2811: in app
+    await route.handle(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:1839: in handle
+    await self.original_router.handle(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:2894: in handle
+    await included_router._handle_selected(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:1865: in _handle_selected
+    await original_route.handle(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:1328: in handle
+    await effective_context.app(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:166: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/_exception_handler.py:53: in wrapped_app
+    raise exc
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:152: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:745: in app
+    raw_response = await run_endpoint_function(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:374: in run_endpoint_function
+    return await run_in_threadpool(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/concurrency.py:34: in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/anyio/to_thread.py:65: in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py:2706: in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py:1100: in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/telemetry/_api.py:244: in _run_sync_endpoint
+    return function(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+app/routers/risks.py:88: in add_followup
+    db.add(f); db.flush()
+               ^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py:4543: in flush
+    self._flush(objects)
+<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>:2: in _flush
+    return target(fn, self, objects=objects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/util/deprecations.py:281: in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py:4686: in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py:166: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py:4647: in _flush
+    flush_context.execute()
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py:467: in execute
+    rec.execute(self)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py:643: in execute
+    util.preloaded.orm_persistence._save_obj(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py:92: in _save_obj
+    _emit_insert_statements(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py:1237: in _emit_insert_statements
+    result = connection.execute(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1463: in execute
+    return meth(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py:533: in _execute_on_connection
+    return connection._execute_clauseelement(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1683: in _execute_clauseelement
+    ret = self._execute_context(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1812: in _execute_context
+    self._handle_dbapi_exception(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:2347: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1806: in _execute_context
+    context = constructor(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py:1750: in _init_compiled
+    flattened_processors[key](compiled_params[key])
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '2020-01-01'
+
+    def process(value):
+        if value is None:
+            return None
+        elif isinstance(value, datetime_date):
+            return format_ % {
+                "year": value.year,
+                "month": value.month,
+                "day": value.day,
+            }
+        else:
+>           raise TypeError(
+                "SQLite Date type only accepts Python "
+                "date objects as input."
+            )
+E           sqlalchemy.exc.StatementError: (builtins.TypeError) SQLite Date type only accepts Python date objects as input.
+E           [SQL: INSERT INTO risk_followups (risk_id, content, promise_date, author_id, version) VALUES (?, ?, ?, ?, ?) RETURNING id, created_at, updated_at]
+E           [parameters: [{'promise_date': '2020-01-01', 'author_id': 1, 'risk_id': 1, 'content': '跟进中'}]]
+
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/base.py:1341: StatementError
+_____________________________ test_timesheet_flow ______________________________
+
+    def test_timesheet_flow():
+        token, pid = T["admin"], T["pid"]
+        pm_token = login("pm1", "pm123456")
+        r = client.post("/api/v1/timesheets", json={"project_id": pid, "work_date": "2024-01-02",
+                                                    "hours": 6.5, "content": "开发"},
+                        headers=auth(pm_token))
+        assert r.status_code == 201, r.text
+        tid = r.json()["id"]
+        assert client.post(f"/api/v1/timesheets/{tid}/submit", headers=auth(pm_token)).json()["status"] == "待审批"
+        # 重复提交幂等
+        assert client.post(f"/api/v1/timesheets/{tid}/submit", headers=auth(pm_token)).json().get("idempotent")
+        r = client.post(f"/api/v1/timesheets/{tid}/review", json={"action": "approve"}, headers=auth(token))
+        assert r.json()["status"] == "已通过"
+        # 未来日期拒绝
+        assert client.post("/api/v1/timesheets", json={"project_id": pid, "work_date": "2099-01-01",
+                                                       "hours": 1}, headers=auth(pm_token)).status_code == 422
+        wl = client.get("/api/v1/reports/workload?days=400", headers=auth(token)).json()
+>       assert any(m["total_hours"] >= 6.5 for m in wl["members"])
+E       assert False
+E        +  where False = any(<generator object test_timesheet_flow.<locals>.<genexpr> at 0x7f7eed7a79f0>)
+
+tests/test_core_flow.py:224: AssertionError
+_____________________________ test_customer_health _____________________________
+
+    def test_customer_health():
+        token = T["admin"]
+        custs = client.get("/api/v1/customers", headers=auth(token)).json()
+        cid = next(c["id"] for c in custs if c["code"] == "C001")
+>       r = client.get(f"/api/v1/customers/{cid}/health", headers=auth(token))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_core_flow.py:316: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/httpx/_client.py:1053: in get
+    return self.request(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/testclient.py:518: in request
+    return super().request(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/httpx/_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/httpx/_client.py:928: in send
+    raise exc
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/httpx/_client.py:922: in send
+    response.read()
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/httpx/_models.py:881: in read
+    self._content = b"".join(self.iter_bytes())
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/httpx/_models.py:897: in iter_bytes
+    for raw_bytes in self.iter_raw():
+                     ^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/httpx/_models.py:951: in iter_raw
+    for raw_stream_bytes in self.stream:
+                            ^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/httpx/_client.py:153: in __iter__
+    for chunk in self._stream:
+                 ^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/testclient.py:384: in iter_body
+    exit_stack.close()
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py:618: in close
+    self.__exit__(None, None, None)
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py:610: in __exit__
+    raise exc_details[1]
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py:595: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/testclient.py:399: in close_app
+    raise exception
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/anyio/from_thread.py:265: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/testclient.py:366: in run_app
+    await self.app(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/applications.py:1194: in __call__
+    await super().__call__(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/applications.py:96: in __call__
+    await self.middleware_stack(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/middleware/errors.py:186: in __call__
+    raise exc
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/middleware/errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/telemetry/_asgi.py:151: in __call__
+    await self.app(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/middleware/cors.py:91: in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/middleware/cors.py:149: in simple_response
+    await self.app(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/_exception_handler.py:53: in wrapped_app
+    raise exc
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/routing.py:683: in __call__
+    await self.middleware_stack(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:2811: in app
+    await route.handle(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:1839: in handle
+    await self.original_router.handle(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:2894: in handle
+    await included_router._handle_selected(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:1865: in _handle_selected
+    await original_route.handle(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:1328: in handle
+    await effective_context.app(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:166: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/_exception_handler.py:53: in wrapped_app
+    raise exc
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:152: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:745: in app
+    raw_response = await run_endpoint_function(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/routing.py:374: in run_endpoint_function
+    return await run_in_threadpool(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/starlette/concurrency.py:34: in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/anyio/to_thread.py:65: in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py:2706: in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py:1100: in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+/tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/telemetry/_api.py:244: in _run_sync_endpoint
+    return function(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+app/routers/customers.py:73: in customer_health_api
+    return customer_health(db, cid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+db = <sqlalchemy.orm.session.Session object at 0x7f7eed74d850>, customer_id = 1
+
+    def customer_health(db: Session, customer_id: int) -> dict:
+        """客户健康度(0-100)：应收逾期、回款率、高风险、近90天活跃度综合"""
+        from .models import Activity, Customer, Project, Risk
+        c = db.get(Customer, customer_id)
+        if not c:
+            return {"score": 0, "level": "未知", "factors": {}}
+        projects = db.query(Project).filter(Project.customer_id == customer_id,
+                                            Project.is_archived == False).all()  # noqa: E712
+        score = 100.0
+        factors = {}
+        overdue = sum(overdue_amount(db, p.id) for p in projects)
+        contract = sum(float(contract_amount(db, p.id)) for p in projects)
+        if contract > 0:
+>           o_ratio = overdue / contract
+                      ^^^^^^^^^^^^^^^^^^
+E           TypeError: unsupported operand type(s) for /: 'decimal.Decimal' and 'float'
+
+app/services.py:34: TypeError
+______________________________ test_import_excel _______________________________
+
+    def test_import_excel():
+        import openpyxl
+    
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.append(["项目编号", "项目名称", "客户", "负责人", "合同金额", "已收", "应收", "月份"])
+        ws.append(["IMP001", "导入项目一", "导入客户", "张三", 80000, 30000, 50000, "2024.06"])
+        ws.append([None, "合计", None, None, 80000, 30000, 50000, None])  # 合计行应跳过
+        ws.append(["IMP002", None, "客户B", None, 1000, 0, 0, None])  # 缺名称 → 错误行
+        buf = io.BytesIO()
+        wb.save(buf)
+        buf.seek(0)
+        r = client.post("/api/v1/imports/projects",
+                        files={"file": ("t.xlsx", buf.getvalue(),
+                                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")},
+                        headers=auth(T["admin"]))
+        assert r.status_code == 200, r.text
+        rep = r.json()
+>       assert rep["created"] == 1 and rep["skipped"] == 1 and len(rep["errors"]) == 1
+E       assert (2 == 1)
+
+tests/test_core_flow.py:396: AssertionError
+______________________ test_progress_and_finance_rollback ______________________
+
+    def test_progress_and_finance_rollback():
+        s = _session()
+        try:
+>           _run(s)
+
+tests/test_services.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = <sqlalchemy.orm.session.Session object at 0x7f7eee6d69c0>
+
+    def _run(s):
+        p = models.Project(code="UT1", name="单元测试项目")
+        s.add(p); s.flush()
+        s.add_all([
+            models.Task(project_id=p.id, title="t1", weight=1, status="已完成"),
+            models.Task(project_id=p.id, title="t2", weight=3, status="进行中"),
+            models.Task(project_id=p.id, title="t3", weight=1, status="已取消"),
+        ])
+>       assert project_progress(s, p.id) == 25.0  # 1/(1+3)，已取消不计
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       assert 0.0 == 25.0
+E        +  where 0.0 = project_progress(<sqlalchemy.orm.session.Session object at 0x7f7eee6d69c0>, 5)
+E        +    where 5 = <app.models.Project object at 0x7f7eee614fe0>.id
+
+tests/test_services.py:54: AssertionError
+=============================== warnings summary ===============================
+../../../../guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+app/main.py:67
+  /tmp/guanheng-WP-03-regression/baseline/kimi/backend/app/main.py:67: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("startup")
+
+../../../../guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/applications.py:4723
+  /tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/fastapi/applications.py:4723: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    return self.router.on_event(event_type)  # ty: ignore[deprecated]
+
+tests/test_auth_smoke.py::test_admin_login_smoke
+tests/test_core_flow.py::test_org_setup
+tests/test_core_flow.py::test_permission_denied
+tests/test_core_flow.py::test_search_and_notifications
+tests/test_core_flow.py::test_approval_flow
+tests/test_core_flow.py::test_timesheet_flow
+tests/test_core_flow.py::test_dicts_crud
+tests/test_core_flow.py::test_backup
+tests/test_core_flow.py::test_permission_wildcard
+  /tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/jwt/api_jwt.py:149: InsecureKeyLengthWarning: The HMAC key is 14 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+    return self._jws.encode(
+
+tests/test_core_flow.py: 22 warnings
+  /tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/jwt/api_jwt.py:370: InsecureKeyLengthWarning: The HMAC key is 14 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+    decoded = self.decode_complete(
+
+tests/test_core_flow.py::test_wiki_flow
+  /tmp/guanheng-WP-03-kimi/venv/lib/python3.12/site-packages/sqlalchemy/sql/schema.py:4296: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    return util.wrap_callable(lambda ctx: fn(), fn)  # type: ignore[call-arg, no-any-return, no-untyped-call]  # noqa: E501
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_core_flow.py::test_risk_workbench_dashboard - sqlalchemy.ex...
+FAILED tests/test_core_flow.py::test_timesheet_flow - assert False
+FAILED tests/test_core_flow.py::test_customer_health - TypeError: unsupported...
+FAILED tests/test_core_flow.py::test_import_excel - assert (2 == 1)
+FAILED tests/test_services.py::test_progress_and_finance_rollback - assert 0....
+================== 5 failed, 18 passed, 35 warnings in 12.61s ==================

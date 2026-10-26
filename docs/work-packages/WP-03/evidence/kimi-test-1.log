@@ -1,0 +1,11 @@
+{"cwd": "/tmp/guanheng-WP-03-kimi/backend", "command": "PYTHONPATH=. /tmp/guanheng-WP-03-kimi/venv/bin/python -m pytest tests/test_auth_config.py tests/test_auth_smoke.py", "start": "2026-10-26T16:34:10.668839+00:00", "end": "2026-10-26T16:34:52.059410+00:00", "exit_code": 0}
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.7.0
+rootdir: /tmp/guanheng-WP-03-kimi/backend
+plugins: anyio-4.15.1
+collected 18 items
+
+tests/test_auth_config.py .................                              [ 94%]
+tests/test_auth_smoke.py .                                               [100%]
+
+============================= 18 passed in 30.77s ==============================

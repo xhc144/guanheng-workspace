@@ -1,0 +1,62 @@
+{
+  "verified_source_commit": "98788751313252b876f0bbc58b5deb54b8e5dd88",
+  "files": [
+    {
+      "path": "systems/pms-suite/DeepSeek版/backend/app/config.py",
+      "sha256": "910ba6709d258268350c4933c0f8b5dd7f15e200ff8bff2c9700b0ca66abedaf"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/backend/app/main.py",
+      "sha256": "cae5f430eb40ca843b71f612bf5f7f167a215ad8b35a4cabb8483737d8325298"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/backend/app/seeder.py",
+      "sha256": "94b26ba3a61370daffca8b9994cb54db9bb3e4dd884644f0edd1dc00c67d51f8"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+      "sha256": "800851c4ecc32d43a69a9222c1ca2722534a6076579101e3ced57234b887b16f"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/frontend/src/pages/Login.tsx",
+      "sha256": "c3a835b886a3d7f370ed4b1c9695fff84a37ff310d50eeb0f30492add00f542e"
+    },
+    {
+      "path": "systems/pms-suite/Kimi版/backend/app/config.py",
+      "sha256": "ec04bb28929e35ef12070476c0ae26129b342ec29469ecc25558b54456ba2533"
+    },
+    {
+      "path": "systems/pms-suite/Kimi版/backend/app/main.py",
+      "sha256": "7e0a575cb5765fe7a3b3e4d83cf59615c41442bc7f2c3657ba90619a8330bb1d"
+    },
+    {
+      "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+      "sha256": "86c758bcdf339903254a49d0c546c5c1f88be2a75ab0c189f86bdb29b94b268e"
+    },
+    {
+      "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_smoke.py",
+      "sha256": "ae24a1a591db55d4dc7e048cbee9420096b7f938aa0565c5f9df64eeb5638fc7"
+    },
+    {
+      "path": "systems/pms-suite/Kimi版/frontend/src/pages/Login.tsx",
+      "sha256": "4d2d6e0d99abde9e2a63d21084b5dac2ffb0e7d6644ddeef9c90a51acb09a0ec"
+    },
+    {
+      "path": "systems/pms-suite/基础版/backend/app/core/config.py",
+      "sha256": "d6c4b13ddfde1b457eda5bcc6e03fccc9daa2647f6b3275c41fda2a1240a8707"
+    },
+    {
+      "path": "systems/pms-suite/基础版/backend/app/demo.py",
+      "sha256": "8bc395edbf3f0cb39c2efee04049692b056fb0ee990e991c134256e6cdd19619"
+    },
+    {
+      "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+      "sha256": "3880e51a8ef6f1fb0b47f4c53732129ee3802b24ad722f9b989b1dbab83a2b1a"
+    },
+    {
+      "path": "systems/pms-suite/基础版/backend/tests/test_login_flow.py",
+      "sha256": "3e8d39d4c5317be9b76a4f282cb5f9090a730ac01925e50f44c548b6636d6889"
+    }
+  ],
+  "source_matches_commit": true
+}

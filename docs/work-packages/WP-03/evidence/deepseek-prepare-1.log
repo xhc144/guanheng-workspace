@@ -1,0 +1,1 @@
+{"cwd": "/workspace/guanheng-wp03", "command": "python3 -c 'import shutil; shutil.copytree(\"systems/pms-suite/DeepSeek版/backend\", \"/tmp/guanheng-WP-03-deepseek/backend\", ignore=shutil.ignore_patterns(\".venv\", \"__pycache__\", \".demo\", \".pytest_cache\", \".env*\"))'", "start": "2026-10-26T16:31:43.714856+00:00", "end": "2026-10-26T16:31:43.770177+00:00", "exit_code": 0}

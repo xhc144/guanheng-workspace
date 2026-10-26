@@ -1,0 +1,18 @@
+{"cwd": "/workspace/guanheng-wp03/systems/pms-suite/Kimi版/frontend", "command": "npm run build", "start": "2026-10-26T16:35:22.789480+00:00", "end": "2026-10-26T16:35:46.744099+00:00", "exit_code": 0}
+
+> pms-frontend@0.1.0 build
+> vite build
+
+vite v5.4.21 building for production...
+transforming...
+✓ 3686 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                    0.32 kB │ gzip:   0.27 kB
+dist/assets/index-CdkhgaeB.js  2,431.52 kB │ gzip: 786.95 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 22.49s

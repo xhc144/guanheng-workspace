@@ -1,0 +1,15 @@
+{"cwd": "/tmp/guanheng-WP-03-deepseek/backend", "command": ["/tmp/guanheng-WP-03-deepseek/venv/bin/python", "-m", "uvicorn", "app.main:app", "--host", "127.0.0.1", "--port", "8102"], "time": "2026-10-26T17:16:02.045850+00:00", "source_binding": {"source_commit": "47423fbcf0c7734ecb9e8be47f2b92bf049069d8", "source_tree": "972d4d6f163190638845ab8b773c82b1c46d9b44", "execution_head": "47423fbcf0c7734ecb9e8be47f2b92bf049069d8", "manifest": "docs/work-packages/WP-03/evidence/p2-source-manifest.json", "manifest_sha256": "07db39a3ac93f6e92200bd55f4e0dd3f58d2e271055e37156201ccff4b2645b2", "source_blobs_match": true}, "executed_backend": {"edition": "deepseek", "backend_cwd": "/tmp/guanheng-WP-03-deepseek/backend", "backend_source_commit": "47423fbcf0c7734ecb9e8be47f2b92bf049069d8", "backend_blobs_match": true, "backend_blob_map_sha256": "2a0dc24ab6f1dcf28c2bf7b7fa94190290a8174d3b306f610608ac623b9a7a4a"}}
+INFO:     Started server process [8438]
+INFO:     Waiting for application startup.
+2026-10-26 17:16:03 [INFO] pms: Initializing database...
+2026-10-26 17:16:03 [INFO] pms: Database tables created
+2026-10-26 17:16:03 [INFO] pms: Seed data loaded, application ready
+2026-10-26 17:16:03 [INFO] pms: 数据完整性检查通过
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8102 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2026-10-26 17:16:11 [INFO] pms: Shutting down...
+2026-10-26 17:16:11 [INFO] pms: Database connections disposed
+INFO:     Application shutdown complete.
+INFO:     Finished server process [8438]

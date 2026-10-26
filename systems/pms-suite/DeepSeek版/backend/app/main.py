@@ -102,6 +102,9 @@ app.include_router(portal_admin_router)
 
 @app.on_event("startup")
 def on_startup():
+    if settings.is_production:
+        logger.info("生产模式：不创建表、不补列、不生成演示账号；请使用预先审核的数据库")
+        return
     logger.info("Initializing database...")
     try:
         if settings.DEMO_MODE:
@@ -117,6 +120,7 @@ def on_startup():
         _check_data_integrity()
     except Exception as e:
         logger.error(f"Startup error: {e}", exc_info=True)
+        raise
 
 
 @app.on_event("shutdown")
@@ -197,6 +201,8 @@ def system_status(db=Depends(get_db)):
 
 def _seed_data():
     """初始化种子数据"""
+    if settings.is_production:
+        raise RuntimeError("生产模式禁止播种演示数据或创建演示账号")
     import json
     from app.database import SessionLocal
     from app.models import (
