@@ -13,9 +13,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('edition', choices=EDITIONS)
     parser.add_argument('revision', choices=['baseline', 'current'])
+    parser.add_argument('--run-name', default='original')
     args = parser.parse_args()
     prefix = f'systems/pms-suite/{EDITIONS[args.edition]}/backend'
-    destination = Path(f'/tmp/guanheng-WP-03-regression/{args.revision}/{args.edition}/backend')
+    destination = Path(f'/tmp/guanheng-WP-03-regression/{args.run_name}/{args.revision}/{args.edition}/backend')
     if destination.exists():
         raise SystemExit('临时回归副本已存在，拒绝覆盖')
     if args.revision == 'current':
@@ -32,7 +33,9 @@ def main():
             target.write_bytes(subprocess.check_output(['git', 'show', f'{BASE}:{path}'], cwd=ROOT))
     python = f'/tmp/guanheng-WP-03-{args.edition}/venv/bin/python'
     raise SystemExit(run(f'PYTHONPATH=. {python} -m pytest', destination,
-                         f'{args.edition}-full-{args.revision}'))
+                         f'{args.run_name}-{args.edition}-full-{args.revision}',
+                         edition=args.edition, backend=destination,
+                         backend_revision=BASE if args.revision == 'baseline' else None))
 
 
 if __name__ == '__main__':

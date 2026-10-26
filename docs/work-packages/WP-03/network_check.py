@@ -11,15 +11,18 @@ from playwright.sync_api import expect, sync_playwright
 
 from browser_check import evidence_file, stop_process, wait_url
 from verify import EVIDENCE, ROOT
+from source_binding import verify_backend, verify_source
 
 
 def main():
     results = []
+    source_binding = verify_source()
     for short, edition, backend_port, frontend_port, prefix in [
         ('deepseek', 'DeepSeek版', 8102, 5182, '/api'),
         ('kimi', 'Kimi版', 8101, 5181, '/api/v1'),
     ]:
         base = Path(f'/tmp/guanheng-WP-03-{short}')
+        actual_backend = verify_backend(base / 'backend', short)
         env = {k: v for k, v in os.environ.items() if k.upper() not in {
             'SECRET_KEY', 'ENVIRONMENT', 'DATABASE_URL', 'DEMO_MODE', 'ADMIN_USERNAME', 'ADMIN_PASSWORD'}}
         env.update(ENVIRONMENT='test', DEMO_MODE='1', PYTHONPATH=str(base / 'backend'),
@@ -33,7 +36,8 @@ def main():
                 ('frontend', ['npm', 'run', 'dev'], ROOT / 'systems/pms-suite' / edition / 'frontend', f'http://127.0.0.1:{frontend_port}/'),
             ]:
                 log = processes.enter_context(evidence_file(f'{short}-network-{name}', '.log').open('w'))
-                log.write(json.dumps({'cwd': str(cwd), 'command': command, 'time': datetime.now(timezone.utc).isoformat()}, ensure_ascii=False) + '\n')
+                log.write(json.dumps({'cwd': str(cwd), 'command': command, 'time': datetime.now(timezone.utc).isoformat(), 'source_binding': source_binding,
+                                      'executed_backend': actual_backend}, ensure_ascii=False) + '\n')
                 log.flush()
                 process = subprocess.Popen(command, cwd=cwd, env=env, stdout=log,
                                            stderr=subprocess.STDOUT, start_new_session=True)
@@ -80,7 +84,7 @@ def main():
                     context.close()
                 finally:
                     browser.close()
-    record = {'time': datetime.now(timezone.utc).isoformat(), 'checks': results}
+    record = {'time': datetime.now(timezone.utc).isoformat(), 'checks': results, 'source_binding': verify_source()}
     evidence_file('network-results', '.json').write_text(json.dumps(record, ensure_ascii=False, indent=2))
     print(json.dumps(record, ensure_ascii=False, indent=2))
 

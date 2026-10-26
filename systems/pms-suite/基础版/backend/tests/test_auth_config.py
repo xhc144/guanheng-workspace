@@ -27,7 +27,13 @@ def launch(code, cwd, *, mode="production", key=None, demo="0", extra=None):
 
 
 @pytest.mark.parametrize("key", [None, "", "   ", DEFAULT_KEY, "short", "a" * 64,
-                                     "0123456789abcdef" * 4, "change-me-to-a-random-production-secret"])
+                                     "0123456789abcdef" * 4, "change-me-to-a-random-production-secret",
+                                     '0123456789abcdefghijklmnopqrstuvwxyz',
+                                     'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+                                     'zyxwvutsrqponmlkjihgfedcba9876543210',
+                                     'Admin@123456-SyntheticFixedTail2026!',
+                                     'Qwerty!2026-SyntheticFixedTail-Ab9#',
+                                     'LetMeIn!2026-SyntheticFixedTail-Ab9#'])
 def test_production_refuses_missing_empty_default_and_weak_keys(tmp_path, key):
     result = launch("import app.main", tmp_path, key=key)
     assert result.returncode != 0
@@ -165,3 +171,13 @@ print('跨进程重启保留密码通过')
     second = launch(second_code, isolated, mode='test', demo='1', extra=extra)
     assert second.returncode == 0, second.stdout + second.stderr
     assert '跨进程重启保留密码通过' in second.stdout
+
+
+def test_explicit_synthetic_nonsequential_key_can_load(tmp_path):
+    # 固定公开合成反例仅用于确认保守拒绝，不是可部署的生产秘密。
+    key = "N7!r2P@v9D#s4H$w6J%t8L&b3Q*z5C!a9"
+    result = launch(f"from {CONFIG_MODULE} import Settings; s=Settings(_env_file=None); "
+                    "assert s.is_production; print('合成配置可载入')", tmp_path, key=key)
+    assert result.returncode == 0, result.stderr
+    assert result.stdout.strip() == '合成配置可载入'
+    assert key not in result.stdout + result.stderr

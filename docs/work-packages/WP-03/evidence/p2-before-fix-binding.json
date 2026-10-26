@@ -1,0 +1,16 @@
+{
+  "purpose": "P2修复前失败复现；配置来自db72348，测试含新增公开合成反例。该轮不是冻结返修验收。",
+  "configuration_base": "db72348955fb356e6a277b785e7950f4333a65d3",
+  "files": [
+    {
+      "actual_temporary_file": "/tmp/guanheng-WP-03-deepseek/backend/app/config.py",
+      "git_blob": "720b9a30cfad76fa34043f1a168e9fb1e5988591",
+      "sha256": "910ba6709d258268350c4933c0f8b5dd7f15e200ff8bff2c9700b0ca66abedaf"
+    },
+    {
+      "actual_temporary_file": "/tmp/guanheng-WP-03-deepseek/backend/tests/test_auth_config.py",
+      "git_blob": "e7586133adddbfd12bcb3bb8f6a054c462b616a8",
+      "sha256": "6d4523af5c369af263dcb504032954eb037ccc1ab68d361788a8e763bb538c93"
+    }
+  ]
+}

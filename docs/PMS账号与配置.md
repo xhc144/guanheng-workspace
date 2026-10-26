@@ -20,7 +20,7 @@ DeepSeek 主启动与 `python -m app.seeder` 共用同一个种子入口，不�
 
 三版都使用 `ENVIRONMENT`：默认 `development`，测试可设 `test`，生产使用 `production`。前后空格及大小写会规范化，`prod` 作为生产别名。其他值直接拒绝，避免拼写错误意外落入开发模式。
 
-生产模式的 `SECRET_KEY` 必须由进程环境变量注入。仅放在配置文件、依赖代码默认值或直接构造 Settings 参数都不符合此契约。密钥要求至少 32 个字符、至少 12 种不同字符，无空白、不使用重复片段；拒绝包含 `secret`、`change`、`password`、`example`、`replace`、`your-`、`your_` 的占位口令。该校验用于拒绝明显弱值，不能证明密钥的随机性；密钥应由安全随机源生成，由运营者的密钥管理工具注入。
+生产模式的 `SECRET_KEY` 必须由进程环境变量注入。仅放在配置文件、依赖代码默认值或直接构造 Settings 参数都不符合此契约。密钥要求至少 32 个字符、至少 12 种不同字符，无空白、不使用重复片段；拒绝包含 `secret`、`change`、`password`、`example`、`replace`、`your-`、`your_` 的占位口令。另保守拒绝已知数字、字母、键盘排列中连续10位的正反顺序片段，以及去掉分隔符后以 admin123、qwerty、letmein、welcome 等常见口令开头再加固定后缀的值。公开合成反例包括 `0123456789abcdefghijklmnopqrstuvwxyz`、`Admin@123456-SyntheticFixedTail2026!`。该校验只筛除明确弱模式，不能从任意字符串证明密码学随机性；生产密钥须由用户使用安全随机源生成，并通过自己的密钥管理工具注入。WP-03不生成、不配置、不保存真实生产密钥。
 
 配置错误在加载应用前以非零退出码和中文提示结束；错误提示不包含密钥内容，Settings 的 repr 隐藏密钥。运行时测试使用临时随机值，不写入仓库、报告或命令输出。
 
@@ -31,6 +31,12 @@ DeepSeek 主启动与 `python -m app.seeder` 共用同一个种子入口，不�
 | Kimi版 | 应用可载入；启动不建表、不生成演示账号、不启动写库提醒线程，种子入口拒绝生产调用 | `DEMO_MODE=1` 时使用自身 `backend/.demo/demo.db`；生产禁止开启演示模式 |
 
 三版演示入口拒绝 `.demo` 目录或 `demo.db` 文件为符号链接。DeepSeek、Kimi 保留原有非演示开发模式以兼容存量回归；不得用该模式连接真实库。健康接口返回成功只说明进程响应，不能证明生产数据库、账号或业务可用。
+
+## 继承的鉴权限制
+
+基础版与Kimi版没有登录节流；DeepSeek只有既有通用的每IP每分钟300次API限流，并非专用登录防爆破机制，也未验收分布式限流。此处如实记录既有边界，WP-03未新增Redis、登录安全平台或生产鉴权体系。
+
+本包只验证合成演示身份与指定生产配置拒启，不代表生产鉴权、密码重置、暴力破解防护或整体安全已全面验收。PMS仍按演示/归档范围使用。
 
 ## 在合成副本中验证
 
@@ -47,6 +53,8 @@ python3 docs/work-packages/WP-03/verify.py frontend basic
 python3 docs/work-packages/WP-03/verify.py frontend deepseek
 python3 docs/work-packages/WP-03/verify.py frontend kimi
 ```
+
+返修验收先提交所有源码和回归工具，再用 `python3 docs/work-packages/WP-03/source_binding.py <精确源head>` 生成不可覆盖的P2清单。每条新命令日志写入冻结SHA、清单SHA-256及执行前后源文件blob匹配结果；后端安装、测试和浏览器启动还逐文件核对临时副本blob。清单只含代码与说明，不读取`.env`或记录环境密钥。后续报告提交不算新的源码测试。
 
 `prepare` 使用任务规定的固定临时路径；若副本已存在会拒绝覆盖。源码修改后必须同步任务拥有的源码到合成副本再复测，不能把旧副本的通过结果当成新代码结果。安装失败会保留输出并停止该阶段；需要重试时先核对结果，保持原目录、原命令及原安装源。
 

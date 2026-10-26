@@ -2,22 +2,35 @@
 import argparse
 from datetime import datetime, timezone
 import json
-import os
 from pathlib import Path
 import subprocess
+
+from source_binding import verify_backend, verify_source
 
 ROOT = Path(__file__).resolve().parents[3]
 EVIDENCE = Path(__file__).resolve().parent / 'evidence'
 EDITIONS = {'basic': '基础版', 'deepseek': 'DeepSeek版', 'kimi': 'Kimi版'}
 
 
-def run(command, cwd, name, env=None):
+def run(command, cwd, name, env=None, *, edition=None, backend=None, backend_revision=None):
     EVIDENCE.mkdir(parents=True, exist_ok=True)
+    before = verify_source()
+    if backend is not None and Path(backend).exists():
+        before['executed_backend'] = verify_backend(Path(backend), edition, backend_revision)
     start = datetime.now(timezone.utc).isoformat()
     result = subprocess.run(command, cwd=cwd, shell=True, executable='/bin/bash',
                             env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
     end = datetime.now(timezone.utc).isoformat()
-    record = {'cwd': str(cwd), 'command': command, 'start': start, 'end': end, 'exit_code': result.returncode}
+    binding_error = None
+    try:
+        after = verify_source()
+        if backend is not None and Path(backend).exists():
+            after['executed_backend'] = verify_backend(Path(backend), edition, backend_revision)
+    except RuntimeError as error:
+        binding_error = str(error)
+        after = {'binding_error': binding_error}
+    record = {'cwd': str(cwd), 'command': command, 'start': start, 'end': end,
+              'exit_code': result.returncode, 'source_binding_before': before, 'source_binding_after': after}
     target = EVIDENCE / f'{name}.log'
     attempt = 1
     while target.exists():
@@ -26,6 +39,8 @@ def run(command, cwd, name, env=None):
     target.write_text(json.dumps(record, ensure_ascii=False) + '\n' + result.stdout)
     print(json.dumps(record, ensure_ascii=False), flush=True)
     print(result.stdout[-2500:], flush=True)
+    if binding_error:
+        raise RuntimeError(binding_error)
     return result.returncode
 
 
@@ -54,7 +69,8 @@ def main():
             tests += ' tests/test_auth_smoke.py'
         commands = [(f'PYTHONPATH=. {python} -m pytest {tests}', backend)]
     for index, (command, cwd) in enumerate(commands):
-        code = run(command, cwd, f'{args.edition}-{args.stage}-{index + 1}')
+        code = run(command, cwd, f'p2-{args.edition}-{args.stage}-{index + 1}',
+                   edition=args.edition, backend=backend if args.stage != 'frontend' else None)
         if code:
             raise SystemExit(code)
 

@@ -12,6 +12,7 @@ from urllib.request import urlopen
 
 from playwright.sync_api import expect, sync_playwright
 from verify import ROOT, EVIDENCE, run
+from source_binding import verify_backend, verify_source
 
 EDITION = [('basic', '基础版', 8100, 5180, '/api'),
            ('deepseek', 'DeepSeek版', 8102, 5182, '/api'),
@@ -50,10 +51,12 @@ def stop_process(process):
 def main():
     EVIDENCE.mkdir(parents=True, exist_ok=True)
     records = []
+    source_binding = verify_source()
     with ExitStack() as stack:
         for short, edition, backend_port, frontend_port, prefix in EDITION:
             base = Path(f'/tmp/guanheng-WP-03-{short}')
             backend = base / 'backend'
+            actual_backend = verify_backend(backend, short)
             python = base / 'venv/bin/python'
             frontend = ROOT / 'systems/pms-suite' / edition / 'frontend'
             env = {k: v for k, v in os.environ.items() if k.upper() not in {
@@ -65,14 +68,15 @@ def main():
             if short == 'kimi':
                 (backend / '.demo').mkdir(exist_ok=True)
                 for index, command in enumerate([f'{python} -m alembic upgrade head', f'{python} -m app.demo_cli seed']):
-                    if run(command, backend, f'kimi-browser-prepare-{index + 1}', env):
+                    if run(command, backend, f'p2-kimi-browser-prepare-{index + 1}', env, edition=short, backend=backend):
                         raise RuntimeError('Kimi 演示迁移或播种失败')
             for name, command, cwd in [
                 ('backend', [str(python), '-m', 'uvicorn', 'app.main:app', '--host', '127.0.0.1', '--port', str(backend_port)], backend),
                 ('frontend', ['npm', 'run', 'dev'], frontend),
             ]:
                 handle = stack.enter_context(evidence_file(f'{short}-browser-{name}', '.log').open('w'))
-                handle.write(json.dumps({'cwd': str(cwd), 'command': command, 'time': datetime.now(timezone.utc).isoformat()}, ensure_ascii=False) + '\n')
+                handle.write(json.dumps({'cwd': str(cwd), 'command': command, 'time': datetime.now(timezone.utc).isoformat(), 'source_binding': source_binding,
+                                         'executed_backend': actual_backend}, ensure_ascii=False) + '\n')
                 handle.flush()
                 process = subprocess.Popen(command, cwd=cwd, env=env, stdout=handle, stderr=subprocess.STDOUT, start_new_session=True)
                 stack.callback(stop_process, process)
@@ -136,7 +140,7 @@ def main():
                                     'login_horizontal_overflow': False, 'page_errors': errors,
                                     'screenshot': f'/tmp/WP-03-{short}-{width}-login.png'})
                     context.close()
-    result = {'time': datetime.now(timezone.utc).isoformat(), 'checks': records}
+    result = {'time': datetime.now(timezone.utc).isoformat(), 'checks': records, 'source_binding': verify_source()}
     evidence_file('browser-results', '.json').write_text(json.dumps(result, ensure_ascii=False, indent=2))
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
