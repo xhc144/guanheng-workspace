@@ -69,7 +69,7 @@ class Generator {
     this.loadManifest = dependencies.loadManifest || (() => {
       try { return JSON.parse(fs.readFileSync(path.join(TEMPLATE_DIR, 'manifest.json'), 'utf8')); }
       catch (error) {
-        if (error.code === 'ENOENT') throw unavailable('template_missing', '缺少方案母版清单，生成尚未配置；可查看已有订单及保存本机草稿，当前不会收款。');
+        if (error.code === 'ENOENT') throw unavailable('template_missing', '缺少方案母版清单，生成尚未配置，请联系管理员。');
         throw unavailable('template_invalid', '方案母版清单无法读取，生成尚未配置，请联系管理员。');
       }
     });
@@ -80,7 +80,7 @@ class Generator {
     fs.mkdirSync(dir, {recursive: true, mode: 0o700});
   }
 
-  configuredManifest() {
+  configuredManifest(order) {
     const manifest = validateManifest(this.loadManifest());
     if (!this.hasInjectedExporter) {
       try {
@@ -90,6 +90,7 @@ class Generator {
       } catch { throw unavailable('template_missing', '缺少可用的方案母版文件，生成尚未配置，请联系管理员。'); }
     }
     if (!this.env.DEEPSEEK_API_KEY) throw unavailable('generation_key_missing', '内容生成服务尚未配置，请联系管理员；当前不会收款。');
+    if (order && order.templateVersion !== manifest.version) throw unavailable('template_version_mismatch', '订单母版版本与当前配置不一致，请联系管理员处理；订单已保留。');
     return manifest;
   }
 
@@ -132,7 +133,7 @@ class Generator {
       path.join(TEMPLATE_DIR, 'base-v3.pptx'), replacementFile, pptx], {timeout: 30000});
     onProgress('正在排版并生成PDF');
     await exec(this.env.LIBREOFFICE_BIN || 'libreoffice', ['-env:UserInstallation=file://' + path.join(folder, 'lo-profile'),
-      '--headless', '--convert-to', 'pdf', '--outdir', folder, pptx], {timeout: 180000, env: {...process.env, HOME: folder}});
+      '--headless', '--convert-to', 'pdf', '--outdir', folder, pptx], {timeout: 180000});
     const pdf = path.join(folder, 'proposal.pdf');
     for (const file of [pptx, pdf]) {
       if (!fs.existsSync(file) || !fs.statSync(file).isFile() || fs.statSync(file).size < 1000) throw new Error('方案文件导出失败。');
@@ -141,13 +142,12 @@ class Generator {
   }
 
   async generate(order) {
-    const manifest = this.configuredManifest();
-    if (order.templateVersion !== manifest.version) throw unavailable('template_version_mismatch', '订单母版版本与当前配置不一致，请联系管理员处理；订单已保留。');
+    const manifest = this.configuredManifest(order);
     this.store.file(order.id);
     const folder = path.join(this.dir, order.id);
     fs.mkdirSync(folder, {recursive: true, mode: 0o700});
     const slots = manifest.slides.flatMap(slide => slide.slots), updates = {};
-    const context = crypto.createHash('sha256').update(JSON.stringify({profile: order.profile, manifest})).digest('hex');
+    const context = crypto.createHash('sha256').update(JSON.stringify({orderId: order.id, email: order.email, profile: order.profile, manifest})).digest('hex');
     for (let start = 0; start < slots.length; start += 50) {
       const batch = slots.slice(start, start + 50), cache = path.join(folder, 'batch-' + start + '.json');
       let result;
@@ -185,7 +185,7 @@ class Generator {
         order.completedAt = Date.now();
       } catch (error) {
         order.state = 'failed';
-        order.message = '生成未完成，订单已保留，可免费重试；仍失败请联系关衡处理退款。';
+        order.message = error.status === 503 ? error.message : '生成未完成，订单已保留，可免费重试；仍失败请联系关衡处理退款。';
         this.logger.error('proposal_generation_failed', order.id);
       }
       this.store.save(order);

@@ -44,3 +44,10 @@ test('完成状态仍不能让未支付订单公开下载，畸形UUID与路径�
  assert.equal(s.public(s.read(a.id)).downloadReady,false);
  for(const id of ['../outside','12345678-'+'-'.repeat(27),'a'.repeat(36),null])assert.throws(()=>s.file(id),{status:404});
 });
+test('请求标识必须为字符串，数组与对象不能绕开幂等校验',t=>{
+ const s=setup(t);
+ for(const key of [['valid_request_12345'],{key:'valid_request_12345'},null,1234567890123456]){
+  assert.throws(()=>s.create('a@example.invalid',profile,key),{status:400});
+ }
+ assert.equal(s.all().length,0);
+});

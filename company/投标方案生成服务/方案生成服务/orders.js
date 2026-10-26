@@ -45,8 +45,8 @@ class OrderStore {
     return order;
   }
   create(email, input, idempotencyKey) {
-    if (!email) throw fail(401, '请先登录。');
-    if (!/^[a-zA-Z0-9_-]{16,80}$/.test(idempotencyKey||'')) throw fail(400, '请求标识无效，请刷新后重试。');
+    if (typeof email !== 'string' || !email) throw fail(401, '请先登录。');
+    if (typeof idempotencyKey !== 'string' || !/^[a-zA-Z0-9_-]{16,80}$/.test(idempotencyKey)) throw fail(400, '请求标识无效，请刷新后重试。');
     const profile=validate(input), digest=crypto.createHash('sha256').update(JSON.stringify(profile)).digest('hex');
     const existing=this.all().find(o=>o.email===email && o.idempotencyKey===idempotencyKey);
     if (existing) {

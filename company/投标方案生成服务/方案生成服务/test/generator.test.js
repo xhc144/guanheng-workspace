@@ -16,7 +16,7 @@ test('缺母版仍可加载生成器；生成入口以中文拒绝且不创建�
   const f = fixture(t);
   const generator = new Generator(f.store, path.join(dir, 'files'), {}, {logger});
   assert.deepEqual(generator.configuration(), {ready: false, code: 'template_missing',
-    message: '缺少方案母版清单，生成尚未配置；可查看已有订单及保存本机草稿，当前不会收款。'});
+    message: '缺少方案母版清单，生成尚未配置，请联系管理员。'});
   const order = f.paid();
   await assert.rejects(generator.generate(order), {status: 503, code: 'template_missing'});
   await generator.drain();
@@ -169,4 +169,67 @@ test('并发排队只执行一单，未支付不会生成；服务恢复不丢�
   assert.equal(f.store.read(a.id).state, 'queued');
   f.generator.stop();
   assert.equal(f.generator.timer, null);
+});
+
+test('51个槽位按50+1真实分批，边界长度可用，强制客户名超长会失败且不导出', async t => {
+  const slots = Array.from({length: 51}, (_, index) => ({id: '1:' + index, text: '虚构槽位' + index, maxChars: 30}));
+  slots[0] = {id: '1:0', text: '模板客户', maxChars: 100};
+  const f = fixture(t, {loadManifest: () => ({version: 'v3-48', slides: [{page: 1, slots}]})});
+  const order = f.paid('甲'.repeat(100));
+  await f.generator.drain();
+  assert.equal(f.store.read(order.id).state, 'completed');
+  assert.deepEqual(f.requests.map(request => request.paragraphs.length), [50, 1]);
+  assert.equal(Object.keys(f.exports[0]).length, 51);
+  assert.equal(f.exports[0]['1:0'].length, 100);
+  assert.equal(f.exports[0]['1:50'], '仅供测试的业务内容');
+  assert.deepEqual(fs.readdirSync(path.join(f.generator.dir, order.id)).sort(), ['batch-0.json', 'batch-50.json', 'replacements.json']);
+  const short = fixture(t, {loadManifest: () => ({version: 'v3-48', slides: [{page: 1,
+    slots: [{id: '1:0', text: '模板客户', maxChars: 2}]}]})});
+  const longName = short.paid();
+  await short.generator.drain();
+  assert.equal(short.store.read(longName.id).state, 'failed');
+  assert.equal(short.requests.length, 3);
+  assert.equal(short.exports.length, 0);
+});
+
+test('同资料不同账号/订单也不能复用他单缓存；本单资料改变后必须重新适配', async t => {
+  const f = fixture(t), a = f.paid();
+  await f.generator.drain();
+  const b = f.paid(profile.company, 'synthetic_same_0002', 'b@example.invalid');
+  const folderB = path.join(f.generator.dir, b.id);
+  fs.mkdirSync(folderB);
+  fs.copyFileSync(path.join(f.generator.dir, a.id, 'batch-0.json'), path.join(folderB, 'batch-0.json'));
+  await f.generator.drain();
+  assert.equal(f.requests.length, 2);
+  assert.equal(f.store.owned(b.id, 'b@example.invalid').state, 'completed');
+  assert.throws(() => f.store.owned(b.id, 'a@example.invalid'), {status: 404});
+  const changed = f.store.read(a.id);
+  changed.profile.needs = '虚构更新需求，测试同一订单不同资料时缓存必须失效';
+  f.store.save(changed);
+  await f.generator.generate(changed);
+  assert.equal(f.requests.length, 3);
+  assert.equal(f.requests[2].customer.needs, changed.profile.needs);
+});
+
+test('外部请求失败不吞成成功，失败后释放队列锁并可处理后续订单', async t => {
+  let calls = 0;
+  const f = fixture(t, {fetcher: async () => {
+    calls++;
+    if (calls === 1) return {ok: false, status: 503};
+    if (calls === 2) throw new Error('仅测试网络中断，不含客户信息');
+    return response({'1:0': profile.company, '1:1': '服务恢复后的测试内容'});
+  }});
+  const a = f.paid();
+  await f.generator.drain();
+  assert.equal(f.store.read(a.id).state, 'failed');
+  assert.equal(f.generator.busy, false);
+  const b = f.paid(profile.company, 'synthetic_network_0002');
+  await f.generator.drain();
+  assert.equal(f.store.read(b.id).state, 'failed');
+  assert.equal(f.generator.busy, false);
+  f.store.retry(a.id, a.email);
+  await f.generator.drain();
+  assert.equal(f.store.read(a.id).state, 'completed');
+  assert.equal(calls, 3);
+  assert.equal(f.exports.length, 1);
 });
