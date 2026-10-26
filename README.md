@@ -6,6 +6,7 @@
 |------|------|------|
 | [`systems/project-ops`](systems/project-ops) | **项目经营管理系统**（Next.js + SQLite）：客户、合同、项目、应收/发票/回款、服务费、提成、研发、报表 | 主线，已上线 |
 | [`systems/pms-suite`](systems/pms-suite) | **综合项目管理系统系列**（FastAPI + React）：基础版 / DeepSeek版 / Kimi版 | 待修复后归档，功能移植进主线 |
+| [`company`](company) | 关衡公司资料：解决方案介绍、官网、品牌宣传片、投标方案生成服务 | 资料 |
 | [`orchestrator`](orchestrator) | 总管 AI 派发器：一个工作包一个 git worktree + 一个子 AI，并发可调 | 可用 |
 | [`docs/总管AI架构.md`](docs/总管AI架构.md) | 总管 AI / 子 AI 多分支并行架构设计 | — |
 | [`docs/系统修复提示词.md`](docs/系统修复提示词.md) | 交给 GPT 总管 AI 的系统修复提示词 | — |
@@ -34,5 +35,9 @@ python orchestrator/run.py --repo systems/project-ops --queue tasks/queue.json -
 
 ## 仓库不包含
 
-真实数据库、上传附件、`.env` 等密钥文件、部署包、客户文档和投标资料。这些只保存在本地或服务器，
+真实数据库、上传附件、`.env` 等密钥文件、部署包，以及含客户信息的标书和方案（清单见 [`company/README.md`](company/README.md)）。这些只保存在本地或服务器，
 已在 [`.gitignore`](.gitignore) 中排除。提交前请确认没有把它们加回来。
+
+## 许可证
+
+[MIT](LICENSE)

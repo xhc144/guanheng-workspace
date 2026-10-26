@@ -22,6 +22,10 @@ backups/
 *.tgz
 *.zip
 *.xlsx
+*.tmp.mp4
+guanheng-video/output/
+guanheng-video/build/
+.hyperframes/
 tasks/
 reports/
 *-worktrees/
