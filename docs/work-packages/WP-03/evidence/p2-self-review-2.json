@@ -1,0 +1,38 @@
+{
+  "time": "2026-10-26T17:18:35.122087+00:00",
+  "round": 2,
+  "source_binding": {
+    "source_commit": "47423fbcf0c7734ecb9e8be47f2b92bf049069d8",
+    "source_tree": "972d4d6f163190638845ab8b773c82b1c46d9b44",
+    "execution_head": "47423fbcf0c7734ecb9e8be47f2b92bf049069d8",
+    "manifest": "docs/work-packages/WP-03/evidence/p2-source-manifest.json",
+    "manifest_sha256": "07db39a3ac93f6e92200bd55f4e0dd3f58d2e271055e37156201ccff4b2645b2",
+    "source_blobs_match": true
+  },
+  "focus": "三版弱模式实现一致；全部源码/实际副本blob；全量和精确基线失败集合；9组真实浏览器；2组停机；ownership/文本/敏感模式/报告链接",
+  "full_results": {
+    "deepseek": "132 passed",
+    "basic": "5 failed, 26 passed",
+    "kimi": "5 failed, 46 passed"
+  },
+  "unchanged_failure_sets": {
+    "basic": [
+      "tests/test_extended_features.py::test_approval_budget_cost_timesheet_documents_wiki_templates_dict_import_backup",
+      "tests/test_extended_features.py::test_finance_invoice_payment_reverse_and_idempotency",
+      "tests/test_extended_features.py::test_project_task_milestone_dependency_risk_and_activity",
+      "tests/test_full_flow.py::test_governance_and_data_ops",
+      "tests/test_full_flow.py::test_project_task_risk_finance_flow"
+    ],
+    "kimi": [
+      "tests/test_core_flow.py::test_customer_health",
+      "tests/test_core_flow.py::test_import_excel",
+      "tests/test_core_flow.py::test_risk_workbench_dashboard",
+      "tests/test_core_flow.py::test_timesheet_flow",
+      "tests/test_services.py::test_progress_and_finance_rollback"
+    ]
+  },
+  "browser_cases": 9,
+  "offline_cases": 2,
+  "new_findings": [],
+  "inherited_limits": "基础/Kimi无登录节流，DeepSeek仅旧通用限流；不宣称生产鉴权全面验收"
+}

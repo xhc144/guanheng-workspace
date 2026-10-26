@@ -1,0 +1,33 @@
+{"cwd": "/tmp/guanheng-WP-03-deepseek/backend", "command": "PYTHONPATH=. /tmp/guanheng-WP-03-deepseek/venv/bin/python -m pytest tests/test_auth_config.py", "start": "2026-10-26T16:43:50.352764+00:00", "end": "2026-10-26T16:44:37.143283+00:00", "exit_code": 0}
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.7.0 -- /tmp/guanheng-WP-03-deepseek/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /tmp/guanheng-WP-03-deepseek/backend
+configfile: pytest.ini
+plugins: asyncio-1.4.1, anyio-4.15.1
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 21 items
+
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[None] PASSED [  4%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[] PASSED [  9%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[   ] PASSED [ 14%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[dev-secret-key-change-in-production] PASSED [ 19%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[short] PASSED [ 23%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] PASSED [ 28%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef] PASSED [ 33%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[change-me-to-a-random-production-secret] PASSED [ 38%]
+tests/test_auth_config.py::test_valid_runtime_key_loads_without_disclosure[production] PASSED [ 42%]
+tests/test_auth_config.py::test_valid_runtime_key_loads_without_disclosure[ Production ] PASSED [ 47%]
+tests/test_auth_config.py::test_valid_runtime_key_loads_without_disclosure[PROD] PASSED [ 52%]
+tests/test_auth_config.py::test_unknown_environment_refused PASSED       [ 57%]
+tests/test_auth_config.py::test_file_only_key_and_explicit_override_refused PASSED [ 61%]
+tests/test_auth_config.py::test_production_demo_mode_refused PASSED      [ 66%]
+tests/test_auth_config.py::test_production_startup_does_not_create_database PASSED [ 71%]
+tests/test_auth_config.py::test_fresh_demo_login_and_all_seed_entrypoints_preserve_password PASSED [ 76%]
+tests/test_auth_config.py::test_production_seeder_refused_without_database_write PASSED [ 80%]
+tests/test_auth_config.py::test_demo_symlink_refused_without_touching_external_file[directory] PASSED [ 85%]
+tests/test_auth_config.py::test_demo_symlink_refused_without_touching_external_file[database] PASSED [ 90%]
+tests/test_auth_config.py::test_production_existing_synthetic_database_unchanged PASSED [ 95%]
+tests/test_auth_config.py::test_actual_process_restart_preserves_changed_password PASSED [100%]
+
+============================= 21 passed in 45.14s ==============================

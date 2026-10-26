@@ -1,0 +1,167 @@
+{
+  "time": "2026-10-26T16:46:32.232956+00:00",
+  "checks": [
+    {
+      "edition": "基础版",
+      "width": 375,
+      "login_path": "/api/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "runtime_openapi_and_document_match": true,
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-basic-375-login.png"
+    },
+    {
+      "edition": "基础版",
+      "width": 768,
+      "login_path": "/api/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "runtime_openapi_and_document_match": true,
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-basic-768-login.png"
+    },
+    {
+      "edition": "基础版",
+      "width": 1440,
+      "login_path": "/api/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "runtime_openapi_and_document_match": true,
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-basic-1440-login.png"
+    },
+    {
+      "edition": "DeepSeek版",
+      "width": 375,
+      "login_path": "/api/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "runtime_openapi_and_document_match": true,
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-deepseek-375-login.png"
+    },
+    {
+      "edition": "DeepSeek版",
+      "width": 768,
+      "login_path": "/api/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "runtime_openapi_and_document_match": true,
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-deepseek-768-login.png"
+    },
+    {
+      "edition": "DeepSeek版",
+      "width": 1440,
+      "login_path": "/api/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "runtime_openapi_and_document_match": true,
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-deepseek-1440-login.png"
+    },
+    {
+      "edition": "Kimi版",
+      "width": 375,
+      "login_path": "/api/v1/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "runtime_openapi_and_document_match": true,
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-kimi-375-login.png"
+    },
+    {
+      "edition": "Kimi版",
+      "width": 768,
+      "login_path": "/api/v1/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "runtime_openapi_and_document_match": true,
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-kimi-768-login.png"
+    },
+    {
+      "edition": "Kimi版",
+      "width": 1440,
+      "login_path": "/api/v1/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "runtime_openapi_and_document_match": true,
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-kimi-1440-login.png"
+    }
+  ]
+}

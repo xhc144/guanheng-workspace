@@ -1,0 +1,20 @@
+{
+  "time": "2026-10-26T17:10:19.437922+00:00",
+  "moves": [
+    {
+      "from": "/tmp/guanheng-WP-03-basic",
+      "to": "/tmp/guanheng-WP-03-before-p2/basic",
+      "reason": "规定copytree命令要求全新目的目录，归档本轮已有合成副本；不是绕过依赖或权限失败"
+    },
+    {
+      "from": "/tmp/guanheng-WP-03-deepseek",
+      "to": "/tmp/guanheng-WP-03-before-p2/deepseek",
+      "reason": "规定copytree命令要求全新目的目录，归档本轮已有合成副本；不是绕过依赖或权限失败"
+    },
+    {
+      "from": "/tmp/guanheng-WP-03-kimi",
+      "to": "/tmp/guanheng-WP-03-before-p2/kimi",
+      "reason": "规定copytree命令要求全新目的目录，归档本轮已有合成副本；不是绕过依赖或权限失败"
+    }
+  ]
+}

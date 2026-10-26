@@ -1,0 +1,9 @@
+{"cwd": "/workspace/guanheng-wp03/systems/pms-suite/基础版/frontend", "command": ["npm", "run", "dev"], "time": "2026-10-26T16:45:39.392740+00:00"}
+
+> pms-basic-frontend@0.1.0 dev
+> vite --host 127.0.0.1 --port 5180
+
+
+  VITE v8.2.1  ready in 289 ms
+
+  ➜  Local:   http://127.0.0.1:5180/

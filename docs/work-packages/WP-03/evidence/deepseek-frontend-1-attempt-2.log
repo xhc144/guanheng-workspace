@@ -1,0 +1,4 @@
+{"cwd": "/workspace/guanheng-wp03/systems/pms-suite/DeepSeek版/frontend", "command": "npm ci", "start": "2026-10-26T16:34:59.608605+00:00", "end": "2026-10-26T16:35:28.664738+00:00", "exit_code": 0}
+npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+
+added 368 packages in 29s

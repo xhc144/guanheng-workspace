@@ -1,5 +1,7 @@
+import os
 from pathlib import Path
 
+from pydantic import Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -12,18 +14,69 @@ def demo_database_url() -> str:
     return f"sqlite:///{DEMO_DB_PATH.as_posix()}"
 
 
+def _has_obvious_secret_pattern(value: str) -> bool:
+    """只筛除明确的顺序串和常见口令前缀，不能据此证明随机性。"""
+    folded = value.casefold()
+    streams = (
+        "0123456789abcdefghijklmnopqrstuvwxyz",
+        "abcdefghijklmnopqrstuvwxyz0123456789",
+        "qwertyuiopasdfghjklzxcvbnm0123456789",
+    )
+    # 连续10位已知顺序及其反向属于明确弱模式；不尝试估算任意串的熵。
+    ordered = any(
+        stream[start:start + 10] in folded
+        for forward in streams
+        for stream in (forward, forward[::-1])
+        for start in range(len(stream) - 9)
+    )
+    compact = "".join(char for char in folded if char.isascii() and char.isalnum())
+    common_prefix = compact.startswith((
+        "admin123456", "admin123", "qwerty", "letmein", "welcome",
+        "iloveyou", "abc123", "123456", "passw0rd", "pssw0rd",
+    ))
+    return ordered or common_prefix
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
+    environment: str = "development"
     database_url: str = "sqlite:///./app.db"
     demo_mode: bool = False
-    secret_key: str = "dev-secret-key"
+    secret_key: str = Field(default="dev-secret-key", repr=False)
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 720
     admin_username: str = "admin"
-    admin_password: str = "Admin@123456"
+    admin_password: str = Field(default="Admin@123456", repr=False)
     cors_origins: str = "http://localhost:5181,http://127.0.0.1:5181"
     storage_dir: str = "./storage"
+
+
+    @property
+    def is_production(self) -> bool:
+        return self.environment == "production"
+
+    @model_validator(mode="after")
+    def validate_security(self):
+        environment = self.environment.strip().lower()
+        self.environment = "production" if environment == "prod" else environment
+        if self.environment not in {"development", "test", "production"}:
+            raise RuntimeError("ENVIRONMENT 仅支持 development、test、production（或 prod）")
+        if self.is_production:
+            key = self.secret_key
+            configured = next((v for k, v in os.environ.items() if k.upper() == "SECRET_KEY"), None)
+            weak = any(word in key.lower() for word in ("secret", "change", "password", "example", "replace", "your-", "your_"))
+            repeated = any(key == key[:n] * (len(key) // n) for n in range(1, len(key) // 2 + 1) if len(key) % n == 0)
+            if configured != key or len(key) < 32 or len(set(key)) < 12 or any(c.isspace() for c in key) or weak or repeated or _has_obvious_secret_pattern(key):
+                # RuntimeError 不携带 Pydantic input_value，避免异常回显密钥。
+                raise RuntimeError("生产环境必须通过进程环境变量 SECRET_KEY 提供至少32位的随机密钥；拒绝空值、默认值、重复值、顺序串及常见占位口令")
+            if self.demo_mode:
+                raise RuntimeError("生产环境禁止启用 DEMO_MODE，不能自动创建演示账号")
+        elif self.admin_username != "admin" or self.admin_password != "Admin@123456":
+            raise RuntimeError("本地演示身份固定为 admin；不支持通过 ADMIN_USERNAME 或 ADMIN_PASSWORD 初始化真实账号")
+        if self.demo_mode:
+            self.require_controlled_demo_database()
+        return self
 
     @property
     def active_database_url(self) -> str:
@@ -32,10 +85,15 @@ class Settings(BaseSettings):
         return demo_database_url() if self.demo_mode else self.database_url
 
     def require_controlled_demo_database(self) -> None:
+        if self.is_production:
+            raise RuntimeError("生产环境禁止播种或重置演示数据")
         if not self.demo_mode:
-            raise RuntimeError("DEMO_MODE=1 is required for demo database operations")
+            raise RuntimeError("演示数据库操作必须设置 DEMO_MODE=1")
+        demo_path = BACKEND_DIR / ".demo" / "demo.db"
+        if demo_path.is_symlink() or demo_path.parent.is_symlink():
+            raise RuntimeError("拒绝访问演示库：backend/.demo 或 demo.db 不能是符号链接")
         if Path(DEMO_DB_PATH).parent != (BACKEND_DIR / ".demo").resolve():
-            raise RuntimeError("demo database path is outside the controlled directory")
+            raise RuntimeError("演示数据库路径超出受控目录")
 
 
 settings = Settings()

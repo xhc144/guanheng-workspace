@@ -1,0 +1,25 @@
+{"cwd": "/tmp/guanheng-WP-03-basic/backend", "command": "PYTHONPATH=. /tmp/guanheng-WP-03-basic/venv/bin/python -m pytest tests/test_auth_config.py tests/test_login_flow.py", "start": "2026-10-26T16:34:10.769791+00:00", "end": "2026-10-26T16:34:52.406724+00:00", "exit_code": 1}
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.7.0
+rootdir: /tmp/guanheng-WP-03-basic/backend
+plugins: anyio-4.15.1
+collected 15 items
+
+tests/test_auth_config.py ...........F..                                 [ 93%]
+tests/test_login_flow.py .                                               [100%]
+
+=================================== FAILURES ===================================
+_______________________ test_unknown_environment_refused _______________________
+
+tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-1/test_unknown_environment_refus0')
+
+    def test_unknown_environment_refused(tmp_path):
+        result = launch(f"import {CONFIG_MODULE}", tmp_path, mode="productoin", key=secrets.token_hex(32))
+>       assert result.returncode != 0
+E       AssertionError: assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['/tmp/guanheng-WP-03-basic/venv/bin/python', '-c', 'import app.core.config'], returncode=0, stdout='', stderr='').returncode
+
+tests/test_auth_config.py:54: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_auth_config.py::test_unknown_environment_refused - Assertio...
+======================== 1 failed, 14 passed in 24.15s =========================

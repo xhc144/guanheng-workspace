@@ -1,0 +1,166 @@
+{"cwd": "/workspace/guanheng-wp03", "command": "python3 docs/work-packages/WP-03/browser_check.py", "start": "2026-10-26T16:40:10.720552+00:00", "end": "2026-10-26T16:41:37.868746+00:00", "exit_code": 0}
+{"cwd": "/tmp/guanheng-WP-03-kimi/backend", "command": "/tmp/guanheng-WP-03-kimi/venv/bin/python -m alembic upgrade head", "start": "2026-10-26T16:40:16.185258+00:00", "end": "2026-10-26T16:40:18.459568+00:00", "exit_code": 0}
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+
+{"cwd": "/tmp/guanheng-WP-03-kimi/backend", "command": "/tmp/guanheng-WP-03-kimi/venv/bin/python -m app.demo_cli seed", "start": "2026-10-26T16:40:18.460015+00:00", "end": "2026-10-26T16:40:20.770779+00:00", "exit_code": 0}
+Seeded controlled demo database: /tmp/guanheng-WP-03-kimi/backend/.demo/demo.db
+
+{
+  "time": "2026-10-26T16:41:37.821158+00:00",
+  "checks": [
+    {
+      "edition": "基础版",
+      "width": 375,
+      "login_path": "/api/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-basic-375-login.png"
+    },
+    {
+      "edition": "基础版",
+      "width": 768,
+      "login_path": "/api/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-basic-768-login.png"
+    },
+    {
+      "edition": "基础版",
+      "width": 1440,
+      "login_path": "/api/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-basic-1440-login.png"
+    },
+    {
+      "edition": "DeepSeek版",
+      "width": 375,
+      "login_path": "/api/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-deepseek-375-login.png"
+    },
+    {
+      "edition": "DeepSeek版",
+      "width": 768,
+      "login_path": "/api/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-deepseek-768-login.png"
+    },
+    {
+      "edition": "DeepSeek版",
+      "width": 1440,
+      "login_path": "/api/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-deepseek-1440-login.png"
+    },
+    {
+      "edition": "Kimi版",
+      "width": 375,
+      "login_path": "/api/v1/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-kimi-375-login.png"
+    },
+    {
+      "edition": "Kimi版",
+      "width": 768,
+      "login_path": "/api/v1/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-kimi-768-login.png"
+    },
+    {
+      "edition": "Kimi版",
+      "width": 1440,
+      "login_path": "/api/v1/auth/login",
+      "login_statuses": [
+        401,
+        401,
+        200
+      ],
+      "me": {
+        "status": 200,
+        "username": "admin"
+      },
+      "login_horizontal_overflow": false,
+      "page_errors": [],
+      "screenshot": "/tmp/WP-03-kimi-1440-login.png"
+    }
+  ]
+}

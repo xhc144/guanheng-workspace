@@ -1,0 +1,15 @@
+{"cwd": "/workspace/guanheng-wp03/systems/pms-suite/基础版/frontend", "command": "npm run build", "start": "2026-10-26T17:10:41.994781+00:00", "end": "2026-10-26T17:10:45.390348+00:00", "exit_code": 0, "source_binding_before": {"source_commit": "47423fbcf0c7734ecb9e8be47f2b92bf049069d8", "source_tree": "972d4d6f163190638845ab8b773c82b1c46d9b44", "execution_head": "47423fbcf0c7734ecb9e8be47f2b92bf049069d8", "manifest": "docs/work-packages/WP-03/evidence/p2-source-manifest.json", "manifest_sha256": "07db39a3ac93f6e92200bd55f4e0dd3f58d2e271055e37156201ccff4b2645b2", "source_blobs_match": true}, "source_binding_after": {"source_commit": "47423fbcf0c7734ecb9e8be47f2b92bf049069d8", "source_tree": "972d4d6f163190638845ab8b773c82b1c46d9b44", "execution_head": "47423fbcf0c7734ecb9e8be47f2b92bf049069d8", "manifest": "docs/work-packages/WP-03/evidence/p2-source-manifest.json", "manifest_sha256": "07db39a3ac93f6e92200bd55f4e0dd3f58d2e271055e37156201ccff4b2645b2", "source_blobs_match": true}}
+
+> pms-basic-frontend@0.1.0 build
+> vite build
+
+vite v8.2.1 building client environment for production...
+[2K
+transforming...✓ 16 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB │ gzip:  0.30 kB
+dist/assets/index-D-o2AgCT.css    3.53 kB │ gzip:  1.29 kB
+dist/assets/index-BT9-0iiU.js   207.52 kB │ gzip: 64.54 kB
+
+✓ built in 824ms

@@ -1,0 +1,1 @@
+{"cwd": "/workspace/guanheng-wp03", "command": "python3 -c 'import shutil; shutil.copytree(\"systems/pms-suite/Kimi版/backend\", \"/tmp/guanheng-WP-03-kimi/backend\", ignore=shutil.ignore_patterns(\".venv\", \"__pycache__\", \".demo\", \".pytest_cache\", \".env*\"))'", "start": "2026-10-26T16:31:43.744651+00:00", "end": "2026-10-26T16:31:43.787838+00:00", "exit_code": 0}

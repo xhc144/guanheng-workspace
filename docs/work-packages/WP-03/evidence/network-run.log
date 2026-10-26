@@ -1,0 +1,32 @@
+{"cwd": "/workspace/guanheng-wp03", "command": "python3 docs/work-packages/WP-03/network_check.py", "start": "2026-10-26T16:53:37.316591+00:00", "end": "2026-10-26T16:53:59.537132+00:00", "exit_code": 0}
+{
+  "time": "2026-10-26T16:53:59.475736+00:00",
+  "checks": [
+    {
+      "edition": "DeepSeek版",
+      "width": 375,
+      "required_fields_prevent_request": true,
+      "backend_stopped": true,
+      "actual_proxy_status": 500,
+      "chinese_error": "登录失败，请检查本地服务是否启动后重试",
+      "inputs_preserved": true,
+      "submit_enabled": true,
+      "button_height": 44,
+      "token_absent": true,
+      "horizontal_overflow": false
+    },
+    {
+      "edition": "Kimi版",
+      "width": 375,
+      "required_fields_prevent_request": true,
+      "backend_stopped": true,
+      "actual_proxy_status": 500,
+      "chinese_error": "登录失败，请检查本地服务是否启动后重试",
+      "inputs_preserved": true,
+      "submit_enabled": true,
+      "button_height": 44,
+      "token_absent": true,
+      "horizontal_overflow": false
+    }
+  ]
+}

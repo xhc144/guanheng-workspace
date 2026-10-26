@@ -1,14 +1,16 @@
-# Assumptions
+# 演示与运行假设
 
-## Assumptions
+本文件只描述可从当前源码及 WP-03 验证结果确认的行为；不沿用旧文档中的验收数量、主机安装状态或未经验证的声明。
 
-1. **Git Bash unavailable**: pi bash tool hardcodes Git Bash paths; settings.json shellPath ignored. 1717。验收.vbs
-2. **Python & Node installed**: Python 3.10+ and Node.js 18+ required on the host.
-3. **SQLite for dev**: Default is SQLite (`backend/pms.db`). PostgreSQL supported via `DATABASE_URL`.
-4. **Default credentials**: admin/admin123, finance/finance123, pm_wang/pm123, dev_li/dev123, exec_zhao/exec123.
-5. **CORS open in dev**: All origins allowed. Restrict via `CORS_ORIGINS` in production.
-6. **Seed data**: Auto-populated on first run when DB empty.
-7. **CAPTCHA visual only**: Login page has CAPTCHA UI placeholder, no backend validation.
-8. **verify_goal.py / self_check.py are canonical**: Since bash is unavailable, these are the primary verification methods.
-9. **68 deliverables**: Including test_integration.py (full lifecycle integration test).
-10. **Empty DB on first run**: The first `tests/` run populates the SQLite DB with seed data; subsequent runs work against existing data.
+1. 本系统为本地演示与归档项目；真实生产主线位于 `systems/project-ops`。
+2. 后端为 FastAPI，前端为 React/Vite。具体可运行依赖以本次真实安装和构建日志为准，WP-03 不修改依赖清单或锁文件。
+3. `DEMO_MODE=1` 时后端只允许自身 `backend/.demo/demo.db`，拒绝其他数据库地址及符号链接。非演示开发模式保留既有 `DATABASE_URL` 行为，不得连接真实业务库。
+4. 本地演示管理员为 `admin / Admin@123456`。应用启动与 `python -m app.seeder` 复用相同种子逻辑；已有用户库不会被重新播种，已有密码不会被重置。
+5. `ENVIRONMENT=production` 必须由进程环境变量提供强随机 `SECRET_KEY`。缺失、空值、默认值、明确顺序串或常见口令加固定后缀导致硬拒启；规则不能证明任意字符串的密码学随机性；不记录密钥。生产不允许 `DEMO_MODE=1`，不自动建表、补列或创建演示账号。
+6. 登录接口保留 `/api/auth/login`，健康接口为 `/api/health`。前端默认同源 `/api`，可通过 `VITE_API_BASE` 指定包含前缀的地址。
+7. CORS 开发默认值仅包含 localhost/127.0.0.1 的 5173、5182 端口，并非允许任意来源；应按实际环境配置 `CORS_ORIGINS`。
+8. 登录页已移除未接后端的验证码及未实际生效的“记住登录”选项，保留真实登录、错误反馈和联系管理员说明。登录失败保留输入，可连续重试。
+9. 继承的限流仅为通用每IP每分钟300次API限制，不等于专用登录节流、分布式防护或生产鉴权全面验收；基础/Kimi也没有登录节流。本包不扩建新鉴权系统。
+10. 自动化测试使用合成临时库，不能将其结果当成 Windows 实机、真实业务口径或生产部署验收。
+
+统一账号、环境契约与真实验证入口见 [PMS账号与配置](../../../docs/PMS账号与配置.md)；本轮结果及共享改动请求见 [WP-03 报告](../../../reports/WP-03.md)。

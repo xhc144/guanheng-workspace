@@ -1,0 +1,12 @@
+{"cwd": "/workspace/guanheng-wp03/systems/pms-suite/Kimi版/frontend", "command": ["npm", "run", "dev"], "time": "2026-10-26T17:16:15.526722+00:00", "source_binding": {"source_commit": "47423fbcf0c7734ecb9e8be47f2b92bf049069d8", "source_tree": "972d4d6f163190638845ab8b773c82b1c46d9b44", "execution_head": "47423fbcf0c7734ecb9e8be47f2b92bf049069d8", "manifest": "docs/work-packages/WP-03/evidence/p2-source-manifest.json", "manifest_sha256": "07db39a3ac93f6e92200bd55f4e0dd3f58d2e271055e37156201ccff4b2645b2", "source_blobs_match": true}, "executed_backend": {"edition": "kimi", "backend_cwd": "/tmp/guanheng-WP-03-kimi/backend", "backend_source_commit": "47423fbcf0c7734ecb9e8be47f2b92bf049069d8", "backend_blobs_match": true, "backend_blob_map_sha256": "90fea4c1d900b6131ceda314e218b526fcb23df3e1fa364c6a7fd8770f1b7497"}}
+
+> pms-frontend@0.1.0 dev
+> vite
+
+
+  VITE v5.4.21  ready in 306 ms
+
+  ➜  Local:   http://127.0.0.1:5181/
+5:16:23 PM [vite] http proxy error: /api/v1/auth/login
+Error: connect ECONNREFUSED 127.0.0.1:8101
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1864:16)

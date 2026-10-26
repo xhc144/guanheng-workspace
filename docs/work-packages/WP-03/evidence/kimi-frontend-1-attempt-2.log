@@ -1,0 +1,8 @@
+{"cwd": "/workspace/guanheng-wp03/systems/pms-suite/Kimi版/frontend", "command": "npm ci", "start": "2026-10-26T16:34:59.564107+00:00", "end": "2026-10-26T16:35:22.787481+00:00", "exit_code": 0}
+
+added 167 packages in 23s
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
