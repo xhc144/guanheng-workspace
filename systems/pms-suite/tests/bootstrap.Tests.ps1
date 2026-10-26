@@ -92,4 +92,34 @@ Describe 'PMS bootstrap real refusal paths (no mocked service success)' {
         }
         finally { $lock.Dispose() }
     }
+    It '受控演示目录为符号链接时拒绝且不修改链接目标' {
+        $target = Join-Path $TestDrive 'synthetic-link-target'
+        New-Item -ItemType Directory -Path $target -Force | Out-Null
+        $marker = Join-Path $target 'keep.txt'
+        [IO.File]::WriteAllText($marker, 'WP02-keep-link-target')
+        $link = Join-Path $fixture 'DeepSeek版/backend/.demo'
+        $linkType = if ($env:OS -eq 'Windows_NT') { 'Junction' } else { 'SymbolicLink' }
+        New-Item -ItemType $linkType -Path $link -Target $target | Out-Null
+        try {
+            $result = Invoke-Fixture -Edition DeepSeek
+            $result.Code | Should -Be 1
+            $result.Output | Should -Match '链接或重解析'
+            [IO.File]::ReadAllText($marker) | Should -Be 'WP02-keep-link-target'
+            @(Get-ChildItem -LiteralPath $target).Count | Should -Be 1
+        }
+        finally { Remove-Item -LiteralPath $link -Force }
+    }
+
+    It '前端组件的会话租约阻止全栈重装' {
+        $path = Join-Path $fixture 'logs/basic-session.lock'
+        $lease = [IO.File]::Open($path, 'OpenOrCreate', 'Read', 'Read')
+        try {
+            $result = Invoke-Fixture
+            $result.Code | Should -Be 1
+            $result.Output | Should -Match '全栈入口与分离入口不能混用'
+            Test-Path -LiteralPath (Join-Path $fixture '基础版/frontend/node_modules') | Should -BeFalse
+        }
+        finally { $lease.Dispose() }
+    }
+
 }

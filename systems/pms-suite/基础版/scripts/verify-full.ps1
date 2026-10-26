@@ -1,17 +1,20 @@
-$ErrorActionPreference = 'Stop'
+﻿$ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $backend = Join-Path $root 'backend'
-$python = Join-Path $root '.venv\Scripts\python.exe'
+$python = if ($env:OS -eq 'Windows_NT') { Join-Path $root '.venv/Scripts/python.exe' } else { Join-Path $root '.venv/bin/python' }
+foreach ($directory in @($root, $backend)) {
+  if (Get-ChildItem -LiteralPath $directory -Force | Where-Object { $_.Name -like '.env*' -and $_.Name -ne '.env.example' }) { throw '演示验收拒绝本地环境文件，请使用干净源码副本。' }
+}
 if (-not (Test-Path $python)) { throw "Python not found: $python" }
-$env:PYTHONPATH = $backend
+
 & $python -m compileall -q (Join-Path $backend 'app')
 if ($LASTEXITCODE -ne 0) { throw 'Python compile check failed' }
 Push-Location $backend
 try {
-  & $python scripts/demo_db.py reset
-  if ($LASTEXITCODE -ne 0) { throw 'Demo reset failed' }
+  & $python -m scripts.demo_db seed
+  if ($LASTEXITCODE -ne 0) { throw '受控演示库初始化失败（未重置）' }
 } finally { Pop-Location }
-$env:PYTHONPATH = $backend
+
 $code = @'
 from fastapi.testclient import TestClient
 from app.main import app
@@ -25,8 +28,11 @@ results = [(path, c.get(path, headers=h).status_code) for path in checks]
 print(results)
 assert all(status == 200 for _, status in results)
 '@
-& $python -c $code
-if ($LASTEXITCODE -ne 0) { throw 'Backend smoke check failed' }
+Push-Location -LiteralPath $backend
+try {
+  & $python -c $code
+  if ($LASTEXITCODE -ne 0) { throw 'Backend smoke check failed' }
+} finally { Pop-Location }
 Push-Location (Join-Path $root 'frontend')
 try {
   npm run check

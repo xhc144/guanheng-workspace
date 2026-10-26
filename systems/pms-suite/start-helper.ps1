@@ -9,7 +9,7 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-# Compatible with Windows PowerShell 5.1 and PowerShell 7.
+# Uses PowerShell 5.1 syntax; Windows execution still requires real-machine validation.
 $root = $PSScriptRoot
 $stage = '准备日志'
 $exitCode = 1
@@ -18,6 +18,7 @@ $savedEnvironment = @{}
 $logDirectory = $null
 $lockStream = $null
 $installLock = $null
+$sessionLock = $null
 $isWindowsHost = $env:OS -eq 'Windows_NT'
 
 function Write-Stage([string]$Name) {
@@ -54,7 +55,8 @@ function Invoke-Step([string]$Name, [string]$Executable, [string[]]$Arguments, [
         $ErrorActionPreference = 'Continue'
         try { & $Executable @Arguments > $outLog 2>&1; $code = $LASTEXITCODE }
         finally { $ErrorActionPreference = $oldPreference }
-        Add-Content -LiteralPath (Join-Path $logDirectory 'startup.log') -Encoding UTF8 -Value "cwd=$Directory; step=$Name; exit=$code"
+        $record = @{ cwd = $Directory; executable = $Executable; arguments = $Arguments; step = $Name; exit = $code } | ConvertTo-Json -Compress
+        Add-Content -LiteralPath (Join-Path $logDirectory 'startup.log') -Encoding UTF8 -Value $record
         if ($code -ne 0) {
             $script:exitCode = if ($code -gt 0 -and $code -le 255) { $code } else { 1 }
             throw "子命令失败，退出码 $code；详情：$outLog"
@@ -91,6 +93,8 @@ function Start-ServiceProcess([string]$Name, [string]$Executable, [string[]]$Arg
     $process = Start-Process @options
     $script:ownedProcesses += $process
     Add-Content -LiteralPath (Join-Path $logDirectory 'startup.log') -Encoding UTF8 -Value "cwd=$Directory; service=$Name; pid=$($process.Id)"
+    $record = @{ cwd = $Directory; executable = $Executable; arguments = $Arguments; service = $Name; pid = $process.Id } | ConvertTo-Json -Compress
+    Add-Content -LiteralPath (Join-Path $logDirectory 'startup.log') -Encoding UTF8 -Value $record
     return $process
 }
 
@@ -143,7 +147,15 @@ try {
     }
     $demoUrl = 'sqlite:///' + $demoDatabase.Replace('\', '/')
     if ($env:DATABASE_URL -and $env:DATABASE_URL -ne $demoUrl) { throw '检测到其他 DATABASE_URL；拒绝连接或覆盖该配置。请使用独立演示终端。' }
-    # FileShare.None prevents concurrent installs; release on every exit path.
+    # Whole-edition and split-component sessions must not install over each other.
+    $sessionPath = Join-Path (Join-Path $root 'logs') ($Edition.ToLowerInvariant() + '-session.lock')
+    Assert-PlainPath $sessionPath
+    try {
+        if ($Component -eq 'All') { $sessionLock = [IO.File]::Open($sessionPath, 'OpenOrCreate', 'ReadWrite', 'None') }
+        else { $sessionLock = [IO.File]::Open($sessionPath, 'OpenOrCreate', 'Read', 'Read') }
+    }
+    catch { throw '该版本已有启动或安装任务；全栈入口与分离入口不能混用。' }
+    # FileShare.None prevents duplicate components; release on every exit path.
     $lockPath = Join-Path (Join-Path $root 'logs') ($Edition.ToLowerInvariant() + '-' + $Component.ToLowerInvariant() + '.lock')
     Assert-PlainPath $lockPath
     try { $lockStream = [IO.File]::Open($lockPath, 'OpenOrCreate', 'ReadWrite', 'None') }
@@ -158,7 +170,9 @@ try {
     if ($Component -ne 'Backend') { Assert-FreePort $ports.Frontend }
 
     $installLock = $null
-    try { $installLock = [IO.File]::Open((Join-Path (Join-Path $root 'logs') ($Edition.ToLowerInvariant() + '-install.lock')), 'OpenOrCreate', 'ReadWrite', 'None') }
+    $installPath = Join-Path (Join-Path $root 'logs') ($Edition.ToLowerInvariant() + '-install.lock')
+    Assert-PlainPath $installPath
+    try { $installLock = [IO.File]::Open($installPath, 'OpenOrCreate', 'ReadWrite', 'None') }
     catch { throw '该版本正在安装依赖；请等待原安装完成后再启动。' }
     Write-Stage '检查运行时'
     $systemPython = Find-Application @('python', 'python3', 'py') ' Python 3.10+（含 venv 和 pip）'
@@ -215,7 +229,7 @@ try {
         Write-Stage '就绪'
         Write-Host "版本：$editionName；前端：$frontendUrl；API 前缀：$($ports.Prefix)"
         Write-Host "日志：$logDirectory"
-        Write-Host '请保持此窗口打开；按 Ctrl+C 正常停止本次启动的服务。重复启动会拒绝占用，不会重置演示库。'
+        Write-Host '请保持此窗口打开；按 Ctrl+C 停止本次启动的服务。重复启动会拒绝占用，不会重置演示库。'
         if (-not $NoBrowser -and $Component -ne 'Backend') { Start-Process $frontendUrl }
         while ($true) {
             foreach ($process in $ownedProcesses) {
@@ -245,5 +259,6 @@ finally {
     foreach ($key in $savedEnvironment.Keys) { [Environment]::SetEnvironmentVariable($key, $savedEnvironment[$key], 'Process') }
     if ($null -ne $installLock) { $installLock.Dispose() }
     if ($null -ne $lockStream) { $lockStream.Dispose() }
+    if ($null -ne $sessionLock) { $sessionLock.Dispose() }
 }
 exit $exitCode
