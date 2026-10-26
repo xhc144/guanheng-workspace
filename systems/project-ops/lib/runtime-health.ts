@@ -45,9 +45,12 @@ export function checkNodeVersion(version = process.versions.node) {
 
 function installedPnpmVersion(): string | undefined {
   try {
-    // 本机固定版本命令，无 shell 插值、无外部探测；Windows 的 .cmd 由固定 cmd 命令调用。
+    // 只查询版本：离线且版本不符即拒绝，防止 pnpm 自动下载/切换包管理器。
+    // Windows 的 .cmd 由固定命令调用，不含用户输入或 shell 插值。
     const command = process.platform === "win32" ? "cmd.exe" : "pnpm";
-    const args = process.platform === "win32" ? ["/d", "/s", "/c", "pnpm --version"] : ["--version"];
+    const args = process.platform === "win32"
+      ? ["/d", "/s", "/c", "pnpm --pm-on-fail=error --offline --version"]
+      : ["--pm-on-fail=error", "--offline", "--version"];
     const output = execFileSync(command, args, {
       timeout: 5_000, maxBuffer: 1_024, encoding: "utf8", windowsHide: true,
       stdio: ["ignore", "pipe", "ignore"],

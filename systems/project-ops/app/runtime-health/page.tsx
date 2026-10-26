@@ -11,7 +11,9 @@ import styles from "./runtime-health.module.css";
 export const dynamic = "force-dynamic";
 
 export default async function RuntimeHealthPage() {
-  const user = getSessionUser(getDb(), (await cookies()).get(SESSION_COOKIE)?.value);
+  const token = (await cookies()).get(SESSION_COOKIE)?.value;
+  if (!token) redirect("/login");
+  const user = getSessionUser(getDb(), token);
   if (!user) redirect("/login");
   if (user.role !== "ADMIN") return <AppShell user={user} active="/runtime-health" title="运行诊断">
     <section className={`work-panel ${styles.panel}`}>
