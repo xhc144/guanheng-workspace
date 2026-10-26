@@ -8,10 +8,8 @@ $demoDatabase = Join-Path $demoDirectory 'demo.db'
 foreach ($path in @($backend, $demoDirectory, $demoDatabase, "$demoDatabase-wal", "$demoDatabase-shm")) {
     if ((Test-Path -LiteralPath $path) -and ((Get-Item -LiteralPath $path -Force).Attributes -band [IO.FileAttributes]::ReparsePoint)) { throw '演示操作拒绝链接或重解析路径。' }
 }
-foreach ($directory in @($PSScriptRoot, $backend)) {
-    foreach ($name in @('.env', '.env.local')) {
-        if (Test-Path -LiteralPath (Join-Path $directory $name)) { throw '检测到本地环境文件；请在独立的干净源码目录运行演示，不读取或覆盖配置。' }
-    }
+foreach ($directory in @($PSScriptRoot, $backend, (Join-Path $PSScriptRoot 'frontend'))) {
+    if (Get-ChildItem -LiteralPath $directory -Force | Where-Object { $_.Name -like '.env*' -and $_.Name -ne '.env.example' }) { throw '检测到本地环境文件；请在独立的干净源码目录运行演示，不读取或覆盖配置。' }
 }
 if ($env:ENVIRONMENT -and $env:ENVIRONMENT.Trim().ToLowerInvariant() -notin @('development', 'test')) { throw '演示操作拒绝当前 ENVIRONMENT。' }
 $demoUrl = 'sqlite:///' + $demoDatabase.Replace('\', '/')

@@ -195,6 +195,7 @@ try {
             Write-Stage '准备受控演示库（保留已有数据）'
             if ($Edition -eq 'Kimi') {
                 if (-not (Test-Path -LiteralPath $demoDatabase)) {
+                    New-Item -ItemType Directory -Path $demoDirectory -Force | Out-Null
                     Invoke-Step '迁移新Kimi演示库' $python @('-m', 'alembic', 'upgrade', 'head') $backend
                     Invoke-Step '初始化新Kimi演示库' $python @('-m', 'app.demo_cli', 'seed') $backend
                 }
