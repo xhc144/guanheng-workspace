@@ -107,6 +107,24 @@ def main():
     # Restore normally through the same existing lock/source/cache, no installation bypass.
     code,text=execute('repair-with-original-lock',command(suite,'Basic','-InstallOnly'))
     assert code==0,text
+    # A real Vite configuration failure after backend readiness must clean the backend.
+    config=front/'vite.config.js'; saved_config=config.read_bytes()
+    config.write_text("throw new Error('WP02 synthetic frontend startup failure');\n")
+    try:
+        before=snapshot(database)
+        code,text=execute('frontend-startup-failure-cleans-owned-backend',command(suite,'Basic'))
+        assert code!=0 and '前端 提前退出' in text and '退出码' in text,text
+        assert not live.is_open(8100) and not live.is_open(5180)
+        assert snapshot(database)==before
+        RESULTS[-1]['backend_cleaned_database_preserved']=True
+    finally:
+        config.write_bytes(saved_config)
+    # The demo script must restore caller environment even when invoked within one host.
+    script=suite/'Kimi版/demo.ps1'
+    escaped=str(script).replace("'", "''")
+    ps="$env:DEMO_MODE='WP02-synthetic-original'; Remove-Item Env:DATABASE_URL -ErrorAction SilentlyContinue; & '"+escaped+"' -Action Verify; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; if ($env:DEMO_MODE -ne 'WP02-synthetic-original' -or (Test-Path Env:DATABASE_URL)) { exit 7 }; Write-Output 'caller environment restored'"
+    code,text=execute('kimi-restores-caller-environment',[PWSH,'-NoProfile','-Command',ps])
+    assert code==0 and 'caller environment restored' in text,text
     # Launch both actual legacy Basic scripts from an unrelated cwd.
     owners=[]
     try:
@@ -149,13 +167,16 @@ def main():
         dst.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(src,dst)
     legacy=freshsuite/'DeepSeek版/backend/venv'
     legacy.mkdir();(legacy/'synthetic-marker.txt').write_text('keep-old-venv')
+    partial=freshsuite/'DeepSeek版/backend/.venv'
+    partial.mkdir();(partial/'synthetic-partial-marker.txt').write_text('keep-partial-venv')
     cmd=[PWSH,'-NoProfile','-File',str(freshsuite/'DeepSeek版/setup.ps1')]
     code,text=execute('deepseek-setup-fresh-installonly',cmd)
     assert code==0,text
     assert (freshsuite/'DeepSeek版/backend/.venv/bin/python').exists()
     assert not (freshsuite/'DeepSeek版/backend/.demo').exists()
     assert (legacy/'synthetic-marker.txt').read_text()=='keep-old-venv'
-    RESULTS[-1].update(created_correct_venv=True,no_database_created=True,old_venv_preserved=True)
+    assert (partial/'synthetic-partial-marker.txt').read_text()=='keep-partial-venv'
+    RESULTS[-1].update(created_correct_venv=True,no_database_created=True,old_venv_preserved=True,partial_venv_repaired=True)
     # Show the real platform and preserve command-level outcomes, never claim Windows.
     (OUT/'results.json').write_text(json.dumps({'platform':'Linux PowerShell 7','reused_synthetic_suite':str(suite),'fresh_setup_suite':str(freshsuite),'results':RESULTS},ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'directory':str(OUT),'cases':len(RESULTS),'status':'passed'},ensure_ascii=False))
