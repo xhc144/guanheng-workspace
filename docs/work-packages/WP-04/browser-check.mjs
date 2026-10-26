@@ -38,12 +38,17 @@ try {
  page.on('console',m=>{if(m.type()==='error')errors.push({message:m.text(),location:m.location().url})});
  page.on('response',response=>{if(response.status()>=400){const failure={resourceStatus:response.status(),path:new URL(response.url()).pathname};failedResponses.push(failure);console.log(JSON.stringify(failure));}});
  page.on('requestfailed',request=>requestFailures.push({path:new URL(request.url()).pathname,error:request.failure()?.errorText}));
+ // Drain genuine prefetch work before each navigation; keep all failure assertions intact.
+ async function settle(){await page.waitForLoadState('networkidle');}
+ async function navigate(url){await settle();const response=await page.goto(url);await settle();return response;}
+ async function follow(link){await link.hover();await settle();await link.click();await settle();}
+
  assert.equal((await context.request.get(`${base}/api/capabilities`)).status(),401);
  assert.equal((await context.request.head(`${base}/api/capabilities`)).status(),401);
  assert.equal((await context.request.get(`${base}/api/integration-health`)).status(),401);
- await page.goto(`${base}/capabilities`);assert.equal(new URL(page.url()).pathname,'/login');
+ await navigate(`${base}/capabilities`);assert.equal(new URL(page.url()).pathname,'/login');
  results.push({check:'匿名GET/HEAD拒绝、页面跳转登录',status:'通过'});
- async function login(role){await context.clearCookies();await page.goto(`${base}/login`);await page.getByLabel('用户名或邮箱').fill(`wp04_${role.toLowerCase()}`);await page.getByLabel('密码',{exact:true}).fill(password);await page.getByRole('button',{name:'登录',exact:true}).click();await page.waitForURL(url=>url.pathname==='/');await page.locator('.app-shell').waitFor();}
+ async function login(role){await settle();await context.clearCookies();await navigate(`${base}/login`);await page.getByLabel('用户名或邮箱').fill(`wp04_${role.toLowerCase()}`);await page.getByLabel('密码',{exact:true}).fill(password);await page.getByRole('button',{name:'登录',exact:true}).click();await page.waitForURL(url=>url.pathname==='/');await page.locator('.app-shell').waitFor();await settle();}
  async function headers(){const cookie=(await context.cookies()).find(c=>c.name==='pms_session');assert.ok(cookie?.httpOnly&&cookie.secure);return {cookie:`${cookie.name}=${cookie.value}`};}
  await login('ADMIN');
  const adminHeaders=await headers();
@@ -56,7 +61,7 @@ try {
  const integration=await context.request.get(`${base}/api/integration-health`,{headers:adminHeaders});assert.equal(integration.status(),200);
  const health=await integration.json();assert.equal(health.phase,'G0');assert.deepEqual(health.migrationRunner,{status:'NOT_REGISTERED',applied:null});
  assert.equal(health.providers.budget,'NOT_CONFIGURED');assert.deepEqual(health.providers.approvalSubjects,['PROJECT','WORK_ITEM']);assert.deepEqual(health.providers.notificationChannels,[]);
- await page.setViewportSize({width:375,height:900});await page.goto(`${base}/integration-health`);
+ await page.setViewportSize({width:375,height:900});await navigate(`${base}/integration-health`);
  await page.getByRole('heading',{name:'G0 地基 · 基线模块已登记',exact:true}).waitFor();assert.match(await page.locator('main').innerText(),/迁移执行器：尚未注册/);
  assert.ok(await page.evaluate(()=>document.body.scrollWidth<=375&&document.documentElement.scrollWidth<=375));
  results.push({check:'正式favicon GET/HEAD204零字节、元数据路径；真实G0状态API与375px页面，runner/预算/通道未配置状态真实',status:'通过'});
@@ -70,7 +75,7 @@ try {
  results.push({check:'管理员真实登录、GET/HEAD只读、POST405与非法页码400',status:'通过',sourceDigest:data.sourceDigest});
  for(const width of [375,768,1440]){
   await page.setViewportSize({width,height:1000});
-  const response=await page.goto(`${base}/capabilities`);assert.equal(response.status(),200);
+  const response=await navigate(`${base}/capabilities`);assert.equal(response.status(),200);
   await page.getByRole('heading',{name:'盘点不等于运行通过',exact:true}).waitFor();
   assert.match(await page.locator('main').innerText(),/114项完成/);
   assert.equal(await page.locator('ul[aria-label="能力来源记录"] > li').count(),25);
@@ -79,7 +84,7 @@ try {
   const apply=page.getByRole('button',{name:'应用筛选',exact:true});
   const box=await apply.boundingBox();assert.ok(box.width>=44&&box.height>=44);
   await apply.focus();assert.equal(await apply.evaluate(e=>document.activeElement===e),true);
-  await apply.click();await page.waitForURL(url=>url.searchParams.get('q')==='预算');
+  await settle();await apply.click();await page.waitForURL(url=>url.searchParams.get('q')==='预算');await settle();
   await page.getByRole('heading',{name:'预算版本与执行',exact:true}).first().waitFor();
   const text=await page.locator('ul[aria-label="能力来源记录"]').innerText();assert.match(text,/DeepSeek版 · 移植/);assert.match(text,/未逐项运行/);assert.doesNotMatch(text,/基础版 ·/);
   const first=page.locator('ul[aria-label="能力来源记录"] > li').first();await first.getByText('查看主线对应、测试与来源摘要',{exact:true}).click();assert.match(await first.innerText(),/源码 SHA-256/);
@@ -89,13 +94,13 @@ try {
   if(width===375)await page.screenshot({path:join(runtime,'screenshots/capabilities-375-viewport.png')});
   results.push({check:`${width}px真实中文筛选、证据展开、键盘焦点、44px触控及布局`,status:'通过',dimensions});
  }
- await page.goto(`${base}/capabilities`);await page.getByRole('link',{name:'下一页',exact:true}).click();await page.waitForURL(url=>url.searchParams.get('page')==='2');assert.match(await page.getByRole('status').innerText(),/第 2/);
- await page.goto(`${base}/capabilities?q=WP04_不存在的合成能力`);await page.getByRole('heading',{name:'没有符合条件的来源记录',exact:true}).waitFor();
- await page.goto(`${base}/capabilities?page=-1`);await page.getByRole('heading',{name:'无法应用筛选',exact:true}).waitFor();assert.match(await page.locator('section[role="alert"]').innerText(),/页码/);await page.getByRole('link',{name:'重置筛选',exact:true}).click();await page.waitForURL(url=>url.pathname==='/capabilities'&&!url.search);
+ await navigate(`${base}/capabilities`);await follow(page.getByRole('link',{name:'下一页',exact:true}));await page.waitForURL(url=>url.searchParams.get('page')==='2');assert.match(await page.getByRole('status').innerText(),/第 2/);
+ await navigate(`${base}/capabilities?q=WP04_不存在的合成能力`);await page.getByRole('heading',{name:'没有符合条件的来源记录',exact:true}).waitFor();
+ await navigate(`${base}/capabilities?page=-1`);await page.getByRole('heading',{name:'无法应用筛选',exact:true}).waitFor();assert.match(await page.locator('section[role="alert"]').innerText(),/页码/);await follow(page.getByRole('link',{name:'重置筛选',exact:true}));await page.waitForURL(url=>url.pathname==='/capabilities'&&!url.search);
  results.push({check:'翻页、中文空状态、错误边界与重置恢复',status:'通过'});
  for(const role of ['FINANCE','DEPARTMENT_MANAGER','PROJECT_MEMBER']){
   await login(role);const denied=await context.request.get(`${base}/api/capabilities`,{headers:await headers()});assert.equal(denied.status(),403);assert.deepEqual(await denied.json(),{error:'仅管理员可查看能力目录'});
-  await page.goto(`${base}/capabilities`);await page.getByRole('heading',{name:'仅管理员可查看能力目录',exact:true}).waitFor();assert.equal(await page.locator('ul[aria-label="能力来源记录"]').count(),0);
+  await navigate(`${base}/capabilities`);await page.getByRole('heading',{name:'仅管理员可查看能力目录',exact:true}).waitFor();assert.equal(await page.locator('ul[aria-label="能力来源记录"]').count(),0);
   const deniedHealth=await context.request.get(`${base}/api/integration-health`,{headers:await headers()});assert.equal(deniedHealth.status(),403);
  }
  results.push({check:'三个非管理员角色中文拒绝、无目录数据展示',status:'通过'});
@@ -106,7 +111,7 @@ try {
  const brokenHeaders=await headers();
  const broken=openDatabase(join(runtime,'data/wp04-synthetic.db'));broken.exec('DROP TABLE sessions');broken.close();
  const unavailable=await context.request.get(`${base}/api/capabilities`,{headers:brokenHeaders});assert.equal(unavailable.status(),500);assert.deepEqual(await unavailable.json(),{error:'能力目录暂时无法读取，请稍后重试或联系管理员'});
- await page.goto(`${base}/capabilities`);
+ await navigate(`${base}/capabilities`);
  await page.getByRole('heading',{name:'能力目录暂时无法读取',exact:true}).waitFor();
  assert.equal(await page.locator('ul[aria-label="能力来源记录"]').count(),0);
  assert.doesNotMatch(await page.locator('main').innerText(),/no such table|sessions|\/tmp|\/workspace/);
