@@ -1,0 +1,112 @@
+{
+  "time": "2026-10-26T17:14:46.076133+00:00",
+  "round": 1,
+  "source_binding": {
+    "source_commit": "47423fbcf0c7734ecb9e8be47f2b92bf049069d8",
+    "source_tree": "972d4d6f163190638845ab8b773c82b1c46d9b44",
+    "execution_head": "47423fbcf0c7734ecb9e8be47f2b92bf049069d8",
+    "manifest": "docs/work-packages/WP-03/evidence/p2-source-manifest.json",
+    "manifest_sha256": "07db39a3ac93f6e92200bd55f4e0dd3f58d2e271055e37156201ccff4b2645b2",
+    "source_blobs_match": true
+  },
+  "focus": "明确合成弱值拒绝/保守正例、18条命令、三版源文件与副本blob、只改owned路径、未扩鉴权范围",
+  "required_commands": [
+    {
+      "command": "python3 -c 'import shutil; shutil.copytree(\"systems/pms-suite/基础版/backend\", \"/tmp/guanheng-WP-03-basic/backend\", ignore=shutil.ignore_patterns(\".venv\", \"__pycache__\", \".demo\", \".pytest_cache\", \".env*\"))'",
+      "evidence": "p2-basic-prepare-1.log",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -m venv /tmp/guanheng-WP-03-basic/venv",
+      "evidence": "p2-basic-prepare-2.log",
+      "exit_code": 0
+    },
+    {
+      "command": "cd /tmp/guanheng-WP-03-basic/backend && /tmp/guanheng-WP-03-basic/venv/bin/python -m pip install -r requirements.txt",
+      "evidence": "p2-basic-prepare-3.log",
+      "exit_code": 0
+    },
+    {
+      "command": "cd /tmp/guanheng-WP-03-basic/backend && PYTHONPATH=. /tmp/guanheng-WP-03-basic/venv/bin/python -m pytest tests/test_auth_config.py tests/test_login_flow.py",
+      "evidence": "p2-basic-test-1.log",
+      "exit_code": 0
+    },
+    {
+      "command": "cd 'systems/pms-suite/基础版/frontend' && npm ci",
+      "evidence": "p2-basic-frontend-1.log",
+      "exit_code": 0
+    },
+    {
+      "command": "cd 'systems/pms-suite/基础版/frontend' && npm run build",
+      "evidence": "p2-basic-frontend-2.log",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -c 'import shutil; shutil.copytree(\"systems/pms-suite/DeepSeek版/backend\", \"/tmp/guanheng-WP-03-deepseek/backend\", ignore=shutil.ignore_patterns(\".venv\", \"__pycache__\", \".demo\", \".pytest_cache\", \".env*\"))'",
+      "evidence": "p2-deepseek-prepare-1.log",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -m venv /tmp/guanheng-WP-03-deepseek/venv",
+      "evidence": "p2-deepseek-prepare-2.log",
+      "exit_code": 0
+    },
+    {
+      "command": "cd /tmp/guanheng-WP-03-deepseek/backend && /tmp/guanheng-WP-03-deepseek/venv/bin/python -m pip install -r requirements.txt",
+      "evidence": "p2-deepseek-prepare-3.log",
+      "exit_code": 0
+    },
+    {
+      "command": "cd /tmp/guanheng-WP-03-deepseek/backend && PYTHONPATH=. /tmp/guanheng-WP-03-deepseek/venv/bin/python -m pytest tests/test_auth_config.py",
+      "evidence": "p2-deepseek-test-1.log",
+      "exit_code": 0
+    },
+    {
+      "command": "cd 'systems/pms-suite/DeepSeek版/frontend' && npm ci",
+      "evidence": "p2-deepseek-frontend-1.log",
+      "exit_code": 0
+    },
+    {
+      "command": "cd 'systems/pms-suite/DeepSeek版/frontend' && npm run build",
+      "evidence": "p2-deepseek-frontend-2.log",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -c 'import shutil; shutil.copytree(\"systems/pms-suite/Kimi版/backend\", \"/tmp/guanheng-WP-03-kimi/backend\", ignore=shutil.ignore_patterns(\".venv\", \"__pycache__\", \".demo\", \".pytest_cache\", \".env*\"))'",
+      "evidence": "p2-kimi-prepare-1.log",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -m venv /tmp/guanheng-WP-03-kimi/venv",
+      "evidence": "p2-kimi-prepare-2.log",
+      "exit_code": 0
+    },
+    {
+      "command": "cd /tmp/guanheng-WP-03-kimi/backend && /tmp/guanheng-WP-03-kimi/venv/bin/python -m pip install -r requirements.txt",
+      "evidence": "p2-kimi-prepare-3.log",
+      "exit_code": 0
+    },
+    {
+      "command": "cd /tmp/guanheng-WP-03-kimi/backend && PYTHONPATH=. /tmp/guanheng-WP-03-kimi/venv/bin/python -m pytest tests/test_auth_config.py tests/test_auth_smoke.py",
+      "evidence": "p2-kimi-test-1.log",
+      "exit_code": 0
+    },
+    {
+      "command": "cd 'systems/pms-suite/Kimi版/frontend' && npm ci",
+      "evidence": "p2-kimi-frontend-1.log",
+      "exit_code": 0
+    },
+    {
+      "command": "cd 'systems/pms-suite/Kimi版/frontend' && npm run build",
+      "evidence": "p2-kimi-frontend-2.log",
+      "exit_code": 0
+    }
+  ],
+  "targeted_passes": {
+    "basic": 26,
+    "deepseek": 28,
+    "kimi": 29
+  },
+  "new_findings": [],
+  "notes": "不以旧123项回归声明新源码通过；全量及浏览器结果另行绑定后在第二轮审查"
+}
