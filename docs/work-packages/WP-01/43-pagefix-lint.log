@@ -1,0 +1,9 @@
+代码SHA: b6790b97e47c2f2afdec7aec8b90987582f9e335
+开始时间: 2026-10-26T17:16:34.557440+00:00
+实际cwd: /workspace/guanheng-wp01/systems/project-ops
+完整命令: pnpm lint
+$ eslint .
+
+退出码: 0
+结束时间: 2026-10-26T17:16:54.293193+00:00
+用时秒: 19.74

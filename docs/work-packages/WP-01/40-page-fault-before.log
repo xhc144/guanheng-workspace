@@ -1,0 +1,35 @@
+代码SHA: 1e36bfce8c13e33f671c95902d23ce2ddabe92ca
+开始时间: 2026-10-26T17:14:43.915249+00:00
+实际cwd: /workspace/guanheng-wp01
+完整命令: node --experimental-strip-types docs/work-packages/WP-01/page-error-check.mjs /opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs /usr/bin/chromium
+{
+  "phase": "故障页面",
+  "runtime": "/tmp/guanheng-wp01-private-synthetic-uCxkcI",
+  "pageStatus": 500,
+  "chineseFallbackVisible": false,
+  "frameworkGenericVisible": false,
+  "privateValuesObserved": false
+}
+临时故障服务已停止；合成数据和截图：/tmp/guanheng-wp01-private-synthetic-uCxkcI
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: 真实数据库故障应显示本域中文错误边界
+
+false !== true
+
+    at file:///workspace/guanheng-wp01/docs/work-packages/WP-01/page-error-check.mjs:113:10 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
+
+退出码: 1
+结束时间: 2026-10-26T17:15:11.340197+00:00
+用时秒: 27.42
