@@ -1,0 +1,49 @@
+代码SHA: b6790b97e47c2f2afdec7aec8b90987582f9e335
+开始时间: 2026-10-26T17:22:33.293616+00:00
+实际cwd: /workspace/guanheng-wp01
+完整命令: python3 /tmp/wp01-page-audit.py
+{
+  "结果": "通过",
+  "base": "1e36bfce8c13e33f671c95902d23ce2ddabe92ca",
+  "代码SHA": "b6790b97e47c2f2afdec7aec8b90987582f9e335",
+  "分支": "wp/01-runtime-page-errors",
+  "检查": [
+    "全部变更在WP01 owns",
+    "新分支来自精确merge SHA",
+    "冻结文件逐字节一致",
+    "UTF-8代码文本无二进制/真实数据",
+    "报告证据链接存在",
+    "源代码与文档diff检查通过，原始日志行尾原样保留"
+  ],
+  "冻结SHA256": {
+    "systems/project-ops/package.json": "109a339d172de5d46fc80737467e8fd5e46ee4970f765f559252e7c2c6df625c",
+    "systems/project-ops/pnpm-lock.yaml": "3e0d6c6fe4e1308c86614b12f549cf2c68a1c74b4a31fa58fd9fad31ffe3313c",
+    "systems/project-ops/pnpm-workspace.yaml": "89cafb36feb003b007b6b7d61a813dfd8fc18308c24c002705ba78e04fb79864",
+    "systems/project-ops/.node-version": "7e8a2fa94951112b894a3dbe3d05efef5e9263741fa49125f0a70f40fedab4cc"
+  },
+  "路径": [
+    "docs/work-packages/WP-01/36-merged-test.log",
+    "docs/work-packages/WP-01/37-merged-typecheck.log",
+    "docs/work-packages/WP-01/38-merged-lint.log",
+    "docs/work-packages/WP-01/39-merged-build.log",
+    "docs/work-packages/WP-01/40-page-fault-before.log",
+    "docs/work-packages/WP-01/41-pagefix-test.log",
+    "docs/work-packages/WP-01/42-pagefix-typecheck.log",
+    "docs/work-packages/WP-01/43-pagefix-lint.log",
+    "docs/work-packages/WP-01/44-pagefix-build.log",
+    "docs/work-packages/WP-01/45-page-fault-after.log",
+    "docs/work-packages/WP-01/46-page-fault-complete-response.log",
+    "docs/work-packages/WP-01/47-page-review-one.log",
+    "docs/work-packages/WP-01/page-error-check.mjs",
+    "docs/work-packages/WP-01/合并后复验与页面故障.md",
+    "docs/work-packages/WP-01/命令索引.md",
+    "docs/work-packages/WP-01/运行与冻结契约.md",
+    "reports/WP-01.md",
+    "systems/project-ops/app/runtime-health/error.tsx",
+    "systems/project-ops/app/runtime-health/runtime-health.module.css"
+  ]
+}
+
+退出码: 0
+结束时间: 2026-10-26T17:22:33.402373+00:00
+用时秒: 0.11
