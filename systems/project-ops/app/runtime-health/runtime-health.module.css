@@ -1,0 +1,18 @@
+.panel { padding: 20px; min-width: 0; overflow-wrap: anywhere; }
+.panel h2 { margin: 0 0 12px; font-size: 18px; }
+.panel h3 { margin: 0; font-size: 17px; }
+.panel p { margin: 10px 0 0; line-height: 1.7; }
+.heading { margin: 0 0 14px; font-size: 18px; }
+.checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px; padding: 0; margin: 0; list-style: none; }
+.cardHeading { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+.ok { color: #176442; }
+.error, .unknown { color: #914510; }
+.versions { margin: 16px 0; display: grid; gap: 8px; }
+.versions div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; }
+.versions dt { color: #596d65; }
+.versions dd { margin: 0; font-variant-numeric: tabular-nums; }
+.action { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px 16px; border: 1px solid #176442; border-radius: 8px; background: #fff; color: #176442; font: inherit; font-weight: 600; cursor: pointer; text-decoration: none; }
+.action:focus-visible { outline: 3px solid #176442; outline-offset: 3px; }
+.steps { margin: 0; padding-left: 22px; line-height: 1.9; }
+.steps code { white-space: normal; overflow-wrap: anywhere; }
+@media (max-width: 480px) { .panel { padding: 16px; } }

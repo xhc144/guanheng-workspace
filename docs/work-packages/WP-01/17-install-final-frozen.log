@@ -1,0 +1,9 @@
+开始时间: 2026-10-26T16:43:04.280273+00:00
+实际cwd: /workspace/guanheng-wp01/systems/project-ops
+完整命令: pnpm install --frozen-lockfile
+Already up to date
+Done in 1s using pnpm v11.19.0
+
+退出码: 0
+结束时间: 2026-10-26T16:43:05.456210+00:00
+用时秒: 1.18

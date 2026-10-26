@@ -1,0 +1,66 @@
+开始时间: 2026-10-26T16:30:05.364219+00:00
+实际cwd: /workspace/guanheng-wp01/systems/project-ops
+完整命令: pnpm install --frozen-lockfile
+? Verifying lockfile against supply-chain policies (481 entries)...
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +423
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+   ╭──────────────────────────────────────────╮
+   │                                          │
+   │   Update available! 11.19.0 → 12.15.0.   │
+   │   Changelog: https://pnpm.io/v/12.15.0   │
+   │     To update, run: pnpm add -g pnpm     │
+   │                                          │
+   ╰──────────────────────────────────────────╯
+
+Progress: resolved 423, reused 0, downloaded 0, added 0
+Progress: resolved 423, reused 0, downloaded 1, added 0
+Packages are hard linked from the content-addressable store to the virtual store.
+  Content-addressable store is at: /home/agent/.local/share/pnpm/store/v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 423, reused 0, downloaded 18, added 18
+Progress: resolved 423, reused 0, downloaded 51, added 51
+Progress: resolved 423, reused 0, downloaded 62, added 62
+Progress: resolved 423, reused 0, downloaded 63, added 62
+Progress: resolved 423, reused 0, downloaded 90, added 90
+Progress: resolved 423, reused 0, downloaded 117, added 117
+Progress: resolved 423, reused 0, downloaded 126, added 126
+Progress: resolved 423, reused 0, downloaded 160, added 159
+Progress: resolved 423, reused 0, downloaded 188, added 188
+Progress: resolved 423, reused 0, downloaded 197, added 197
+Progress: resolved 423, reused 0, downloaded 251, added 251
+Progress: resolved 423, reused 0, downloaded 266, added 266
+Progress: resolved 423, reused 0, downloaded 316, added 316
+Progress: resolved 423, reused 0, downloaded 324, added 324
+Progress: resolved 423, reused 0, downloaded 381, added 381
+Progress: resolved 423, reused 0, downloaded 409, added 409
+Progress: resolved 423, reused 0, downloaded 423, added 423, done
+✓ Lockfile passes supply-chain policies (481 entries in 22.2s)
+.../node_modules/unrs-resolver postinstall$ node postinstall.js
+.../node_modules/unrs-resolver postinstall: Done
+
+dependencies:
++ exceljs 4.4.0
++ lucide-react 1.35.0
++ next 16.3.3
++ nodemailer 9.0.6
++ react 19.2.8
++ react-dom 19.2.8
++ zod 4.4.3
+
+devDependencies:
++ @types/node 26.4.0
++ @types/nodemailer 8.0.1
++ @types/react 19.2.18
++ @types/react-dom 19.2.5
++ eslint 9.39.2
++ eslint-config-next 16.3.3
++ typescript 6.0.2
+
+Done in 23.5s using pnpm v11.19.0
+
+退出码: 0
+结束时间: 2026-10-26T16:30:29.077113+00:00
+用时秒: 23.71
