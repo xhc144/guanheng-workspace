@@ -1,0 +1,8 @@
+UTC_START: 2026-10-26T17:56:39.787713+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: gh api --method PATCH repos/xhc144/guanheng-workspace/pulls/9 -F body=@/tmp/wp24-pr-body.md --jq '{number,html_url,draft,state,base:.base.ref,head:.head.sha}'
+{"base":"integration","draft":true,"head":"b45a284ab2f6bd95b1f46fa3e7047104d8edc76c","html_url":"https://github.com/xhc144/guanheng-workspace/pull/9","number":9,"state":"open"}
+
+EXIT_CODE: 0
+UTC_END: 2026-10-26T17:56:41.760706+00:00
+ELAPSED_SECONDS: 1.974
