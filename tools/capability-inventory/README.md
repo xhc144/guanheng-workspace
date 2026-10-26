@@ -18,7 +18,7 @@ node tools/capability-inventory/generate.mjs --stdout
 - 三版 PMS 的 backend/app 中 APIRouter 装饰函数，结合 main.py 的 include_router 挂载前缀；Kimi 的显式 router 元组支持 /api/v1 挂载。Python只做AST解析，不执行模块。
 - DeepSeek/Kimi 的 App.tsx Route 节点及 DeepSeek 的 login/portal 条件分支。定位默认页面函数或默认导出的 const 组件真实行号。pages/ 中未被解析挂载的页面会报错。
 - 基础版是状态视图：`view:*` 和 `state:*` 不是 HTTP 路径；从实际 view 条件、项目详情条件和登录分支提取。
-- 每条来源包含文件 SHA-256、1起始行号、符号、最多32项静态调用线索。Python测试名及行号仅供参考，关联依据为 mapping.json 中明确的测试名模式，不能推导该接口已覆盖。
+- 每条来源包含文件 SHA-256、1起始行号、符号、最多32项静态调用线索。Python测试名及行号仅供参考，关联依据为 mapping.json 中明确的测试文件名/函数名模式，不能推导该接口已覆盖。
 
 当前源码采用显式函数导出；新的变量形式HTTP handler、转导出、无法解析的页面/路由、未挂载Python路由、重复系统/类型/方法/规范化路径、未分类项均失败，需要维护者明确扩展解析器。动态参数名称不同会被归一检测重复。这里不是任意框架版本的通用路由解析器；内联server action、CLI、middleware及业务字段不在范围，后续出现时应扩展范围与测试，不能声称全业务覆盖。
 

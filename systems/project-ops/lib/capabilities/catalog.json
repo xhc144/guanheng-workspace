@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "sourceBase": "22aab8477eeef3cb498f3be3c739b631b295ea12",
-  "sourceDigest": "6988288ef7d28dad4da446f6925216f3c1f60f39aefc99505e214bd771e4e13d",
+  "sourceDigest": "3f9c8386e24b5eb57b8f58a26b1f1d7a5a6d758ed332673f1f9a080302a5d558",
   "dataKind": "静态源码盘点，非实时经营数据",
   "scope": "Next页面/显式HTTP方法/server actions；三版PMS挂载HTTP路由及前端页面/状态视图；不包含隐式HEAD/OPTIONS、CLI或每个业务字段",
   "verification": "源码解析及覆盖检查不证明业务运行；旧文档114项完成未经本次逐项验证",
@@ -59,7 +59,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP19"
     },
     {
@@ -147,7 +147,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -223,7 +223,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -298,7 +298,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -372,7 +372,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -445,7 +445,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -529,7 +529,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -600,7 +600,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -673,7 +673,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -721,7 +721,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP24"
     },
     {
@@ -775,7 +775,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -818,8 +818,74 @@
       "referenceTests": [
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_production_demo_mode_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 89,
+          "symbol": "test_production_startup_does_not_create_database",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
           "line": 100,
           "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 151,
+          "symbol": "test_production_seeder_refused_without_database_write",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 185,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 204,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 247,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
           "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
         },
         {
@@ -853,7 +919,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -887,8 +953,74 @@
       "referenceTests": [
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_production_demo_mode_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 89,
+          "symbol": "test_production_startup_does_not_create_database",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
           "line": 100,
           "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 151,
+          "symbol": "test_production_seeder_refused_without_database_write",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 185,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 204,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 247,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
           "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
         },
         {
@@ -922,7 +1054,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -958,8 +1090,74 @@
       "referenceTests": [
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_production_demo_mode_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 89,
+          "symbol": "test_production_startup_does_not_create_database",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
           "line": 100,
           "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 151,
+          "symbol": "test_production_seeder_refused_without_database_write",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 185,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 204,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 247,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
           "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
         },
         {
@@ -993,7 +1191,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -1036,8 +1234,74 @@
       "referenceTests": [
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_production_demo_mode_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 89,
+          "symbol": "test_production_startup_does_not_create_database",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
           "line": 100,
           "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 151,
+          "symbol": "test_production_seeder_refused_without_database_write",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 185,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 204,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 247,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
           "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
         },
         {
@@ -1071,7 +1335,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -1111,8 +1375,74 @@
       "referenceTests": [
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_production_demo_mode_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 89,
+          "symbol": "test_production_startup_does_not_create_database",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
           "line": 100,
           "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 151,
+          "symbol": "test_production_seeder_refused_without_database_write",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 185,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 204,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 247,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
           "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
         },
         {
@@ -1146,7 +1476,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -1182,8 +1512,74 @@
       "referenceTests": [
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_production_demo_mode_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 89,
+          "symbol": "test_production_startup_does_not_create_database",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
           "line": 100,
           "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 151,
+          "symbol": "test_production_seeder_refused_without_database_write",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 185,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 204,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 247,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
           "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
         },
         {
@@ -1217,7 +1613,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -1308,7 +1704,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11"
     },
     {
@@ -1338,6 +1734,78 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_production_demo_mode_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 89,
+          "symbol": "test_production_startup_does_not_create_database",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 100,
+          "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 151,
+          "symbol": "test_production_seeder_refused_without_database_write",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 185,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 204,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 247,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 45,
@@ -1387,7 +1855,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP01"
     },
     {
@@ -1486,7 +1954,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -1589,7 +2057,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -1625,7 +2093,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP15"
     },
     {
@@ -1674,7 +2142,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP15"
     },
     {
@@ -1742,7 +2210,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -1817,7 +2285,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -1886,7 +2354,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -1993,7 +2461,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -2115,7 +2583,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -2155,7 +2623,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -2197,7 +2665,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -2241,7 +2709,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -2286,7 +2754,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -2345,7 +2813,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -2420,7 +2888,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -2494,7 +2962,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -2569,7 +3037,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -2607,7 +3075,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP29"
     },
     {
@@ -2647,7 +3115,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP29"
     },
     {
@@ -2685,7 +3153,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP29"
     },
     {
@@ -2763,7 +3231,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -2838,7 +3306,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -2909,7 +3377,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -2999,7 +3467,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -3081,7 +3549,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -3154,7 +3622,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -3224,7 +3692,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -3300,7 +3768,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -3382,7 +3850,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -3484,7 +3952,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -3583,7 +4051,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -3701,7 +4169,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -3788,7 +4256,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11"
     },
     {
@@ -3819,6 +4287,78 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_production_demo_mode_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 89,
+          "symbol": "test_production_startup_does_not_create_database",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 100,
+          "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 151,
+          "symbol": "test_production_seeder_refused_without_database_write",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 185,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 204,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 247,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 45,
@@ -3868,7 +4408,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP01"
     },
     {
@@ -3961,7 +4501,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP23/WP24"
     },
     {
@@ -4061,7 +4601,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -4162,7 +4702,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -4267,7 +4807,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -4345,7 +4885,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -4426,7 +4966,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -4504,7 +5044,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -4582,7 +5122,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -4661,7 +5201,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11"
     },
     {
@@ -4742,7 +5282,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11"
     },
     {
@@ -4820,7 +5360,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11"
     },
     {
@@ -4898,7 +5438,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11"
     },
     {
@@ -4951,7 +5491,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP19"
     },
     {
@@ -5006,7 +5546,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP19"
     },
     {
@@ -5058,7 +5598,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP19/WP05协调"
     },
     {
@@ -5114,7 +5654,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP19"
     },
     {
@@ -5211,7 +5751,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -5309,7 +5849,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -5350,7 +5890,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP15"
     },
     {
@@ -5382,7 +5922,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP15"
     },
     {
@@ -5436,7 +5976,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP15"
     },
     {
@@ -5486,7 +6026,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP15"
     },
     {
@@ -5569,7 +6109,7 @@
           "sha256": "6231f2c8acd6ef7ac4b604cf17df10fd58bbbcc8f9f3041eaeb3c5ec06e68e25"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -5656,7 +6196,7 @@
           "sha256": "6231f2c8acd6ef7ac4b604cf17df10fd58bbbcc8f9f3041eaeb3c5ec06e68e25"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -5719,7 +6259,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -5812,7 +6352,7 @@
           "sha256": "6231f2c8acd6ef7ac4b604cf17df10fd58bbbcc8f9f3041eaeb3c5ec06e68e25"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -5904,7 +6444,7 @@
           "sha256": "6231f2c8acd6ef7ac4b604cf17df10fd58bbbcc8f9f3041eaeb3c5ec06e68e25"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -6007,7 +6547,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -6108,7 +6648,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -6215,7 +6755,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -6314,7 +6854,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -6426,7 +6966,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -6485,7 +7025,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP14"
     },
     {
@@ -6534,7 +7074,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP29"
     },
     {
@@ -6607,7 +7147,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -6667,7 +7207,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -6722,7 +7262,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -6781,7 +7321,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -6837,7 +7377,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -6893,7 +7433,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -6953,7 +7493,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -6991,7 +7531,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -7031,7 +7571,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -7074,7 +7614,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -7160,7 +7700,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP22"
     },
     {
@@ -7205,6 +7745,78 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_production_demo_mode_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 89,
+          "symbol": "test_production_startup_does_not_create_database",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 100,
+          "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 151,
+          "symbol": "test_production_seeder_refused_without_database_write",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 185,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 204,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 247,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 45,
@@ -7254,7 +7866,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP01"
     },
     {
@@ -7328,7 +7940,7 @@
           "sha256": "6231f2c8acd6ef7ac4b604cf17df10fd58bbbcc8f9f3041eaeb3c5ec06e68e25"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -7406,7 +8018,7 @@
           "sha256": "6231f2c8acd6ef7ac4b604cf17df10fd58bbbcc8f9f3041eaeb3c5ec06e68e25"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -7481,7 +8093,7 @@
           "sha256": "6231f2c8acd6ef7ac4b604cf17df10fd58bbbcc8f9f3041eaeb3c5ec06e68e25"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -7554,7 +8166,7 @@
           "sha256": "6231f2c8acd6ef7ac4b604cf17df10fd58bbbcc8f9f3041eaeb3c5ec06e68e25"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -7627,7 +8239,7 @@
           "sha256": "6231f2c8acd6ef7ac4b604cf17df10fd58bbbcc8f9f3041eaeb3c5ec06e68e25"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -7678,7 +8290,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -7729,7 +8341,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -7779,7 +8391,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -7846,7 +8458,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -7898,7 +8510,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -7947,7 +8559,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -7988,7 +8600,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -8105,7 +8717,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -8183,7 +8795,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -8235,7 +8847,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP24"
     },
     {
@@ -8290,7 +8902,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP14"
     },
     {
@@ -8386,7 +8998,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11"
     },
     {
@@ -8446,7 +9058,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP29"
     },
     {
@@ -8536,7 +9148,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -8652,7 +9264,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -8749,7 +9361,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -8852,7 +9464,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11"
     },
     {
@@ -8929,7 +9541,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP23/WP24"
     },
     {
@@ -8974,8 +9586,74 @@
       "referenceTests": [
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_production_demo_mode_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 89,
+          "symbol": "test_production_startup_does_not_create_database",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
           "line": 100,
           "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 151,
+          "symbol": "test_production_seeder_refused_without_database_write",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 185,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 204,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 247,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
           "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
         },
         {
@@ -9009,7 +9687,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -9069,7 +9747,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP19"
     },
     {
@@ -9119,7 +9797,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP15"
     },
     {
@@ -9228,7 +9906,7 @@
           "sha256": "6231f2c8acd6ef7ac4b604cf17df10fd58bbbcc8f9f3041eaeb3c5ec06e68e25"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -9337,7 +10015,7 @@
           "sha256": "6231f2c8acd6ef7ac4b604cf17df10fd58bbbcc8f9f3041eaeb3c5ec06e68e25"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -9460,7 +10138,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -9515,7 +10193,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -9586,7 +10264,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -9634,8 +10312,74 @@
       "referenceTests": [
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_production_demo_mode_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 89,
+          "symbol": "test_production_startup_does_not_create_database",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
           "line": 100,
           "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 151,
+          "symbol": "test_production_seeder_refused_without_database_write",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 185,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 204,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 247,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
           "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
         },
         {
@@ -9669,7 +10413,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -9766,7 +10510,7 @@
           "sha256": "6231f2c8acd6ef7ac4b604cf17df10fd58bbbcc8f9f3041eaeb3c5ec06e68e25"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -9839,7 +10583,7 @@
           "sha256": "9cc162e3a86f313c95be081454c31d58eaf4bafbed75d42ea906e16a90c3edba"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -9945,7 +10689,7 @@
           "sha256": "08e8eb32153b2bc5fdc8ed119a216e85a0de26e1754ec9278117a2a7a384eb02"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -9999,7 +10743,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP23/WP24"
     },
     {
@@ -10046,7 +10790,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -10089,7 +10833,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -10126,7 +10870,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -10168,7 +10912,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -10214,7 +10958,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -10252,7 +10996,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP24"
     },
     {
@@ -10293,13 +11037,85 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_production_demo_mode_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 89,
+          "symbol": "test_production_startup_does_not_create_database",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 100,
+          "symbol": "test_production_seed_baseline_refused_without_database_write",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 109,
+          "symbol": "test_demo_identity_override_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 117,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 139,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 158,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 207,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
           "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_smoke.py",
           "line": 9,
           "symbol": "test_admin_login_smoke",
           "sha256": "ae24a1a591db55d4dc7e048cbee9420096b7f938aa0565c5f9df64eeb5638fc7"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -10334,13 +11150,85 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_production_demo_mode_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 89,
+          "symbol": "test_production_startup_does_not_create_database",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 100,
+          "symbol": "test_production_seed_baseline_refused_without_database_write",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 109,
+          "symbol": "test_demo_identity_override_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 117,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 139,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 158,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 207,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
           "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_smoke.py",
           "line": 9,
           "symbol": "test_admin_login_smoke",
           "sha256": "ae24a1a591db55d4dc7e048cbee9420096b7f938aa0565c5f9df64eeb5638fc7"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -10392,7 +11280,7 @@
           "sha256": "0b8d01121c5c5346e57049ac24a93d415cdf25c0f7cbb0275b3de1f99ed6d77f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -10450,7 +11338,7 @@
           "sha256": "0b8d01121c5c5346e57049ac24a93d415cdf25c0f7cbb0275b3de1f99ed6d77f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -10489,7 +11377,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -10537,7 +11425,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -10588,7 +11476,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -10641,7 +11529,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -10697,7 +11585,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -10760,7 +11648,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -10827,7 +11715,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -10894,7 +11782,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -10946,7 +11834,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -11006,7 +11894,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -11045,7 +11933,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -11086,7 +11974,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -11123,7 +12011,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -11165,7 +12053,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -11219,7 +12107,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -11277,7 +12165,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -11332,7 +12220,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -11398,7 +12286,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -11446,7 +12334,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -11476,6 +12364,78 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_production_demo_mode_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 89,
+          "symbol": "test_production_startup_does_not_create_database",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 100,
+          "symbol": "test_production_seed_baseline_refused_without_database_write",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 109,
+          "symbol": "test_demo_identity_override_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 117,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 139,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 158,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 207,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
           "path": "systems/pms-suite/Kimi版/backend/tests/test_core_flow.py",
           "line": 37,
           "symbol": "test_health",
@@ -11488,7 +12448,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP01"
     },
     {
@@ -11554,7 +12514,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -11603,7 +12563,7 @@
           "sha256": "0b8d01121c5c5346e57049ac24a93d415cdf25c0f7cbb0275b3de1f99ed6d77f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -11654,7 +12614,7 @@
           "sha256": "0b8d01121c5c5346e57049ac24a93d415cdf25c0f7cbb0275b3de1f99ed6d77f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -11711,7 +12671,7 @@
           "sha256": "0b8d01121c5c5346e57049ac24a93d415cdf25c0f7cbb0275b3de1f99ed6d77f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -11757,7 +12717,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11"
     },
     {
@@ -11796,7 +12756,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP19"
     },
     {
@@ -11836,7 +12796,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP19/WP05协调"
     },
     {
@@ -11881,7 +12841,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP19"
     },
     {
@@ -11935,7 +12895,7 @@
           "sha256": "0b8d01121c5c5346e57049ac24a93d415cdf25c0f7cbb0275b3de1f99ed6d77f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -11991,7 +12951,7 @@
           "sha256": "0b8d01121c5c5346e57049ac24a93d415cdf25c0f7cbb0275b3de1f99ed6d77f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -12051,7 +13011,7 @@
           "sha256": "0b8d01121c5c5346e57049ac24a93d415cdf25c0f7cbb0275b3de1f99ed6d77f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -12103,7 +13063,7 @@
           "sha256": "0b8d01121c5c5346e57049ac24a93d415cdf25c0f7cbb0275b3de1f99ed6d77f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -12163,7 +13123,7 @@
           "sha256": "0b8d01121c5c5346e57049ac24a93d415cdf25c0f7cbb0275b3de1f99ed6d77f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -12196,7 +13156,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -12231,7 +13191,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP14"
     },
     {
@@ -12274,7 +13234,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP14"
     },
     {
@@ -12325,7 +13285,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP29"
     },
     {
@@ -12372,7 +13332,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -12424,7 +13384,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -12470,7 +13430,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11"
     },
     {
@@ -12517,7 +13477,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -12555,7 +13515,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -12595,7 +13555,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -12651,7 +13611,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -12708,7 +13668,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -12763,7 +13723,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -12816,7 +13776,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -12871,7 +13831,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -12928,7 +13888,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -12991,7 +13951,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -13041,7 +14001,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -13089,7 +14049,7 @@
           "sha256": "0b8d01121c5c5346e57049ac24a93d415cdf25c0f7cbb0275b3de1f99ed6d77f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -13134,7 +14094,7 @@
           "sha256": "0b8d01121c5c5346e57049ac24a93d415cdf25c0f7cbb0275b3de1f99ed6d77f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -13178,7 +14138,7 @@
           "sha256": "0b8d01121c5c5346e57049ac24a93d415cdf25c0f7cbb0275b3de1f99ed6d77f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -13227,7 +14187,7 @@
           "sha256": "0b8d01121c5c5346e57049ac24a93d415cdf25c0f7cbb0275b3de1f99ed6d77f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -13278,7 +14238,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05/WP24协调"
     },
     {
@@ -13337,7 +14297,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05/WP24协调"
     },
     {
@@ -13398,7 +14358,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP22"
     },
     {
@@ -13447,7 +14407,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -13491,7 +14451,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -13537,7 +14497,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -13579,7 +14539,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -13623,7 +14583,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -13672,7 +14632,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -13731,7 +14691,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -13783,7 +14743,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -13846,7 +14806,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -13886,7 +14846,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -13926,7 +14886,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -13965,7 +14925,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -14015,7 +14975,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -14094,7 +15054,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -14145,7 +15105,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -14178,7 +15138,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP24"
     },
     {
@@ -14228,7 +15188,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -14278,7 +15238,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP23/WP24"
     },
     {
@@ -14317,13 +15277,85 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_production_demo_mode_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 89,
+          "symbol": "test_production_startup_does_not_create_database",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 100,
+          "symbol": "test_production_seed_baseline_refused_without_database_write",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 109,
+          "symbol": "test_demo_identity_override_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 117,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 139,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 158,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 207,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
           "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_smoke.py",
           "line": 9,
           "symbol": "test_admin_login_smoke",
           "sha256": "ae24a1a591db55d4dc7e048cbee9420096b7f938aa0565c5f9df64eeb5638fc7"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -14396,7 +15428,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -14467,7 +15499,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -14516,7 +15548,7 @@
           "sha256": "0b8d01121c5c5346e57049ac24a93d415cdf25c0f7cbb0275b3de1f99ed6d77f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -14574,7 +15606,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -14631,7 +15663,7 @@
           "sha256": "0b8d01121c5c5346e57049ac24a93d415cdf25c0f7cbb0275b3de1f99ed6d77f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -14687,7 +15719,7 @@
           "sha256": "d1d8f7d4c4cb6e85b9c17ae5f2d29096a6f0084ed774ee9b145b767d0d93c166"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -14728,7 +15760,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP09"
     },
     {
@@ -14765,7 +15797,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP09"
     },
     {
@@ -14796,7 +15828,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP09"
     },
     {
@@ -14833,7 +15865,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP09"
     },
     {
@@ -14876,7 +15908,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -14922,7 +15954,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -14964,7 +15996,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -15007,7 +16039,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -15048,7 +16080,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -15085,7 +16117,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP23/WP24"
     },
     {
@@ -15126,7 +16158,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP23/WP24"
     },
     {
@@ -15162,7 +16194,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -15203,7 +16235,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -15239,7 +16271,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -15276,7 +16308,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -15310,7 +16342,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP19"
     },
     {
@@ -15341,7 +16373,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP19"
     },
     {
@@ -15373,7 +16405,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP19"
     },
     {
@@ -15407,7 +16439,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -15441,7 +16473,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -15480,7 +16512,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -15528,7 +16560,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -15566,7 +16598,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -15602,7 +16634,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -15636,7 +16668,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -15673,7 +16705,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -15715,7 +16747,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -15751,7 +16783,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -15788,7 +16820,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -15828,7 +16860,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -15864,7 +16896,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -15901,7 +16933,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -15941,7 +16973,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -15984,7 +17016,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -16027,7 +17059,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -16066,7 +17098,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -16099,7 +17131,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -16143,7 +17175,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -16180,7 +17212,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP04"
     },
     {
@@ -16216,7 +17248,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -16257,7 +17289,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -16299,7 +17331,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP23/WP24"
     },
     {
@@ -16335,7 +17367,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP23/WP24"
     },
     {
@@ -16368,7 +17400,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP23/WP24"
     },
     {
@@ -16415,7 +17447,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -16464,7 +17496,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -16496,7 +17528,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP01"
     },
     {
@@ -16531,7 +17563,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP22"
     },
     {
@@ -16580,7 +17612,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -16638,7 +17670,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP24"
     },
     {
@@ -16675,7 +17707,7 @@
         "systems.map",
         "withBasePath"
       ],
-      "sha256": "c904284f7ba1e334233b38fc154c3bc48cc5b51ddd8d70045ff626f86836ca53",
+      "sha256": "96a7b4bc49ca6bc33c644142466132f0b8eb338903e26673273c30cb06d43fbf",
       "domain": "capabilities",
       "label": "可验证能力目录",
       "decision": "主线已有",
@@ -16689,7 +17721,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP04"
     },
     {
@@ -16741,7 +17773,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP09"
     },
     {
@@ -16803,7 +17835,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -16855,7 +17887,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -16918,7 +17950,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -16964,7 +17996,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP23/WP24"
     },
     {
@@ -17024,7 +18056,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -17086,7 +18118,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -17134,7 +18166,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -17173,7 +18205,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP19"
     },
     {
@@ -17221,7 +18253,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -17260,7 +18292,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -17320,7 +18352,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -17381,7 +18413,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -17423,7 +18455,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -17459,7 +18491,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP01"
     },
     {
@@ -17494,7 +18526,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP22"
     },
     {
@@ -17553,7 +18585,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -17613,7 +18645,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -17657,7 +18689,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -17693,7 +18725,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -17732,7 +18764,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -17772,7 +18804,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -17816,7 +18848,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -17856,7 +18888,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP24"
     },
     {
@@ -17900,13 +18932,67 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_basic_production_rejects_demo_startup_and_reset",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 92,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 114,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 133,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 176,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
           "path": "systems/pms-suite/基础版/backend/tests/test_login_flow.py",
           "line": 11,
           "symbol": "test_health_and_login_flow",
           "sha256": "3e8d39d4c5317be9b76a4f282cb5f9090a730ac01925e50f44c548b6636d6889"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -17939,13 +19025,67 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_basic_production_rejects_demo_startup_and_reset",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 92,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 114,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 133,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 176,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
           "path": "systems/pms-suite/基础版/backend/tests/test_login_flow.py",
           "line": 11,
           "symbol": "test_health_and_login_flow",
           "sha256": "3e8d39d4c5317be9b76a4f282cb5f9090a730ac01925e50f44c548b6636d6889"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -17981,13 +19121,67 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_basic_production_rejects_demo_startup_and_reset",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 92,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 114,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 133,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 176,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
           "path": "systems/pms-suite/基础版/backend/tests/test_login_flow.py",
           "line": 11,
           "symbol": "test_health_and_login_flow",
           "sha256": "3e8d39d4c5317be9b76a4f282cb5f9090a730ac01925e50f44c548b6636d6889"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -18028,7 +19222,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP23/WP24"
     },
     {
@@ -18072,7 +19266,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP23/WP24"
     },
     {
@@ -18118,7 +19312,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP23/WP24"
     },
     {
@@ -18172,7 +19366,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP23/WP24"
     },
     {
@@ -18209,7 +19403,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP14"
     },
     {
@@ -18250,7 +19444,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP14"
     },
     {
@@ -18297,7 +19491,7 @@
           "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -18348,7 +19542,7 @@
           "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -18385,7 +19579,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP29"
     },
     {
@@ -18426,7 +19620,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP29"
     },
     {
@@ -18469,7 +19663,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -18505,7 +19699,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -18551,7 +19745,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -18591,7 +19785,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -18638,7 +19832,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -18691,7 +19885,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -18727,7 +19921,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -18770,7 +19964,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -18823,7 +20017,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -18890,7 +20084,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -18941,7 +20135,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -18990,7 +20184,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -19042,7 +20236,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -19100,7 +20294,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -19158,7 +20352,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -19219,7 +20413,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -19279,7 +20473,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -19341,7 +20535,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -19394,7 +20588,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -19454,7 +20648,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -19505,7 +20699,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -19535,13 +20729,67 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_basic_production_rejects_demo_startup_and_reset",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 92,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 114,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 133,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 176,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
           "path": "systems/pms-suite/基础版/backend/tests/test_login_flow.py",
           "line": 11,
           "symbol": "test_health_and_login_flow",
           "sha256": "3e8d39d4c5317be9b76a4f282cb5f9090a730ac01925e50f44c548b6636d6889"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP01"
     },
     {
@@ -19605,7 +20853,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -19656,7 +20904,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -19703,7 +20951,7 @@
           "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -19754,7 +21002,7 @@
           "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -19805,7 +21053,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11"
     },
     {
@@ -19858,7 +21106,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11"
     },
     {
@@ -19892,7 +21140,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP19"
     },
     {
@@ -19925,7 +21173,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP19/WP05协调"
     },
     {
@@ -19961,7 +21209,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP19"
     },
     {
@@ -20001,7 +21249,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -20040,7 +21288,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -20073,7 +21321,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -20115,7 +21363,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -20147,7 +21395,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05/WP24协调"
     },
     {
@@ -20185,7 +21433,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05/WP24协调"
     },
     {
@@ -20217,7 +21465,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05/WP24协调"
     },
     {
@@ -20259,7 +21507,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05/WP24协调"
     },
     {
@@ -20300,7 +21548,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -20334,7 +21582,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -20379,7 +21627,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -20429,7 +21677,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -20469,7 +21717,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP14"
     },
     {
@@ -20519,7 +21767,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -20572,7 +21820,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -20621,7 +21869,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11"
     },
     {
@@ -20667,7 +21915,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11"
     },
     {
@@ -20719,7 +21967,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -20769,7 +22017,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -20814,7 +22062,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -20867,7 +22115,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -20922,7 +22170,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -20982,7 +22230,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -21015,7 +22263,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -21056,7 +22304,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -21104,7 +22352,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -21151,7 +22399,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -21202,7 +22450,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -21251,7 +22499,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -21300,7 +22548,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP22"
     },
     {
@@ -21349,7 +22597,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11"
     },
     {
@@ -21407,7 +22655,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11"
     },
     {
@@ -21460,7 +22708,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -21513,7 +22761,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -21569,7 +22817,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP11/WP12"
     },
     {
@@ -21609,7 +22857,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -21643,7 +22891,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -21682,7 +22930,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -21723,7 +22971,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -21768,7 +23016,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -21815,7 +23063,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -21851,7 +23099,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -21891,7 +23139,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -21921,13 +23169,67 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 37,
+          "symbol": "test_production_refuses_missing_empty_default_and_weak_keys",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 47,
+          "symbol": "test_valid_runtime_key_loads_without_disclosure",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 57,
+          "symbol": "test_unknown_environment_refused",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 80,
+          "symbol": "test_basic_production_rejects_demo_startup_and_reset",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 92,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 114,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 133,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 176,
+          "symbol": "test_explicit_synthetic_nonsequential_key_can_load",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
           "path": "systems/pms-suite/基础版/backend/tests/test_login_flow.py",
           "line": 11,
           "symbol": "test_health_and_login_flow",
           "sha256": "3e8d39d4c5317be9b76a4f282cb5f9090a730ac01925e50f44c548b6636d6889"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP03/WP24"
     },
     {
@@ -21969,7 +23271,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -21998,7 +23300,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP28"
     },
     {
@@ -22027,7 +23329,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP14"
     },
     {
@@ -22057,7 +23359,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP08"
     },
     {
@@ -22085,7 +23387,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -22131,7 +23433,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -22173,7 +23475,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP07/WP10"
     },
     {
@@ -22212,7 +23514,7 @@
           "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
     {
@@ -22239,7 +23541,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP24"
     },
     {
@@ -22279,7 +23581,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP17"
     },
     {
@@ -22307,7 +23609,7 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP10/WP20"
     },
     {
@@ -22342,7 +23644,7 @@
           "sha256": "d8026dacbcca1336b84f6919e1aa713c5a21a6930af9f707794c743bf7793c8f"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP13"
     },
     {
@@ -22376,7 +23678,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP12"
     },
     {
@@ -22405,7 +23707,7 @@
           "sha256": "db4542210c5b6ea88b36a3f9740ba1431440792dbed61dc6d30db6a130975396"
         }
       ],
-      "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
+      "referenceTestStatus": "按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     }
   ]

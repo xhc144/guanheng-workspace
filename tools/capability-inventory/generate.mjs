@@ -128,8 +128,8 @@ export function build(root=repoRoot) {
     return {...record,domain:rule.id,label:rule.label,decision:record.system==='主线'?'主线已有':rule.decision,
       rationale:rule.rationale,primarySources:rule.primarySources,relatedTests:rule.relatedTests,
       runtimeStatus:'未逐项运行',testStatus:rule.relatedTests.length?'存在主线相关测试，覆盖程度需复核':'未定位主线测试',
-      referenceTests:python.tests.filter(t=>t.system===record.system&&rule.referenceTestPattern&&new RegExp(rule.referenceTestPattern).test(t.symbol)).map(({system,...test})=>test),
-      referenceTestStatus:'按测试名提取的参考线索；未运行，不证明此接口被覆盖',
+      referenceTests:python.tests.filter(t=>t.system===record.system&&rule.referenceTestPattern&&new RegExp(rule.referenceTestPattern).test(`${t.path.split('/').at(-1)}#${t.symbol}`)).map(({system,...test})=>test),
+      referenceTestStatus:'按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖',
       owner:rule.owner};
   });
   return {schemaVersion:1,sourceBase:'22aab8477eeef3cb498f3be3c739b631b295ea12',
