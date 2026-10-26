@@ -236,6 +236,9 @@ test("注册表只列真实已实现路由，导航和管理员状态目录同�
   for (const id of ["f", "m", "u"]) assert.ok(!navigationFor(actor(id)).some(item => /health|audit|organization/.test(item.href)));
   assert.ok(!extensionRegistry.some(module => /budget|risk|migration|portal/.test(module.id)));
   assert.throws(() => { (extensionRegistry as unknown[]).push({ id: "fake" }); }, TypeError);
+  // SQL LIKE treats underscore as a wildcard; sqlitex_* is an ordinary table prefix.
+  db.exec("CREATE TABLE sqlitex_synthetic (id TEXT)");
+  assert.equal(getIntegrationHealth(db, actor("a")).schema.tableCount, 37);
 });
 
 function apiFixture(t: test.TestContext) {

@@ -91,7 +91,7 @@ export function loadBudgetSnapshot(db: DatabaseSync, actor: SessionUser, project
 
 export function getIntegrationHealth(db: DatabaseSync, actor: SessionUser | null) {
   requireIntegrationAdmin(actor);
-  const tables = db.prepare("SELECT name FROM sqlite_schema WHERE type='table' AND name NOT LIKE 'sqlite_%'").all();
+  const tables = db.prepare("SELECT name FROM sqlite_schema WHERE type='table' AND name NOT GLOB 'sqlite_*'").all();
   return {
     checkedAt: new Date().toISOString(), phase: "G0" as const,
     schema: { tableCount: tables.length, baselineTableCount: 36 },
