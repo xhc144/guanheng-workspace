@@ -1,0 +1,8 @@
+cwd: /workspace/guanheng-wp04
+command: ["node", "tools/capability-inventory/generate.mjs"]
+startedAt: 2026-10-26T17:50:35.517099+00:00
+
+已提取 405 条源码记录；不代表业务运行通过
+
+finishedAt: 2026-10-26T17:50:37.458542+00:00
+exitCode: 0

@@ -1,0 +1,21 @@
+{
+  "integrationBase": "22aab8477eeef3cb498f3be3c739b631b295ea12",
+  "fixedSourceCommit": "db9bd2ba3c19fcde92524aba61053adda2919dfe",
+  "outsideOwns": [],
+  "newBinaryFiles": [],
+  "dependencyTextsUnchanged": true,
+  "sourceUnchangedDuringValidation": true,
+  "sourceFingerprints": {
+    "tools/capability-inventory/generate.mjs": "4653a5491619694344a48457e7c53a177900fe1d912fb6c417ccba708a7dc0ae",
+    "tools/capability-inventory/python_routes.py": "12d2837730f52275c537a9ba660d337f25d55b804455b95d304f9a3cc36e5a7c",
+    "tools/capability-inventory/mapping.json": "674efd5f4cfc843ed289320d5307ef2a832f5eb04015e796ed6ffb33f505535b",
+    "systems/project-ops/lib/capabilities/catalog.json": "b88218b4c029942936c5bf12f45408b0249fc2520d79d8b02443233e7b407a23",
+    "systems/project-ops/lib/capabilities/service.ts": "de09c9ba6419f01f6bf2383ddde1f6d87bc49966642fdfb5d1d4bea5031a2214",
+    "systems/project-ops/app/capabilities/page.tsx": "96a7b4bc49ca6bc33c644142466132f0b8eb338903e26673273c30cb06d43fbf",
+    "systems/project-ops/app/capabilities/error.tsx": "be6b08bbc3e81e0f5e63500ed3f42aa9b88ace3d5f184bed03ffa062db9711a8",
+    "systems/project-ops/app/capabilities/capabilities.module.css": "436b0ba01b676c50f37e4052b87340509f4065a3db9a4ef512fd957b4b0c5772",
+    "systems/project-ops/app/api/capabilities/route.ts": "1787872fe781487b66e5a73d132f2744daff775f698ad939c00141069c7c5193",
+    "systems/project-ops/tests/capabilities.test.ts": "d80dc6b27e2c60155318394e1dd441ac823b86522ada4dcd7543c82ddab5c83a"
+  },
+  "checkedAt": "2026-10-26T17:55:06.013352+00:00"
+}

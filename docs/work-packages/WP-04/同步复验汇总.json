@@ -1,0 +1,144 @@
+{
+  "integrationBase": "22aab8477eeef3cb498f3be3c739b631b295ea12",
+  "fixedSourceCommit": "db9bd2ba3c19fcde92524aba61053adda2919dfe",
+  "sourceDigest": "3f9c8386e24b5eb57b8f58a26b1f1d7a5a6d758ed332673f1f9a080302a5d558",
+  "44-fixed-browser-one": {
+    "scopeAssertions": 8,
+    "exitCode": 1,
+    "normalFlowErrors": [
+      {
+        "message": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "location": "http://127.0.0.1:37757/favicon.ico"
+      }
+    ],
+    "runtime": "/tmp/guanheng-wp04-browser-LdKr5w",
+    "dimensions": [
+      {
+        "viewport": 375,
+        "body": 375,
+        "document": 375
+      },
+      {
+        "viewport": 768,
+        "body": 768,
+        "document": 768
+      },
+      {
+        "viewport": 1440,
+        "body": 1440,
+        "document": 1440
+      }
+    ]
+  },
+  "47-fixed-browser-two": {
+    "scopeAssertions": 8,
+    "exitCode": 1,
+    "normalFlowErrors": [
+      {
+        "message": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "location": "http://127.0.0.1:37153/favicon.ico"
+      }
+    ],
+    "runtime": "/tmp/guanheng-wp04-browser-bu6BXn",
+    "dimensions": [
+      {
+        "viewport": 375,
+        "body": 375,
+        "document": 375
+      },
+      {
+        "viewport": 768,
+        "body": 768,
+        "document": 768
+      },
+      {
+        "viewport": 1440,
+        "body": 1440,
+        "document": 1440
+      }
+    ]
+  },
+  "commands": {
+    "38-fixed-capabilities": {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "tests/capabilities.test.ts"
+      ],
+      "startedAt": "2026-10-26T17:51:22.568384+00:00",
+      "finishedAt": "2026-10-26T17:51:54.918245+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/38-fixed-capabilities.log"
+    },
+    "40-fixed-typecheck": {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAt": "2026-10-26T17:51:22.561251+00:00",
+      "finishedAt": "2026-10-26T17:51:46.051095+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/40-fixed-typecheck.log"
+    },
+    "41-fixed-lint": {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAt": "2026-10-26T17:51:22.592998+00:00",
+      "finishedAt": "2026-10-26T17:52:02.747325+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/41-fixed-lint.log"
+    },
+    "42-fixed-test-serial": {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "startedAt": "2026-10-26T17:52:42.882940+00:00",
+      "finishedAt": "2026-10-26T17:52:57.347405+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/42-fixed-test-serial.log"
+    },
+    "43-fixed-build": {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "startedAt": "2026-10-26T17:53:09.712563+00:00",
+      "finishedAt": "2026-10-26T17:53:27.959379+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/43-fixed-build.log"
+    },
+    "45-fixed-check": {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "node",
+        "tools/capability-inventory/generate.mjs",
+        "--check"
+      ],
+      "startedAt": "2026-10-26T17:54:52.217728+00:00",
+      "finishedAt": "2026-10-26T17:54:54.087086+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/45-fixed-check.log"
+    },
+    "46-fixed-plan": {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "python3",
+        "tools/validate_plan.py"
+      ],
+      "startedAt": "2026-10-26T17:54:53.527920+00:00",
+      "finishedAt": "2026-10-26T17:54:53.667929+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/46-fixed-plan.log"
+    }
+  },
+  "checkedAt": "2026-10-26T17:56:35.149185+00:00"
+}
