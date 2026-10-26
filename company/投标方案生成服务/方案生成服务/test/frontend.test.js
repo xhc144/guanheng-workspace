@@ -10,6 +10,7 @@ function harness(storage,options={}){
  const context={document:{querySelector:get,createElement:node},localStorage:{getItem:k=>drafts.get(k),setItem:(k,v)=>{if(options.storageFailure)throw new Error('storage unavailable');drafts.set(k,v);}},sessionStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},crypto:webcrypto,TextEncoder,Uint8Array,Map,console,FormData:class{*[Symbol.iterator](){yield ['company','测试公司'];yield ['needs','测试业务需求'];}},setInterval:f=>{interval=f;},fetch:async(url,opts)=>{
   if(url==='/proposal-api/config'){if(options.configFailure)throw new Error('config unavailable');return response(options.config||{paymentReady:true,generationReady:true});}
   if(url==='/portal-api/auth/me')return response({user:{email:'a@example.invalid'}});
+  if(url.endsWith('/retry')&&options.retryNetworkFailure)throw new Error('Failed to fetch');
   if(url==='/proposal-api/orders'&&opts?.method==='POST'){posts.push(JSON.parse(opts.body));signalPost();return new Promise(r=>resolvePost=r);}
   return response({orders:options.orders||[]});
  }};
@@ -55,4 +56,18 @@ test('配置读取失败保持禁止提交，浏览器草稿写入失败有中�
  assert.match(f.get('#availability').textContent,/暂不可用/);
  f.get('#save-draft').onclick();
  assert.match(f.get('#form-status').textContent,/浏览器无法保存草稿/);
+});
+test('历史已付款失败单可在支付关闭时重试；网络故障仍返回中文，未付款失败单无假按钮',async()=>{
+ const f=harness(new Map(),{config:{paymentReady:false,generationReady:true},retryNetworkFailure:true,
+  orders:[{id:'synthetic-paid',company:'虚构甲公司',state:'failed',paid:true,createdAt:1},
+   {id:'synthetic-unpaid',company:'虚构乙公司',state:'failed',paid:false,createdAt:1}]});
+ await flush();await flush();
+ const [paid,unpaid]=f.get('#orders').children;
+ const controls=paid.children.filter(node=>node.tagName==='button');
+ assert.equal(controls.length,1);assert.equal(controls[0].textContent,'免费重试');
+ await controls[0].onclick();
+ assert.match(f.get('#form-status').textContent,/暂时无法连接方案服务/);
+ assert.equal(controls[0].disabled,false);
+ assert.equal(unpaid.children.filter(node=>node.tagName==='button').length,0);
+ assert.equal(f.get('#purchase').disabled,true);
 });

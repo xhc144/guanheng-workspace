@@ -233,3 +233,23 @@ test('外部请求失败不吞成成功，失败后释放队列锁并可处理�
   assert.equal(calls, 3);
   assert.equal(f.exports.length, 1);
 });
+
+test('原生导出使用独立尝试目录；外部命令无输出不能算成功，失败会清理尝试目录', async t => {
+  const commands = [], progress = [];
+  const f = fixture(t, {runCommand: async (...args) => { commands.push(args); }});
+  const folder = path.join(f.dir, 'synthetic-export-test');
+  fs.mkdirSync(folder);
+  const replacementFile = path.join(folder, 'replacements.json');
+  fs.writeFileSync(replacementFile, '{}');
+  // No converter is executed and no PPT/PDF is created, even in the temp dir.
+  await assert.rejects(f.generator.exportFiles({folder, replacementFile, onProgress: value => progress.push(value)}), /方案文件导出失败/);
+  assert.equal(commands.length, 2);
+  const pptxTarget = commands[0][1].at(-1), outputDir = commands[1][1][commands[1][1].indexOf('--outdir') + 1];
+  assert.equal(path.dirname(pptxTarget), outputDir);
+  assert.notEqual(outputDir, folder);
+  assert.equal(path.dirname(outputDir), folder);
+  assert.equal(progress[0], '正在排版并生成PDF');
+  assert.deepEqual(fs.readdirSync(folder), ['replacements.json']);
+  assert.equal(commands[0][2].timeout, 30000);
+  assert.equal(commands[1][2].timeout, 180000);
+});
