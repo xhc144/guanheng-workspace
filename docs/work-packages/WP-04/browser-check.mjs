@@ -11,6 +11,8 @@ import { hashPassword } from '../../../systems/project-ops/lib/auth.ts';
 assert.equal(process.argv.length,4,'用法：node docs/work-packages/WP-04/browser-check.mjs <playwright/index.mjs> <chromium>');
 const {chromium}=await import(pathToFileURL(process.argv[2]).href);
 const project=fileURLToPath(new URL('../../../systems/project-ops/',import.meta.url));
+const sourceCatalog=JSON.parse(readFileSync(join(project,'lib/capabilities/catalog.json'),'utf8'));
+const pagePaths=new Set(sourceCatalog.entries.filter(entry=>entry.system==='主线'&&entry.kind==='page').map(entry=>entry.route));
 const runtime=mkdtempSync(join(tmpdir(),'guanheng-wp04-browser-'));
 cpSync(join(project,'.next/standalone'),runtime,{recursive:true,verbatimSymlinks:true});
 cpSync(join(project,'.next/static'),join(runtime,'.next/static'),{recursive:true});
@@ -37,7 +39,7 @@ try {
  page.on('pageerror',e=>errors.push(e.message));
  page.on('console',m=>{if(m.type()==='error')errors.push({message:m.text(),location:m.location().url})});
  page.on('response',response=>{if(response.status()>=400){const failure={resourceStatus:response.status(),path:new URL(response.url()).pathname};failedResponses.push(failure);console.log(JSON.stringify(failure));}});
- page.on('requestfailed',request=>requestFailures.push({path:new URL(request.url()).pathname,error:request.failure()?.errorText}));
+ page.on('requestfailed',request=>{const h=request.headers();requestFailures.push({path:new URL(request.url()).pathname,error:request.failure()?.errorText,resourceType:request.resourceType(),method:request.method(),rsc:h.rsc??null,prefetch:h['next-router-prefetch']??null,segmentPrefetch:h['next-router-segment-prefetch']??null,purpose:h.purpose??null});});
  // Drain genuine prefetch work before each navigation; keep all failure assertions intact.
  async function settle(){await page.waitForLoadState('networkidle');}
  async function navigate(url){await settle();const response=await page.goto(url);await settle();return response;}
@@ -68,7 +70,7 @@ try {
  const ok=await context.request.get(`${base}/api/capabilities`,{headers:adminHeaders});assert.equal(ok.status(),200);
  assert.equal(ok.headers()['cache-control'],'private, no-store');assert.ok(ok.headers()['vary'].split(',').map(v=>v.trim().toLowerCase()).includes('cookie'));
  const data=await ok.json();assert.equal(data.entries.length,25);assert.ok(data.total>25);assert.ok(data.entries.every(e=>e.runtimeStatus==='未逐项运行'));
- assert.equal(data.sourceDigest,JSON.parse(readFileSync(join(project,'lib/capabilities/catalog.json'),'utf8')).sourceDigest,'构建目录摘要须与当前源码提取一致');
+ assert.equal(data.sourceDigest,sourceCatalog.sourceDigest,'构建目录摘要须与当前源码提取一致');
  assert.equal((await context.request.head(`${base}/api/capabilities`,{headers:adminHeaders})).status(),200);
  assert.equal((await context.request.post(`${base}/api/capabilities`,{headers:adminHeaders,data:{}})).status(),405);
  const invalid=await context.request.get(`${base}/api/capabilities?page=-1`,{headers:adminHeaders});assert.equal(invalid.status(),400);assert.match((await invalid.json()).error,/页码/);
@@ -106,6 +108,19 @@ try {
  results.push({check:'三个非管理员角色中文拒绝、无目录数据展示',status:'通过'});
  const normalFlowErrors=errors.slice();
  const normalFlowFailedResponses=failedResponses.slice(),normalFlowRequestFailures=requestFailures.slice();
+ // Requestfailed also reports intentional RSC cancellation. Preserve every event,
+ // verify protocol/method/path, and probe every target through a real admin session.
+ const isRenderCancellation=request=>request.error==='net::ERR_ABORTED'&&request.resourceType==='fetch'
+  &&request.method==='GET'&&request.rsc==='1'&&pagePaths.has(request.path);
+ const unexpectedRequestFailures=normalFlowRequestFailures.filter(request=>!isRenderCancellation(request));
+ const cancellationTargetProbes=[];
+ for(const path of [...new Set(normalFlowRequestFailures.filter(isRenderCancellation).map(request=>request.path))].sort()){
+  const response=await context.request.get(`${base}${path}`,{headers:adminHeaders});
+  assert.equal(response.status(),200,`取消的RSC目标未能通过真实会话重新读取：${path}`);
+  assert.match(response.headers()['content-type']??'',/text\/html/);
+  cancellationTargetProbes.push({path,status:response.status()});
+ }
+ results.push({check:'所有requestfailed事件保留；仅已识别页面RSC GET取消，逐目标真实会话HTTP200，未知/业务API失败不接受',status:'通过',cancellationTargetProbes});
  await login('ADMIN');
  await page.setViewportSize({width:375,height:900});
  const brokenHeaders=await headers();
@@ -126,10 +141,10 @@ try {
  assert.equal(check.prepare('SELECT COUNT(*) count FROM customers').get().count,0);
  assert.equal(check.prepare('SELECT COUNT(*) count FROM projects').get().count,0);
  check.close();
- console.log(JSON.stringify({runtime,port,results,normalFlowConsoleErrors:normalFlowErrors,normalFlowFailedResponses,normalFlowRequestFailures,scope:'本包目录交互及G0诊断/正式favicon检查，不证明全部被盘点业务或Windows通过'},null,2));
+ console.log(JSON.stringify({runtime,port,results,normalFlowConsoleErrors:normalFlowErrors,normalFlowFailedResponses,normalFlowRequestFailures,unexpectedRequestFailures,scope:'本包目录交互及G0诊断/正式favicon检查，不证明全部被盘点业务或Windows通过'},null,2));
  // Preserve any existing shared-asset failures; never turn them green by interception or filtering.
  assert.deepEqual(normalFlowErrors,[],'正常流程存在控制台错误，业务断言结果已完整记录');
  assert.deepEqual(normalFlowFailedResponses,[],'正常流程存在失败网络响应');
- assert.deepEqual(normalFlowRequestFailures,[],'正常流程存在网络请求错误');
+ assert.deepEqual(unexpectedRequestFailures,[],'正常流程存在未解释的网络请求错误');
 }catch(error){console.error(error);console.error(output.slice(-4000));process.exitCode=1}
 finally{await browser?.close();server.kill('SIGTERM');}
