@@ -1,0 +1,4 @@
+cwd: /workspace/guanheng-wp04
+command: ["node", "docs/work-packages/WP-04/browser-check.mjs", "/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs", "/usr/bin/chromium"]
+startedAt: 2026-10-26T17:36:54.963377+00:00
+

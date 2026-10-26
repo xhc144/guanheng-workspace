@@ -35,7 +35,8 @@ try {
  browser=await chromium.launch({executablePath:process.argv[3],headless:true});
  const context=await browser.newContext(),page=await context.newPage(),errors=[];
  page.on('pageerror',e=>errors.push(e.message));
- page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+ page.on('console',m=>{if(m.type()==='error')errors.push({message:m.text(),location:m.location().url})});
+ page.on('response',response=>{if(response.status()>=400)console.log(JSON.stringify({resourceStatus:response.status(),path:new URL(response.url()).pathname}));});
  assert.equal((await context.request.get(`${base}/api/capabilities`)).status(),401);
  assert.equal((await context.request.head(`${base}/api/capabilities`)).status(),401);
  await page.goto(`${base}/capabilities`);assert.equal(new URL(page.url()).pathname,'/login');
@@ -47,6 +48,7 @@ try {
  const ok=await context.request.get(`${base}/api/capabilities`,{headers:adminHeaders});assert.equal(ok.status(),200);
  assert.equal(ok.headers()['cache-control'],'private, no-store');assert.ok(ok.headers()['vary'].split(',').map(v=>v.trim().toLowerCase()).includes('cookie'));
  const data=await ok.json();assert.equal(data.entries.length,25);assert.ok(data.total>25);assert.ok(data.entries.every(e=>e.runtimeStatus==='未逐项运行'));
+ assert.equal(data.sourceDigest,JSON.parse(readFileSync(join(project,'lib/capabilities/catalog.json'),'utf8')).sourceDigest,'构建目录摘要须与当前源码提取一致');
  assert.equal((await context.request.head(`${base}/api/capabilities`,{headers:adminHeaders})).status(),200);
  assert.equal((await context.request.post(`${base}/api/capabilities`,{headers:adminHeaders,data:{}})).status(),405);
  const invalid=await context.request.get(`${base}/api/capabilities?page=-1`,{headers:adminHeaders});assert.equal(invalid.status(),400);assert.match((await invalid.json()).error,/页码/);
@@ -69,22 +71,41 @@ try {
   const dimensions=await page.evaluate(()=>({viewport:innerWidth,body:document.body.scrollWidth,document:document.documentElement.scrollWidth}));
   assert.ok(dimensions.body<=width&&dimensions.document<=width,`${width}px横向溢出`);
   await page.screenshot({path:join(runtime,`screenshots/capabilities-${width}.png`),fullPage:true});
+  if(width===375)await page.screenshot({path:join(runtime,'screenshots/capabilities-375-viewport.png')});
   results.push({check:`${width}px真实中文筛选、证据展开、键盘焦点、44px触控及布局`,status:'通过',dimensions});
  }
  await page.goto(`${base}/capabilities`);await page.getByRole('link',{name:'下一页',exact:true}).click();await page.waitForURL(url=>url.searchParams.get('page')==='2');assert.match(await page.getByRole('status').innerText(),/第 2/);
  await page.goto(`${base}/capabilities?q=WP04_不存在的合成能力`);await page.getByRole('heading',{name:'没有符合条件的来源记录',exact:true}).waitFor();
- await page.goto(`${base}/capabilities?page=-1`);await page.getByRole('heading',{name:'无法应用筛选',exact:true}).waitFor();assert.match(await page.getByRole('alert').innerText(),/页码/);await page.getByRole('link',{name:'重置筛选',exact:true}).click();await page.waitForURL(url=>url.pathname==='/capabilities'&&!url.search);
+ await page.goto(`${base}/capabilities?page=-1`);await page.getByRole('heading',{name:'无法应用筛选',exact:true}).waitFor();assert.match(await page.locator('section[role="alert"]').innerText(),/页码/);await page.getByRole('link',{name:'重置筛选',exact:true}).click();await page.waitForURL(url=>url.pathname==='/capabilities'&&!url.search);
  results.push({check:'翻页、中文空状态、错误边界与重置恢复',status:'通过'});
  for(const role of ['FINANCE','DEPARTMENT_MANAGER','PROJECT_MEMBER']){
   await login(role);const denied=await context.request.get(`${base}/api/capabilities`,{headers:await headers()});assert.equal(denied.status(),403);assert.deepEqual(await denied.json(),{error:'仅管理员可查看能力目录'});
   await page.goto(`${base}/capabilities`);await page.getByRole('heading',{name:'仅管理员可查看能力目录',exact:true}).waitFor();assert.equal(await page.locator('ul[aria-label="能力来源记录"]').count(),0);
  }
  results.push({check:'三个非管理员角色中文拒绝、无目录数据展示',status:'通过'});
- assert.deepEqual(errors,[],'浏览器出现控制台或页面错误');
+ const normalFlowErrors=errors.slice();
+ await login('ADMIN');
+ await page.setViewportSize({width:375,height:900});
+ const brokenHeaders=await headers();
+ const broken=openDatabase(join(runtime,'data/wp04-synthetic.db'));broken.exec('DROP TABLE sessions');broken.close();
+ const unavailable=await context.request.get(`${base}/api/capabilities`,{headers:brokenHeaders});assert.equal(unavailable.status(),500);assert.deepEqual(await unavailable.json(),{error:'能力目录暂时无法读取，请稍后重试或联系管理员'});
+ await page.goto(`${base}/capabilities`);
+ await page.getByRole('heading',{name:'能力目录暂时无法读取',exact:true}).waitFor();
+ assert.equal(await page.locator('ul[aria-label="能力来源记录"]').count(),0);
+ assert.doesNotMatch(await page.locator('main').innerText(),/no such table|sessions|\/tmp|\/workspace/);
+ const errorDimensions=await page.evaluate(()=>({body:document.body.scrollWidth,document:document.documentElement.scrollWidth}));
+ assert.ok(errorDimensions.body<=375&&errorDimensions.document<=375);
+ await page.screenshot({path:join(runtime,'screenshots/capabilities-error-375.png')});
+ const repaired=openDatabase(join(runtime,'data/wp04-synthetic.db'));repaired.close();
+ await page.getByRole('button',{name:'重试读取',exact:true}).click();
+ await page.waitForURL(url=>url.pathname==='/login');
+ results.push({check:'合成库移除会话表触发真实500及中文错误边界；恢复表后重试回登录',status:'通过',expectedFrameworkErrors:errors.slice()});
  const check=openDatabase(join(runtime,'data/wp04-synthetic.db'));
  assert.equal(check.prepare('SELECT COUNT(*) count FROM customers').get().count,0);
  assert.equal(check.prepare('SELECT COUNT(*) count FROM projects').get().count,0);
  check.close();
- console.log(JSON.stringify({runtime,port,results,consoleErrors:errors,scope:'仅本包目录交互，不证明被盘点业务或Windows通过'},null,2));
+ console.log(JSON.stringify({runtime,port,results,normalFlowConsoleErrors:normalFlowErrors,scope:'仅本包目录交互，不证明被盘点业务或Windows通过'},null,2));
+ // Preserve any existing shared-asset failures; never turn them green by interception or filtering.
+ assert.deepEqual(normalFlowErrors,[],'正常流程存在控制台错误，业务断言结果已完整记录');
 }catch(error){console.error(error);console.error(output.slice(-4000));process.exitCode=1}
 finally{await browser?.close();server.kill('SIGTERM');}

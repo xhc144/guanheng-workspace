@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "sourceBase": "1e36bfce8c13e33f671c95902d23ce2ddabe92ca",
-  "sourceDigest": "7b8e0cde53c0932ad3369629749f105046c545f608f03361d43b80227f21cb99",
+  "sourceDigest": "7309ddef9ea7b498369240c896d77a54f05334c86295c815f5804346741d6cf7",
   "dataKind": "静态源码盘点，非实时经营数据",
   "scope": "Next页面/显式HTTP方法/server actions；三版PMS挂载HTTP路由及前端页面/状态视图；不包含隐式HEAD/OPTIONS、CLI或每个业务字段",
   "verification": "源码解析及覆盖检查不证明业务运行；旧文档114项完成未经本次逐项验证",
@@ -16419,7 +16419,7 @@
         "systems.map",
         "withBasePath"
       ],
-      "sha256": "1d1e25c833847e63e06c51ee642f082a948fde05f530948711054b2feb889ed6",
+      "sha256": "3497adee449e89cf3fea622aca498db73607fd11f2b34e1e083c78476cf81357",
       "domain": "capabilities",
       "label": "可验证能力目录",
       "decision": "主线已有",

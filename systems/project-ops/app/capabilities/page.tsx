@@ -47,8 +47,8 @@ export default async function CapabilitiesPage({ searchParams }: { searchParams:
       </section>
       <form className={`work-panel ${styles.filters}`}>
         <label>搜索来源或能力<input name="q" defaultValue={result.query.q} maxLength={100} placeholder="例如：预算、工时或 API 路径"/></label>
-        <label>来源系统<select name="system" defaultValue={result.query.system}><option value="">全部系统</option>{systems.map(value => <option key={value}>{value}</option>)}</select></label>
-        <label>移植决定<select name="decision" defaultValue={result.query.decision}><option value="">全部决定</option>{decisions.map(value => <option key={value}>{value}</option>)}</select></label>
+        <label>来源系统<select aria-label="来源系统" name="system" defaultValue={result.query.system}><option value="">全部系统</option>{systems.map(value => <option key={value}>{value}</option>)}</select></label>
+        <label>移植决定<select aria-label="移植决定" name="decision" defaultValue={result.query.decision}><option value="">全部决定</option>{decisions.map(value => <option key={value}>{value}</option>)}</select></label>
         <button className={styles.action} type="submit">应用筛选</button><Link className={styles.action} href="/capabilities">清空筛选</Link>
       </form>
       <p role="status">共 {result.total} 条来源记录 · 第 {result.page} / {result.pageCount} 页。记录数不代表已完成功能数。</p>
