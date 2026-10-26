@@ -56,4 +56,6 @@ python3 docs/work-packages/WP-03/verify.py frontend kimi
 python3 docs/work-packages/WP-03/browser_check.py
 ```
 
+登录页还可运行真实停机回归：`python3 docs/work-packages/WP-03/network_check.py`。它只停止本轮启动的临时后端，核对必填校验、中文服务错误、输入保留和提交恢复，不连接真实服务。
+
 截图只保存在 `/tmp`，不提交图片或数据库；文本证据保存在本包目录。Windows 双击启动属于 WP-02，三版 README 的归档说明属于 WP-25，同步请求见 `reports/WP-03.md`。
