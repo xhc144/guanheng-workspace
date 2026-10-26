@@ -1,0 +1,17 @@
+version: '3.8'
+
+# 开发环境覆盖：启用热重载
+services:
+  backend:
+    command: python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./backend:/app
+      - backend_data:/app/data
+    environment:
+      - LOG_LEVEL=DEBUG
+  frontend:
+    command: npm run dev
+    volumes:
+      - ./frontend/src:/app/src
+    environment:
+      - VITE_API_BASE=http://localhost:8000/api

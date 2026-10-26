@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh"><head><meta charset="UTF-8"><title>PMS v1.0.0 验收面板</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui;background:#f5f5f5;color:#333;padding:24px}h1{font-size:20px;margin-bottom:16px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}.card{background:#fff;border-radius:8px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.1)}.card .label{font-size:12px;color:#888}.card .value{font-size:28px;font-weight:700;color:#1677ff}.pass{color:#52c41a}.warn{color:#faad14}.fail{color:#ff4d4f}.section{margin-bottom:24px}h2{font-size:14px;color:#888;margin-bottom:8px}table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.1)}td,th{padding:8px 12px;text-align:left;border-bottom:1px solid #f0f0f0;font-size:13px}th{background:#fafafa;font-weight:600}</style></head><body>
+<h1>PMS v0.2.1 (1716/1623)</h1>
+<div class="section"><h2>核心指标</h2><div class="grid">
+<div class="card"><div class="label">迭代次数</div><div class="value">428</div></div>
+<div class="card"><div class="label">改进总数</div><div class="value">339</div></div>
+<div class="card"><div class="label">致命Bug修复</div><div class="value pass">9</div></div>
+<div class="card"><div class="label">交付物</div><div class="value">74</div></div>
+<div class="card"><div class="label">后端测试</div><div class="value pass">89+</div></div>
+<div class="card"><div class="label">前端测试</div><div class="value">4</div></div>
+<div class="card"><div class="label">集成测试</div><div class="value">13步</div></div>
+<div class="card"><div class="label">数据模型</div><div class="value">22</div></div>
+<div class="card"><div class="label">API路由</div><div class="value">~20</div></div>
+<div class="card"><div class="label">前端页面</div><div class="value">14</div></div>
+</div></div>
+<div class="section"><h2>验收路径</h2><table>
+<tr><th>方式</th><th>命令</th><th>环境</th></tr>
+<tr><td>一键</td><td><code>.\full_verify.bat</code></td><td>Windows cmd</td></tr>
+<tr><td>Python</td><td><code>python run_verify.py</code></td><td>Python 3.10+</td></tr>
+<tr><td>PowerShell</td><td><code>.\verify_goal.ps1</code></td><td>PowerShell</td></tr>
+<tr><td>分步</td><td><code>python syntax_check.py</code></td><td>Python</td></tr>
+</table></div>
+<div class="section"><h2>9 个致命Bug (已修复)</h2><table>
+<tr><th>#</th><th>Bug</th><th>文件</th></tr>
+<tr><td>1</td><td>get_logger 缺失 → ImportError</td><td>logger.py</td></tr>
+<tr><td>2</td><td>Index 在 Risk 类之前 → NameError</td><td>models/__init__.py</td></tr>
+<tr><td>3</td><td>Seeder progress 于 Task → AttributeError</td><td>seeder.py</td></tr>
+<tr><td>4</td><td>Smoke test 401 → 缺失 auth headers</td><td>api_smoke_test.ps1</td></tr>
+<tr><td>5</td><td>/api/reports 路由不匹配 → 404</td><td>verify_goal.py</td></tr>
+<tr><td>6</td><td>export.py datetime 未导入 → NameError</td><td>export.py</td></tr>
+<tr><td>7</td><td>addRiskFollowUp /follow-up→/follow-ups → 404</td><td>api.ts</td></tr>
+<tr><td>8</td><td>ProjectSummary schema缺失 → ImportError</td><td>schemas.py</td></tr>
+<tr><td>9</td><td>verify_goal.py 残留 """ → SyntaxError</td><td>verify_goal.py</td></tr>
+</table></div>
+<div class="section"><h2>快速启动</h2>
+<p><button onclick="navigator.clipboard.writeText('python run_verify.py')" style="padding:8px 16px;border:1px solid #1677ff;color:#1677ff;border-radius:4px;cursor:pointer;font-size:14px">📋 复制验收命令</button></p>
+<p><code>.\start.bat</code> | 默认账号: <b>admin</b> / <b>admin123</b> | 后端: localhost:8000 | 前端: localhost:5173</p>
+</div>
+<p style="margin-top:24px;color:#888;font-size:12px">生成: 2025 | 综合项目管理系统 | 静态验收面板</p>
+</body></html>

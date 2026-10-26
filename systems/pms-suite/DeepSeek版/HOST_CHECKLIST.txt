@@ -1,0 +1,28 @@
+综合项目管理系统 v1.0.0 — 宿主机验收清单
+=============================================
+
+在 Windows 终端 (cmd/PowerShell) 中执行:
+
+  方法1 (一键):
+    .\full_verify.bat
+
+  方法2 (Python):
+    python run_verify.py
+
+  方法3 (分步):
+    python syntax_check.py
+    python backend\check_imports.py
+    python verify_goal.py
+    cd backend && pytest tests/
+    cd frontend && npm run build
+
+  方法4 (PowerShell):
+    .\verify_goal.ps1
+
+启动服务:
+    .\start.bat
+
+默认账号: admin / Admin@123456
+后端: http://127.0.0.1:8102/docs
+前端: http://127.0.0.1:5182
+客户门户: http://127.0.0.1:5182/portal (client_sz / client123)
