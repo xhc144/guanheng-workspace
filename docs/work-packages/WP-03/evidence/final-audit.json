@@ -1,0 +1,162 @@
+{
+  "time": "2026-10-26T16:56:08.030656+00:00",
+  "standard_commands_all_18_success": [
+    {
+      "required": "python3 -c 'import shutil; shutil.copytree(\"systems/pms-suite/基础版/backend\", \"/tmp/guanheng-WP-03-basic/backend\", ignore=shutil.ignore_patterns(\".venv\", \"__pycache__\", \".demo\", \".pytest_cache\", \".env*\"))'",
+      "cwd": "/workspace/guanheng-wp03",
+      "evidence": [
+        "basic-prepare-1.log"
+      ]
+    },
+    {
+      "required": "python3 -m venv /tmp/guanheng-WP-03-basic/venv",
+      "cwd": "/workspace/guanheng-wp03",
+      "evidence": [
+        "basic-prepare-2.log"
+      ]
+    },
+    {
+      "required": "cd /tmp/guanheng-WP-03-basic/backend && /tmp/guanheng-WP-03-basic/venv/bin/python -m pip install -r requirements.txt",
+      "cwd": "/tmp/guanheng-WP-03-basic/backend",
+      "evidence": [
+        "basic-prepare-3.log"
+      ]
+    },
+    {
+      "required": "cd /tmp/guanheng-WP-03-basic/backend && PYTHONPATH=. /tmp/guanheng-WP-03-basic/venv/bin/python -m pytest tests/test_auth_config.py tests/test_login_flow.py",
+      "cwd": "/tmp/guanheng-WP-03-basic/backend",
+      "evidence": [
+        "basic-test-1-attempt-2.log",
+        "basic-test-1-attempt-3.log",
+        "basic-test-1-attempt-4.log"
+      ]
+    },
+    {
+      "required": "cd 'systems/pms-suite/基础版/frontend' && npm ci",
+      "cwd": "/workspace/guanheng-wp03/systems/pms-suite/基础版/frontend",
+      "evidence": [
+        "basic-frontend-1-attempt-2.log"
+      ]
+    },
+    {
+      "required": "cd 'systems/pms-suite/基础版/frontend' && npm run build",
+      "cwd": "/workspace/guanheng-wp03/systems/pms-suite/基础版/frontend",
+      "evidence": [
+        "basic-frontend-2.log"
+      ]
+    },
+    {
+      "required": "python3 -c 'import shutil; shutil.copytree(\"systems/pms-suite/DeepSeek版/backend\", \"/tmp/guanheng-WP-03-deepseek/backend\", ignore=shutil.ignore_patterns(\".venv\", \"__pycache__\", \".demo\", \".pytest_cache\", \".env*\"))'",
+      "cwd": "/workspace/guanheng-wp03",
+      "evidence": [
+        "deepseek-prepare-1.log"
+      ]
+    },
+    {
+      "required": "python3 -m venv /tmp/guanheng-WP-03-deepseek/venv",
+      "cwd": "/workspace/guanheng-wp03",
+      "evidence": [
+        "deepseek-prepare-2.log"
+      ]
+    },
+    {
+      "required": "cd /tmp/guanheng-WP-03-deepseek/backend && /tmp/guanheng-WP-03-deepseek/venv/bin/python -m pip install -r requirements.txt",
+      "cwd": "/tmp/guanheng-WP-03-deepseek/backend",
+      "evidence": [
+        "deepseek-prepare-3.log"
+      ]
+    },
+    {
+      "required": "cd /tmp/guanheng-WP-03-deepseek/backend && PYTHONPATH=. /tmp/guanheng-WP-03-deepseek/venv/bin/python -m pytest tests/test_auth_config.py",
+      "cwd": "/tmp/guanheng-WP-03-deepseek/backend",
+      "evidence": [
+        "deepseek-test-1.log",
+        "deepseek-test-1-attempt-2.log",
+        "deepseek-test-1-attempt-4.log",
+        "deepseek-test-1-attempt-3.log"
+      ]
+    },
+    {
+      "required": "cd 'systems/pms-suite/DeepSeek版/frontend' && npm ci",
+      "cwd": "/workspace/guanheng-wp03/systems/pms-suite/DeepSeek版/frontend",
+      "evidence": [
+        "deepseek-frontend-1-attempt-2.log"
+      ]
+    },
+    {
+      "required": "cd 'systems/pms-suite/DeepSeek版/frontend' && npm run build",
+      "cwd": "/workspace/guanheng-wp03/systems/pms-suite/DeepSeek版/frontend",
+      "evidence": [
+        "deepseek-final-build.log",
+        "deepseek-frontend-2.log",
+        "deepseek-final-build-attempt-2.log"
+      ]
+    },
+    {
+      "required": "python3 -c 'import shutil; shutil.copytree(\"systems/pms-suite/Kimi版/backend\", \"/tmp/guanheng-WP-03-kimi/backend\", ignore=shutil.ignore_patterns(\".venv\", \"__pycache__\", \".demo\", \".pytest_cache\", \".env*\"))'",
+      "cwd": "/workspace/guanheng-wp03",
+      "evidence": [
+        "kimi-prepare-1.log"
+      ]
+    },
+    {
+      "required": "python3 -m venv /tmp/guanheng-WP-03-kimi/venv",
+      "cwd": "/workspace/guanheng-wp03",
+      "evidence": [
+        "kimi-prepare-2.log"
+      ]
+    },
+    {
+      "required": "cd /tmp/guanheng-WP-03-kimi/backend && /tmp/guanheng-WP-03-kimi/venv/bin/python -m pip install -r requirements.txt",
+      "cwd": "/tmp/guanheng-WP-03-kimi/backend",
+      "evidence": [
+        "kimi-prepare-3.log"
+      ]
+    },
+    {
+      "required": "cd /tmp/guanheng-WP-03-kimi/backend && PYTHONPATH=. /tmp/guanheng-WP-03-kimi/venv/bin/python -m pytest tests/test_auth_config.py tests/test_auth_smoke.py",
+      "cwd": "/tmp/guanheng-WP-03-kimi/backend",
+      "evidence": [
+        "kimi-test-1-attempt-2.log",
+        "kimi-test-1-attempt-3.log",
+        "kimi-test-1.log",
+        "kimi-test-1-attempt-4.log"
+      ]
+    },
+    {
+      "required": "cd 'systems/pms-suite/Kimi版/frontend' && npm ci",
+      "cwd": "/workspace/guanheng-wp03/systems/pms-suite/Kimi版/frontend",
+      "evidence": [
+        "kimi-frontend-1-attempt-2.log"
+      ]
+    },
+    {
+      "required": "cd 'systems/pms-suite/Kimi版/frontend' && npm run build",
+      "cwd": "/workspace/guanheng-wp03/systems/pms-suite/Kimi版/frontend",
+      "evidence": [
+        "kimi-final-build.log",
+        "kimi-frontend-2.log"
+      ]
+    }
+  ],
+  "baseline_failure_sets_unchanged": {
+    "basic": [
+      "tests/test_extended_features.py::test_approval_budget_cost_timesheet_documents_wiki_templates_dict_import_backup",
+      "tests/test_extended_features.py::test_finance_invoice_payment_reverse_and_idempotency",
+      "tests/test_extended_features.py::test_project_task_milestone_dependency_risk_and_activity",
+      "tests/test_full_flow.py::test_governance_and_data_ops",
+      "tests/test_full_flow.py::test_project_task_risk_finance_flow"
+    ],
+    "kimi": [
+      "tests/test_core_flow.py::test_customer_health",
+      "tests/test_core_flow.py::test_import_excel",
+      "tests/test_core_flow.py::test_risk_workbench_dashboard",
+      "tests/test_core_flow.py::test_timesheet_flow",
+      "tests/test_services.py::test_progress_and_finance_rollback"
+    ]
+  },
+  "browser_cases": 9,
+  "real_offline_cases": 2,
+  "report_evidence_links_exist": true,
+  "source_commit": "98788751313252b876f0bbc58b5deb54b8e5dd88"
+}

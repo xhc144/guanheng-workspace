@@ -1,0 +1,64 @@
+{"cwd": "/tmp/guanheng-WP-03-deepseek/backend", "command": "PYTHONPATH=. /tmp/guanheng-WP-03-deepseek/venv/bin/python -m pytest tests/test_auth_config.py -k production_refuses_missing_empty_default_and_weak_keys", "start": "2026-10-26T17:06:29.738004+00:00", "end": "2026-10-26T17:06:46.605835+00:00", "exit_code": 1}
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.7.0 -- /tmp/guanheng-WP-03-deepseek/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /tmp/guanheng-WP-03-deepseek/backend
+configfile: pytest.ini
+plugins: asyncio-1.4.1, anyio-4.15.1
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 27 items / 13 deselected / 14 selected
+
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[None] PASSED [  7%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[] PASSED [ 14%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[   ] PASSED [ 21%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[dev-secret-key-change-in-production] PASSED [ 28%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[short] PASSED [ 35%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] PASSED [ 42%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef] PASSED [ 50%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[change-me-to-a-random-production-secret] PASSED [ 57%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[0123456789abcdefghijklmnopqrstuvwxyz] FAILED [ 64%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789] FAILED [ 71%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[zyxwvutsrqponmlkjihgfedcba9876543210] FAILED [ 78%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[Admin@123456-SyntheticFixedTail2026!] FAILED [ 85%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[Qwerty!2026-SyntheticFixedTail-Ab9#] FAILED [ 92%]
+tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[LetMeIn!2026-SyntheticFixedTail-Ab9#] FAILED [100%]
+
+=================================== FAILURES ===================================
+_ test_production_refuses_missing_empty_default_and_weak_keys[0123456789abcdefghijklmnopqrstuvwxyz] _
+tests/test_auth_config.py:39: in test_production_refuses_missing_empty_default_and_weak_keys
+    assert result.returncode != 0
+E   AssertionError: assert 0 != 0
+E    +  where 0 = CompletedProcess(args=['/tmp/guanheng-WP-03-deepseek/venv/bin/python', '-c', 'import app.main'], returncode=0, stdout='', stderr='').returncode
+_ test_production_refuses_missing_empty_default_and_weak_keys[ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789] _
+tests/test_auth_config.py:39: in test_production_refuses_missing_empty_default_and_weak_keys
+    assert result.returncode != 0
+E   AssertionError: assert 0 != 0
+E    +  where 0 = CompletedProcess(args=['/tmp/guanheng-WP-03-deepseek/venv/bin/python', '-c', 'import app.main'], returncode=0, stdout='', stderr='').returncode
+_ test_production_refuses_missing_empty_default_and_weak_keys[zyxwvutsrqponmlkjihgfedcba9876543210] _
+tests/test_auth_config.py:39: in test_production_refuses_missing_empty_default_and_weak_keys
+    assert result.returncode != 0
+E   AssertionError: assert 0 != 0
+E    +  where 0 = CompletedProcess(args=['/tmp/guanheng-WP-03-deepseek/venv/bin/python', '-c', 'import app.main'], returncode=0, stdout='', stderr='').returncode
+_ test_production_refuses_missing_empty_default_and_weak_keys[Admin@123456-SyntheticFixedTail2026!] _
+tests/test_auth_config.py:39: in test_production_refuses_missing_empty_default_and_weak_keys
+    assert result.returncode != 0
+E   AssertionError: assert 0 != 0
+E    +  where 0 = CompletedProcess(args=['/tmp/guanheng-WP-03-deepseek/venv/bin/python', '-c', 'import app.main'], returncode=0, stdout='', stderr='').returncode
+_ test_production_refuses_missing_empty_default_and_weak_keys[Qwerty!2026-SyntheticFixedTail-Ab9#] _
+tests/test_auth_config.py:39: in test_production_refuses_missing_empty_default_and_weak_keys
+    assert result.returncode != 0
+E   AssertionError: assert 0 != 0
+E    +  where 0 = CompletedProcess(args=['/tmp/guanheng-WP-03-deepseek/venv/bin/python', '-c', 'import app.main'], returncode=0, stdout='', stderr='').returncode
+_ test_production_refuses_missing_empty_default_and_weak_keys[LetMeIn!2026-SyntheticFixedTail-Ab9#] _
+tests/test_auth_config.py:39: in test_production_refuses_missing_empty_default_and_weak_keys
+    assert result.returncode != 0
+E   AssertionError: assert 0 != 0
+E    +  where 0 = CompletedProcess(args=['/tmp/guanheng-WP-03-deepseek/venv/bin/python', '-c', 'import app.main'], returncode=0, stdout='', stderr='').returncode
+=========================== short test summary info ============================
+FAILED tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[0123456789abcdefghijklmnopqrstuvwxyz]
+FAILED tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789]
+FAILED tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[zyxwvutsrqponmlkjihgfedcba9876543210]
+FAILED tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[Admin@123456-SyntheticFixedTail2026!]
+FAILED tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[Qwerty!2026-SyntheticFixedTail-Ab9#]
+FAILED tests/test_auth_config.py::test_production_refuses_missing_empty_default_and_weak_keys[LetMeIn!2026-SyntheticFixedTail-Ab9#]
+================= 6 failed, 8 passed, 13 deselected in 16.00s ==================

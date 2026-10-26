@@ -1,0 +1,12 @@
+{"cwd": "/workspace/guanheng-wp03/systems/pms-suite/DeepSeek版/frontend", "command": ["npm", "run", "dev"], "time": "2026-10-26T16:53:39.646451+00:00"}
+
+> pms-frontend@0.1.0 dev
+> vite
+
+
+  VITE v5.4.21  ready in 368 ms
+
+  ➜  Local:   http://127.0.0.1:5182/
+4:53:45 PM [vite] http proxy error: /api/auth/login
+Error: connect ECONNREFUSED 127.0.0.1:8102
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1864:16)

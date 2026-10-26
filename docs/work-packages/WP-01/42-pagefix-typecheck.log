@@ -1,0 +1,9 @@
+代码SHA: b6790b97e47c2f2afdec7aec8b90987582f9e335
+开始时间: 2026-10-26T17:16:33.090740+00:00
+实际cwd: /workspace/guanheng-wp01/systems/project-ops
+完整命令: pnpm typecheck
+$ tsc --noEmit
+
+退出码: 0
+结束时间: 2026-10-26T17:16:45.805139+00:00
+用时秒: 12.71

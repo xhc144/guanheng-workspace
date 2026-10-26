@@ -1,0 +1,16 @@
+{"cwd": "/tmp/guanheng-WP-03-deepseek/backend", "command": ["/tmp/guanheng-WP-03-deepseek/venv/bin/python", "-m", "uvicorn", "app.main:app", "--host", "127.0.0.1", "--port", "8102"], "time": "2026-10-26T16:40:13.569440+00:00"}
+INFO:     Started server process [1951]
+INFO:     Waiting for application startup.
+2026-10-26 16:40:14 [INFO] pms: Initializing database...
+2026-10-26 16:40:14 [INFO] pms: Database tables created
+2026-10-26 16:40:15 [INFO] pms: Seed data loaded, application ready
+2026-10-26 16:40:15 [INFO] pms: 数据完整性检查通过
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8102 (Press CTRL+C to quit)
+2026-10-26 16:41:00 [WARNING] middleware: 慢请求: POST /api/auth/login (1917ms)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2026-10-26 16:41:37 [INFO] pms: Shutting down...
+2026-10-26 16:41:37 [INFO] pms: Database connections disposed
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1951]

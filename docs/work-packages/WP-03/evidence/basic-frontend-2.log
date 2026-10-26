@@ -1,0 +1,15 @@
+{"cwd": "/workspace/guanheng-wp03/systems/pms-suite/基础版/frontend", "command": "npm run build", "start": "2026-10-26T16:35:15.385342+00:00", "end": "2026-10-26T16:35:16.991593+00:00", "exit_code": 0}
+
+> pms-basic-frontend@0.1.0 build
+> vite build
+
+vite v8.2.1 building client environment for production...
+[2K
+transforming...✓ 16 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB │ gzip:  0.30 kB
+dist/assets/index-D-o2AgCT.css    3.53 kB │ gzip:  1.29 kB
+dist/assets/index-BT9-0iiU.js   207.52 kB │ gzip: 64.54 kB
+
+✓ built in 583ms
