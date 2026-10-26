@@ -1,0 +1,38 @@
+{
+  "integrationBase": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+  "fixedSourceCommit": "ca294dec964e0a0ac58cb9a640bb11890b83bf64",
+  "sourceUnchangedDuringValidation": true,
+  "outsideOwns": [],
+  "newBinaryFiles": [],
+  "sharedMigrationInterfacesAndDependenciesUnchanged": true,
+  "sourceFingerprints": {
+    "tools/capability-inventory/generate.mjs": "da7af331149aa0e018c51182b77c69369d6784edb3670751c20290c64fea2f67",
+    "tools/capability-inventory/python_routes.py": "12d2837730f52275c537a9ba660d337f25d55b804455b95d304f9a3cc36e5a7c",
+    "tools/capability-inventory/mapping.json": "221a408d903351d0c5646b3d07ca8fd21d5b8032651692132eea901aa7b17425",
+    "systems/project-ops/lib/capabilities/catalog.json": "2ae4312ee6b9e3f1f087cf6b6e594022b1b0556b9287060f8aeef2b6c9a5aac8",
+    "systems/project-ops/lib/capabilities/service.ts": "de09c9ba6419f01f6bf2383ddde1f6d87bc49966642fdfb5d1d4bea5031a2214",
+    "systems/project-ops/app/capabilities/page.tsx": "96a7b4bc49ca6bc33c644142466132f0b8eb338903e26673273c30cb06d43fbf",
+    "systems/project-ops/app/capabilities/error.tsx": "be6b08bbc3e81e0f5e63500ed3f42aa9b88ace3d5f184bed03ffa062db9711a8",
+    "systems/project-ops/app/capabilities/capabilities.module.css": "436b0ba01b676c50f37e4052b87340509f4065a3db9a4ef512fd957b4b0c5772",
+    "systems/project-ops/app/api/capabilities/route.ts": "1787872fe781487b66e5a73d132f2744daff775f698ad939c00141069c7c5193",
+    "systems/project-ops/tests/capabilities.test.ts": "4149bdb84c1b6aee715d23747163d1f7d0801916bc9b93f2ca4d426cd798b945",
+    "docs/work-packages/WP-04/browser-check.mjs": "68de3ac799979513764cebfbc658ccb672c97bd0fa22c5a6a5f9d575ef63e74a"
+  },
+  "sharedFingerprints": {
+    "systems/project-ops/lib/extension-contracts.ts": "db09f7983981d74aad7785663c35d2f616e5ed00214f6eaa8bb28b9e3a2d894b",
+    "systems/project-ops/lib/extension-registry.ts": "db2ee815c1c90bfa7734c5d70f72dd4d716f808e8b1079e4253706db3fbbe7a8",
+    "systems/project-ops/lib/db.ts": "80722a6d4d7b3a959f1a058e7ffc8cbf95ba6a9072b17b48b13b8508d8650e1d",
+    "systems/project-ops/lib/schema.ts": "61cef348ed5e16bcfff52cdb8f617d8a8d71a81d419a6100971c48fc62be6981",
+    "systems/project-ops/lib/base-path.ts": "42d6fd46bc98ad77ecf66f90ce24cf72b9f1b4cd2cd5f007945ea1d0ef9a74fd",
+    "systems/project-ops/components/app-shell.tsx": "8fde35c3ef616f22742d21c9d9f78050cc746d8f7092f2d21032f045f3c7c421",
+    "systems/project-ops/app/favicon.ico/route.ts": "2e8d9f9d365a20156cb610190b25a1b30bbcd358ad060a5c335db4ec27ff01de",
+    "systems/project-ops/package.json": "109a339d172de5d46fc80737467e8fd5e46ee4970f765f559252e7c2c6df625c",
+    "systems/project-ops/pnpm-lock.yaml": "3e0d6c6fe4e1308c86614b12f549cf2c68a1c74b4a31fa58fd9fad31ffe3313c",
+    "systems/project-ops/pnpm-workspace.yaml": "89cafb36feb003b007b6b7d61a813dfd8fc18308c24c002705ba78e04fb79864"
+  },
+  "checkedAt": "2026-10-26T18:36:06.930737+00:00",
+  "finalDocsOnlyAuditAt": "2026-10-26T18:41:40.457777+00:00",
+  "finalChangedPathCount": 176,
+  "finalOwnsRecheckPassed": true,
+  "finalBinaryRecheckPassed": true
+}

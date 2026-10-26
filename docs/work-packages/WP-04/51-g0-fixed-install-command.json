@@ -1,0 +1,14 @@
+{
+  "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+  "command": [
+    "pnpm",
+    "install",
+    "--frozen-lockfile"
+  ],
+  "sourceCommit": "fafdb7892e22548c0c8ea3c5ac2468d8fc3c8275",
+  "startedAt": null,
+  "finishedAtFromLogMtime": "2026-10-26T18:08:33.283824+00:00",
+  "exitCode": 0,
+  "outputSummary": "Already up to date\nDone in 679ms using pnpm v11.19.0\n",
+  "note": "原默认pnpm存储与原registry；冻结依赖未改，开始时间未另记。"
+}

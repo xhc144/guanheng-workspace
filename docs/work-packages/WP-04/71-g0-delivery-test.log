@@ -1,0 +1,173 @@
+cwd: /workspace/guanheng-wp04/systems/project-ops
+command: ["pnpm", "test"]
+startedAt: 2026-10-26T18:30:03.259866+00:00
+
+$ node --experimental-strip-types --test tests/*.test.ts
+✔ same-origin checks use the incoming host instead of Next.js's normalized URL host (41.666785ms)
+✔ password hashes verify and sessions expire server-side (221.041419ms)
+✔ active users resolve by username or case-insensitive email (12.718635ms)
+✔ email login codes expire, allow five attempts and can only be consumed once (298.567769ms)
+✔ four roles receive different server-side customer scopes (21.988914ms)
+✔ project access includes role, department and explicit membership (6.727827ms)
+✔ project members only receive contract and receivable rows from their project within one customer (8.496761ms)
+✔ business dates follow Shanghai time and calendar days (20.41768ms)
+✔ 能力目录服务拒绝未登录和非管理员，不能只靠页面隐藏 (2.734779ms)
+✔ 真实API会话鉴权拒绝匿名、伪造及三个非管理员角色，读取无数据库写入 (15.338157ms)
+✔ 管理员API在query_only合成库返回可追溯来源与未知运行状态，重复读取幂等 (14.705375ms)
+✔ 筛选、空结果、页边界和待确认功能真实返回，不能假报完成 (25.92464ms)
+✔ 无效筛选和重复参数以中文400返回，不回显内部错误 (10.206534ms)
+✔ 管理员停用、降权及会话过期后API立即拒绝 (14.335078ms)
+✔ 数据库异常返回通用中文500且不暴露连接错误 (4.632854ms)
+✔ 无会话API在空临时cwd不初始化data或数据库 (468.025822ms)
+✔ 真实仓库提取、逐来源摘要及映射全部一致，测试文件仅作线索 (2524.497342ms)
+✔ 变量形式新HTTP方法不会被静默漏扫，未挂载前端页面也失败 (1208.819174ms)
+✔ 同一路径的不同真实HTTP方法均保留，源码注释不能伪造接口 (472.654833ms)
+✔ 正式favicon本地只读HEAD别名可追溯，未知或可变别名仍拒绝 (3786.883755ms)
+✔ 新增/删除临时源路由真实改变提取结果，未知能力使分类失败 (9377.31786ms)
+✔ 临时重复动态路由被拒绝，不把不同参数名当不同接口 (609.548781ms)
+✔ Python路由静态解析不会执行副作用，未挂载路由直接失败 (798.357811ms)
+✔ commissions use each member points and unlock after required receipt (11.142088ms)
+✔ legacy customer table gains industry and agency fields without losing rows (8.387758ms)
+✔ global Chinese search covers customer aliases, contacts, contract numbers and projects within scope (15.239559ms)
+✔ project membership grants scoped Chinese search without exposing other projects (13.065252ms)
+✔ customer detail returns complete financial drill-down and denies out-of-scope access (9.026654ms)
+✔ customer list query only accepts supported filters, sizes and SQL sort columns (1.854847ms)
+✔ uploaded files use generated private paths and validated signatures (8.707626ms)
+✔ uploads reject traversal, mismatched content and oversized files (3.888913ms)
+✔ document entities enforce existence and project-member scope (3.613203ms)
+✔ customer template is a readable styled workbook with legend and example (119.568387ms)
+✔ customer import confirms explicit agency values and preserves blank as unknown (187.405056ms)
+✔ receivable report opens with exact formula-backed totals (33.242013ms)
+✔ favicon的真实GET/HEAD响应为204、零字节且不创建会话或图片类型 (45.298943ms)
+✔ 默认及/pms图标元数据href解析为本部署204路径，添加前缀幂等 (0.737752ms)
+✔ 部署前缀只接受明确安全路径，非法值以中文拒绝 (0.691597ms)
+✔ invoice and receipt support partial and cross-receivable allocations (26.500038ms)
+✔ one receivable supports repeated invoices and receipts from partial to full (6.928796ms)
+✔ voided invoice and receipt restore capacity and can be re-recorded (5.139569ms)
+✔ over-allocation rolls back the entire receipt (8.127978ms)
+✔ over-allocation rolls back the entire invoice (15.700462ms)
+✔ finance records reject unallocated balances (14.07821ms)
+✔ estimated receivable dates never become overdue (14.769891ms)
+✔ idempotency key prevents duplicate receipt (6.683406ms)
+✔ idempotency key prevents duplicate invoice and rejects changed payload (7.947343ms)
+✔ existing databases migrate the idempotency request hash column without losing keys (16.326799ms)
+✔ allocation rejects a receivable owned by another customer (8.493826ms)
+✔ voided contracts reject new invoice and receipt allocations (13.787704ms)
+✔ 顶层与三层嵌套成功：返回值、业务和审计一起提交 (11.13634ms)
+✔ 内层失败传播或外层失败均回滚业务和审计；连接可再次使用 (9.365288ms)
+✔ 明确捕获内层失败只撤回保存点；兼容调用者已开启的事务 (6.78561ms)
+✔ 拒绝异步形状返回值并回滚同步写入 (7.14609ms)
+✔ async函数在执行前拒绝，不留下await后的越界写入 (6.928539ms)
+✔ 旧表缺列先补再建索引；保留原CHECK、作废历史和四角色 (13.866165ms)
+✔ 旧服务表缺续费关联列时兼容补齐，已作废数据和旧CHECK不改写 (7.981965ms)
+✔ 旧唯一索引冲突时整个初始化回滚，不改旧行或遗留半套新增结构 (7.922319ms)
+✔ 迁移声明仅接受安全结构；文本默认值仍是数据，G0不会执行SQL (14.552262ms)
+✔ 迁移白名单拒绝任意函数/未知键/DDL伪装/非JSON/非法默认值，旧行不变 (14.690504ms)
+✔ 严格JSON契约拒绝稀疏数组、访问器、隐藏键和嵌套函数且不调用访问器 (1.903319ms)
+✔ 基线PROJECT/WORK_ITEM解析存在性、未作废、服务端范围；未来主体未配置 (6.337063ms)
+✔ 无项目事项按研发范围解析，部门主管不能审批其他部门项目 (5.782787ms)
+✔ 预算未注册返回UNAVAILABLE/NOT_CONFIGURED，禁止假0与越权/不存在项目 (8.304379ms)
+✔ 注册表只列真实已实现路由，导航和管理员状态目录同源且无未来模块 (12.958352ms)
+✔ 真实API的401/403/200及无缓存、只读、会话撤销、500中文错误边界 (31.902941ms)
+✔ 匿名API在全新临时cwd拒绝且不创建数据库目录 (468.544355ms)
+✖ 同一临时库两个并发连接抢占回款：只成功一笔且业务/审计一起提交 (242.825126ms)
+✔ legacy ledger maps agency, industry, project, money and annual service fees (145.401207ms)
+✔ legacy import preserves four-state receivables, is idempotent and blocks a changed ledger (178.241696ms)
+✔ money parsing uses integer cents (2.124269ms)
+✔ money display removes meaningless decimals and compacts dashboard totals (25.411563ms)
+✔ commission deducts costs before applying points (1.360251ms)
+✔ system notification works when SMTP is not configured (7.124857ms)
+✔ email failure is retained for retry without removing system notification (5.400838ms)
+✔ admin persists departments, users and auditable changes (73.598108ms)
+✔ organization writes and audit reads enforce administrator permission (5.635971ms)
+✔ manager assignments and the final active admin remain consistent (65.900379ms)
+✔ 旧API组合贯通合同、分期、多次票款、报表、指定款多人提成、发放与服务续期 (63.588446ms)
+✔ 旧项目/研发/工时/财务API可统一事务组合，外层失败全部撤回 (7.426596ms)
+✔ 审计写入真实失败时财务和幂等键均回滚，拒绝超额时不残留记录 (6.61889ms)
+✔ user updates only own profile and writes audit (10.277616ms)
+✔ project saves multiple contracts and different member commission points atomically (9.647567ms)
+✔ project version is editable and persisted (6.196852ms)
+✔ existing project cannot change customer (4.278317ms)
+✔ project rejects a contract belonging to another customer without partial writes (3.83937ms)
+✔ existing project tables migrate the project version column (4.318321ms)
+✔ report totals match each effective database detail and combine filters (17.208783ms)
+✔ dashboard exposes all required metrics from effective scoped records (8.055011ms)
+✔ project members cannot read sibling project finances under the same customer (9.881949ms)
+✔ report analysis is derived from the same scoped receivable rows (24.487591ms)
+✔ estimated legacy dates do not create false monthly receipts or overdue balances (8.208689ms)
+✔ service fee due amount follows live receipt allocations instead of stale status (8.552917ms)
+✔ draft rules do not execute and published version keeps immutable history (12.146927ms)
+✔ invalid or unsafe formulas cannot be published (3.362152ms)
+✔ rule sample test returns a readable trace without executing action (0.378915ms)
+✔ 全部直接依赖使用精确版本，实际安装与清单一致 (1375.860539ms)
+✔ 真实运行诊断报告当前Node、pnpm、Next和React，检查时间有效 (2973.596486ms)
+✔ 不兼容Node版本和预发布版得到中文拒绝，合法基线通过 (0.356964ms)
+✔ 不可识别版本不回显原始命令内容，也不能被当成检查通过 (0.27091ms)
+✔ 启动入口在加载TypeScript前以中文拒绝不兼容Node (79.231322ms)
+✖ 真实CLI返回成功退出码，错误参数返回2并给出中文用法 (6867.612415ms)
+✔ 诊断服务对未登录和非管理员拒绝授权 (0.673471ms)
+✔ 真实诊断API对未登录、伪造会话拒绝且只返回中文错误 (150.024277ms)
+✔ 财务、部门负责人、项目人员不能读取诊断，数据库未被写入 (15.078479ms)
+✔ 管理员API使用真实会话，只读数据库也能返回版本白名单且不回显secret (1500.573782ms)
+✔ 管理员会话过期、停用或降权后立即拒绝诊断 (6.58291ms)
+✔ 真实数据库不可读时诊断API返回通用中文错误，不回显内部异常 (4.444792ms)
+✔ 无会话请求在全新目录返回401且不会初始化数据库或创建data目录 (479.983297ms)
+✔ duplicate search names receive unique contextual labels (2.109392ms)
+✔ duplicate context still falls back to the stable id (0.410131ms)
+✔ service renewal creates a new period and receivable without overwriting history (22.671438ms)
+✔ annual date shift clamps leap day to target month (0.360592ms)
+✔ service periods reject impossible calendar dates (4.2874ms)
+✔ existing service receivable gains one estimated paid period without duplicating money (7.210415ms)
+✔ legacy service period table gains estimated-date flag default (9.014073ms)
+✔ table query keeps SQL expressions whitelisted and clamps pagination (3.086798ms)
+✔ in-memory table query applies business facets, sorting and range pagination together (0.536702ms)
+✔ work item persists participants, history, comments and accumulated work logs (8.121774ms)
+✔ work item rejects a customer that does not own the project (4.188688ms)
+ℹ tests 120
+ℹ suites 0
+ℹ pass 118
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19816.15534
+
+✖ failing tests:
+
+test at tests/integration-foundation.test.ts:290:1
+✖ 同一临时库两个并发连接抢占回款：只成功一笔且业务/审计一起提交 (242.825126ms)
+  Error: database is locked
+      at count (file:///workspace/guanheng-wp04/systems/project-ops/tests/integration-foundation.test.ts:38:62)
+      at TestContext.<anonymous> (file:///workspace/guanheng-wp04/systems/project-ops/tests/integration-foundation.test.ts:329:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'ERR_SQLITE_ERROR',
+    errcode: 5,
+    errstr: 'database is locked'
+  }
+
+test at tests/runtime-health.test.ts:96:1
+✖ 真实CLI返回成功退出码，错误参数返回2并给出中文用法 (6867.612415ms)
+  AssertionError [ERR_ASSERTION]: 未通过：无法读取 pnpm 版本，请在项目目录核对并安装 11.19.0。
+  
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/guanheng-wp04/systems/project-ops/tests/runtime-health.test.ts:100:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+[ELIFECYCLE] Test failed. See above for more details.
+
+finishedAt: 2026-10-26T18:30:24.085487+00:00
+exitCode: 1

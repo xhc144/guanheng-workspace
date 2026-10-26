@@ -1,0 +1,15 @@
+[
+  {
+    "cwd": "/workspace/guanheng-wp04",
+    "command": [
+      "node",
+      "docs/work-packages/WP-04/browser-check.mjs",
+      "/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs",
+      "/usr/bin/chromium"
+    ],
+    "startedAt": "2026-10-26T18:34:20.262248+00:00",
+    "finishedAt": "2026-10-26T18:34:44.731563+00:00",
+    "exitCode": 0,
+    "log": "docs/work-packages/WP-04/76-g0-delivery-browser-one.log"
+  }
+]

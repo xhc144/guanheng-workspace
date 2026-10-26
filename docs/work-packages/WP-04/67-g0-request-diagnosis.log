@@ -1,0 +1,6170 @@
+cwd: /workspace/guanheng-wp04
+command: ["node", "docs/work-packages/WP-04/browser-check.mjs", "/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs", "/usr/bin/chromium"]
+startedAt: 2026-10-26T18:24:02.415873+00:00
+
+{"resourceStatus":500,"path":"/capabilities"}
+{
+  "runtime": "/tmp/guanheng-wp04-browser-VPvqSy",
+  "port": 38987,
+  "results": [
+    {
+      "check": "匿名GET/HEAD拒绝、页面跳转登录",
+      "status": "通过"
+    },
+    {
+      "check": "正式favicon GET/HEAD204零字节、元数据路径；真实G0状态API与375px页面，runner/预算/通道未配置状态真实",
+      "status": "通过"
+    },
+    {
+      "check": "管理员真实登录、GET/HEAD只读、POST405与非法页码400",
+      "status": "通过",
+      "sourceDigest": "3ef611554d6c85bdf172f2d09a1b4e4c83867e7d229feb7cacd14473549f36c8"
+    },
+    {
+      "check": "375px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+      "status": "通过",
+      "dimensions": {
+        "viewport": 375,
+        "body": 375,
+        "document": 375
+      }
+    },
+    {
+      "check": "768px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+      "status": "通过",
+      "dimensions": {
+        "viewport": 768,
+        "body": 768,
+        "document": 768
+      }
+    },
+    {
+      "check": "1440px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+      "status": "通过",
+      "dimensions": {
+        "viewport": 1440,
+        "body": 1440,
+        "document": 1440
+      }
+    },
+    {
+      "check": "翻页、中文空状态、错误边界与重置恢复",
+      "status": "通过"
+    },
+    {
+      "check": "三个非管理员角色中文拒绝、无目录数据展示",
+      "status": "通过"
+    },
+    {
+      "check": "合成库移除会话表触发真实500及中文错误边界；恢复表后重试回登录",
+      "status": "通过",
+      "faultPhaseConsoleErrors": [
+        {
+          "message": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "location": "http://127.0.0.1:38987/capabilities"
+        },
+        {
+          "message": "Error: Minified React error #441; visit https://react.dev/errors/441 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+          "location": "http://127.0.0.1:38987/_next/static/chunks/3adrxz22zmvfn.js"
+        }
+      ]
+    }
+  ],
+  "normalFlowConsoleErrors": [],
+  "normalFlowFailedResponses": [],
+  "normalFlowRequestFailures": [
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": null,
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": null,
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/capabilities",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/capabilities",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/capabilities",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/audit",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/runtime-health",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/runtime-health",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/integration-health",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/capabilities",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/organization",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/runtime-health",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/integration-health",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/organization",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/integration-health",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/organization",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/audit",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/runtime-health",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/integration-health",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/organization",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/audit",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/runtime-health",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/capabilities",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": null,
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/audit",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/organization",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/runtime-health",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/integration-health",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/organization",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/audit",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/runtime-health",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/capabilities",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/runtime-health",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/audit",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/integration-health",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/capabilities",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/capabilities",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": null,
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": null,
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": null,
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": null,
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": null,
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": "/_tree",
+      "purpose": null
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED",
+      "resourceType": "fetch",
+      "method": "GET",
+      "rsc": "1",
+      "prefetch": "1",
+      "segmentPrefetch": null,
+      "purpose": null
+    }
+  ],
+  "scope": "本包目录交互及G0诊断/正式favicon检查，不证明全部被盘点业务或Windows通过"
+}
+AssertionError [ERR_ASSERTION]: 正常流程存在网络请求错误
++ actual - expected
+
++ [
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: null,
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: null,
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/finance',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/work',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/capabilities',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/capabilities',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/capabilities',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/work',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/notifications',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/documents',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/data',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/reports',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/audit',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/runtime-health',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/finance',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/notifications',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/work',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/data',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/runtime-health',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/integration-health',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/capabilities',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/finance',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/work',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/notifications',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/data',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/reports',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/organization',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/runtime-health',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/integration-health',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/finance',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/documents',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/notifications',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/data',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/reports',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/organization',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/integration-health',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/finance',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/work',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/notifications',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/documents',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/data',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/reports',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/organization',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/audit',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/runtime-health',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/integration-health',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/data',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/reports',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/organization',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/audit',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/runtime-health',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/capabilities',
++     prefetch: null,
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/finance',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/notifications',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/documents',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/data',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/audit',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/reports',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/organization',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/runtime-health',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/integration-health',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/work',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/notifications',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/data',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/documents',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/organization',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/audit',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/runtime-health',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/capabilities',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/finance',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/work',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/documents',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/notifications',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/data',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/reports',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/runtime-health',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/audit',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/integration-health',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/finance',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/notifications',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/work',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/data',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/reports',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/capabilities',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/capabilities',
++     prefetch: null,
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/finance',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/work',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/finance',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/work',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/notifications',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/documents',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/data',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/reports',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/work',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/notifications',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/documents',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/data',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/reports',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: null,
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: null,
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/finance',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/work',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/finance',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/work',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/notifications',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/documents',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/data',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/reports',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/finance',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/documents',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/work',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/notifications',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/reports',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/data',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: null,
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: null,
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/finance',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/work',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/notifications',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/documents',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/data',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: '/_tree'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/search',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/customers',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/contracts',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/projects',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/finance',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/services',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/commissions',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/documents',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/notifications',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/rules',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/work',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/data',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     method: 'GET',
++     path: '/profile',
++     prefetch: '1',
++     purpose: null,
++     resourceType: 'fetch',
++     rsc: '1',
++     segmentPrefetch: null
++   }
++ ]
+- []
+
+    at file:///workspace/guanheng-wp04/docs/work-packages/WP-04/browser-check.mjs:133:9 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [Array],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+▲ Next.js 16.3.3
+- Local:         http://127.0.0.1:38987
+- Network:       http://127.0.0.1:38987
+✓ Ready in 0ms
+✓ Running next.config took 2ms
+⨯ Error: no such table: sessions
+    at <unknown> (.next/server/chunks/ssr/_0vd_x-v._.js:1:181)
+    at p (.next/server/chunks/ssr/app_capabilities_1e_xito._.js:1:675509) {
+  code: 'ERR_SQLITE_ERROR',
+  errcode: 1,
+  errstr: 'SQL logic error',
+  digest: '138757118'
+}
+
+
+finishedAt: 2026-10-26T18:24:52.024942+00:00
+exitCode: 1
