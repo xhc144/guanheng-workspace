@@ -10,6 +10,7 @@ import { DatabaseSync } from "node:sqlite";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { openDatabase } from "../../../systems/project-ops/lib/db.ts";
 import { hashPassword } from "../../../systems/project-ops/lib/auth.ts";
+import { assertRuntimeNavigation } from "./browser-runtime.mjs";
 
 assert.ok(process.argv.length === 4 || process.argv.length === 5, "请指定已安装的Playwright模块和Chromium，可选basePath");
 const basePath = process.argv[4] ?? "";
@@ -43,6 +44,7 @@ const server = spawn(process.execPath, ["--require", observer, join(runtime, "se
 });
 let serverOutput = "", browser, context, page, diagnosticPage, phase = "startup", expectedStop = false;
 const timeline = [], started = performance.now();
+let unexpectedServerExit;
 const safe = value => String(value).replaceAll(sentinel, "[合成配置已隐藏]").replace(/pms_session=[^\s;]+/g, "pms_session=[合成会话已隐藏]");
 const mark = (event, details = {}) => timeline.push({ at: new Date().toISOString(), elapsedMs: Math.round(performance.now() - started), phase, event, ...details });
 const serverState = () => {
@@ -50,12 +52,12 @@ const serverState = () => {
   try { processStatus = readFileSync(`/proc/${server.pid}/status`, "utf8").split("\n").filter(line => /^(State|VmRSS|VmPeak|Threads):/.test(line)); } catch { /* Exited process has no status file. */ }
   return { pid: server.pid, exitCode: server.exitCode, signalCode: server.signalCode, killed: server.killed, expectedStop, loadavg: loadavg(), processStatus };
 };
-server.on("exit", (code, signal) => mark("server-exit", { code, signal, expectedStop }));
+server.on("exit", (code, signal) => { if (!expectedStop) unexpectedServerExit = { code, signal }; mark("server-exit", { code, signal, expectedStop }); });
 server.on("error", error => mark("server-error", { message: safe(error.message) }));
 async function api(ctx, method, url, options) {
   const path = new URL(url).pathname, at = performance.now(); mark("api-start", { method, path });
   try {
-    const response = await ctx.request[method](url, options);
+    const response = await ctx.request[method](url, { ...options, maxRetries: 0, headers: { ...options?.headers, Connection: "close" } });
     mark("api-response", { method, path, status: response.status(), durationMs: Math.round(performance.now() - at), connection: response.headers().connection, keepAlive: response.headers()["keep-alive"] });
     return response;
   } catch (error) { mark("api-failed", { method, path, durationMs: Math.round(performance.now() - at), message: safe(error.message), server: serverState() }); throw error; }
@@ -78,7 +80,7 @@ async function captureFailure(error) {
   try {
     const cookie = context && (await context.cookies()).find(item => item.name === "pms_session");
     if (cookie) {
-      const diagnostic = await context.request.get(`${base}/api/runtime-health`, { headers: { cookie: `${cookie.name}=${cookie.value}` }, timeout: 2000 });
+      const diagnostic = await context.request.get(`${base}/api/runtime-health`, { headers: { cookie: `${cookie.name}=${cookie.value}`, Connection: "close" }, maxRetries: 0, timeout: 2000 });
       failure.runtimeApiAfterFailure = { status: diagnostic.status(), body: await diagnostic.json() };
     }
   } catch (diagnosticError) { failure.runtimeApiAfterFailure = { error: safe(diagnosticError.message) }; }
@@ -151,6 +153,19 @@ try {
     assert.equal(pageResponse.status(), 200, `登记模块实际页面不可达：${module.id}`);
   }
   results.push({ check: "管理员API实际返回G0、36表、未注册runner/预算，18个登记页面均HTTP200，POST405", status: "通过" });
+  // Opt-in diagnosis only: exercise repeated real navigation, never retry a failed assertion.
+  if (process.env.WP24_NAVIGATION_PROBE === "1") {
+    for (let navigation = 0; navigation < 12; navigation++) {
+      phase = `targeted-navigation-${navigation}`; mark("phase-start");
+      await page.setViewportSize({ width: 375, height: 1000 });
+      await page.goto(`${base}/integration-health`);
+      await page.getByRole("heading", { name: "G0 地基 · 基线模块已登记", exact: true }).waitFor();
+      await page.locator(".mobile-nav summary").click();
+      await page.locator(".mobile-nav").getByRole("link", { name: "运行诊断", exact: true }).click();
+      await assertRuntimeNavigation(page, `${basePath}/runtime-health`);
+      mark("targeted-navigation-completed", { navigation, url: page.url() });
+    }
+  }
   for (const width of [375, 768, 1440]) {
     await page.setViewportSize({ width, height: 1000 }); await page.goto(`${base}/integration-health`);
     await page.getByRole("heading", { name: "G0 地基 · 基线模块已登记", exact: true }).waitFor();
@@ -168,7 +183,7 @@ try {
     if (width <= 780) await nav.locator("summary").click();
     phase = `runtime-navigation-${width}`; mark("phase-start");
     await nav.getByRole("link", { name: "运行诊断", exact: true }).click();
-    await page.getByRole("heading", { name: "运行版本检查通过", exact: true }).waitFor();
+    await assertRuntimeNavigation(page, `${basePath}/runtime-health`);
     assert.ok(new URL(page.url()).pathname.endsWith("/runtime-health"));
     if (width <= 780 && !await nav.getAttribute("open")) await nav.locator("summary").click();
     await nav.getByRole("link", { name: "集成状态", exact: true }).click();
@@ -226,6 +241,8 @@ try {
   await faultContext.close();
   results.push({ check: "严格浏览器控制台与页面异常", status: errors.length ? "失败" : "通过", errors, resources });
   console.log(JSON.stringify({ runtime, base, results }, null, 2));
+  assert.equal(unexpectedServerExit, undefined, "临时服务在验收完成前退出");
+  assert.equal(server.exitCode, null); assert.equal(server.signalCode, null);
   assert.deepEqual(errors, [], "浏览器存在控制台错误或页面异常；保留favicon失败，不忽略断言");
   assert.deepEqual(resources, [], "正常页面存在>=400网络响应");
 } catch (error) {

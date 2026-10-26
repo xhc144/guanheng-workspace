@@ -12,7 +12,7 @@ http.createServer = function (...args) {
     const handler = args[index];
     args[index] = function (req, res) {
       const requestId = ++nextRequest, began = performance.now(), socket = socketIds.get(req.socket);
-      stamp('request-start', { requestId, socket, method: req.method, path: req.url, rsc: req.headers.rsc, prefetch: req.headers['next-router-prefetch'] });
+      stamp('request-start', { requestId, socket, method: req.method, path: req.url, connection: req.headers.connection, rsc: req.headers.rsc, prefetch: req.headers['next-router-prefetch'] });
       res.on('finish', () => stamp('request-finish', { requestId, socket, status: res.statusCode, durationMs: Math.round(performance.now() - began), connection: res.getHeader('connection'), keepAlive: res.getHeader('keep-alive') }));
       res.on('close', () => { if (!res.writableFinished) stamp('response-closed-before-finish', { requestId, socket }); });
       return handler.apply(this, arguments);
