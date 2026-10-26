@@ -1,0 +1,1813 @@
+<!doctype html>
+<html
+  lang="zh-CN"
+  data-composition-variables='[
+    {"id":"subtitles","type":"boolean","label":"显示字幕（旁白版）","default":true}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>关衡集团 · 品牌宣传片 2026</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "GH Sans";
+        src: url("assets/fonts/NotoSansSC-VF.ttf") format("truetype");
+        font-weight: 100 900;
+      }
+      @font-face {
+        font-family: "GH Serif";
+        src: url("assets/fonts/NotoSerifSC-VF.ttf") format("truetype");
+        font-weight: 200 900;
+      }
+      :root {
+        --night: #030814;
+        --deep: #071433;
+        --navy: #0c1f4d;
+        --brand: #3b48e6;
+        --brand-bright: #5b7bff;
+        --cyan: #7cd4ff;
+        --ice: #dce8ff;
+        --paper: #f6f9ff;
+        --ink: #0b1b4d;
+        --amber: #ffb547;
+        --sans: "GH Sans", sans-serif;
+        --serif: "GH Serif", serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: var(--night);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: var(--night);
+        font-family: var(--sans);
+        color: #fff;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+      .sc {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+      .fill {
+        position: absolute;
+        inset: 0;
+      }
+      .ch {
+        display: inline-block;
+        white-space: pre;
+      }
+      .kicker {
+        font-family: var(--sans);
+        font-size: 26px;
+        font-weight: 500;
+        letter-spacing: 0.42em;
+        color: var(--cyan);
+        text-transform: uppercase;
+      }
+      .serif {
+        font-family: var(--serif);
+      }
+      .streak {
+        position: absolute;
+        height: 3px;
+        border-radius: 3px;
+        background: linear-gradient(90deg, rgba(124, 212, 255, 0), rgba(190, 228, 255, 0.95) 50%, rgba(124, 212, 255, 0));
+        box-shadow: 0 0 18px 4px rgba(110, 170, 255, 0.55);
+        opacity: 0;
+      }
+
+      /* ───────── S1 · earth at night ───────── */
+      #s1-cam {
+        position: absolute;
+        left: 0;
+        top: -99px;
+        width: 1920px;
+        height: 1278px;
+        transform-origin: 50% 64%;
+      }
+      #s1-cam img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        filter: brightness(0.9) saturate(1.12) contrast(1.05);
+      }
+      #s1-arcs {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1278px;
+        overflow: visible;
+      }
+      #s1-grade {
+        background:
+          linear-gradient(180deg, rgba(3, 8, 20, 0.15) 0%, rgba(3, 8, 20, 0) 40%, rgba(3, 8, 20, 0.55) 100%),
+          radial-gradient(ellipse at 50% 70%, rgba(40, 80, 200, 0) 30%, rgba(3, 8, 20, 0.55) 100%);
+      }
+      #s1-title {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 26px;
+      }
+      #s1-h1 {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 104px;
+        letter-spacing: 0.08em;
+        color: #fff;
+        text-shadow: 0 0 40px rgba(90, 140, 255, 0.35);
+      }
+      #s1-rule {
+        width: 520px;
+        height: 2px;
+        background: linear-gradient(90deg, rgba(124, 212, 255, 0), rgba(124, 212, 255, 0.9), rgba(124, 212, 255, 0));
+      }
+
+      /* ───────── S2 · complexity ───────── */
+      #s2-cam {
+        position: absolute;
+        inset: -60px;
+      }
+      #s2-cam img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.42) contrast(1.25) saturate(0.55);
+      }
+      #s2-grade {
+        background:
+          linear-gradient(180deg, rgba(4, 12, 34, 0.75), rgba(6, 20, 60, 0.35) 45%, rgba(3, 8, 20, 0.9)),
+          linear-gradient(90deg, rgba(20, 50, 160, 0.35), rgba(20, 50, 160, 0.1));
+        mix-blend-mode: normal;
+      }
+      #s2-space {
+        position: absolute;
+        inset: 0;
+        perspective: 1100px;
+        perspective-origin: 50% 42%;
+      }
+      #s2-cloud {
+        position: absolute;
+        left: 960px;
+        top: 440px;
+        width: 0;
+        height: 0;
+        transform-style: preserve-3d;
+      }
+      .chip {
+        position: absolute;
+        white-space: nowrap;
+        padding: 14px 26px;
+        border-radius: 999px;
+        font-size: 30px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        color: var(--ice);
+        background: rgba(12, 32, 84, 0.62);
+        border: 1.5px solid rgba(124, 180, 255, 0.45);
+        box-shadow: 0 0 24px rgba(60, 110, 255, 0.25);
+      }
+      .chip .warn {
+        display: inline-block;
+        width: 0;
+        overflow: hidden;
+        vertical-align: bottom;
+        color: var(--amber);
+        opacity: 0;
+      }
+      #s2-scan {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 160px;
+        background: linear-gradient(180deg, rgba(255, 181, 71, 0), rgba(255, 181, 71, 0.18) 85%, rgba(255, 200, 120, 0.85) 100%);
+        opacity: 0;
+      }
+      #s2-kicker {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 700px;
+        text-align: center;
+        font-size: 30px;
+        letter-spacing: 0.5em;
+        color: rgba(220, 232, 255, 0.8);
+      }
+      #s2-words {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 760px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 46px;
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 84px;
+        letter-spacing: 0.06em;
+      }
+      #s2-words .w {
+        display: block;
+        color: #fff;
+      }
+      #s2-words .dot {
+        display: block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--cyan);
+      }
+      #s2-w3 {
+        color: var(--amber) !important;
+        text-shadow: 0 0 30px rgba(255, 170, 60, 0.55);
+      }
+
+      /* ───────── S3 · balance (logo mark) ───────── */
+      #s3-bg {
+        background: radial-gradient(ellipse 70% 60% at 50% 46%, #0d2160 0%, #061235 45%, #02060f 100%);
+      }
+      #s3-stage {
+        position: absolute;
+        inset: 0;
+        transform-origin: 955px 501px;
+      }
+      #s3-glow {
+        position: absolute;
+        left: 455px;
+        top: 101px;
+        width: 1000px;
+        height: 800px;
+        background: radial-gradient(ellipse at center, rgba(70, 110, 255, 0.55), rgba(70, 110, 255, 0) 65%);
+        opacity: 0;
+      }
+      #s3-markwrap {
+        position: absolute;
+        left: 510px;
+        top: 176.5px;
+        width: 900px;
+        height: 687px;
+        filter: drop-shadow(0 0 28px rgba(80, 120, 255, 0.55));
+      }
+      #s3-markclip {
+        position: absolute;
+        inset: 0;
+        clip-path: inset(0% 50% 0% 50%);
+      }
+      #s3-markclip img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      #s3-sweep {
+        position: absolute;
+        left: 510px;
+        top: 176.5px;
+        width: 900px;
+        height: 687px;
+        overflow: hidden;
+        mix-blend-mode: screen;
+        -webkit-mask-image: url("assets/img/logo-mark@3x.png");
+        -webkit-mask-size: 100% 100%;
+      }
+      #s3-sweep i {
+        position: absolute;
+        top: -100px;
+        left: -400px;
+        width: 260px;
+        height: 900px;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0));
+      }
+      #s3-beam-wrap {
+        position: absolute;
+        inset: 0;
+        transform-origin: 955px 501px;
+      }
+      #s3-beam {
+        position: absolute;
+        left: 578px;
+        top: 500px;
+        width: 755px;
+        height: 2px;
+        background: linear-gradient(90deg, rgba(124, 212, 255, 0.9), rgba(200, 230, 255, 1) 50%, rgba(124, 212, 255, 0.9));
+        box-shadow: 0 0 14px 2px rgba(120, 180, 255, 0.6);
+        transform-origin: 50% 50%;
+      }
+      .sphere {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle at 44% 42%, #ffffff 0%, #d6dcff 9%, #8693ff 26%, #4652ea 52%, #2531d0 78%, #1a22a8 100%);
+        box-shadow:
+          0 0 40px rgba(90, 120, 255, 0.75),
+          inset -6px -8px 18px rgba(10, 16, 110, 0.5);
+      }
+      #s3-sL {
+        left: 511.5px;
+        top: 434.5px;
+        width: 132px;
+        height: 132px;
+      }
+      #s3-sR {
+        left: 1260.5px;
+        top: 429.3px;
+        width: 144px;
+        height: 144px;
+      }
+      .s3-label {
+        position: absolute;
+        top: 438px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .s3-label .cn {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 64px;
+        letter-spacing: 0.12em;
+        color: #fff;
+      }
+      .s3-label .en {
+        font-size: 24px;
+        letter-spacing: 0.4em;
+        color: var(--cyan);
+      }
+      #s3-lL {
+        right: 1460px;
+        align-items: flex-end;
+        text-align: right;
+      }
+      #s3-lR {
+        left: 1460px;
+        align-items: flex-start;
+      }
+      #s3-line {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 892px;
+        text-align: center;
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: 58px;
+        letter-spacing: 0.14em;
+        color: var(--ice);
+      }
+      #s3-line .hl {
+        color: #fff;
+        text-shadow: 0 0 24px rgba(124, 212, 255, 0.6);
+      }
+
+      /* ───────── S4 · GTM platform ───────── */
+      #s4-bg {
+        background:
+          radial-gradient(ellipse 80% 55% at 50% 44%, rgba(50, 90, 255, 0.35), rgba(50, 90, 255, 0) 70%),
+          linear-gradient(180deg, #050d26 0%, #0a1a48 55%, #040a1c 100%);
+      }
+      #s4-floor {
+        position: absolute;
+        left: -480px;
+        right: -480px;
+        top: 640px;
+        height: 900px;
+        background-image:
+          linear-gradient(rgba(110, 160, 255, 0.22) 1.5px, transparent 1.5px),
+          linear-gradient(90deg, rgba(110, 160, 255, 0.22) 1.5px, transparent 1.5px);
+        background-size: 96px 96px;
+        transform-origin: 50% 0%;
+        -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 70%);
+      }
+      #s4-head {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 64px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+      #s4-h {
+        font-size: 68px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #fff;
+      }
+      #s4-h .gtm {
+        color: var(--cyan);
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+      #s4-rig {
+        position: absolute;
+        inset: 0;
+        perspective: 1800px;
+        perspective-origin: 50% 46%;
+      }
+      #s4-turn {
+        position: absolute;
+        inset: 0;
+        transform-style: preserve-3d;
+      }
+      .panel {
+        position: absolute;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1.5px solid rgba(140, 190, 255, 0.55);
+        box-shadow:
+          0 30px 80px rgba(0, 0, 0, 0.55),
+          0 0 50px rgba(60, 110, 255, 0.35);
+        background: #08163c;
+      }
+      .panel img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .panel .sheen {
+        position: absolute;
+        top: -20%;
+        left: -40%;
+        width: 30%;
+        height: 140%;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0));
+      }
+      #p-center {
+        left: 440px;
+        top: 230px;
+        width: 1040px;
+        height: 522px;
+      }
+      #p-left {
+        left: 70px;
+        top: 312px;
+        width: 720px;
+        height: 339px;
+      }
+      #p-right {
+        left: 1130px;
+        top: 312px;
+        width: 720px;
+        height: 339px;
+      }
+      #s4-rail {
+        position: absolute;
+        left: 260px;
+        width: 1400px;
+        top: 836px;
+        height: 80px;
+      }
+      #s4-rail .line {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 15px;
+        height: 2px;
+        background: rgba(124, 180, 255, 0.22);
+      }
+      #rail-fill {
+        position: absolute;
+        left: 0;
+        top: 14px;
+        width: 1400px;
+        height: 4px;
+        border-radius: 4px;
+        background: linear-gradient(90deg, rgba(124, 212, 255, 0.2), var(--cyan));
+        box-shadow: 0 0 16px rgba(124, 212, 255, 0.8);
+        transform-origin: 0 50%;
+      }
+      .node {
+        position: absolute;
+        top: 0;
+        width: 240px;
+        margin-left: -120px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+      }
+      .node i {
+        display: block;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2px solid rgba(124, 180, 255, 0.55);
+        background: #0a1a48;
+      }
+      .node span {
+        font-size: 30px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        color: rgba(220, 232, 255, 0.45);
+      }
+
+      /* ───────── S5 · three values ───────── */
+      #s5-bg {
+        background:
+          radial-gradient(ellipse 60% 50% at 50% 40%, rgba(40, 80, 220, 0.3), rgba(40, 80, 220, 0) 70%),
+          linear-gradient(180deg, #040b22, #081a4a 60%, #030817);
+      }
+      #s5-kicker {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 110px;
+        text-align: center;
+      }
+      #s5-cards {
+        position: absolute;
+        left: 100px;
+        top: 190px;
+        width: 1720px;
+        height: 640px;
+        display: flex;
+        gap: 50px;
+      }
+      .card {
+        position: relative;
+        flex: 0 0 540px;
+        height: 640px;
+        border-radius: 22px;
+        background: linear-gradient(180deg, rgba(20, 44, 110, 0.7), rgba(8, 20, 58, 0.8));
+        border: 1.5px solid rgba(124, 180, 255, 0.28);
+        overflow: hidden;
+      }
+      .card .viz {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 390px;
+      }
+      .card .ct {
+        position: absolute;
+        left: 48px;
+        right: 48px;
+        top: 420px;
+        font-size: 50px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #fff;
+      }
+      .card .ct b {
+        color: var(--cyan);
+        font-weight: 800;
+        margin-right: 16px;
+      }
+      .card .cd {
+        position: absolute;
+        left: 48px;
+        right: 48px;
+        top: 506px;
+        font-size: 28px;
+        line-height: 1.6;
+        letter-spacing: 0.06em;
+        color: rgba(220, 232, 255, 0.72);
+      }
+      .card .cd span {
+        display: block;
+        white-space: nowrap;
+      }
+      .card .edge {
+        position: absolute;
+        inset: 0;
+        border-radius: 22px;
+        border: 2px solid var(--cyan);
+        box-shadow:
+          inset 0 0 40px rgba(124, 212, 255, 0.25),
+          0 0 40px rgba(124, 212, 255, 0.35);
+        opacity: 0;
+      }
+      /* radar */
+      #radar {
+        position: absolute;
+        left: 120px;
+        top: 22px;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background:
+          radial-gradient(circle, rgba(124, 212, 255, 0) 0 32%, rgba(124, 212, 255, 0.28) 32.5% 33%, rgba(124, 212, 255, 0) 33.5% 65%, rgba(124, 212, 255, 0.28) 65.5% 66%, rgba(124, 212, 255, 0) 66.5%),
+          radial-gradient(circle, rgba(30, 70, 180, 0.35), rgba(10, 30, 90, 0.2));
+        border: 2px solid rgba(124, 212, 255, 0.45);
+        overflow: hidden;
+      }
+      #radar-sweep {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: conic-gradient(from 0deg, rgba(124, 212, 255, 0) 0deg, rgba(124, 212, 255, 0) 280deg, rgba(124, 212, 255, 0.55) 360deg);
+      }
+      #radar .cross {
+        position: absolute;
+        background: rgba(124, 212, 255, 0.22);
+      }
+      .rdot {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        margin: -6px 0 0 -6px;
+        border-radius: 50%;
+        background: var(--cyan);
+        box-shadow: 0 0 10px var(--cyan);
+      }
+      #rdot-risk {
+        background: var(--amber);
+        box-shadow: 0 0 16px var(--amber);
+        width: 16px;
+        height: 16px;
+        margin: -8px 0 0 -8px;
+      }
+      #rring {
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        border: 3px solid var(--amber);
+        opacity: 0;
+      }
+      #rtag {
+        position: absolute;
+        left: 150px;
+        width: 240px;
+        white-space: nowrap;
+        text-align: center;
+        top: 334px;
+        padding: 8px 18px;
+        border-radius: 10px;
+        background: rgba(255, 181, 71, 0.16);
+        border: 1.5px solid rgba(255, 181, 71, 0.8);
+        color: var(--amber);
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        opacity: 0;
+      }
+      /* trace */
+      #trace-svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 540px;
+        height: 390px;
+        overflow: visible;
+      }
+      .doc {
+        position: absolute;
+        width: 88px;
+        height: 108px;
+        border-radius: 10px;
+        border: 2px solid rgba(124, 180, 255, 0.4);
+        background: rgba(12, 30, 80, 0.85);
+      }
+      .doc::before,
+      .doc::after {
+        content: "";
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        height: 4px;
+        border-radius: 2px;
+        background: rgba(124, 180, 255, 0.45);
+      }
+      .doc::before {
+        top: 30px;
+      }
+      .doc::after {
+        top: 48px;
+        right: 34px;
+      }
+      .doc .lit {
+        position: absolute;
+        inset: -2px;
+        border-radius: 10px;
+        border: 2px solid var(--cyan);
+        box-shadow: 0 0 22px rgba(124, 212, 255, 0.7);
+        opacity: 0;
+      }
+      .doc-l {
+        position: absolute;
+        width: 140px;
+        margin-left: -26px;
+        text-align: center;
+        font-size: 28px;
+        letter-spacing: 0.02em;
+        color: rgba(220, 232, 255, 0.75);
+      }
+      /* hub */
+      #hub-svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 540px;
+        height: 390px;
+        overflow: visible;
+      }
+      #hub-core {
+        position: absolute;
+        left: 214px;
+        top: 139px;
+        width: 112px;
+        height: 112px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        color: #fff;
+        background: radial-gradient(circle at 40% 35%, #6f86ff, #3b48e6 60%, #1f2aa8);
+        box-shadow: 0 0 40px rgba(80, 120, 255, 0.8);
+      }
+      .sat {
+        position: absolute;
+        width: 132px;
+        height: 50px;
+        margin: -25px 0 0 -66px;
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: var(--ice);
+        background: rgba(12, 32, 84, 0.9);
+        border: 1.5px solid rgba(124, 180, 255, 0.5);
+      }
+
+      /* ───────── S6 · heritage ───────── */
+      #s6-bg {
+        background:
+          radial-gradient(ellipse 70% 50% at 50% 60%, rgba(40, 80, 220, 0.25), rgba(40, 80, 220, 0) 70%),
+          linear-gradient(180deg, #030817, #071640 60%, #030817);
+      }
+      #s6-big {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 286px;
+        text-align: center;
+        font-family: var(--sans);
+        font-weight: 200;
+        font-size: 330px;
+        line-height: 1;
+        letter-spacing: 0.04em;
+        color: rgba(90, 130, 255, 0.07);
+        -webkit-text-stroke: 1.5px rgba(124, 180, 255, 0.28);
+        font-variant-numeric: tabular-nums;
+      }
+      #s6-head {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 96px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 22px;
+      }
+      #s6-h {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 80px;
+        letter-spacing: 0.1em;
+        color: #fff;
+        display: flex;
+        gap: 40px;
+      }
+      #s6-h .part {
+        display: block;
+      }
+      #s6-h .hl {
+        color: var(--cyan);
+        text-shadow: 0 0 30px rgba(124, 212, 255, 0.5);
+      }
+      #s6-track {
+        position: absolute;
+        left: 0;
+        top: 650px;
+        width: 1920px;
+        height: 260px;
+      }
+      #s6-track .base {
+        position: absolute;
+        left: 120px;
+        width: 1680px;
+        top: 78px;
+        height: 2px;
+        background: rgba(124, 180, 255, 0.25);
+        transform-origin: 0 50%;
+      }
+      #s6-fill {
+        position: absolute;
+        left: 120px;
+        width: 1680px;
+        top: 77px;
+        height: 4px;
+        border-radius: 4px;
+        background: linear-gradient(90deg, rgba(124, 212, 255, 0.1), var(--cyan) 85%, #fff);
+        box-shadow: 0 0 18px rgba(124, 212, 255, 0.85);
+        transform-origin: 0 50%;
+      }
+      .yr {
+        position: absolute;
+        top: 0;
+        width: 320px;
+        margin-left: -160px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .yr .y {
+        font-size: 50px;
+        font-weight: 300;
+        letter-spacing: 0.06em;
+        color: #fff;
+        height: 62px;
+      }
+      .yr i {
+        display: block;
+        margin-top: 2px;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--cyan);
+        box-shadow: 0 0 18px var(--cyan);
+      }
+      .yr .t {
+        margin-top: 22px;
+        font-size: 28px;
+        line-height: 1.5;
+        letter-spacing: 0.06em;
+        color: rgba(220, 232, 255, 0.8);
+        text-align: center;
+      }
+      .yr .t span {
+        display: block;
+        white-space: nowrap;
+      }
+
+      /* ───────── S7 · scale ───────── */
+      .s7-photo {
+        position: absolute;
+        inset: -40px;
+        width: calc(100% + 80px);
+        height: calc(100% + 80px);
+        object-fit: cover;
+        filter: brightness(0.5) saturate(0.65) contrast(1.12);
+      }
+      #s7-grade {
+        background:
+          linear-gradient(90deg, rgba(4, 12, 40, 0.92) 0%, rgba(6, 20, 64, 0.72) 55%, rgba(4, 12, 40, 0.85) 100%),
+          linear-gradient(180deg, rgba(20, 50, 170, 0.25), rgba(3, 8, 20, 0.5));
+      }
+      #s7-dawn {
+        background: radial-gradient(ellipse 90% 60% at 50% 115%, rgba(255, 236, 205, 0.9), rgba(160, 190, 255, 0.45) 40%, rgba(80, 120, 255, 0) 75%);
+        opacity: 0;
+      }
+      #s7-kicker {
+        position: absolute;
+        left: 140px;
+        top: 150px;
+      }
+      #s7-main {
+        position: absolute;
+        left: 130px;
+        top: 230px;
+        width: 900px;
+      }
+      #s7-main .num {
+        font-size: 236px;
+        font-weight: 250;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        color: #fff;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      #s7-main .num sup,
+      .s7-row .num sup {
+        font-size: 0.42em;
+        font-weight: 400;
+        color: var(--cyan);
+        vertical-align: top;
+        position: relative;
+        top: 0.18em;
+        margin-left: 6px;
+      }
+      #s7-main .lbl {
+        margin-top: 26px;
+        font-size: 44px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        color: var(--ice);
+      }
+      #s7-side {
+        position: absolute;
+        left: 1160px;
+        top: 200px;
+        width: 640px;
+      }
+      .s7-row {
+        position: relative;
+        height: 182px;
+        border-top: 1.5px solid rgba(124, 180, 255, 0.28);
+        display: flex;
+        align-items: center;
+        gap: 34px;
+      }
+      .s7-row .num {
+        width: 290px;
+        font-size: 112px;
+        font-weight: 300;
+        line-height: 1;
+        color: #fff;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      .s7-row .lbl {
+        font-size: 36px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        color: var(--ice);
+      }
+      #s7-badges {
+        position: absolute;
+        left: 140px;
+        top: 840px;
+        display: flex;
+        gap: 22px;
+      }
+      #s7-badges span {
+        display: block;
+        padding: 12px 26px;
+        border-radius: 999px;
+        border: 1.5px solid rgba(124, 212, 255, 0.6);
+        background: rgba(20, 50, 140, 0.45);
+        font-size: 28px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        color: var(--ice);
+      }
+
+      /* ───────── S8 · dawn & brand ───────── */
+      #s8-bg {
+        background:
+          radial-gradient(ellipse 60% 55% at 50% 42%, #ffffff 0%, #f3f6ff 45%, #dfe7ff 100%);
+      }
+      #s8-grid {
+        background-image:
+          linear-gradient(rgba(59, 72, 230, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(59, 72, 230, 0.06) 1px, transparent 1px);
+        background-size: 80px 80px;
+        -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, transparent 20%, black 85%);
+      }
+      #s8-halo {
+        position: absolute;
+        left: 360px;
+        top: 70px;
+        width: 1200px;
+        height: 720px;
+        background: radial-gradient(ellipse at center, rgba(91, 123, 255, 0.28), rgba(91, 123, 255, 0) 65%);
+      }
+      #s8-tag {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 330px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        font-family: var(--serif);
+        font-weight: 800;
+        font-size: 104px;
+        letter-spacing: 0.1em;
+        color: var(--ink);
+      }
+      #s8-tag .hl {
+        color: var(--brand);
+      }
+      #s8-l2 {
+        position: relative;
+      }
+      #s8-under {
+        position: absolute;
+        right: 0;
+        bottom: -14px;
+        width: 340px;
+        height: 8px;
+        border-radius: 4px;
+        background: linear-gradient(90deg, var(--brand), var(--brand-bright));
+        transform-origin: 0 50%;
+      }
+      #s8-logo {
+        position: absolute;
+        left: 460px;
+        top: 315px;
+        width: 1000px;
+        height: 230.6px;
+        opacity: 0;
+      }
+      #s8-burst {
+        position: absolute;
+        left: 560px;
+        top: 130px;
+        width: 800px;
+        height: 600px;
+        background: radial-gradient(ellipse at center, rgba(120, 150, 255, 0.55), rgba(120, 150, 255, 0) 60%);
+        opacity: 0;
+      }
+      #s8-sL,
+      #s8-sR {
+        box-shadow: 0 0 30px rgba(80, 110, 255, 0.6);
+        opacity: 0;
+      }
+      #s8-sL {
+        left: 461.7px;
+        top: 402.8px;
+        width: 42px;
+        height: 42px;
+      }
+      #s8-sR {
+        left: 711.9px;
+        top: 400.2px;
+        width: 48px;
+        height: 48px;
+      }
+      #s8-cta {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 806px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 44px;
+      }
+      #s8-cta .pill {
+        padding: 18px 44px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--brand), #4f6bff);
+        color: #fff;
+        font-size: 34px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        box-shadow: 0 12px 36px rgba(59, 72, 230, 0.35);
+      }
+      #s8-cta .tel {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        color: var(--ink);
+      }
+      #s8-cta .tel span {
+        font-size: 28px;
+        letter-spacing: 0.24em;
+        color: rgba(11, 27, 77, 0.62);
+      }
+      #s8-cta .tel b {
+        font-size: 46px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+      }
+      #s8-cta .sep {
+        width: 1.5px;
+        height: 70px;
+        background: rgba(11, 27, 77, 0.2);
+      }
+      #s8-cta .web {
+        font-size: 32px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        color: var(--brand);
+      }
+
+      /* ───────── global overlays ───────── */
+      #fx-flash {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at 50% 46%, #ffffff 0%, #e6edff 55%, #c9d6ff 100%);
+        opacity: 0;
+        pointer-events: none;
+      }
+      #fx-vignette {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 75% 70% at 50% 48%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.55) 100%);
+        pointer-events: none;
+      }
+      #fx-grain {
+        position: absolute;
+        inset: 0;
+        opacity: 0.07;
+        mix-blend-mode: overlay;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 -0.1'/></filter><rect width='256' height='256' filter='url(%23n)'/></svg>");
+        background-size: 256px 256px;
+      }
+      #subs {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 962px;
+        height: 70px;
+        pointer-events: none;
+      }
+      .sub {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        text-align: center;
+        font-size: 38px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        color: #fff;
+        text-shadow:
+          0 2px 4px rgba(0, 0, 0, 0.7),
+          0 0 22px rgba(0, 0, 0, 0.6);
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="60" data-width="1920" data-height="1080">
+      <!-- S1 · 0–6.6 · earth at night: global trade arcs -->
+      <section id="s1" class="clip scene" data-start="0" data-duration="6.6" data-track-index="1">
+        <div class="sc" id="s1-sc">
+          <div id="s1-cam">
+            <img src="assets/img/earth.jpg" alt="" />
+            <svg id="s1-arcs" viewBox="0 0 1920 1278">
+              <defs>
+                <linearGradient id="arcGrad" x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="0" stop-color="#7cd4ff" stop-opacity="0.2" />
+                  <stop offset="0.5" stop-color="#bfe6ff" stop-opacity="1" />
+                  <stop offset="1" stop-color="#5b7bff" stop-opacity="0.3" />
+                </linearGradient>
+                <filter id="arcGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="5" />
+                </filter>
+              </defs>
+              <g id="s1-arc-layer"></g>
+            </svg>
+          </div>
+          <div class="fill" id="s1-grade"></div>
+          <div class="streak" id="s1-streak" style="left: 360px; top: 318px; width: 1200px"></div>
+          <div id="s1-title">
+            <div class="kicker" data-layout-ignore id="s1-kicker">Guanheng · Global Trade Compliance</div>
+            <h1 id="s1-h1">全球贸易，越走越远</h1>
+            <div id="s1-rule"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S2 · 5.9–14.1 · complexity: rules, codes, invisible risk -->
+      <section id="s2" class="clip scene" data-start="5.9" data-duration="8.2" data-track-index="2">
+        <div class="sc" id="s2-sc">
+          <div id="s2-cam"><img src="assets/img/port.jpg" alt="" /></div>
+          <div class="fill" id="s2-grade"></div>
+          <div id="s2-space"><div id="s2-cloud"></div></div>
+          <div id="s2-scan"></div>
+          <div id="s2-kicker">每一票货物背后</div>
+          <div id="s2-words">
+            <span class="w" id="s2-w1">编码繁杂</span>
+            <span class="dot" id="s2-d1"></span>
+            <span class="w" id="s2-w2">规则多变</span>
+            <span class="dot" id="s2-d2"></span>
+            <span class="w" id="s2-w3">风险难见</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- S3 · 13.88–20.4 · balance: efficiency ⇄ compliance becomes the Guanheng mark -->
+      <section id="s3" class="clip scene" data-start="13.88" data-duration="6.52" data-track-index="1">
+        <div class="sc" id="s3-sc">
+          <div class="fill" id="s3-bg"></div>
+          <div class="fill" id="s3-dust"></div>
+          <div id="s3-stage">
+            <div id="s3-glow"></div>
+            <div id="s3-markwrap"><div id="s3-markclip"><img src="assets/img/logo-mark@3x.png" alt="关衡标志" /></div></div>
+            <div id="s3-sweep"><i id="s3-sweep-bar"></i></div>
+            <div id="s3-beam-wrap">
+              <div id="s3-beam"></div>
+              <div class="sphere" id="s3-sL"></div>
+              <div class="sphere" id="s3-sR"></div>
+            </div>
+          </div>
+          <div class="s3-label" id="s3-lL"><div class="cn">效率</div><div class="en" data-layout-ignore>Efficiency</div></div>
+          <div class="s3-label" id="s3-lR"><div class="cn">合规</div><div class="en" data-layout-ignore>Compliance</div></div>
+          <div class="streak" id="s3-streak" style="left: 520px; top: 500px; width: 880px"></div>
+          <div id="s3-line">效率与合规，<span class="hl">不必二选一</span></div>
+        </div>
+      </section>
+
+      <!-- S4 · 19.85–28.4 · GTM platform with real product screens -->
+      <section id="s4" class="clip scene" data-start="19.85" data-duration="8.55" data-track-index="2">
+        <div class="sc" id="s4-sc">
+          <div class="fill" id="s4-bg"></div>
+          <div id="s4-floor"></div>
+          <div id="s4-rig">
+            <div id="s4-turn">
+              <div class="panel" id="p-left"><img src="assets/img/sys-dashboard.jpg" alt="" /><div class="sheen"></div></div>
+              <div class="panel" id="p-right"><img src="assets/img/sys-risk.jpg" alt="" /><div class="sheen"></div></div>
+              <div class="panel" id="p-center"><img src="assets/img/sys-bi.jpg" alt="" /><div class="sheen"></div></div>
+            </div>
+          </div>
+          <div id="s4-head">
+            <div class="kicker" data-layout-ignore id="s4-kicker">Global Trade Management</div>
+            <div id="s4-h"><span class="gtm">GTM</span> 全球关务系统</div>
+          </div>
+          <div id="s4-rail">
+            <div class="line"></div>
+            <div id="rail-fill"></div>
+            <div class="node" style="left: 0px"><i></i><span>商品归类</span></div>
+            <div class="node" style="left: 350px"><i></i><span>通关申报</span></div>
+            <div class="node" style="left: 700px"><i></i><span>保税加工</span></div>
+            <div class="node" style="left: 1050px"><i></i><span>仓储物流</span></div>
+            <div class="node" style="left: 1400px"><i></i><span>经营分析</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S5 · 27.8–36.4 · three values -->
+      <section id="s5" class="clip scene" data-start="27.8" data-duration="8.6" data-track-index="1">
+        <div class="sc" id="s5-sc">
+          <div class="fill" id="s5-bg"></div>
+          <div class="kicker" data-layout-ignore id="s5-kicker">GTM · 合规 · 追溯 · 协同</div>
+          <div id="s5-cards">
+            <div class="card" id="c1">
+              <div class="viz">
+                <div id="radar">
+                  <div class="cross" style="left: 0; right: 0; top: 149px; height: 1.5px"></div>
+                  <div class="cross" style="top: 0; bottom: 0; left: 149px; width: 1.5px"></div>
+                  <div id="radar-sweep"></div>
+                </div>
+                <div id="rring"></div>
+                <div id="rtag">⚠ 风险预警</div>
+              </div>
+              <div class="ct"><b>风险</b>提前预警</div>
+              <div class="cd"><span>5 类 11 个维度 · 3 级预警</span><span>事前提醒，事中控制</span></div>
+              <div class="edge"></div>
+            </div>
+            <div class="card" id="c2">
+              <div class="viz" id="trace"><svg id="trace-svg" viewBox="0 0 540 390"></svg></div>
+              <div class="ct"><b>单证</b>全程追溯</div>
+              <div class="cd"><span>进出口全过程单证关联</span><span>一键穿行，有据可查</span></div>
+              <div class="edge"></div>
+            </div>
+            <div class="card" id="c3">
+              <div class="viz" id="hub"><svg id="hub-svg" viewBox="0 0 540 390"></svg><div id="hub-core">GTM</div></div>
+              <div class="ct"><b>系统</b>无缝协同</div>
+              <div class="cd"><span>对接 SAP · SRM · WMS · MES</span><span>财务与单一窗口，一次录入</span></div>
+              <div class="edge"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S6 · 35.8–44.4 · heritage since 1997 -->
+      <section id="s6" class="clip scene" data-start="35.8" data-duration="8.6" data-track-index="2">
+        <div class="sc" id="s6-sc">
+          <div class="fill" id="s6-bg"></div>
+          <div id="s6-big" data-layout-ignore>1997</div>
+          <div id="s6-head">
+            <div class="kicker" data-layout-ignore id="s6-kicker">Since 1997</div>
+            <div id="s6-h"><span class="part" id="s6-h1">近三十年</span><span class="part" id="s6-h2">只专注<span class="hl">关务</span></span></div>
+          </div>
+          <div id="s6-track">
+            <div class="base" id="s6-base"></div>
+            <div id="s6-fill"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- S7 · 43.8–52.4 · scale in numbers -->
+      <section id="s7" class="clip scene" data-start="43.8" data-duration="8.6" data-track-index="1">
+        <div class="sc" id="s7-sc">
+          <img class="s7-photo" id="s7-p1" src="assets/img/electronics.jpg" alt="" />
+          <img class="s7-photo" id="s7-p2" src="assets/img/auto.jpg" alt="" />
+          <img class="s7-photo" id="s7-p3" src="assets/img/warehouse.jpg" alt="" />
+          <div class="fill" id="s7-grade"></div>
+          <div class="fill" id="s7-dawn"></div>
+          <div class="kicker" data-layout-ignore id="s7-kicker">Today · 今天</div>
+          <div id="s7-main">
+            <div class="num"><span id="v-main">0</span><sup>+</sup></div>
+            <div class="lbl">家进出口企业的选择</div>
+          </div>
+          <div id="s7-side">
+            <div class="s7-row" id="r1"><div class="num"><span id="v-c">0</span></div><div class="lbl">覆盖国家</div></div>
+            <div class="s7-row" id="r2"><div class="num"><span id="v-i">0</span></div><div class="lbl">细分行业</div></div>
+            <div class="s7-row" id="r3"><div class="num"><span id="v-s">0</span><sup>+</sup></div><div class="lbl">软件著作权</div></div>
+          </div>
+          <div id="s7-badges">
+            <span>国家级高新技术企业</span>
+            <span>双软认定企业</span>
+            <span>总部 · 广东东莞</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- S8 · 51.75–60 · dawn: slogan → brand lockup → call to action -->
+      <section id="s8" class="clip scene" data-start="51.75" data-duration="8.25" data-track-index="2">
+        <div class="sc" id="s8-sc">
+          <div class="fill" id="s8-bg"></div>
+          <div class="fill" id="s8-grid"></div>
+          <div id="s8-halo"></div>
+          <div id="s8-tag">
+            <div id="s8-l1">进出口关务合规</div>
+            <div id="s8-l2">一套系统<span class="hl">管清楚</span><div id="s8-under"></div></div>
+          </div>
+          <div id="s8-burst"></div>
+          <img id="s8-logo" src="assets/img/logo.png" alt="关衡集团 GUANHENG GROUP" />
+          <div class="sphere" id="s8-sL"></div>
+          <div class="sphere" id="s8-sR"></div>
+          <div id="s8-cta">
+            <div class="pill">预约产品演示</div>
+            <div class="sep"></div>
+            <div class="tel"><span>全国服务热线</span><b>400 880 9138</b></div>
+            <div class="sep"></div>
+            <div class="web">www.zgsoft.com.cn</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- global overlays -->
+      <div id="fx-flash" class="clip" data-start="0" data-duration="60" data-track-index="5"></div>
+      <div id="fx-vignette" class="clip" data-start="0" data-duration="60" data-track-index="6"></div>
+      <div id="fx-grain" class="clip" data-start="0" data-duration="60" data-track-index="7"></div>
+      <div id="subs" class="clip" data-start="0" data-duration="60" data-track-index="8"></div>
+
+      <audio id="soundtrack" src="assets/audio/mix_vo.wav" data-start="0" data-duration="60" data-track-index="10" data-volume="1"></audio>
+    </div>
+
+    <script>
+      (function () {
+        const $ = (s) => document.querySelector(s);
+        const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+        // Seeded PRNG so every render places particles identically.
+        function rand(seed) {
+          return function () {
+            seed |= 0;
+            seed = (seed + 0x6d2b79f5) | 0;
+            let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+            t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+            return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+          };
+        }
+        // Wrap every character in a span so lines can be revealed glyph by glyph.
+        function split(el) {
+          const out = [];
+          const walk = (node) => {
+            Array.from(node.childNodes).forEach((n) => {
+              if (n.nodeType === 3) {
+                const frag = document.createDocumentFragment();
+                for (const c of n.textContent) {
+                  const s = document.createElement("span");
+                  s.className = "ch";
+                  s.textContent = c;
+                  frag.appendChild(s);
+                  out.push(s);
+                }
+                n.replaceWith(frag);
+              } else if (n.nodeType === 1 && n.id !== "s8-under") {
+                walk(n);
+              }
+            });
+          };
+          walk(el);
+          return out;
+        }
+        const svgNS = "http://www.w3.org/2000/svg";
+        const svgEl = (tag, attrs, parent) => {
+          const e = document.createElementNS(svgNS, tag);
+          for (const k in attrs) e.setAttribute(k, attrs[k]);
+          if (parent) parent.appendChild(e);
+          return e;
+        };
+
+        const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+        const showSubs = vars.subtitles !== false;
+
+        const tl = gsap.timeline({ paused: true });
+        const glyphIn = (chars, at, opts = {}) =>
+          tl.fromTo(
+            chars,
+            { opacity: 0, y: opts.y ?? 34, filter: `blur(${opts.blur ?? 14}px)` },
+            { opacity: 1, y: 0, filter: "blur(0px)", duration: opts.dur ?? 0.7, ease: "power3.out", stagger: opts.stagger ?? 0.06 },
+            at
+          );
+        // Tracked labels converge from a wide spread: per-glyph x, never letter-spacing.
+        const spreadIn = (sel, at, spread = 22, dur = 1.2) => {
+          const chars = split($(sel));
+          const mid = (chars.length - 1) / 2;
+          chars.forEach((c, i) => tl.fromTo(c, { x: (i - mid) * spread, opacity: 0 }, { x: 0, opacity: 1, duration: dur, ease: "power3.out" }, at));
+        };
+        const streak = (sel, at) => {
+          tl.fromTo(sel, { opacity: 0, scaleX: 0.1 }, { opacity: 1, scaleX: 1, duration: 0.35, ease: "power2.out" }, at);
+          tl.to(sel, { opacity: 0, scaleX: 1.4, duration: 0.6, ease: "power2.in" }, at + 0.35);
+        };
+
+        /* ───────────── S1 · earth ───────────── */
+        const arcs = [
+          [560, 870, 955, 560, 1350, 820, 0.55],
+          [240, 820, 400, 690, 560, 870, 0.85],
+          [560, 870, 1020, 470, 1490, 660, 1.1],
+          [610, 650, 885, 520, 1160, 830, 1.35],
+          [1350, 820, 1600, 690, 1840, 840, 1.6],
+          [1160, 830, 1345, 680, 1530, 880, 1.85],
+          [610, 650, 1150, 300, 1700, 500, 2.1],
+          [930, 830, 1210, 590, 1490, 660, 2.4],
+          [790, 850, 1080, 700, 1350, 820, 2.7],
+        ];
+        const layer = $("#s1-arc-layer");
+        const dots = new Set();
+        arcs.forEach(([x1, y1, cx, cy, x2, y2, t0], i) => {
+          const d = `M${x1},${y1} Q${cx},${cy} ${x2},${y2}`;
+          const glow = svgEl("path", { d, fill: "none", stroke: "#6fa8ff", "stroke-width": 7, "stroke-opacity": 0.55, filter: "url(#arcGlow)" }, layer);
+          const core = svgEl("path", { d, fill: "none", stroke: "url(#arcGrad)", "stroke-width": 2.4, "stroke-linecap": "round" }, layer);
+          const comet = svgEl("path", { d, fill: "none", stroke: "#ffffff", "stroke-width": 4, "stroke-linecap": "round" }, layer);
+          const L = core.getTotalLength();
+          [glow, core].forEach((p) => {
+            p.style.strokeDasharray = `${L} ${L}`;
+            tl.fromTo(p, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 1.3, ease: "power2.inOut" }, t0);
+          });
+          comet.style.strokeDasharray = `46 ${L + 60}`;
+          tl.fromTo(comet, { strokeDashoffset: 46, opacity: 1 }, { strokeDashoffset: -L, duration: 1.5, ease: "power1.inOut" }, t0 + 0.15);
+          tl.to(comet, { opacity: 0, duration: 0.2 }, t0 + 1.5);
+          [
+            [x1, y1, t0],
+            [x2, y2, t0 + 1.2],
+          ].forEach(([x, y, t]) => {
+            const key = `${x},${y}`;
+            if (dots.has(key)) return;
+            dots.add(key);
+            const c = svgEl("circle", { cx: x, cy: y, r: 5, fill: "#dff3ff" }, layer);
+            const ring = svgEl("circle", { cx: x, cy: y, r: 6, fill: "none", stroke: "#9fd8ff", "stroke-width": 2 }, layer);
+            tl.fromTo(c, { attr: { r: 0 } }, { attr: { r: 5 }, duration: 0.3, ease: "back.out(3)" }, t);
+            tl.fromTo(ring, { attr: { r: 5 }, opacity: 0.9 }, { attr: { r: 34 }, opacity: 0, duration: 1.2, ease: "power2.out" }, t);
+          });
+        });
+        tl.fromTo("#s1-sc", { opacity: 0.55 }, { opacity: 1, duration: 1.2, ease: "power2.out" }, 0);
+        tl.fromTo("#s1-cam", { scale: 1.0 }, { scale: 1.14, duration: 5.6, ease: "sine.inOut" }, 0);
+        tl.to("#s1-cam", { scale: 1.55, duration: 0.95, ease: "power3.in" }, 5.6);
+        spreadIn("#s1-kicker", 1.1, 18, 1.6);
+        glyphIn(split($("#s1-h1")), 1.6, { stagger: 0.075, dur: 0.9 });
+        tl.fromTo("#s1-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 1.2, ease: "power3.out" }, 2.5);
+        streak("#s1-streak", 2.75);
+        tl.to("#s1-title", { opacity: 0, y: -30, filter: "blur(10px)", duration: 0.7, ease: "power2.in" }, 5.35);
+
+        /* ───────────── S2 · complexity ───────────── */
+        const terms = [
+          "HS 编码 8542.31", "申报要素", "原产地规则", "出口管制", "监管证件", "手册核销", "关税税率", "商品归类",
+          "许可证有效期", "单证一致", "AEO 认证", "两用物项", "随附单证", "汇率波动", "反倾销税", "加工贸易手册",
+          "HS 编码 8471.30", "报关单 · 随附单证", "BOM 单耗", "退运 · 复出口",
+        ];
+        const risky = new Set(["出口管制", "许可证有效期", "两用物项", "反倾销税"]);
+        const r2 = rand(2026);
+        const cloud = $("#s2-cloud");
+        terms.forEach((txt, i) => {
+          const chip = document.createElement("div");
+          chip.className = "chip";
+          chip.setAttribute("data-layout-ignore", "");
+          chip.innerHTML = `<span class="warn">⚠&nbsp;</span>${txt}`;
+          cloud.appendChild(chip);
+          // spread across the frame, keep the lower title band clear
+          const col = i % 5, row = Math.floor(i / 5);
+          const x = -860 + col * 400 + (r2() - 0.5) * 220;
+          const y = -360 + row * 130 + (r2() - 0.5) * 70;
+          const z = -1500 + r2() * 1100;
+          const dz = 700 + r2() * 200;
+          gsap.set(chip, { x, y, z, xPercent: -50, yPercent: -50 });
+          const tIn = 6.1 + i * 0.12;
+          tl.fromTo(chip, { opacity: 0 }, { opacity: z < -1100 ? 0.45 : 0.95, duration: 0.6, ease: "power1.out" }, tIn);
+          tl.to(chip, { z: z + dz, duration: 8, ease: "none" }, 6.0);
+          if (risky.has(txt)) {
+            tl.to(chip, { color: "#ffd9a0", backgroundColor: "rgba(80,40,10,0.72)", borderColor: "rgba(255,181,71,0.95)", boxShadow: "0 0 34px rgba(255,170,60,0.7)", duration: 0.35, ease: "power2.out" }, 10.75 + (i % 3) * 0.08);
+            tl.to(chip.querySelector(".warn"), { width: "1.25em", opacity: 1, duration: 0.35, ease: "power2.out" }, 10.75 + (i % 3) * 0.08);
+          }
+        });
+        tl.fromTo("#s2-sc", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 5.9);
+        tl.fromTo("#s2-cam", { scale: 1.18 }, { scale: 1.0, duration: 8.2, ease: "power1.out" }, 5.9);
+        spreadIn("#s2-kicker", 6.8, 18, 1.0);
+        glyphIn(split($("#s2-w1")), 8.25, { stagger: 0.05 });
+        tl.fromTo("#s2-d1", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(3)" }, 9.3);
+        glyphIn(split($("#s2-w2")), 9.6, { stagger: 0.05 });
+        tl.fromTo("#s2-d2", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(3)" }, 10.55);
+        glyphIn(split($("#s2-w3")), 10.75, { stagger: 0.06 });
+        tl.fromTo("#s2-scan", { y: -180, opacity: 0.0 }, { y: 1100, opacity: 1, duration: 1.1, ease: "power1.inOut" }, 10.6);
+        tl.to("#s2-scan", { opacity: 0, duration: 0.2 }, 11.72);
+        tl.to("#s2-space", { scale: 1.35, duration: 0.6, ease: "power3.in" }, 13.3);
+        tl.to(["#s2-words", "#s2-kicker"], { opacity: 0, y: 30, duration: 0.45, ease: "power2.in" }, 13.4);
+        tl.to("#s2-sc", { opacity: 0, duration: 0.08 }, 13.88);
+
+        /* ───────────── S3 · balance ───────────── */
+        const dust = $("#s3-dust");
+        const r3 = rand(1997);
+        for (let i = 0; i < 46; i++) {
+          const p = document.createElement("i");
+          const s = 2 + r3() * 4;
+          p.style.cssText = `position:absolute;left:${r3() * 1920}px;top:${r3() * 1080}px;width:${s}px;height:${s}px;border-radius:50%;background:rgba(150,190,255,${0.25 + r3() * 0.5});box-shadow:0 0 ${s * 3}px rgba(120,170,255,.8)`;
+          dust.appendChild(p);
+          tl.fromTo(p, { y: 0, x: 0 }, { y: -60 - r3() * 120, x: (r3() - 0.5) * 80, duration: 6.5, ease: "none" }, 13.9);
+        }
+        tl.fromTo("#s3-sc", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.out" }, 13.95);
+        tl.fromTo("#s3-sL", { scale: 0 }, { scale: 1, duration: 0.8, ease: "back.out(1.6)" }, 14.15);
+        tl.fromTo("#s3-sR", { scale: 0 }, { scale: 1, duration: 0.8, ease: "back.out(1.6)" }, 14.35);
+        tl.fromTo("#s3-beam", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 0.85, duration: 0.9, ease: "power3.out" }, 14.3);
+        // an uneasy balance: the beam rocks before the mark steadies it
+        tl.fromTo("#s3-beam-wrap", { rotation: 11 }, { rotation: -7, duration: 0.75, ease: "sine.inOut" }, 14.3);
+        tl.to("#s3-beam-wrap", { rotation: 5.5, duration: 0.6, ease: "sine.inOut" }, 15.05);
+        tl.to("#s3-beam-wrap", { rotation: -4, duration: 0.5, ease: "sine.inOut" }, 15.65);
+        tl.to("#s3-beam-wrap", { rotation: 0, duration: 1.2, ease: "power3.out" }, 16.15);
+        tl.fromTo("#s3-lL", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" }, 14.6);
+        tl.fromTo("#s3-lR", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" }, 14.85);
+        tl.fromTo("#s3-markclip", { clipPath: "inset(0% 50% 0% 50%)", opacity: 0.4 }, { clipPath: "inset(0% 0% 0% 0%)", opacity: 1, duration: 1.15, ease: "power3.out" }, 16.15);
+        tl.fromTo("#s3-glow", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 1.2, ease: "power2.out" }, 16.2);
+        tl.to("#s3-beam", { opacity: 0, duration: 0.6 }, 16.7);
+        tl.fromTo("#s3-sweep-bar", { x: 0, rotation: 18 }, { x: 1500, rotation: 18, duration: 1.0, ease: "power2.inOut" }, 16.35);
+        streak("#s3-streak", 16.15);
+        glyphIn(split($("#s3-line")), 16.85, { stagger: 0.07, dur: 0.75 });
+        tl.fromTo("#s3-stage", { scale: 1 }, { scale: 1.035, duration: 1.8, ease: "sine.inOut" }, 17.6);
+        tl.to(["#s3-lL", "#s3-lR", "#s3-line"], { opacity: 0, duration: 0.3, ease: "power2.in" }, 19.55);
+        tl.to("#s3-stage", { scale: 7, duration: 0.8, ease: "power3.in" }, 19.5);
+        tl.to("#fx-flash", { opacity: 0.85, duration: 0.3, ease: "power2.in" }, 19.95);
+        tl.to("#fx-flash", { opacity: 0, duration: 0.55, ease: "power2.out" }, 20.25);
+
+        /* ───────────── S4 · platform ───────────── */
+        gsap.set("#s4-floor", { rotationX: 72, transformPerspective: 900 });
+        gsap.set("#p-left", { rotationY: 30, z: -160 });
+        gsap.set("#p-right", { rotationY: -30, z: -160 });
+        tl.fromTo("#s4-sc", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 19.95);
+        tl.fromTo("#p-center", { z: -1200, rotationX: 18, opacity: 0 }, { z: 0, rotationX: 0, opacity: 1, duration: 1.3, ease: "expo.out" }, 20.05);
+        tl.fromTo("#p-left", { x: -500, rotationY: 75, opacity: 0 }, { x: 0, rotationY: 30, opacity: 1, duration: 1.4, ease: "expo.out" }, 20.3);
+        tl.fromTo("#p-right", { x: 500, rotationY: -75, opacity: 0 }, { x: 0, rotationY: -30, opacity: 1, duration: 1.4, ease: "expo.out" }, 20.4);
+        tl.fromTo("#s4-turn", { rotationY: -5, y: 10 }, { rotationY: 4, y: -10, duration: 8.4, ease: "sine.inOut" }, 19.95);
+        tl.fromTo("#s4-floor", { backgroundPositionY: "0px" }, { backgroundPositionY: "192px", duration: 8.4, ease: "none" }, 19.95);
+        spreadIn("#s4-kicker", 20.3, 18, 1.2);
+        glyphIn(split($("#s4-h")), 20.42, { stagger: 0.045, blur: 10, y: 24 });
+        $$("#s4 .sheen").forEach((s, i) => tl.fromTo(s, { x: 0, rotation: 14 }, { x: 2400, rotation: 14, duration: 1.3, ease: "power2.inOut" }, 21.3 + i * 0.25));
+        gsap.set("#rail-fill", { scaleX: 0 });
+        tl.fromTo("#s4-rail", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 21.8);
+        const railStops = [22.55, 23.8, 24.85, 25.95, 26.95];
+        $$("#s4-rail .node").forEach((n, i) => {
+          const t = railStops[i];
+          tl.to("#rail-fill", { scaleX: i / 4, duration: i === 0 ? 0.2 : 0.55, ease: "power2.inOut" }, t - (i === 0 ? 0.2 : 0.5));
+          tl.to(n.querySelector("i"), { backgroundColor: "#7cd4ff", borderColor: "#ffffff", boxShadow: "0 0 26px rgba(124,212,255,0.95)", scale: 1.25, duration: 0.3, ease: "back.out(2)" }, t);
+          tl.to(n.querySelector("span"), { color: "#ffffff", duration: 0.3 }, t);
+        });
+        tl.to("#s4-turn", { z: 500, opacity: 0, duration: 0.65, ease: "power3.in" }, 27.75);
+        tl.to(["#s4-head", "#s4-rail"], { opacity: 0, duration: 0.45, ease: "power2.in" }, 27.75);
+
+        /* ───────────── S5 · values ───────────── */
+        // radar dots
+        const radar = $("#radar");
+        const r5 = rand(11);
+        for (let i = 0; i < 9; i++) {
+          const d = document.createElement("i");
+          d.className = "rdot";
+          const a = r5() * Math.PI * 2, rr = 30 + r5() * 110;
+          d.style.left = `${150 + Math.cos(a) * rr}px`;
+          d.style.top = `${150 + Math.sin(a) * rr}px`;
+          radar.appendChild(d);
+          tl.fromTo(d, { opacity: 0 }, { opacity: 0.85, duration: 0.3 }, 28.2 + i * 0.07);
+        }
+        const risk = document.createElement("i");
+        risk.className = "rdot";
+        risk.id = "rdot-risk";
+        risk.style.left = "232px";
+        risk.style.top = "92px";
+        radar.appendChild(risk);
+        gsap.set("#rring", { left: 120 + 232 - 32, top: 22 + 92 - 32 });
+        tl.fromTo("#radar-sweep", { rotation: 0 }, { rotation: 1080, duration: 8.4, ease: "none" }, 27.9);
+        tl.fromTo(risk, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, 28.9);
+        tl.fromTo(risk, { scale: 1 }, { scale: 1.5, duration: 0.35, yoyo: true, repeat: 5, ease: "sine.inOut" }, 29.2);
+        tl.fromTo("#rring", { scale: 2.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" }, 29.55);
+        tl.fromTo("#rtag", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 29.75);
+
+        // trace: four linked documents
+        const tsvg = $("#trace-svg");
+        const docX = [40, 160, 280, 400], docY = [92, 152, 92, 152];
+        const names = ["采购订单", "收料入库", "报关单", "核销"];
+        let path = "";
+        docX.forEach((x, i) => {
+          const cx = x + 44, cy = docY[i] + 54;
+          path += (i ? " L" : "M") + `${cx},${cy}`;
+        });
+        svgEl("path", { d: path, fill: "none", stroke: "rgba(124,180,255,0.3)", "stroke-width": 3, "stroke-dasharray": "6 8" }, tsvg);
+        const tline = svgEl("path", { d: path, fill: "none", stroke: "#7cd4ff", "stroke-width": 4, "stroke-linecap": "round" }, tsvg);
+        const TL = tline.getTotalLength();
+        tline.style.strokeDasharray = `${TL} ${TL}`;
+        tline.style.filter = "drop-shadow(0 0 6px #7cd4ff)";
+        tl.fromTo(tline, { strokeDashoffset: TL }, { strokeDashoffset: 0, duration: 1.4, ease: "power1.inOut" }, 30.8);
+        docX.forEach((x, i) => {
+          const d = document.createElement("div");
+          d.className = "doc";
+          d.style.left = `${x}px`;
+          d.style.top = `${docY[i]}px`;
+          d.innerHTML = '<div class="lit"></div>';
+          $("#trace").appendChild(d);
+          const l = document.createElement("div");
+          l.className = "doc-l";
+          l.textContent = names[i];
+          l.style.left = `${x}px`;
+          l.style.top = `${docY[i] + 120}px`;
+          $("#trace").appendChild(l);
+          tl.fromTo([d, l], { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 28.4 + i * 0.08);
+          tl.to(d.querySelector(".lit"), { opacity: 1, duration: 0.25 }, 30.8 + i * 0.45);
+          tl.to(l, { color: "#ffffff", duration: 0.25 }, 30.8 + i * 0.45);
+        });
+
+        // hub: GTM connected to business systems
+        const hsvg = $("#hub-svg");
+        const sats = ["SAP", "SRM", "WMS", "MES", "财务", "单一窗口"];
+        sats.forEach((name, i) => {
+          const a = -Math.PI / 2 + (i * Math.PI * 2) / sats.length;
+          const sx = 270 + Math.cos(a) * 185, sy = 195 + Math.sin(a) * 138;
+          const ln = svgEl("line", { x1: 270, y1: 195, x2: sx, y2: sy, stroke: "#7cd4ff", "stroke-width": 2.5, "stroke-opacity": 0.8 }, hsvg);
+          const len = Math.hypot(sx - 270, sy - 195);
+          ln.style.strokeDasharray = `${len} ${len}`;
+          tl.fromTo(ln, { strokeDashoffset: len }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, 32.55 + i * 0.12);
+          const pulse = svgEl("circle", { r: 5, cx: sx, cy: sy, fill: "#ffffff", opacity: 0 }, hsvg);
+          pulse.style.filter = "drop-shadow(0 0 6px #7cd4ff)";
+          tl.fromTo(pulse, { attr: { cx: sx, cy: sy }, opacity: 0 }, { attr: { cx: 270, cy: 195 }, opacity: 1, duration: 0.7, ease: "power1.in", repeat: 3, repeatDelay: 0.25 }, 33.2 + i * 0.1);
+          const s = document.createElement("div");
+          s.className = "sat";
+          s.textContent = name;
+          s.style.left = `${sx}px`;
+          s.style.top = `${sy}px`;
+          $("#hub").appendChild(s);
+          tl.fromTo(s, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 28.5 + i * 0.06);
+        });
+        tl.fromTo("#hub-core", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" }, 28.45);
+        tl.to("#hub-core", { boxShadow: "0 0 70px rgba(124,212,255,1)", duration: 0.4, yoyo: true, repeat: 3 }, 33.3);
+
+        tl.fromTo("#s5-sc", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 27.8);
+        tl.fromTo("#s5-kicker", { opacity: 0 }, { opacity: 1, duration: 0.8 }, 28.1);
+        $$("#s5 .card").forEach((c, i) => {
+          tl.fromTo(c, { opacity: 0, y: 70 }, { opacity: 0.8, y: 0, duration: 0.8, ease: "power3.out" }, 28.0 + i * 0.12);
+        });
+        [
+          ["#c1", 28.5],
+          ["#c2", 30.75],
+          ["#c3", 32.5],
+        ].forEach(([c, t]) => {
+          tl.to(c, { opacity: 1, scale: 1.03, duration: 0.45, ease: "power3.out" }, t);
+          tl.to(`${c} .edge`, { opacity: 1, duration: 0.4 }, t);
+        });
+        // once all three are lit they settle together
+        tl.to(["#c1", "#c2", "#c3"], { scale: 1, duration: 0.6, ease: "power2.inOut" }, 34.6);
+        tl.to(["#c1 .edge", "#c2 .edge"], { opacity: 0.6, duration: 0.5 }, 34.6);
+        tl.to("#s5-cards", { x: -160, opacity: 0, duration: 0.6, ease: "power3.in" }, 35.8);
+        tl.to("#s5-kicker", { opacity: 0, duration: 0.4 }, 35.8);
+
+        /* ───────────── S6 · heritage ───────────── */
+        const years = [
+          ["1997", ["第一代", "进出口业务处理系统"], 36.8],
+          ["2002", ["关务风险", "分析系统"], 37.75],
+          ["2010", ["关务全供应链", "协同平台"], 38.7],
+          ["2017", ["GTM", "全球关务一体化"], 39.65],
+          ["2024", ["AI 赋能", "数智化合规"], 40.6],
+        ];
+        const track = $("#s6-track");
+        years.forEach(([y, t, at], i) => {
+          const x = 260 + i * 350;
+          const n = document.createElement("div");
+          n.className = "yr";
+          n.style.left = `${x}px`;
+          n.innerHTML = `<div class="y">${y}</div><i></i><div class="t">${t.map((l) => `<span>${l}</span>`).join("")}</div>`;
+          track.appendChild(n);
+          tl.fromTo(n.querySelector(".y"), { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, at);
+          tl.fromTo(n.querySelector("i"), { scale: 0 }, { scale: 1, duration: 0.45, ease: "back.out(3)" }, at);
+          tl.fromTo(n.querySelector(".t"), { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, at + 0.12);
+        });
+        tl.fromTo("#s6-sc", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 35.85);
+        tl.fromTo("#s6-base", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.out" }, 36.1);
+        tl.fromTo("#s6-fill", { scaleX: 0.0 }, { scaleX: 0.1, duration: 0.4, ease: "power2.out" }, 36.5);
+        tl.to("#s6-fill", { scaleX: 0.86, duration: 3.9, ease: "power1.inOut" }, 36.9);
+        spreadIn("#s6-kicker", 36.3, 18, 1.0);
+        const yearObj = { v: 1997 };
+        tl.fromTo("#s6-big", { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1, duration: 1.0, ease: "power2.out" }, 36.4);
+        tl.fromTo(
+          yearObj,
+          { v: 1997 },
+          {
+            v: 2026,
+            duration: 3.9,
+            ease: "power1.inOut",
+            onUpdate: () => ($("#s6-big").textContent = String(Math.round(yearObj.v))),
+          },
+          36.9
+        );
+        glyphIn(split($("#s6-h1")), 38.25, { stagger: 0.08, dur: 0.8 });
+        glyphIn(split($("#s6-h2")), 39.8, { stagger: 0.08, dur: 0.8 });
+        tl.to("#s6-sc", { scale: 1.06, opacity: 0, duration: 0.55, ease: "power2.in" }, 43.5);
+        tl.to("#fx-flash", { opacity: 0.32, duration: 0.18, ease: "power2.in" }, 43.85);
+        tl.to("#fx-flash", { opacity: 0, duration: 0.45, ease: "power2.out" }, 44.03);
+
+        /* ───────────── S7 · scale ───────────── */
+        tl.fromTo("#s7-sc", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 43.85);
+        tl.fromTo("#s7-p1", { scale: 1.12, opacity: 1 }, { scale: 1.0, duration: 4.2, ease: "none" }, 43.8);
+        tl.fromTo("#s7-p2", { scale: 1.12, opacity: 0 }, { scale: 1.0, duration: 4.2, ease: "none" }, 46.9);
+        tl.to("#s7-p2", { opacity: 1, duration: 0.8 }, 46.9);
+        tl.fromTo("#s7-p3", { scale: 1.12, opacity: 0 }, { scale: 1.0, duration: 3.6, ease: "none" }, 48.8);
+        tl.to("#s7-p3", { opacity: 1, duration: 0.8 }, 48.8);
+        spreadIn("#s7-kicker", 44.3, 18, 1.0);
+        tl.fromTo("#s7-main", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 44.6);
+        const fmt = (v) => Math.round(v).toLocaleString("en-US");
+        const counter = (sel, to, at, dur, f = (v) => String(Math.round(v))) => {
+          const o = { v: 0 };
+          tl.fromTo(o, { v: 0 }, { v: to, duration: dur, ease: "power3.out", onUpdate: () => ($(sel).textContent = f(o.v)) }, at);
+        };
+        counter("#v-main", 10000, 45.05, 2.4, fmt);
+        tl.fromTo("#s7-main .num sup", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(3)" }, 47.4);
+        [
+          ["#r1", "#v-c", 12, 48.0],
+          ["#r2", "#v-i", 212, 49.55],
+          ["#r3", "#v-s", 100, 50.0],
+        ].forEach(([row, sel, to, at]) => {
+          tl.fromTo(row, { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, at - 0.25);
+          counter(sel, to, at, 0.75);
+        });
+        $$("#s7-badges span").forEach((b, i) => tl.fromTo(b, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 48.9 + i * 0.15));
+        tl.fromTo("#s7-dawn", { opacity: 0 }, { opacity: 0.85, duration: 3.0, ease: "power1.in" }, 49.0);
+        tl.to("#fx-flash", { opacity: 1, duration: 0.5, ease: "power2.in" }, 51.45);
+        tl.to("#fx-vignette", { opacity: 0.12, duration: 0.6 }, 51.6);
+        tl.to("#fx-flash", { opacity: 0, duration: 0.9, ease: "power2.out" }, 51.95);
+
+        /* ───────────── S8 · finale ───────────── */
+        tl.fromTo("#s8-sc", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 51.8);
+        tl.fromTo("#s8-halo", { scale: 0.8, opacity: 0.4 }, { scale: 1.15, opacity: 1, duration: 8, ease: "sine.inOut" }, 51.8);
+        tl.fromTo("#s8-grid", { backgroundPositionY: "0px" }, { backgroundPositionY: "80px", duration: 8.2, ease: "none" }, 51.8);
+        glyphIn(split($("#s8-l1")), 52.8, { stagger: 0.07, dur: 0.8, blur: 12 });
+        glyphIn(split($("#s8-l2")), 54.9, { stagger: 0.07, dur: 0.8, blur: 12 });
+        tl.fromTo("#s8-under", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 55.35);
+        tl.to("#s8-tag", { y: 196, scale: 0.44, duration: 0.75, ease: "power3.inOut" }, 55.72);
+        tl.fromTo("#s8-sL", { x: -900, scale: 3.2, opacity: 0 }, { x: 0, scale: 1, opacity: 1, duration: 0.6, ease: "power3.out" }, 55.88);
+        tl.fromTo("#s8-sR", { x: 1100, scale: 3.2, opacity: 0 }, { x: 0, scale: 1, opacity: 1, duration: 0.6, ease: "power3.out" }, 55.88);
+        tl.fromTo("#s8-logo", { opacity: 0, scale: 1.08, filter: "blur(12px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.7, ease: "power3.out" }, 56.45);
+        tl.to(["#s8-sL", "#s8-sR"], { opacity: 0, duration: 0.35 }, 56.75);
+        tl.fromTo("#s8-burst", { scale: 0.3, opacity: 0.9 }, { scale: 2.4, opacity: 0, duration: 1.3, ease: "power2.out", immediateRender: false }, 56.45);
+        
+        $$("#s8-cta > *").forEach((e, i) => tl.fromTo(e, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 57.3 + i * 0.09));
+
+        /* ───────────── global ───────────── */
+        tl.fromTo("#fx-grain", { backgroundPosition: "0px 0px" }, { backgroundPosition: "-66600px -40000px", duration: 60, ease: "steps(1800)" }, 0);
+
+        const subs = [
+          [6.75, 9.4, "每一票货物背后，是繁杂的编码"],
+          [9.55, 12.0, "多变的规则，和看不见的风险"],
+          [20.35, 23.55, "GTM 全球关务系统，打通商品归类"],
+          [23.7, 27.75, "通关申报、保税加工、仓储物流与经营分析"],
+          [28.45, 32.2, "合规风险提前预警，单证全程追溯"],
+          [32.4, 35.6, "与 ERP 等业务系统无缝协同"],
+          [36.65, 39.5, "从 1997 年起，关衡近三十年"],
+          [39.7, 41.7, "只专注关务这一件事"],
+          [44.35, 47.85, "今天，关衡已服务一万多家进出口企业"],
+          [47.95, 51.6, "覆盖全球 12 个国家、212 个细分行业"],
+        ];
+        if (showSubs) {
+          const box = $("#subs");
+          subs.forEach(([a, b, text]) => {
+            const s = document.createElement("div");
+            s.className = "sub";
+            s.textContent = text;
+            box.appendChild(s);
+            tl.fromTo(s, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, a);
+            tl.to(s, { opacity: 0, duration: 0.2, ease: "power2.in" }, b);
+          });
+        }
+
+        window.__timelines["main"] = tl;
+      })();
+    </script>
+  </body>
+</html>

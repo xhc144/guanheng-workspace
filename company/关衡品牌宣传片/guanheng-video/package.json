@@ -1,0 +1,26 @@
+{
+  "name": "guanheng-video",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "remotion studio src/index.ts",
+    "check": "tsc --noEmit",
+    "render": "remotion render src/index.ts GuanhengBrand output/guanheng-brand-v2-bgm.mp4 --codec=h264 --crf=18 --pixel-format=yuv420p --audio-codec=aac",
+    "render:no-bgm": "remotion render src/index.ts GuanhengBrand output/guanheng-brand-v2-no-bgm.mp4 --codec=h264 --crf=18 --pixel-format=yuv420p --audio-codec=aac --props=tools/no-bgm.json",
+    "render:web": "powershell -ExecutionPolicy Bypass -File tools/render-web.ps1",
+    "still": "remotion still src/index.ts GuanhengBrand output/preview.png --frame=875"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.517",
+    "@remotion/media": "4.0.517",
+    "@remotion/transitions": "4.0.517",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "remotion": "4.0.517"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "typescript": "5.7.3"
+  }
+}

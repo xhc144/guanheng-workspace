@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-labelledby="title desc">
+  <title id="title">待上传头像</title>
+  <desc id="desc">灰色头像占位图</desc>
+  <rect width="300" height="400" fill="#e5e7eb"/>
+  <circle cx="150" cy="140" r="66" fill="#9ca3af"/>
+  <path d="M54 356c7-76 45-116 96-116s89 40 96 116H54Z" fill="#9ca3af"/>
+</svg>

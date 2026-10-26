@@ -1,0 +1,2 @@
+const path=require('path');const {chromium}=require('playwright');
+(async()=>{const root=path.resolve('关衡新网站-交付包/new-website');const base='file:///'+root.replace(/\\/g,'/')+'/';const browser=await chromium.launch({headless:true});const page=await browser.newPage({viewport:{width:1440,height:1000}});page.on('requestfailed',r=>console.log('FAILED',r.url(),r.failure()?.errorText));page.on('console',m=>{if(m.type()==='error')console.log('CONSOLE',m.text())});await page.goto(base+'index.html',{waitUntil:'load'});await page.waitForTimeout(500);await browser.close()})();

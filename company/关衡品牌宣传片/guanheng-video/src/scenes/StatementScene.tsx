@@ -1,0 +1,4 @@
+import React from 'react';
+import {useCurrentFrame} from 'remotion';
+import {Eyebrow,SceneCanvas,reveal} from '../theme';
+export const StatementScene:React.FC=()=>{const frame=useCurrentFrame();const a=reveal(frame,12,24);const b=reveal(frame,42,24);return <SceneCanvas duration={180}><div className="statement-wrap"><div style={{opacity:reveal(frame,2,18)}}><Eyebrow>ONE SYSTEM · CLEAR CONTROL</Eyebrow></div><div className="statement-line" style={{opacity:a,transform:`translateY(${(1-a)*44}px)`}}>进出口关务合规</div><div className="statement-line statement-line--blue" style={{opacity:b,transform:`translateY(${(1-b)*44}px)`}}>一套系统管清楚</div><div className="statement-rule" style={{transform:`scaleX(${reveal(frame,78,34)})`}}/><div className="statement-sub" style={{opacity:reveal(frame,106,22)}}>更清晰 · 更可控 · 更合规</div></div></SceneCanvas>};
