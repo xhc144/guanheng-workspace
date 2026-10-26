@@ -2,6 +2,7 @@ packages:
   - "."
 
 confirmModulesPurge: false
+saveExact: true
 
 allowBuilds:
   unrs-resolver: true
