@@ -1,5 +1,7 @@
+import os
 from pathlib import Path
 
+from pydantic import Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -15,15 +17,39 @@ def demo_database_url() -> str:
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
+    environment: str = "development"
     database_url: str = "sqlite:///./app.db"
     demo_mode: bool = False
-    secret_key: str = "dev-secret-key"
+    secret_key: str = Field(default="dev-secret-key", repr=False)
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 720
     admin_username: str = "admin"
-    admin_password: str = "Admin@123456"
+    admin_password: str = Field(default="Admin@123456", repr=False)
     cors_origins: str = "http://localhost:5181,http://127.0.0.1:5181"
     storage_dir: str = "./storage"
+
+
+    @property
+    def is_production(self) -> bool:
+        return self.environment == "production"
+
+    @model_validator(mode="after")
+    def validate_security(self):
+        environment = self.environment.strip().lower()
+        self.environment = "production" if environment == "prod" else environment
+        if self.environment not in {"development", "test", "production"}:
+            raise RuntimeError("ENVIRONMENT 仅支持 development、test、production（或 prod）")
+        if self.is_production:
+            key = self.secret_key
+            configured = next((v for k, v in os.environ.items() if k.upper() == "SECRET_KEY"), None)
+            weak = any(word in key.lower() for word in ("secret", "change", "password", "example", "replace", "your-", "your_"))
+            repeated = any(key == key[:n] * (len(key) // n) for n in range(1, len(key) // 2 + 1) if len(key) % n == 0)
+            if configured != key or len(key) < 32 or len(set(key)) < 12 or any(c.isspace() for c in key) or weak or repeated:
+                # RuntimeError 不携带 Pydantic input_value，避免异常回显密钥。
+                raise RuntimeError("生产环境必须通过进程环境变量 SECRET_KEY 提供至少32位的随机密钥；拒绝空值、默认值、重复值及占位口令")
+            if self.demo_mode:
+                raise RuntimeError("生产环境禁止启用 DEMO_MODE，不能自动创建演示账号")
+        return self
 
     @property
     def active_database_url(self) -> str:
@@ -32,10 +58,12 @@ class Settings(BaseSettings):
         return demo_database_url() if self.demo_mode else self.database_url
 
     def require_controlled_demo_database(self) -> None:
+        if self.is_production:
+            raise RuntimeError("生产环境禁止播种或重置演示数据")
         if not self.demo_mode:
-            raise RuntimeError("DEMO_MODE=1 is required for demo database operations")
+            raise RuntimeError("演示数据库操作必须设置 DEMO_MODE=1")
         if Path(DEMO_DB_PATH).parent != (BACKEND_DIR / ".demo").resolve():
-            raise RuntimeError("demo database path is outside the controlled directory")
+            raise RuntimeError("演示数据库路径超出受控目录")
 
 
 settings = Settings()

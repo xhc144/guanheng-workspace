@@ -17,6 +17,8 @@ app.add_middleware(
 
 def seed_baseline_data(db) -> None:
     """Idempotently seed baseline roles, admin, and dictionaries into an existing schema."""
+    if settings.is_production:
+        raise RuntimeError("生产模式禁止播种演示账号；请使用已审核的账号初始化流程")
     from . import models
     from .security import hash_password
     from .routers.dicts import seed_default_dicts
@@ -40,12 +42,13 @@ def seed_baseline_data(db) -> None:
         dept = models.Department(name="总经办")
         db.add(dept)
         db.flush()
-    admin = db.query(models.User).filter(models.User.username == settings.admin_username).first()
+    # 演示入口固定身份，不把外部 ADMIN_* 配置误当成真实账户初始化。
+    admin = db.query(models.User).filter(models.User.username == "admin").first()
     if not admin:
         admin = models.User(
-            username=settings.admin_username,
-            name="系统管理员",
-            password_hash=hash_password(settings.admin_password),
+            username="admin",
+            name="演示管理员",
+            password_hash=hash_password("Admin@123456"),
             department_id=dept.id,
         )
         admin.roles.append(role_by_code["admin"])
