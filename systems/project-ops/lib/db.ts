@@ -2,6 +2,7 @@ import { mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { randomUUID } from "node:crypto";
+import { isAsyncFunction } from "node:util/types";
 import { initializeSchema } from "./schema.ts";
 
 declare global {
@@ -27,6 +28,7 @@ export function getDb() {
 }
 
 export function inTransaction<T>(db: DatabaseSync, work: () => T): T {
+  if (isAsyncFunction(work)) throw new Error("数据库事务只接受同步回调，请在事务外执行异步操作");
   // isTransaction also covers transactions opened by an existing caller.
   const nested = db.isTransaction;
   const savepoint = `gh_${randomUUID().replaceAll("-", "")}`;

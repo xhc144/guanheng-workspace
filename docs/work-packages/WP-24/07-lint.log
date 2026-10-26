@@ -1,0 +1,15 @@
+UTC_START: 2026-10-26T17:19:46.205315+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: pnpm lint
+$ eslint .
+
+/workspace/guanheng-wp24/systems/project-ops/tests/integration-foundation.test.ts
+  181:8  error  Do not assign to the variable `module`. See: https://nextjs.org/docs/messages/no-assign-module-variable  @next/next/no-assign-module-variable
+
+✖ 1 problem (1 error, 0 warnings)
+
+[ELIFECYCLE] Command failed with exit code 1.
+
+EXIT_CODE: 1
+UTC_END: 2026-10-26T17:20:03.783104+00:00
+ELAPSED_SECONDS: 17.578
