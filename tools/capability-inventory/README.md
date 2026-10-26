@@ -22,6 +22,6 @@ node tools/capability-inventory/generate.mjs --stdout
 
 当前源码采用显式函数导出；新的变量形式HTTP handler、转导出、无法解析的页面/路由、未挂载Python路由、重复系统/类型/方法/规范化路径、未分类项均失败，需要维护者明确扩展解析器。动态参数名称不同会被归一检测重复。这里不是任意框架版本的通用路由解析器；内联server action、CLI、middleware及业务字段不在范围，后续出现时应扩展范围与测试，不能声称全业务覆盖。
 
-`mapping.json` 按优先级分类，具体缺口应放在能力族规则前。每条规则必须指定移植决定、owner、主线源文件和相关测试文件（没有则空数组并保留未知），未知不能兜底成“已完成”。不允许“舍弃”决定。`sourceBase` 表示本工作分支起始SHA，当前提取同时包含WP04自身页面/API；`sourceDigest`识别本次提取结果，不是已部署版本或CI标志。
+`mapping.json` 按优先级分类，具体缺口应放在能力族规则前。每条规则必须指定移植决定、owner、主线源文件和相关测试文件（没有则空数组并保留未知），未知不能兜底成“已完成”。不允许“舍弃”决定。`sourceBase` 表示本次已合入并复核的integration SHA（最初开工SHA另记报告），当前提取同时包含WP04自身页面/API；`sourceDigest`识别本次提取结果，不是已部署版本或CI标志。
 
 验证入口为主线 `tests/capabilities.test.ts`，使用真实SQLite合成内存库、真实session和NextRequest调用本包服务/API；路由变更、重复和未挂载测试在 mkdtemp 临时源码中运行。浏览器脚本独立运行，见 `docs/work-packages/WP-04/browser-check.mjs`。测试结果和范围由 `reports/WP-04.md` 记录，生成目录自身所有业务运行状态始终为“未逐项运行”。

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "sourceBase": "1e36bfce8c13e33f671c95902d23ce2ddabe92ca",
-  "sourceDigest": "7309ddef9ea7b498369240c896d77a54f05334c86295c815f5804346741d6cf7",
+  "sourceBase": "22aab8477eeef3cb498f3be3c739b631b295ea12",
+  "sourceDigest": "6988288ef7d28dad4da446f6925216f3c1f60f39aefc99505e214bd771e4e13d",
   "dataKind": "静态源码盘点，非实时经营数据",
   "scope": "Next页面/显式HTTP方法/server actions；三版PMS挂载HTTP路由及前端页面/状态视图；不包含隐式HEAD/OPTIONS、CLI或每个业务字段",
   "verification": "源码解析及覆盖检查不证明业务运行；旧文档114项完成未经本次逐项验证",
@@ -757,6 +757,18 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 100,
+          "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 204,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 517,
           "symbol": "test_change_password",
@@ -804,6 +816,12 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 100,
+          "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 51,
@@ -867,6 +885,12 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 100,
+          "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 51,
@@ -932,6 +956,12 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 100,
+          "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 51,
@@ -1005,6 +1035,12 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 100,
+          "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 51,
           "symbol": "test_health_no_auth_required",
@@ -1074,6 +1110,12 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 100,
+          "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 51,
           "symbol": "test_health_no_auth_required",
@@ -1138,6 +1180,12 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 100,
+          "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 51,
@@ -1269,13 +1317,13 @@
       "method": "GET",
       "route": "/api/config",
       "path": "systems/pms-suite/DeepSeek版/backend/app/main.py",
-      "line": 137,
+      "line": 141,
       "symbol": "public_config",
       "sourceCalls": [
         "JSONResponse",
         "app.get"
       ],
-      "sha256": "56b8e3051a493ae1185fa8a553b065a1e63e1ba8f72d7979df9ec2822e1edc8b",
+      "sha256": "cae5f430eb40ca843b71f612bf5f7f167a215ad8b35a4cabb8483737d8325298",
       "domain": "runtime",
       "label": "运行版本诊断",
       "decision": "主线已有",
@@ -2336,6 +2384,18 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 354,
           "symbol": "test_file_upload_no_body",
@@ -2397,6 +2457,18 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 354,
@@ -2460,6 +2532,18 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 354,
@@ -3034,6 +3118,18 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 354,
           "symbol": "test_file_upload_no_body",
@@ -3091,6 +3187,18 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 354,
@@ -3155,6 +3263,18 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 354,
@@ -3225,6 +3345,18 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 354,
@@ -3665,14 +3797,14 @@
       "method": "GET",
       "route": "/api/health",
       "path": "systems/pms-suite/DeepSeek版/backend/app/main.py",
-      "line": 131,
+      "line": 135,
       "symbol": "health_check",
       "sourceCalls": [
         "app.get",
         "datetime.utcnow",
         "str"
       ],
-      "sha256": "56b8e3051a493ae1185fa8a553b065a1e63e1ba8f72d7979df9ec2822e1edc8b",
+      "sha256": "cae5f430eb40ca843b71f612bf5f7f167a215ad8b35a4cabb8483737d8325298",
       "domain": "runtime",
       "label": "运行版本诊断",
       "decision": "主线已有",
@@ -4171,6 +4303,18 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 185,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 204,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 468,
           "symbol": "test_issues_list",
@@ -4240,6 +4384,18 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 185,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 204,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 468,
           "symbol": "test_issues_list",
@@ -4306,6 +4462,18 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 185,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 204,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 468,
           "symbol": "test_issues_list",
@@ -4371,6 +4539,18 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 185,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 204,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 468,
@@ -6989,7 +7169,7 @@
       "method": "GET",
       "route": "/api/status",
       "path": "systems/pms-suite/DeepSeek版/backend/app/main.py",
-      "line": 176,
+      "line": 180,
       "symbol": "system_status",
       "sourceCalls": [
         "Depends",
@@ -7010,7 +7190,7 @@
         "str",
         "text"
       ],
-      "sha256": "56b8e3051a493ae1185fa8a553b065a1e63e1ba8f72d7979df9ec2822e1edc8b",
+      "sha256": "cae5f430eb40ca843b71f612bf5f7f167a215ad8b35a4cabb8483737d8325298",
       "domain": "runtime",
       "label": "运行版本诊断",
       "decision": "主线已有",
@@ -8533,6 +8713,18 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 163,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
+        {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 354,
           "symbol": "test_file_upload_no_body",
@@ -8746,22 +8938,24 @@
       "method": "PAGE",
       "route": "/login",
       "path": "systems/pms-suite/DeepSeek版/frontend/src/pages/Login.tsx",
-      "line": 7,
+      "line": 6,
       "symbol": "LoginPage",
       "sourceCalls": [
-        "localStorage.getItem",
-        "localStorage.removeItem",
+        "(import.meta.env.VITE_API_BASE || '/api').replace",
+        "AbortSignal.timeout",
+        "JSON.stringify",
+        "['TypeError', 'SyntaxError', 'TimeoutError', 'AbortError'].includes",
+        "fetch",
         "localStorage.setItem",
-        "login",
-        "message.error",
-        "message.info",
         "message.success",
         "navigate",
+        "response.json",
+        "setError",
         "setLoading",
         "useNavigate",
         "useState"
       ],
-      "sha256": "b221c1dc6e6614024fadda98204c66c6e5f2115963e8b76641a882bc891e233b",
+      "sha256": "c3a835b886a3d7f370ed4b1c9695fff84a37ff310d50eeb0f30492add00f542e",
       "domain": "auth",
       "label": "登录与个人资料",
       "decision": "主线已有",
@@ -8778,6 +8972,12 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 100,
+          "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 51,
@@ -9432,6 +9632,12 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+          "line": 100,
+          "symbol": "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+          "sha256": "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+        },
         {
           "path": "systems/pms-suite/DeepSeek版/backend/tests/test_core.py",
           "line": 51,
@@ -10088,9 +10294,9 @@
       "referenceTests": [
         {
           "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_smoke.py",
-          "line": 10,
+          "line": 9,
           "symbol": "test_admin_login_smoke",
-          "sha256": "42523fef0fa85ca22ec1d9937b40cb90188f598bd3728665f5911b8c58aef55d"
+          "sha256": "ae24a1a591db55d4dc7e048cbee9420096b7f938aa0565c5f9df64eeb5638fc7"
         }
       ],
       "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
@@ -10129,9 +10335,9 @@
       "referenceTests": [
         {
           "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_smoke.py",
-          "line": 10,
+          "line": 9,
           "symbol": "test_admin_login_smoke",
-          "sha256": "42523fef0fa85ca22ec1d9937b40cb90188f598bd3728665f5911b8c58aef55d"
+          "sha256": "ae24a1a591db55d4dc7e048cbee9420096b7f938aa0565c5f9df64eeb5638fc7"
         }
       ],
       "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
@@ -10995,6 +11201,18 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 117,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
           "path": "systems/pms-suite/Kimi版/backend/tests/test_core_flow.py",
           "line": 247,
           "symbol": "test_document_upload_download",
@@ -11041,6 +11259,18 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 117,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
           "path": "systems/pms-suite/Kimi版/backend/tests/test_core_flow.py",
           "line": 247,
           "symbol": "test_document_upload_download",
@@ -11083,6 +11313,18 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 117,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
         {
           "path": "systems/pms-suite/Kimi版/backend/tests/test_core_flow.py",
           "line": 247,
@@ -11137,6 +11379,18 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
+        {
+          "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+          "line": 117,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+        },
         {
           "path": "systems/pms-suite/Kimi版/backend/tests/test_core_flow.py",
           "line": 247,
@@ -11201,12 +11455,12 @@
       "method": "GET",
       "route": "/api/v1/health",
       "path": "systems/pms-suite/Kimi版/backend/app/main.py",
-      "line": 78,
+      "line": 83,
       "symbol": "health",
       "sourceCalls": [
         "app.get"
       ],
-      "sha256": "9bf5945d8389be08dffc8e96484b56e5a8fff8dfaea4125e5cc70a5015fd861a",
+      "sha256": "7e0a575cb5765fe7a3b3e4d83cf59615c41442bc7f2c3657ba90619a8330bb1d",
       "domain": "runtime",
       "label": "运行版本诊断",
       "decision": "主线已有",
@@ -14033,17 +14287,19 @@
       "method": "PAGE",
       "route": "/login",
       "path": "systems/pms-suite/Kimi版/frontend/src/pages/Login.tsx",
-      "line": 4,
+      "line": 5,
       "symbol": "Login",
       "sourceCalls": [
         "JSON.stringify",
         "api.post",
         "localStorage.setItem",
-        "message.error",
         "message.success",
+        "setError",
+        "setLoading",
+        "useState",
         "window.location.replace"
       ],
-      "sha256": "063648bb48b91d35f0c4ae64ccb72f46c3f81a5d65e71d455b2d5a9d340ab81c",
+      "sha256": "4d2d6e0d99abde9e2a63d21084b5dac2ffb0e7d6644ddeef9c90a51acb09a0ec",
       "domain": "auth",
       "label": "登录与个人资料",
       "decision": "主线已有",
@@ -14062,9 +14318,9 @@
       "referenceTests": [
         {
           "path": "systems/pms-suite/Kimi版/backend/tests/test_auth_smoke.py",
-          "line": 10,
+          "line": 9,
           "symbol": "test_admin_login_smoke",
-          "sha256": "42523fef0fa85ca22ec1d9937b40cb90188f598bd3728665f5911b8c58aef55d"
+          "sha256": "ae24a1a591db55d4dc7e048cbee9420096b7f938aa0565c5f9df64eeb5638fc7"
         }
       ],
       "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
@@ -16419,7 +16675,7 @@
         "systems.map",
         "withBasePath"
       ],
-      "sha256": "3497adee449e89cf3fea622aca498db73607fd11f2b34e1e083c78476cf81357",
+      "sha256": "c904284f7ba1e334233b38fc154c3bc48cc5b51ddd8d70045ff626f86836ca53",
       "domain": "capabilities",
       "label": "可验证能力目录",
       "decision": "主线已有",
@@ -17645,9 +17901,9 @@
       "referenceTests": [
         {
           "path": "systems/pms-suite/基础版/backend/tests/test_login_flow.py",
-          "line": 6,
+          "line": 11,
           "symbol": "test_health_and_login_flow",
-          "sha256": "dbf79d5c4f8fc176358ea94638a4d9bbeb8f98780d04b9b171d129202b6625be"
+          "sha256": "3e8d39d4c5317be9b76a4f282cb5f9090a730ac01925e50f44c548b6636d6889"
         }
       ],
       "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
@@ -17684,9 +17940,9 @@
       "referenceTests": [
         {
           "path": "systems/pms-suite/基础版/backend/tests/test_login_flow.py",
-          "line": 6,
+          "line": 11,
           "symbol": "test_health_and_login_flow",
-          "sha256": "dbf79d5c4f8fc176358ea94638a4d9bbeb8f98780d04b9b171d129202b6625be"
+          "sha256": "3e8d39d4c5317be9b76a4f282cb5f9090a730ac01925e50f44c548b6636d6889"
         }
       ],
       "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
@@ -17726,9 +17982,9 @@
       "referenceTests": [
         {
           "path": "systems/pms-suite/基础版/backend/tests/test_login_flow.py",
-          "line": 6,
+          "line": 11,
           "symbol": "test_health_and_login_flow",
-          "sha256": "dbf79d5c4f8fc176358ea94638a4d9bbeb8f98780d04b9b171d129202b6625be"
+          "sha256": "3e8d39d4c5317be9b76a4f282cb5f9090a730ac01925e50f44c548b6636d6889"
         }
       ],
       "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
@@ -18027,7 +18283,20 @@
       ],
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
-      "referenceTests": [],
+      "referenceTests": [
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 114,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 133,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        }
+      ],
       "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
@@ -18065,7 +18334,20 @@
       ],
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
-      "referenceTests": [],
+      "referenceTests": [
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 114,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 133,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        }
+      ],
       "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
@@ -18523,6 +18805,18 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 92,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
           "path": "systems/pms-suite/基础版/backend/tests/test_extended_features.py",
           "line": 65,
           "symbol": "test_approval_budget_cost_timesheet_documents_wiki_templates_dict_import_backup",
@@ -18577,6 +18871,18 @@
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 92,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
         {
           "path": "systems/pms-suite/基础版/backend/tests/test_extended_features.py",
           "line": 65,
@@ -19230,9 +19536,9 @@
       "referenceTests": [
         {
           "path": "systems/pms-suite/基础版/backend/tests/test_login_flow.py",
-          "line": 6,
+          "line": 11,
           "symbol": "test_health_and_login_flow",
-          "sha256": "dbf79d5c4f8fc176358ea94638a4d9bbeb8f98780d04b9b171d129202b6625be"
+          "sha256": "3e8d39d4c5317be9b76a4f282cb5f9090a730ac01925e50f44c548b6636d6889"
         }
       ],
       "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
@@ -19383,7 +19689,20 @@
       ],
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
-      "referenceTests": [],
+      "referenceTests": [
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 114,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 133,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        }
+      ],
       "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
@@ -19421,7 +19740,20 @@
       ],
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
-      "referenceTests": [],
+      "referenceTests": [
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 114,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 133,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        }
+      ],
       "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },
@@ -21590,9 +21922,9 @@
       "referenceTests": [
         {
           "path": "systems/pms-suite/基础版/backend/tests/test_login_flow.py",
-          "line": 6,
+          "line": 11,
           "symbol": "test_health_and_login_flow",
-          "sha256": "dbf79d5c4f8fc176358ea94638a4d9bbeb8f98780d04b9b171d129202b6625be"
+          "sha256": "3e8d39d4c5317be9b76a4f282cb5f9090a730ac01925e50f44c548b6636d6889"
         }
       ],
       "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
@@ -21781,6 +22113,18 @@
       "testStatus": "存在主线相关测试，覆盖程度需复核",
       "referenceTests": [
         {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 63,
+          "symbol": "test_file_only_key_and_explicit_override_refused",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 92,
+          "symbol": "test_demo_symlink_refused_without_touching_external_file",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
           "path": "systems/pms-suite/基础版/backend/tests/test_extended_features.py",
           "line": 65,
           "symbol": "test_approval_budget_cost_timesheet_documents_wiki_templates_dict_import_backup",
@@ -21854,7 +22198,20 @@
       ],
       "runtimeStatus": "未逐项运行",
       "testStatus": "存在主线相关测试，覆盖程度需复核",
-      "referenceTests": [],
+      "referenceTests": [
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 114,
+          "symbol": "test_production_existing_synthetic_database_unchanged",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        },
+        {
+          "path": "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+          "line": 133,
+          "symbol": "test_actual_process_restart_preserves_changed_password",
+          "sha256": "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+        }
+      ],
       "referenceTestStatus": "按测试名提取的参考线索；未运行，不证明此接口被覆盖",
       "owner": "WP05协调"
     },

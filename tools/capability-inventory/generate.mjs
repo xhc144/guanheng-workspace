@@ -132,7 +132,7 @@ export function build(root=repoRoot) {
       referenceTestStatus:'按测试名提取的参考线索；未运行，不证明此接口被覆盖',
       owner:rule.owner};
   });
-  return {schemaVersion:1,sourceBase:'1e36bfce8c13e33f671c95902d23ce2ddabe92ca',
+  return {schemaVersion:1,sourceBase:'22aab8477eeef3cb498f3be3c739b631b295ea12',
     sourceDigest:digest(JSON.stringify(entries)),dataKind:'静态源码盘点，非实时经营数据',
     scope:'Next页面/显式HTTP方法/server actions；三版PMS挂载HTTP路由及前端页面/状态视图；不包含隐式HEAD/OPTIONS、CLI或每个业务字段',
     verification:'源码解析及覆盖检查不证明业务运行；旧文档114项完成未经本次逐项验证',entries};

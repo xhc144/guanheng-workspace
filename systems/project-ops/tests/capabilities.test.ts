@@ -146,6 +146,10 @@ test("真实仓库提取、逐来源摘要及映射全部一致，测试文件�
   }
   assert.ok(catalog.entries.some(e => e.system === "基础版" && e.route === "/api/tasks/{task_id}/dependencies"));
   assert.ok(catalog.entries.some(e => e.system === "DeepSeek版" && e.route === "/api/documents/{doc_id}/versions" && e.decision === "待用户决定"));
+  for (const system of ["基础版", "Kimi版", "DeepSeek版"]) {
+    const auth = catalog.entries.filter(entry => entry.system === system && entry.domain === "auth");
+    assert.ok(auth.some(entry => entry.referenceTests.some(ref => ref.path === `systems/pms-suite/${system}/backend/tests/test_auth_config.py`)), `${system}应保留新合入的认证配置测试线索`);
+  }
 });
 
 test("变量形式新HTTP方法不会被静默漏扫，未挂载前端页面也失败", t => {
