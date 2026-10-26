@@ -1,0 +1,18 @@
+UTC_START: 2026-10-26T17:30:15.230283+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: node --experimental-strip-types --test tests/favicon-routing.test.ts
+✔ favicon的真实GET/HEAD响应为204、零字节且不创建会话或图片类型 (26.744366ms)
+✔ 默认及/pms图标元数据href解析为本部署204路径，添加前缀幂等 (0.487027ms)
+✔ 部署前缀只接受明确安全路径，非法值以中文拒绝 (0.706217ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 174.2833
+
+EXIT_CODE: 0
+UTC_END: 2026-10-26T17:30:15.457364+00:00
+ELAPSED_SECONDS: 0.228

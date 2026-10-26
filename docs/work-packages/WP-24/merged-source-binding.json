@@ -1,0 +1,72 @@
+{
+  "recorded_at": "2026-10-26T17:55:38.956264+00:00",
+  "repository": "xhc144/guanheng-workspace",
+  "branch": "wp/24-integration",
+  "reviewed_integration_sha": "22aab8477eeef3cb498f3be3c739b631b295ea12",
+  "merged_code_sha": "db00c3411b7ed143bf4ccc4e9a07de843d11b9c6",
+  "merge_parents": [
+    "2eef8f51389a159b4c4635a687313c03acdd64ed",
+    "22aab8477eeef3cb498f3be3c739b631b295ea12"
+  ],
+  "project_ops_tree_sha": "a868b4354a951b0a89b3daa49bb5381f2a3162af",
+  "working_application_matches_code": true,
+  "frozen_blobs_match_integration": {
+    "package.json": "edf6e347c1206e1c156e267e7601bfac517e3aa6",
+    "pnpm-lock.yaml": "85f0f1849ba91bad250b4331c20e90be6474b867"
+  },
+  "commands": [
+    {
+      "label": "测试",
+      "log": "docs/work-packages/WP-24/45-merged-test.log",
+      "UTC_START": "2026-10-26T17:52:03.582725+00:00",
+      "CWD": "/workspace/guanheng-wp24/systems/project-ops",
+      "COMMAND": "pnpm test",
+      "EXIT_CODE": "0",
+      "UTC_END": "2026-10-26T17:52:14.219931+00:00",
+      "sha256": "d1752a811e93fa28101253a92de44736ba4cd232ad15ae54f7cf17419a898dff"
+    },
+    {
+      "label": "类型",
+      "log": "docs/work-packages/WP-24/46-merged-typecheck.log",
+      "UTC_START": "2026-10-26T17:52:03.597772+00:00",
+      "CWD": "/workspace/guanheng-wp24/systems/project-ops",
+      "COMMAND": "pnpm typecheck",
+      "EXIT_CODE": "0",
+      "UTC_END": "2026-10-26T17:52:11.538621+00:00",
+      "sha256": "950c993f9797ed8d006d80918b4e16482481f4e32f9a23eff58399e5aee16a67"
+    },
+    {
+      "label": "lint",
+      "log": "docs/work-packages/WP-24/47-merged-lint.log",
+      "UTC_START": "2026-10-26T17:52:03.581227+00:00",
+      "CWD": "/workspace/guanheng-wp24/systems/project-ops",
+      "COMMAND": "pnpm lint",
+      "EXIT_CODE": "0",
+      "UTC_END": "2026-10-26T17:52:19.376220+00:00",
+      "sha256": "26ce8409c8b4e937e1bd970f4a986d0bbca172b341d6374ecbacace6aa6502ce"
+    },
+    {
+      "label": "build",
+      "log": "docs/work-packages/WP-24/49-merged-build.log",
+      "UTC_START": "2026-10-26T17:52:49.026891+00:00",
+      "CWD": "/workspace/guanheng-wp24/systems/project-ops",
+      "COMMAND": "pnpm build",
+      "EXIT_CODE": "0",
+      "UTC_END": "2026-10-26T17:53:06.300234+00:00",
+      "sha256": "5034c396de028a14a52be60dd89754b6bc1752c5424c1fc9afc208a80ff6dded"
+    },
+    {
+      "label": "双前缀严格浏览器",
+      "log": "docs/work-packages/WP-24/50-merged-favicon-browser.log",
+      "UTC_START": "2026-10-26T17:53:40.381784+00:00",
+      "CWD": "/workspace/guanheng-wp24/systems/project-ops",
+      "COMMAND": "node tests/favicon-browser.mjs",
+      "EXIT_CODE": "0",
+      "UTC_END": "2026-10-26T17:54:45.969190+00:00",
+      "sha256": "57fc92e36813e994da0ba968be1c1983cc7c35665e2c3190c5d8680ed86ee6e6"
+    }
+  ],
+  "G0_release_gate": "PENDING_ROOT",
+  "WP23_runner": "NOT_IMPLEMENTED",
+  "G1": "NOT_EXECUTED"
+}

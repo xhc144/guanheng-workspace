@@ -1,0 +1,71 @@
+UTC_START: 2026-10-26T17:43:32.671887+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: node --experimental-strip-types ../../tools/audit_schema_counts.mjs --baseline 66ebf65cf8a60dfae063fd5e1b16d85c9d46fb6c
+{
+  "source_sha": "66ebf65cf8a60dfae063fd5e1b16d85c9d46fb6c",
+  "observed_head": "66ebf65cf8a60dfae063fd5e1b16d85c9d46fb6c",
+  "worktree_inputs_match_head": true,
+  "schema_blob_sha": "3395ad08c59d91c74b19aa61a963bcbb50f4f118",
+  "database_factory_blob_sha": "e402afa658afb841caaefd43baca376d9fb1a1f7",
+  "requested_baseline_sha": "66ebf65cf8a60dfae063fd5e1b16d85c9d46fb6c",
+  "baseline_matches_worktree_inputs": true,
+  "expected_names_path": null,
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "tools/audit_schema_counts.mjs",
+    "--baseline",
+    "66ebf65cf8a60dfae063fd5e1b16d85c9d46fb6c"
+  ],
+  "exit_code": 0,
+  "sqlite": "3.53.3",
+  "ddl_count": 36,
+  "application_count": 36,
+  "internal_names": [],
+  "application_names": [
+    "audit_logs",
+    "comments",
+    "commission_accruals",
+    "commission_payout_items",
+    "commission_payouts",
+    "contract_projects",
+    "contracts",
+    "customers",
+    "departments",
+    "documents",
+    "email_outbox",
+    "idempotency_keys",
+    "import_jobs",
+    "import_rows",
+    "invoice_allocations",
+    "invoices",
+    "iterations",
+    "legacy_import_batches",
+    "login_codes",
+    "notifications",
+    "project_members",
+    "projects",
+    "receipt_allocations",
+    "receipts",
+    "receivables",
+    "releases",
+    "rule_executions",
+    "rule_versions",
+    "rules",
+    "service_periods",
+    "sessions",
+    "users",
+    "work_item_history",
+    "work_item_participants",
+    "work_items",
+    "work_logs"
+  ],
+  "ddl_equals_application": true,
+  "expected_equals_application": true,
+  "expected_only": [],
+  "application_only": []
+}
+
+EXIT_CODE: 0
+UTC_END: 2026-10-26T17:43:33.180090+00:00
+ELAPSED_SECONDS: 0.509

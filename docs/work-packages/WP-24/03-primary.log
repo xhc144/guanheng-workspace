@@ -1,0 +1,18 @@
+UTC_START: 2026-10-26T17:19:24.439145+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: node --experimental-strip-types --test tests/primary-business-flow.test.ts
+✔ 旧API组合贯通合同、分期、多次票款、报表、指定款多人提成、发放与服务续期 (60.554877ms)
+✔ 旧项目/研发/工时/财务API可统一事务组合，外层失败全部撤回 (10.56178ms)
+✔ 审计写入真实失败时财务和幂等键均回滚，拒绝超额时不残留记录 (4.869713ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 280.801114
+
+EXIT_CODE: 0
+UTC_END: 2026-10-26T17:19:24.772969+00:00
+ELAPSED_SECONDS: 0.335

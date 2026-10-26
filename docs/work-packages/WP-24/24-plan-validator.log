@@ -1,0 +1,19 @@
+UTC_START: 2026-10-26T17:32:37.340515+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: python3 ../../tools/validate_plan.py
+PASS: 30 self-contained packages; no ownership collisions; acyclic dependencies; protected owners unique.
+Wave 0: WP-01, WP-03, WP-18
+Wave 1: WP-04, WP-06, WP-24
+Wave 2: WP-07, WP-08, WP-09, WP-10, WP-20, WP-21, WP-23, WP-25, WP-26, WP-27
+Wave 3: WP-02, WP-05, WP-11, WP-12, WP-13, WP-14, WP-15, WP-16, WP-17, WP-19, WP-28, WP-29, WP-30
+Wave 4: WP-22
+Maximum antichain: 24
+Independent parallel wave after actual G0/runner/G1 gate: 22: WP-05, WP-06, WP-07, WP-08, WP-09, WP-10, WP-11, WP-12, WP-13, WP-14, WP-15, WP-16, WP-17, WP-19, WP-20, WP-21, WP-25, WP-26, WP-27, WP-28, WP-29, WP-30
+Optional separately ready package: WP-02; Windows is a final experience gate, not a dependency of the 22.
+PASS: dispatched WP01/03/18 instructions and full queue entries unchanged.
+Partial phase allowed after WP03 only: WP-02:PMS; MAIN still requires WP01/WP23 and actual G1.
+WP24 dependency means G0 only; actual WP23 runner + same-owner G1 approval is mandatory before the declared parallel wave.
+
+EXIT_CODE: 0
+UTC_END: 2026-10-26T17:32:37.406467+00:00
+ELAPSED_SECONDS: 0.066

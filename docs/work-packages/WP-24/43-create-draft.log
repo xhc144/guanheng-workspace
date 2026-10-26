@@ -1,0 +1,9 @@
+UTC_START: 2026-10-26T17:46:10.504260+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: gh pr create --repo xhc144/guanheng-workspace --base integration --head wp/24-integration --draft --title '[WP-24] 共享地基契约与唯一公共集成所有权' --body-file /tmp/wp24-pr-body.md
+Warning: 1 uncommitted change
+https://github.com/xhc144/guanheng-workspace/pull/9
+
+EXIT_CODE: 0
+UTC_END: 2026-10-26T17:46:13.433435+00:00
+ELAPSED_SECONDS: 2.930

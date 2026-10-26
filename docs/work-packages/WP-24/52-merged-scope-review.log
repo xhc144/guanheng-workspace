@@ -1,0 +1,19 @@
+UTC_START: 2026-10-26T17:55:39.026591+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: python3 /tmp/wp24-merged-self-review.py
+{
+  "utc": "2026-10-26T17:55:39.099968+00:00",
+  "head": "db00c3411b7ed143bf4ccc4e9a07de843d11b9c6",
+  "review": "scope, UTF-8-only deliverables, no binaries, unchanged frozen inputs, no repository DB, exact reviewed application tree",
+  "plan_base": "22aab8477eeef3cb498f3be3c739b631b295ea12",
+  "changed_paths_checked": 71,
+  "invalid_paths": [],
+  "repository_data": [
+    ".gitkeep"
+  ],
+  "application_matches_reviewed_commit": true
+}
+
+EXIT_CODE: 0
+UTC_END: 2026-10-26T17:55:39.111770+00:00
+ELAPSED_SECONDS: 0.086
