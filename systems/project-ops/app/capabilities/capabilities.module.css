@@ -1,0 +1,19 @@
+.stack { display: grid; gap: 18px; min-width: 0; }
+.panel { padding: 20px; min-width: 0; overflow-wrap: anywhere; }
+.panel h2 { font-size: 18px; margin: 0 0 12px; }
+.panel p { line-height: 1.7; margin: 10px 0; }
+.panel code { white-space: normal; overflow-wrap: anywhere; }
+.panel summary { cursor: pointer; min-height: 44px; padding: 12px 0; font-weight: 600; }
+.filters { padding: 20px; display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
+.filters label { display: grid; gap: 8px; flex: 1 1 180px; min-width: 0; }
+.filters input, .filters select { width: 100%; min-height: 44px; padding: 10px; border: 1px solid #bbc7c4; border-radius: 6px; background: white; color: #18312c; }
+.action { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 10px 14px; border: 1px solid #bbc7c4; border-radius: 6px; background: #f5faf7; color: #174d3d; cursor: pointer; font-weight: 600; }
+.action:focus-visible, .panel summary:focus-visible, .filters input:focus-visible, .filters select:focus-visible { outline: 3px solid #22856a; outline-offset: 3px; }
+.cards { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+.details { margin: 12px 0; }
+.details div { margin: 10px 0; }
+.details dt { font-weight: 600; margin-bottom: 4px; }
+.details dd { margin: 0; line-height: 1.6; }
+.pagination { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+@media (max-width: 900px) { .cards { grid-template-columns: minmax(0,1fr); } }
+@media (max-width: 480px) { .panel, .filters { padding: 16px; } .filters label { flex-basis: 100%; } }
