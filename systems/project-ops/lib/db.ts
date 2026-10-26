@@ -1,6 +1,7 @@
 import { mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
+import { randomUUID } from "node:crypto";
 import { initializeSchema } from "./schema.ts";
 
 declare global {
@@ -10,7 +11,8 @@ declare global {
 export function openDatabase(path: string) {
   if (path !== ":memory:") mkdirSync(dirname(path), { recursive: true });
   const db = new DatabaseSync(path);
-  initializeSchema(db);
+  try { initializeSchema(db); }
+  catch (error) { db.close(); throw error; }
   return db;
 }
 
@@ -25,13 +27,24 @@ export function getDb() {
 }
 
 export function inTransaction<T>(db: DatabaseSync, work: () => T): T {
-  db.exec("BEGIN IMMEDIATE");
+  // isTransaction also covers transactions opened by an existing caller.
+  const nested = db.isTransaction;
+  const savepoint = `gh_${randomUUID().replaceAll("-", "")}`;
+  db.exec(nested ? `SAVEPOINT ${savepoint}` : "BEGIN IMMEDIATE");
   try {
     const result = work();
-    db.exec("COMMIT");
+    if (result && (typeof result === "object" || typeof result === "function") && "then" in result) {
+      throw new Error("数据库事务只接受同步回调，请在事务外执行异步操作");
+    }
+    db.exec(nested ? `RELEASE SAVEPOINT ${savepoint}` : "COMMIT");
     return result;
   } catch (error) {
-    db.exec("ROLLBACK");
+    if (db.isTransaction) {
+      if (nested) {
+        db.exec(`ROLLBACK TO SAVEPOINT ${savepoint}`);
+        db.exec(`RELEASE SAVEPOINT ${savepoint}`);
+      } else db.exec("ROLLBACK");
+    }
     throw error;
   }
 }

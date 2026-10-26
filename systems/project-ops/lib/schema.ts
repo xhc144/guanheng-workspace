@@ -1,4 +1,5 @@
 import type { DatabaseSync } from "node:sqlite";
+import { inTransaction } from "./db.ts";
 
 const statements = [
   `CREATE TABLE IF NOT EXISTS departments (
@@ -412,7 +413,9 @@ const statements = [
 export function initializeSchema(db: DatabaseSync) {
   db.exec("PRAGMA foreign_keys = ON");
   db.exec("PRAGMA journal_mode = WAL");
-  for (const sql of statements) db.prepare(sql).run();
+  inTransaction(db, () => {
+  // Add compatible columns before any index that may reference them.
+  for (const sql of statements.filter(sql => sql.startsWith("CREATE TABLE"))) db.prepare(sql).run();
   const documentColumns=new Set((db.prepare("PRAGMA table_info(documents)").all() as {name:string}[]).map(x=>String(x.name)));
   if(!documentColumns.has("voided_at"))db.exec("ALTER TABLE documents ADD COLUMN voided_at TEXT");
   if(!documentColumns.has("void_reason"))db.exec("ALTER TABLE documents ADD COLUMN void_reason TEXT");
@@ -423,8 +426,12 @@ export function initializeSchema(db: DatabaseSync) {
   if(!customerColumns.has("is_agency"))db.exec("ALTER TABLE customers ADD COLUMN is_agency INTEGER NOT NULL DEFAULT 0 CHECK (is_agency IN (0,1))");
   if(!customerColumns.has("is_agency_confirmed"))db.exec("ALTER TABLE customers ADD COLUMN is_agency_confirmed INTEGER NOT NULL DEFAULT 0 CHECK (is_agency_confirmed IN (0,1))");
   const receivableColumns=new Set((db.prepare("PRAGMA table_info(receivables)").all() as {name:string}[]).map(x=>String(x.name)));
+  if(!receivableColumns.has("voided_at"))db.exec("ALTER TABLE receivables ADD COLUMN voided_at TEXT");
+  if(!receivableColumns.has("void_reason"))db.exec("ALTER TABLE receivables ADD COLUMN void_reason TEXT");
+  if(!receivableColumns.has("correction_of_id"))db.exec("ALTER TABLE receivables ADD COLUMN correction_of_id TEXT REFERENCES receivables(id)");
   if(!receivableColumns.has("due_date_is_estimated"))db.exec("ALTER TABLE receivables ADD COLUMN due_date_is_estimated INTEGER NOT NULL DEFAULT 0 CHECK (due_date_is_estimated IN (0,1))");
   const servicePeriodColumns=new Set((db.prepare("PRAGMA table_info(service_periods)").all() as {name:string}[]).map(x=>String(x.name)));
+  if(!servicePeriodColumns.has("previous_period_id"))db.exec("ALTER TABLE service_periods ADD COLUMN previous_period_id TEXT REFERENCES service_periods(id)");
   if(!servicePeriodColumns.has("date_is_estimated"))db.exec("ALTER TABLE service_periods ADD COLUMN date_is_estimated INTEGER NOT NULL DEFAULT 0 CHECK (date_is_estimated IN (0,1))");
   const invoiceColumns=new Set((db.prepare("PRAGMA table_info(invoices)").all() as {name:string}[]).map(x=>String(x.name)));
   if(!invoiceColumns.has("date_is_estimated"))db.exec("ALTER TABLE invoices ADD COLUMN date_is_estimated INTEGER NOT NULL DEFAULT 0 CHECK (date_is_estimated IN (0,1))");
@@ -432,5 +439,7 @@ export function initializeSchema(db: DatabaseSync) {
   if(!receiptColumns.has("date_is_estimated"))db.exec("ALTER TABLE receipts ADD COLUMN date_is_estimated INTEGER NOT NULL DEFAULT 0 CHECK (date_is_estimated IN (0,1))");
   const idempotencyColumns=new Set((db.prepare("PRAGMA table_info(idempotency_keys)").all() as {name:string}[]).map(x=>String(x.name)));
   if(!idempotencyColumns.has("request_hash"))db.exec("ALTER TABLE idempotency_keys ADD COLUMN request_hash TEXT");
+  for (const sql of statements.filter(sql => !sql.startsWith("CREATE TABLE"))) db.prepare(sql).run();
+  });
   db.exec("PRAGMA optimize");
 }
