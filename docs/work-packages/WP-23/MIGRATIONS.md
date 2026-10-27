@@ -36,4 +36,6 @@ applyMigrations(db, [item]);
 
 临时驱动的允许复制输入只有 package.json、pnpm-lock.yaml、pnpm-workspace.yaml 和已安装 pnpm 元数据；源码 lib/scripts 与已安装依赖链接复用。依赖元数据只在临时 node_modules 内复制、重定位项目路径，不改源依赖、store、源配置或安全策略；保留原 lastValidatedTimestamp，pnpm 仍真实比较 manifest/lock，校验失败直接报错，绝不自动安装。源码 data/uploads、.env 和真实库无输入路径。两个驱动可同时运行于不同 mkdtemp 根，结束清理。
 
+驱动末尾还有依赖拒绝回归：仅在临时 manifest 中制造与锁不一致的合成版本，要求真实 pnpm 返回 `VERIFY_DEPS_BEFORE_RUN`，证明 seed 未启动、未生成数据库、未安装依赖，随后恢复临时文本。源 package/lock/workspace、安装状态、modules 元数据与安装锁的 hash 在两进程测试前后保持一致。
+
 WP24 G1 接回申请：导入本 runner，接入公共启动汇总与真实迁移状态；各域的声明路径/id/冻结 checksum 由各域 PR 单独申请。WP23 没有生产领域迁移、页面/API/导航/角色/公共环境变量新增，没有编辑 schema/db/auth/nav/注册表。根尚未放行 G1 或 22 路门；本报告与测试不改变该状态。

@@ -146,6 +146,21 @@ export function verifyMigrationWorkspace(log: (value: unknown) => void = value =
       assert.equal(restoredDb.prepare("SELECT COUNT(*) n FROM schema_migrations").get()!.n, 1);
     } finally { restoredDb.close(); }
     assert.deepEqual(readFileSync(join(restored.uploads, "nested", "synthetic.txt")), readFileSync(join(uploads, "nested", "synthetic.txt")));
+    // Prove the relocated metadata does not bypass pnpm's real dependency check.
+    // This deliberately inconsistent negative fixture is temporary and restored;
+    // the source manifest/lock and installed dependency tree remain untouched.
+    const temporaryManifest = join(root, "package.json"), frozenManifest = readFileSync(temporaryManifest);
+    try {
+      const altered = JSON.parse(frozenManifest.toString("utf8"));
+      altered.dependencies.next = "0.0.0-wp23-mismatch";
+      writeFileSync(temporaryManifest, JSON.stringify(altered));
+      run("pnpm", ["db:seed"], "dependency-rejection.db", { expectedExitCode: 1 });
+      const rejection = commands.at(-1)!;
+      assert.match(rejection.stdout + rejection.stderr, /VERIFY_DEPS_BEFORE_RUN/);
+      assert.doesNotMatch(rejection.stderr, /\$ node .*scripts\/seed/);
+      assert.equal(existsSync(join(dataRoot, "dependency-rejection.db")), false);
+    } finally { writeFileSync(temporaryManifest, frozenManifest); }
+    assert.deepEqual(readFileSync(temporaryManifest), readFileSync(join(sourceRoot, "package.json")));
     const result = { event: "verified", root, dataRoot, uploads, commands, backup, restored, applicationTables: tables, domainRegistration: "PENDING_WP24_G1", sourceDataInput: false };
     log({ ...result, commands: commands.map(({ command, cwd, dataRoot, exitCode, expectedExitCode }) => ({ command, cwd, dataRoot, exitCode, expectedExitCode })) });
     return result;

@@ -35,7 +35,7 @@ test("两个独立真实驱动同时执行：cwd/data/附件/备份/恢复隔离
     for (const path of [result.dataRoot, result.uploads, ...Object.values(result.backup), ...Object.values(result.restored)]) {
       if (path !== result.root) assertWithin(result.root, path as string);
     }
-    assert.equal(result.commands.length, 9);
+    assert.equal(result.commands.length, 10);
     for (const record of result.commands) {
       assert.equal(record.cwd, result.root); assertWithin(result.root, record.dataRoot);
       assert.equal(record.exitCode, record.expectedExitCode);
