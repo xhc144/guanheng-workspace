@@ -100,3 +100,34 @@ test("源/备份/恢复目标的符号链接及不安全组件拒绝，不读取
   assert.throws(() => createBackup(cwd, "synthetic.db", "../uploads"));
   assert.equal(readFileSync(outside, "utf8"), "虚构外部文件");
 });
+
+test("WAL中尚未checkpoint的合成旧账进入快照；恢复不依赖源wal/shm", t => {
+  const { root, cwd, data } = fixture(t), source = join(data, "synthetic.db");
+  const writer = new DatabaseSync(source);
+  writer.exec("PRAGMA journal_mode=WAL; PRAGMA wal_autocheckpoint=0; INSERT INTO customers(id,name) VALUES('wal-only','虚构WAL客户')");
+  try {
+    assert.ok(existsSync(`${source}-wal`));
+    const before = snapshot(writer), backup = createBackup(cwd, "synthetic.db");
+    assert.deepEqual(readdirSync(backup.backupRoot).sort(), ["manifest.json", "synthetic.db", "uploads"]);
+    const restored = restoreBackup(backup.backupRoot, join(root, "wal-restored"));
+    const db = new DatabaseSync(restored.database);
+    try { assert.deepEqual(snapshot(db), before); assert.equal(db.prepare("SELECT name FROM customers WHERE id='wal-only'").get()!.name, "虚构WAL客户"); }
+    finally { db.close(); }
+  } finally { writer.close(); }
+});
+
+test("源SQLite旁文件链接、额外备份旁文件和跨平台设备名拒绝", t => {
+  const { root, cwd, data } = fixture(t), source = join(data, "synthetic.db");
+  const outside = join(root, "synthetic-sidecar.txt"); writeFileSync(outside, "虚构旁文件");
+  for (const suffix of ["-wal", "-shm", "-journal"]) {
+    symlinkSync(outside, `${source}${suffix}`);
+    assert.throws(() => createBackup(cwd, "synthetic.db"), /符号链接/);
+    rmSync(`${source}${suffix}`);
+  }
+  const backup = createBackup(cwd, "synthetic.db");
+  writeFileSync(`${backup.databaseBackup}-wal`, "虚构清单外WAL");
+  assert.throws(() => restoreBackup(backup.backupRoot, join(root, "extra-sidecar")), /清单外/);
+  assert.equal(existsSync(join(root, "extra-sidecar")), false);
+  for (const name of ["CON", "nul.db", "COM1.db", "lpt9", "app.db.", "MANIFEST.JSON"]) assert.throws(() => createBackup(cwd, name));
+  assert.equal(readFileSync(outside, "utf8"), "虚构旁文件");
+});

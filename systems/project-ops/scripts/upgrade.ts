@@ -3,12 +3,12 @@ import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { openDatabase } from "../lib/db.ts";
 import { applyMigrations } from "../lib/migrations/index.ts";
-import { restoreBackup, safeComponent } from "../lib/migrations/backup.ts";
+import { restoreBackup, safeComponent, workspaceDatabase } from "../lib/migrations/backup.ts";
 
 /** Baseline schema only. WP24 alone will register domain migrations in G1. */
 export function upgradeWorkspace(cwd: string, filename: string) {
   safeComponent(filename);
-  const dataRoot = resolve(cwd, "data"), database = resolve(dataRoot, filename);
+  const dataRoot = resolve(cwd, "data"), database = workspaceDatabase(cwd, filename);
   const db = openDatabase(database);
   try {
     const result = applyMigrations(db, []);

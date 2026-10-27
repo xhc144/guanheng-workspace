@@ -95,7 +95,7 @@ export function applyMigrations(db: DatabaseSync, items: readonly Migration[]): 
     const ledger = db.prepare("SELECT type, sql FROM sqlite_schema WHERE name=? COLLATE NOCASE").get(migrationLedger);
     if (!ledger) db.exec(ledgerSql);
     else if (ledger.type !== "table" || ledger.sql !== ledgerSql) throw new Error("迁移账本结构不匹配，请先核查旧库");
-    const applied: string[] = [], skipped: string[] = [];
+    const applied: string[] = [], skipped: string[] = [], newTables: string[] = [];
     for (const migration of migrations) {
       const operations = canonical(migration.operations);
       const existing = db.prepare("SELECT checksum, operations_json FROM schema_migrations WHERE id=?").get(migration.id);
@@ -104,10 +104,17 @@ export function applyMigrations(db: DatabaseSync, items: readonly Migration[]): 
         skipped.push(migration.id);
         continue;
       }
-      for (const operation of migration.operations) db.exec(render(operation));
+      for (const operation of migration.operations) {
+        db.exec(render(operation));
+        if (operation.kind === "createTable") newTables.push(operation.table);
+      }
       db.prepare("INSERT INTO schema_migrations (id,checksum,operations_json) VALUES (?,?,?)").run(migration.id, migration.checksum, operations);
       applied.push(migration.id);
     }
+    // SQLite permits CREATE TABLE to reference a missing/non-unique parent. Compile
+    // (never run) an INSERT after the whole batch so those unusable constraints fail
+    // atomically, while allowing a parent contributed later in the same batch.
+    for (const table of newTables) db.prepare(`INSERT INTO ${quote(table)} DEFAULT VALUES`);
     return { applied, skipped };
   });
 }

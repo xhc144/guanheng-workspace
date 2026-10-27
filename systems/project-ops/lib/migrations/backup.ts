@@ -1,12 +1,12 @@
 import { createHash, randomUUID } from "node:crypto";
-import { copyFileSync, existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, writeFileSync } from "node:fs";
+import { closeSync, copyFileSync, existsSync, fstatSync, lstatSync, mkdirSync, openSync, readFileSync, readSync, readdirSync, renameSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 
 type FileEntry = { path: string; bytes: number; sha256: string };
 type Manifest = { version: 1; database: FileEntry; uploadsDirectory: string; directories: string[]; uploads: FileEntry[] };
 export function safeComponent(value: string): string {
-  if (!/^[a-zA-Z0-9._-]+$/.test(value) || value === "." || value === "..") throw new Error("文件名或目录名不安全");
+  if (!/^[a-zA-Z0-9._-]+$/.test(value) || value.endsWith(".") || /^(con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)/i.test(value)) throw new Error("文件名或目录名不安全");
   return value;
 }
 export function assertWithin(root: string, path: string): void {
@@ -17,7 +17,6 @@ function noSymlink(path: string): void {
   const full = resolve(path);
   let current = full;
   for (;;) {
-    if (existsSync(current) && lstatSync(current).isSymbolicLink()) throw new Error("备份恢复拒绝符号链接");
     // lstat also detects dangling links which existsSync would treat as absent.
     try { if (lstatSync(current).isSymbolicLink()) throw new Error("备份恢复拒绝符号链接"); }
     catch (error) { if (!(error instanceof Error && "code" in error && error.code === "ENOENT")) throw error; }
@@ -26,11 +25,29 @@ function noSymlink(path: string): void {
     current = parent;
   }
 }
+export function workspaceDatabase(cwd: string, filename: string): string {
+  safeComponent(filename);
+  const dataRoot = resolve(cwd, "data"), database = join(dataRoot, filename);
+  noSymlink(dataRoot); noSymlink(database);
+  for (const suffix of ["-wal", "-shm", "-journal"]) noSymlink(`${database}${suffix}`);
+  if (existsSync(database) && !lstatSync(database).isFile()) throw new Error("数据库路径必须是普通文件");
+  return database;
+}
 function fileEntry(path: string, name: string): FileEntry {
   noSymlink(path);
   if (!lstatSync(path).isFile()) throw new Error("备份只接受普通文件");
-  const bytes = readFileSync(path);
-  return { path: name, bytes: bytes.length, sha256: createHash("sha256").update(bytes).digest("hex") };
+  const file = openSync(path, "r"), hash = createHash("sha256"), buffer = Buffer.alloc(64 * 1024);
+  let bytes = 0;
+  try {
+    if (!fstatSync(file).isFile()) throw new Error("备份只接受普通文件");
+    for (;;) {
+      const size = readSync(file, buffer, 0, buffer.length, null);
+      if (!size) break;
+      bytes += size; hash.update(buffer.subarray(0, size));
+    }
+    if (!Number.isSafeInteger(bytes) || fstatSync(file).size !== bytes) throw new Error("备份文件读取期间发生变化");
+    return { path: name, bytes, sha256: hash.digest("hex") };
+  } finally { closeSync(file); }
 }
 function uploadTree(root: string): { directories: string[]; uploads: FileEntry[] } {
   noSymlink(root);
@@ -40,6 +57,7 @@ function uploadTree(root: string): { directories: string[]; uploads: FileEntry[]
   const walk = (directory: string, prefix: string) => {
     for (const name of readdirSync(directory).sort()) {
       const path = join(directory, name), rel = prefix ? `${prefix}/${name}` : name;
+      relativePath(rel);
       noSymlink(path);
       if (lstatSync(path).isDirectory()) { directories.push(rel); walk(path, rel); }
       else uploads.push(fileEntry(path, rel));
@@ -67,8 +85,8 @@ function copyUploads(source: string, target: string, tree: ReturnType<typeof upl
 /** Caller must stop database/attachment writers for a cross-resource recovery point. */
 export function createBackup(cwd: string, filename: string, uploadsDirectory = "uploads") {
   safeComponent(filename); safeComponent(uploadsDirectory);
-  if (uploadsDirectory === "backups" || uploadsDirectory === filename || filename === "manifest.json" || uploadsDirectory === "manifest.json") throw new Error("附件目录与备份或数据库冲突");
-  const dataRoot = resolve(cwd, "data"), source = join(dataRoot, filename), uploads = join(dataRoot, uploadsDirectory);
+  if (["backups", filename.toLowerCase(), "manifest.json"].includes(uploadsDirectory.toLowerCase()) || filename.toLowerCase() === "manifest.json") throw new Error("附件目录与备份或数据库冲突");
+  const dataRoot = resolve(cwd, "data"), source = workspaceDatabase(cwd, filename), uploads = join(dataRoot, uploadsDirectory);
   noSymlink(dataRoot); noSymlink(source); noSymlink(uploads);
   if (!existsSync(source) || !lstatSync(source).isFile()) throw new Error("数据库不存在或不是普通文件");
   const before = uploadTree(uploads);
@@ -96,10 +114,10 @@ export function createBackup(cwd: string, filename: string, uploadsDirectory = "
 }
 
 function exactKeys(value: unknown, keys: string[]): asserts value is Record<string, unknown> {
-  if (!value || typeof value !== "object" || Array.isArray(value) || Object.keys(value).sort().join("|") !== [...keys].sort().join("|")) throw new Error("备份清单格式不合法");
+  if (!value || typeof value !== "object" || Array.isArray(value) || Object.keys(value).length !== keys.length || Object.keys(value).some(key => !keys.includes(key))) throw new Error("备份清单格式不合法");
 }
 function relativePath(value: unknown): asserts value is string {
-  if (typeof value !== "string" || !value || value.includes("\\") || value.includes("\0") || value.split("/").some(part => !part || part === "." || part === ".." || part.includes(":"))) throw new Error("备份清单路径不安全");
+  if (typeof value !== "string" || !value || /[\\\x00-\x1f<>:"|?*]/.test(value) || value.split("/").some(part => !part || part.endsWith(".") || part.endsWith(" ") || /^(con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)/i.test(part))) throw new Error("备份清单路径不安全");
 }
 function validateEntry(value: unknown): asserts value is FileEntry {
   exactKeys(value, ["path", "bytes", "sha256"]); relativePath(value.path);
@@ -116,9 +134,11 @@ export function restoreBackup(backupRoot: string, targetDataRoot: string) {
   exactKeys(manifest, ["version", "database", "uploadsDirectory", "directories", "uploads"]);
   if (manifest.version !== 1 || typeof manifest.uploadsDirectory !== "string") throw new Error("不支持的备份清单版本");
   safeComponent(manifest.uploadsDirectory); validateEntry(manifest.database); safeComponent(manifest.database.path);
-  if (["manifest.json", manifest.database.path].includes(manifest.uploadsDirectory) || manifest.database.path === "manifest.json") throw new Error("备份清单路径冲突");
+  if (["manifest.json", manifest.database.path.toLowerCase()].includes(manifest.uploadsDirectory.toLowerCase()) || manifest.database.path.toLowerCase() === "manifest.json") throw new Error("备份清单路径冲突");
   if (!Array.isArray(manifest.directories) || !Array.isArray(manifest.uploads)) throw new Error("备份清单格式不合法");
   manifest.directories.forEach(relativePath); manifest.uploads.forEach(validateEntry);
+  const expectedEntries = ["manifest.json", manifest.database.path, manifest.uploadsDirectory].sort();
+  if (JSON.stringify(readdirSync(backupRoot).sort()) !== JSON.stringify(expectedEntries)) throw new Error("备份目录包含清单外文件或缺少文件");
   const database = join(backupRoot, manifest.database.path), uploads = join(backupRoot, manifest.uploadsDirectory);
   assertWithin(backupRoot, database); assertWithin(backupRoot, uploads);
   if (JSON.stringify(fileEntry(database, manifest.database.path)) !== JSON.stringify({ path: manifest.database.path, bytes: manifest.database.bytes, sha256: manifest.database.sha256 })) throw new Error("数据库备份校验和不匹配");

@@ -165,7 +165,7 @@ test("嵌套事务外层失败一起撤回迁移；捕获内层失败只回滚�
   assert.throws(() => inTransaction(db, () => { applyMigrations(db, [item]); throw new Error("outer failed"); }), /outer failed/);
   assert.deepEqual(schema(db), before);
   inTransaction(db, () => {
-    db.exec("INSERT INTO departments VALUES('keep','虚构保留部门')");
+    db.exec("INSERT INTO departments(id,name) VALUES('keep','虚构保留部门')");
     assert.throws(() => applyMigrations(db, [migration("nested.bad", [addition, { kind: "createIndex", table: "missing", name: "missing_index", columns: ["id"] }])]));
   });
   assert.equal(db.prepare("SELECT name FROM departments WHERE id='keep'").get()!.name, "虚构保留部门");
@@ -193,4 +193,89 @@ test("两个实际并发连接同库执行：一份DDL/账本，另一连接幂�
   assert.ok(workers.every(w => w.threadId === -1));
   const verify = new DatabaseSync(filename);
   try { assert.equal(verify.prepare("SELECT COUNT(*) n FROM schema_migrations").get()!.n, 1); assert.equal(verify.prepare("PRAGMA integrity_check").get()!.integrity_check, "ok"); } finally { verify.close(); }
+});
+
+test("外键父表/唯一键在整批结束时真实解析，父表可后建；无效关系整体撤回", t => {
+  const db = fixture(t), before = schema(db);
+  const child: AdditiveOperation = { kind: "createTable", table: "synthetic_child", columns: [
+    { name: "id", type: "TEXT", nullable: false }, { name: "parent_id", type: "TEXT", nullable: false },
+  ], primaryKey: ["id"], foreignKeys: [{ columns: ["parent_id"], table: "synthetic_parent", referencedColumns: ["id"] }] };
+  assert.throws(() => applyMigrations(db, [migration("foreign.missing", [child])]), /no such table/);
+  assert.deepEqual(schema(db), before);
+  const parentWithoutKey: AdditiveOperation = { kind: "createTable", table: "synthetic_parent", columns: [{ name: "id", type: "TEXT", nullable: false }] };
+  assert.throws(() => applyMigrations(db, [migration("foreign.nonunique", [child, parentWithoutKey])]), /foreign key mismatch/);
+  assert.deepEqual(schema(db), before);
+  const valid = migration("foreign.valid", [child, { ...parentWithoutKey, primaryKey: ["id"] }]);
+  applyMigrations(db, [valid]);
+  assert.equal(db.prepare("SELECT COUNT(*) n FROM synthetic_child").get()!.n, 0, "约束检查不能插入探针行");
+  assert.equal(db.prepare("SELECT COUNT(*) n FROM synthetic_parent").get()!.n, 0);
+  assert.throws(() => db.exec("INSERT INTO synthetic_child VALUES('c','missing')"), /FOREIGN KEY/);
+  db.exec("INSERT INTO synthetic_parent VALUES('p'); INSERT INTO synthetic_child VALUES('c','p')");
+  assert.deepEqual(db.prepare("PRAGMA foreign_key_check").all(), []);
+});
+
+test("SQL关键字标识符、引号枚举和整数边界按受限结构正确执行", t => {
+  const db = fixture(t), enumValue = "x'); DROP TABLE users; --";
+  const item = migration("quoted.identifiers", [{ kind: "createTable", table: "select", columns: [
+    { name: "where", type: "TEXT", nullable: false, default: { kind: "value", value: enumValue }, oneOf: [enumValue, "中文"] },
+    { name: "maximum", type: "INTEGER", nullable: false, default: { kind: "value", value: Number.MAX_SAFE_INTEGER } },
+    { name: "minimum", type: "INTEGER", nullable: false, minimum: Number.MIN_SAFE_INTEGER, default: { kind: "value", value: Number.MIN_SAFE_INTEGER } },
+    { name: "optional", type: "TEXT", nullable: true, default: { kind: "value", value: null } },
+  ], primaryKey: ["where"] }, { kind: "createIndex", table: "select", name: "from", columns: ["maximum"] }]);
+  const before = snapshot(db); applyMigrations(db, [item]); db.exec('INSERT INTO "select" DEFAULT VALUES');
+  const row = db.prepare('SELECT * FROM "select"').get()!;
+  assert.equal(row.where, enumValue); assert.equal(row.maximum, Number.MAX_SAFE_INTEGER); assert.equal(row.minimum, Number.MIN_SAFE_INTEGER); assert.equal(row.optional, null);
+  assert.throws(() => db.exec('UPDATE "select" SET "where"=\'not-allowed\''), /CHECK/);
+  assert.deepEqual(snapshot(db, before), before);
+});
+
+test("稀疏数组、嵌套Proxy/访问器、非法Unicode与额外原型数据拒绝且不调用贡献者", t => {
+  const db = fixture(t), before = schema(db), item = migration("json.boundary", [addition]);
+  let calls = 0;
+  const sparse: unknown[] = []; sparse.length = 1;
+  const arrayWithProperty = [addition]; Object.defineProperty(arrayWithProperty, "sql", { value: "DROP TABLE users", enumerable: false });
+  const values: unknown[] = [
+    { ...item, operations: sparse }, { ...item, operations: arrayWithProperty },
+    { ...item, operations: [new Proxy(addition, {})] },
+    { ...item, operations: [{ ...addition, column: { name: "bad", type: "TEXT", nullable: true, get default() { calls++; return { kind: "value", value: "unsafe" }; } } }] },
+    { ...item, operations: [{ ...addition, column: { name: "bad", type: "TEXT", nullable: true, default: { kind: "value", value: "\ud800" } } }] },
+    { ...item, operations: [{ ...addition, column: { name: "bad", type: "TEXT", nullable: true, default: new Date() } }] },
+    { ...item, operations: [{ ...addition, column: { name: "bad", type: "INTEGER", nullable: true, default: { kind: "value", value: BigInt(1) } } }] },
+    { ...item, up() { calls++; } }, { ...item, [Symbol("sql")]: "DROP TABLE users" },
+    Object.assign(Object.create({ operations: [] }), item),
+  ];
+  for (const value of values) { assert.throws(() => applyMigrations(db, [value as Migration])); assert.deepEqual(schema(db), before); }
+  assert.equal(calls, 0);
+});
+
+test("并发同ID不同checksum：仅一方提交，另一方明确拒绝且无失败表/账本残留", { timeout: 15000 }, async t => {
+  const root = mkdtempSync(join(tmpdir(), "gh-wp23-conflict-")), filename = join(root, "synthetic.db");
+  new DatabaseSync(filename).close();
+  const gate = new SharedArrayBuffer(4), workers: Worker[] = [];
+  t.after(async () => { Atomics.store(new Int32Array(gate), 0, 1); Atomics.notify(new Int32Array(gate), 0); await Promise.all(workers.map(w => w.terminate())); rmSync(root, { recursive: true, force: true }); });
+  const items = ["contender_a", "contender_b"].map(table => migration("concurrent.conflicting.001", [{ kind: "createTable", table, columns: [{ name: "id", type: "TEXT", nullable: false }], primaryKey: ["id"] }]));
+  type Result = { checksum: string; applied?: string[]; error?: string; closed: boolean };
+  let ready = 0;
+  const results = await Promise.all(items.map(item => new Promise<Result>((resolve, reject) => {
+    let result: Result | undefined;
+    const worker = new Worker(`const {parentPort,workerData}=require('node:worker_threads');
+      (async()=>{const {DatabaseSync}=await import('node:sqlite');const {applyMigrations}=await import(workerData.module);
+      const db=new DatabaseSync(workerData.filename);db.exec('PRAGMA busy_timeout=5000');parentPort.postMessage({ready:true});
+      Atomics.wait(new Int32Array(workerData.gate),0,0);let result;
+      try{result=applyMigrations(db,[workerData.item]);}catch(e){result={error:e.message};}finally{db.close();}
+      parentPort.postMessage({...result,checksum:workerData.item.checksum,closed:!db.isOpen});})().catch(e=>{throw e;});`, { eval: true, workerData: { filename, gate, item, module: new URL("../lib/migrations/index.ts", import.meta.url).href } });
+    workers.push(worker); worker.once("error", reject); worker.once("exit", code => { if (code || !result) reject(new Error(`worker退出${code}或无结果`)); else resolve(result); });
+    worker.on("message", message => { if (message.ready) { ready++; if (ready === 2) { Atomics.store(new Int32Array(gate), 0, 1); Atomics.notify(new Int32Array(gate), 0, 2); } } else result = message; });
+  })));
+  assert.ok(results.every(r => r.closed)); assert.ok(workers.every(w => w.threadId === -1));
+  const winner = results.filter(r => r.applied?.length === 1), loser = results.filter(r => r.error);
+  assert.equal(winner.length, 1); assert.equal(loser.length, 1); assert.match(loser[0].error!, /已执行迁移发生变化/);
+  const db = new DatabaseSync(filename);
+  try {
+    const ledger = db.prepare("SELECT * FROM schema_migrations").all();
+    assert.equal(ledger.length, 1); assert.equal(ledger[0].checksum, winner[0].checksum);
+    const table = items.find(i => i.checksum === winner[0].checksum)!.operations[0].table;
+    assert.deepEqual(db.prepare("SELECT name FROM sqlite_schema WHERE type='table' AND name!='schema_migrations'").all().map(r => r.name), [table]);
+    assert.equal(db.prepare("PRAGMA integrity_check").get()!.integrity_check, "ok");
+  } finally { db.close(); }
 });
