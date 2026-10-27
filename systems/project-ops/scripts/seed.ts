@@ -1,12 +1,21 @@
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 import { hashPassword } from "../lib/auth.ts";
-import { openDatabase } from "../lib/db.ts";
+import { inTransaction, openDatabase } from "../lib/db.ts";
+import { safeComponent } from "../lib/migrations/backup.ts";
+import { upgradeWorkspace } from "./upgrade.ts";
 
+const args = process.argv.slice(2).filter(arg => arg !== "--");
+if (args.length === 1 && args[0] === "--upgrade-only") {
+  const result = upgradeWorkspace(process.cwd(), process.env.DATABASE_FILENAME ?? "app.db");
+  console.log("结构升级完成，未写入演示数据；领域迁移注册待 WP24 G1");
+  console.log(JSON.stringify(result));
+} else {
+if (args.length) throw new Error("仅支持 --upgrade-only 参数");
 const filename = process.env.DATABASE_FILENAME ?? "demo.db";
-if (!/^[a-zA-Z0-9._-]+$/.test(filename)) throw new Error("数据库文件名不安全");
-if (filename === "app.db" && process.env.ALLOW_PRODUCTION_SEED !== "1") throw new Error("拒绝向正式库写入演示数据；如确需执行请显式设置 ALLOW_PRODUCTION_SEED=1");
+safeComponent(filename);
+if (filename.toLowerCase() === "app.db" || process.env.NODE_ENV === "production") throw new Error("拒绝向正式库或生产环境写入演示数据，请使用 --upgrade-only");
 const db = openDatabase(join(process.cwd(), "data", filename));
-
+try { inTransaction(db, () => {
 const departmentIds = { delivery: "dept-delivery", finance: "dept-finance", development: "dept-development" };
 for (const [id, name] of [
   [departmentIds.delivery, "项目交付部"], [departmentIds.finance, "财务部"], [departmentIds.development, "研发部"],
@@ -77,4 +86,8 @@ db.prepare(`INSERT OR IGNORE INTO work_items
   .run("work-ruida-report", "经营分析报表优化", "增加按部门和项目经理筛选", customerId, projectId,
     "user-manager", "user-member", "2026-09-05", 960);
 
-console.log(`Seed complete. Users: admin, finance, manager, member. Development password: ${defaultPassword}`);
+});
+console.log("演示数据初始化完成（可重复执行）。账号：admin、finance、manager、member；密码不会输出到日志。");
+console.log(JSON.stringify({ mode: "demo", cwd: process.cwd(), dataRoot: resolve("data"), database: resolve("data", filename) }));
+} finally { db.close(); }
+}

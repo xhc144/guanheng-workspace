@@ -1,16 +1,11 @@
-import { cpSync,existsSync,mkdirSync } from "node:fs";
-import { join,resolve } from "node:path";
-import { DatabaseSync } from "node:sqlite";
+import { createBackup } from "../lib/migrations/backup.ts";
 
-const filename=process.env.DATABASE_FILENAME??"app.db";
-if(!/^[a-zA-Z0-9._-]+$/.test(filename))throw new Error("数据库文件名不安全");
-const dataRoot=resolve(process.cwd(),"data"),source=join(dataRoot,filename);
-if(!existsSync(source))throw new Error(`数据库不存在：${source}`);
-const stamp=new Date().toISOString().replace(/[:.]/g,"-");
-const backupRoot=join(dataRoot,"backups"),databaseBackup=join(backupRoot,`${stamp}-${filename}`);
-mkdirSync(backupRoot,{recursive:true});
-const db=new DatabaseSync(source);
-try{db.prepare("VACUUM INTO ?").run(databaseBackup);}finally{db.close();}
-const uploads=join(dataRoot,"uploads"),uploadsBackup=join(backupRoot,`${stamp}-uploads`);
-if(existsSync(uploads))cpSync(uploads,uploadsBackup,{recursive:true,errorOnExist:true});
-console.log(JSON.stringify({databaseBackup,uploadsBackup:existsSync(uploadsBackup)?uploadsBackup:null}));
+try {
+  if (process.argv.length > 2) throw new Error("备份命令不接受额外参数，请用 DATABASE_FILENAME 和 UPLOAD_DIRECTORY 选择数据");
+  const result = createBackup(process.cwd(), process.env.DATABASE_FILENAME ?? "app.db", process.env.UPLOAD_DIRECTORY ?? "uploads");
+  console.log("数据库与附件备份完成，清单和 SHA-256 校验已生成；恢复前须停止所有写入");
+  console.log(JSON.stringify(result));
+} catch (error) {
+  console.error(`备份失败：${error instanceof Error ? error.message : "未知错误"}`);
+  process.exitCode = 1;
+}
