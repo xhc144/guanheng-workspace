@@ -46,7 +46,9 @@ try {
  async function follow(link){await link.hover();await settle();await link.click();await settle();}
 
  assert.equal((await context.request.get(`${base}/api/capabilities`)).status(),401);
- assert.equal((await context.request.head(`${base}/api/capabilities`)).status(),401);
+ const anonymousHead=await context.request.head(`${base}/api/capabilities`);
+ assert.equal(anonymousHead.status(),401);assert.equal((await anonymousHead.body()).length,0);
+ assert.equal(anonymousHead.headers()['cache-control'],'private, no-store');
  assert.equal((await context.request.get(`${base}/api/integration-health`)).status(),401);
  await navigate(`${base}/capabilities`);assert.equal(new URL(page.url()).pathname,'/login');
  results.push({check:'匿名GET/HEAD拒绝、页面跳转登录',status:'通过'});
@@ -71,10 +73,30 @@ try {
  assert.equal(ok.headers()['cache-control'],'private, no-store');assert.ok(ok.headers()['vary'].split(',').map(v=>v.trim().toLowerCase()).includes('cookie'));
  const data=await ok.json();assert.equal(data.entries.length,25);assert.ok(data.total>25);assert.ok(data.entries.every(e=>e.runtimeStatus==='未逐项运行'));
  assert.equal(data.sourceDigest,sourceCatalog.sourceDigest,'构建目录摘要须与当前源码提取一致');
- assert.equal((await context.request.head(`${base}/api/capabilities`,{headers:adminHeaders})).status(),200);
+ assert.equal(data.sourceBase,sourceCatalog.sourceBase);assert.equal(data.total,409);
+ assert.equal(data.sourceFilesDigest,sourceCatalog.sourceFilesDigest);assert.deepEqual(data.sourceFiles,sourceCatalog.sourceFiles);
+ const adminHead=await context.request.head(`${base}/api/capabilities`,{headers:adminHeaders});
+ assert.equal(adminHead.status(),200);assert.equal((await adminHead.body()).length,0);
+ assert.equal(adminHead.headers()['cache-control'],'private, no-store');
+ assert.ok(adminHead.headers()['vary'].split(',').map(value=>value.trim().toLowerCase()).includes('cookie'));
  assert.equal((await context.request.post(`${base}/api/capabilities`,{headers:adminHeaders,data:{}})).status(),405);
  const invalid=await context.request.get(`${base}/api/capabilities?page=-1`,{headers:adminHeaders});assert.equal(invalid.status(),400);assert.match((await invalid.json()).error,/页码/);
- results.push({check:'管理员真实登录、GET/HEAD只读、POST405与非法页码400',status:'通过',sourceDigest:data.sourceDigest});
+ results.push({check:'管理员真实登录、GET/HEAD只读且private no-store、POST405与非法页码400',status:'通过',sourceBase:data.sourceBase,sourceDigest:data.sourceDigest,sourceFilesDigest:data.sourceFilesDigest});
+ const runtimeCatalog=await context.request.get(`${base}/api/capabilities?system=${encodeURIComponent('主线')}&q=runtime-health`,{headers:adminHeaders});
+ assert.equal(runtimeCatalog.status(),200);
+ const runtimeEntries=await runtimeCatalog.json();
+ assert.deepEqual(runtimeEntries.entries.map(entry=>entry.route).sort(),['/api/runtime-health','/runtime-health']);
+ for(const path of ['systems/project-ops/lib/runtime-health.ts','systems/project-ops/app/runtime-health/page.tsx','systems/project-ops/tests/runtime-health.test.ts']) {
+  assert.deepEqual(runtimeEntries.sourceFiles.find(file=>file.path===path),sourceCatalog.sourceFiles.find(file=>file.path===path));
+ }
+ await navigate(`${base}/capabilities?system=${encodeURIComponent('主线')}&q=runtime-health`);
+ assert.equal(await page.locator('ul[aria-label="能力来源记录"] > li').count(),2);
+ await page.getByText('盘点范围与版本',{exact:true}).click();
+ assert.match(await page.locator('main').innerText(),new RegExp(sourceCatalog.sourceFilesDigest));
+ assert.match(await page.locator('main').innerText(),new RegExp(sourceCatalog.sourceBase));
+ await navigate(`${base}/runtime-health`);
+ assert.match(await page.locator('main').innerText(),/由 pnpm 启动时检查该启动版本/);
+ results.push({check:'运行诊断目录检索、当前integration基线/实现/测试指纹与新修复页面一致',status:'通过',sourceFilesDigest:runtimeEntries.sourceFilesDigest});
  for(const width of [375,768,1440]){
   await page.setViewportSize({width,height:1000});
   const response=await navigate(`${base}/capabilities`);assert.equal(response.status(),200);
@@ -102,6 +124,8 @@ try {
  results.push({check:'翻页、中文空状态、错误边界与重置恢复',status:'通过'});
  for(const role of ['FINANCE','DEPARTMENT_MANAGER','PROJECT_MEMBER']){
   await login(role);const denied=await context.request.get(`${base}/api/capabilities`,{headers:await headers()});assert.equal(denied.status(),403);assert.deepEqual(await denied.json(),{error:'仅管理员可查看能力目录'});
+  const deniedHead=await context.request.head(`${base}/api/capabilities`,{headers:await headers()});
+  assert.equal(deniedHead.status(),403);assert.equal((await deniedHead.body()).length,0);assert.equal(deniedHead.headers()['cache-control'],'private, no-store');
   await navigate(`${base}/capabilities`);await page.getByRole('heading',{name:'仅管理员可查看能力目录',exact:true}).waitFor();assert.equal(await page.locator('ul[aria-label="能力来源记录"]').count(),0);
   const deniedHealth=await context.request.get(`${base}/api/integration-health`,{headers:await headers()});assert.equal(deniedHealth.status(),403);
  }

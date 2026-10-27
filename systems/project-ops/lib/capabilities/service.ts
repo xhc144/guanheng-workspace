@@ -28,6 +28,7 @@ export function getCapabilities(actor: SessionUser | null, query: CapabilityQuer
   const page = Math.min(Number(query.page ?? 1), pageCount);
   return {
     schemaVersion: catalogData.schemaVersion, sourceBase: catalogData.sourceBase, sourceDigest: catalogData.sourceDigest,
+    sourceFilesDigest: catalogData.sourceFilesDigest, sourceFiles: catalogData.sourceFiles,
     dataKind: catalogData.dataKind, scope: catalogData.scope, verification: catalogData.verification,
     query: { q, system, decision }, total, page, pageSize, pageCount,
     entries: filtered.slice((page - 1) * pageSize, page * pageSize),

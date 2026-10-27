@@ -139,8 +139,17 @@ export function build(root=repoRoot) {
       referenceTestStatus:'按测试文件名和函数名提取的参考线索；未运行，不证明此接口被覆盖',
       owner:rule.owner};
   });
-  return {schemaVersion:1,sourceBase:'875fb80613e7626c774d4d7ec3a9eadafb7ae66f',
-    sourceDigest:digest(JSON.stringify(entries)),dataKind:'静态源码盘点，非实时经营数据',
+  // A route file alone does not identify its mapped implementation or tests.
+  // Keep a deduplicated manifest; do not read arbitrary imports, business data or secrets.
+  const sourcePaths=new Set(entries.flatMap(entry=>[entry.path,...entry.primarySources,...entry.relatedTests,...entry.referenceTests.map(test=>test.path)]));
+  for(const system of ['基础版','Kimi版','DeepSeek版']) {
+    sourcePaths.add(`systems/pms-suite/${system}/backend/app/main.py`);
+    sourcePaths.add(`systems/pms-suite/${system}/frontend/src/App.${system==='基础版'?'jsx':'tsx'}`);
+  }
+  const sourceFiles=[...sourcePaths].sort().map(path=>({path,sha256:digest(readFileSync(join(root,path),'utf8'))}));
+  return {schemaVersion:1,sourceBase:'44b05e5e3e6917bc60041d29657e67cc37a5c551',
+    sourceDigest:digest(JSON.stringify(entries)),sourceFilesDigest:digest(JSON.stringify(sourceFiles)),sourceFiles,
+    dataKind:'静态源码盘点，非实时经营数据',
     scope:'Next页面/显式HTTP方法/server actions；三版PMS挂载HTTP路由及前端页面/状态视图；不包含隐式HEAD/OPTIONS、CLI或每个业务字段',
     verification:'源码解析及覆盖检查不证明业务运行；旧文档114项完成未经本次逐项验证',entries};
 }
@@ -148,6 +157,7 @@ function markdown(catalog) {
   const rows=catalog.entries.map(r=>`| ${r.system} | ${r.label} | ${r.kind} ${r.method} \`${r.route}\` | [${r.path}:${r.line}](../${r.path}#L${r.line}) · \`${r.symbol}\` | ${r.decision} | ${r.runtimeStatus} |`);
   return '# 功能对照与可验证能力目录\n\n'+
     `源码基线：\`${catalog.sourceBase}\`。本表由 \`node tools/capability-inventory/generate.mjs\` 生成；\`--check\` 校验所有路由、方法、来源摘要及映射是否变化。\n\n`+
+    `条目摘要：\`${catalog.sourceDigest}\`。来源、显式映射源码、测试线索及挂载入口共 ${catalog.sourceFiles.length} 个文件，文件清单摘要：\`${catalog.sourceFilesDigest}\`；逐文件 SHA-256 见 catalog.json 的 sourceFiles。这不是递归依赖或全部业务覆盖声明。\n\n`+
     `${catalog.dataKind}。${catalog.scope}。${catalog.verification}。\n\n`+
     '“主线已有”仅指相同能力族存在源码，不能解读为旧版每个端点/字段已等价。每条的主线来源、相关测试（非通过证据）、迁移限制见 catalog.json 和下方迁移说明。未获用户确认的功能均保留，不设“舍弃”类别。\n\n'+
     '管理员入口：`/capabilities`；只读 JSON：`GET /api/capabilities`。导航接入申请交 WP24，当前用地址直接访问。\n\n'+

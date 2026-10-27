@@ -24,4 +24,6 @@ node tools/capability-inventory/generate.mjs --stdout
 
 `mapping.json` 按优先级分类，具体缺口应放在能力族规则前。每条规则必须指定移植决定、owner、主线源文件和相关测试文件（没有则空数组并保留未知），未知不能兜底成“已完成”。不允许“舍弃”决定。`sourceBase` 表示本次已合入并复核的integration SHA（最初开工SHA另记报告），当前提取同时包含WP04自身页面/API；`sourceDigest`识别本次提取结果，不是已部署版本或CI标志。
 
+本轮基线是 `44b05e5e3e6917bc60041d29657e67cc37a5c551`。`sourceDigest` 仍为规范 entries JSON 的 SHA-256；新增 `sourceFiles` 按路径排序、去重记录来源文件、显式主线映射、主线/参考测试线索及三版挂载入口的 SHA-256，`sourceFilesDigest` 为该清单规范 JSON 的 SHA-256。这让 `lib/runtime-health.ts` 等映射实现仅改内部逻辑而不增路由时也改变指纹，`--check` 仍须失败并经审查后重新生成。清单不递归解析全部 import，不是全部源码或业务覆盖声明；源码树和验证命令另绑定在交接证据中。API返回同一份冻结清单，运行时不读取磁盘源码。
+
 验证入口为主线 `tests/capabilities.test.ts`，使用真实SQLite合成内存库、真实session和NextRequest调用本包服务/API；路由变更、重复和未挂载测试在 mkdtemp 临时源码中运行。浏览器脚本独立运行，见 `docs/work-packages/WP-04/browser-check.mjs`。测试结果和范围由 `reports/WP-04.md` 记录，生成目录自身所有业务运行状态始终为“未逐项运行”。

@@ -42,7 +42,8 @@ export default async function CapabilitiesPage({ searchParams }: { searchParams:
         <p>{result.dataKind}。本目录不读取经营明细。</p>
         <p>{result.verification}。旧文档“114项完成”仅为文档声称，未作为运行证据。</p>
         <p>“主线已有”表示相同能力族有源码；旧版每个字段和行为仍需逐项验收。未确认舍弃的功能均保留。</p>
-        <details><summary>盘点范围与版本</summary><p>{result.scope}</p><p>盘点基线：<code>{result.sourceBase}</code></p><p>当前提取摘要：<code>{result.sourceDigest}</code></p></details>
+        <details><summary>盘点范围与版本</summary><p>{result.scope}</p><p>盘点基线：<code>{result.sourceBase}</code></p><p>当前提取摘要：<code>{result.sourceDigest}</code></p>
+          <p>来源与显式映射文件：{result.sourceFiles.length} 个。文件清单 SHA-256：<code>{result.sourceFilesDigest}</code>。指纹不证明业务运行通过。</p></details>
         <a className={styles.action} href={withBasePath(`/api/capabilities?${apiParams}`)}>查看本页只读 JSON</a>
       </section>
       <form className={`work-panel ${styles.filters}`}>

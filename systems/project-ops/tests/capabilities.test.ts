@@ -2,7 +2,7 @@ import test, { type TestContext } from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync, unlinkSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync, unlinkSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -131,11 +131,19 @@ test("无会话API在空临时cwd不初始化data或数据库", t => {
 test("真实仓库提取、逐来源摘要及映射全部一致，测试文件仅作线索", () => {
   const result = spawnSync(process.execPath, [generator, "--check"], { cwd: root, encoding: "utf8", timeout: 30000 });
   assert.equal(result.status, 0, result.stderr);
+  assert.equal(catalog.sourceBase, "44b05e5e3e6917bc60041d29657e67cc37a5c551");
+  assert.equal(catalog.entries.length, 409, "本次同步保留原409条来源；新增/删除须显式审查");
+  assert.equal(createHash("sha256").update(JSON.stringify(catalog.entries)).digest("hex"), catalog.sourceDigest);
+  assert.equal(createHash("sha256").update(JSON.stringify(catalog.sourceFiles)).digest("hex"), catalog.sourceFilesDigest);
+  const fingerprints = new Map(catalog.sourceFiles.map(file => [file.path, file.sha256]));
+  assert.equal(fingerprints.size, catalog.sourceFiles.length);
+  assert.deepEqual(catalog.sourceFiles.map(file => file.path), [...fingerprints.keys()].sort());
+  for (const file of catalog.sourceFiles) assert.equal(createHash("sha256").update(readFileSync(join(root, file.path), "utf8")).digest("hex"), file.sha256, file.path);
   for (const entry of catalog.entries) {
     const content = readFileSync(join(root, entry.path), "utf8");
     assert.equal(createHash("sha256").update(content).digest("hex"), entry.sha256, entry.path);
     assert.ok(entry.line >= 1 && entry.line <= content.split("\n").length, entry.path);
-    for (const ref of [...entry.primarySources, ...entry.relatedTests]) assert.ok(readFileSync(join(root, ref), "utf8").length > 0);
+    for (const ref of [entry.path, ...entry.primarySources, ...entry.relatedTests]) assert.ok(fingerprints.has(ref), `缺少映射指纹：${ref}`);
     for (const ref of entry.referenceTests) {
       const content = readFileSync(join(root, ref.path), "utf8");
       assert.equal(createHash("sha256").update(content).digest("hex"), ref.sha256);
@@ -195,13 +203,61 @@ function sourceFixture(t: TestContext) {
   return { directory, put };
 }
 function extract(directory: string, mode = "scan") {
-  const script = `import {scan,classify} from ${JSON.stringify(new URL("../../../tools/capability-inventory/generate.mjs", import.meta.url).href)};
+  const script = `import {scan,classify,build} from ${JSON.stringify(new URL("../../../tools/capability-inventory/generate.mjs", import.meta.url).href)};
     import {readFileSync} from 'node:fs';
+    if(process.argv[2]==='build') { console.log(JSON.stringify(build(process.argv[1])));process.exit(0); }
     const records=scan(process.argv[1]);
     if(process.argv[2]==='classify') { const rules=JSON.parse(readFileSync(process.argv[3],'utf8'));for(const r of records)classify(r,rules); }
     console.log(JSON.stringify(records));`;
   return spawnSync(process.execPath, ["--input-type=module", "-e", script, directory, mode, join(root, "tools/capability-inventory/mapping.json")], { encoding: "utf8", timeout: 30000 });
 }
+
+test("映射实现和测试变化即使不增路由也更新文件指纹，恢复后完全可重生成", t => {
+  const { directory, put } = sourceFixture(t);
+  const rules = JSON.parse(readFileSync(join(root, "tools/capability-inventory/mapping.json"), "utf8"));
+  for (const rule of rules) for (const path of [...rule.primarySources, ...rule.relatedTests] as string[]) {
+    if (existsSync(join(directory, path))) continue;
+    put(path, path.endsWith("/page.tsx") ? "export default function Page(){return <p>合成</p>}"
+      : path.endsWith("/route.ts") ? "export function GET(){return new Response('synthetic')}"
+      : path.endsWith("/actions.ts") ? "export async function synthetic(){}" : "// 合成映射文件\n");
+  }
+  const initial = extract(directory, "build"); assert.equal(initial.status, 0, initial.stderr);
+  const before = JSON.parse(initial.stdout);
+  for (const path of ["systems/project-ops/lib/runtime-health.ts", "systems/project-ops/tests/runtime-health.test.ts"]) {
+    const original = readFileSync(join(directory, path), "utf8");
+    put(path, original + "// 合成变更：无新页面或HTTP方法\n");
+    const changed = extract(directory, "build"); assert.equal(changed.status, 0, changed.stderr);
+    const after = JSON.parse(changed.stdout);
+    assert.deepEqual(after.entries, before.entries, "库/测试变化不应伪造新的路由记录");
+    assert.equal(after.sourceDigest, before.sourceDigest);
+    assert.notEqual(after.sourceFilesDigest, before.sourceFilesDigest, path);
+    assert.notDeepEqual(after.sourceFiles, before.sourceFiles);
+    put(path, original);
+    const restored = extract(directory, "build"); assert.equal(restored.status, 0, restored.stderr);
+    assert.equal(restored.stdout, initial.stdout, "完全恢复源码后须逐字重生成");
+  }
+  unlinkSync(join(directory, "systems/project-ops/lib/runtime-health.ts"));
+  assert.notEqual(extract(directory, "build").status, 0, "映射实现缺失必须失败，不能沿用旧hash");
+});
+
+test("真实管理员API按运行诊断路径检索并返回当前实现和测试文件指纹", async t => {
+  const { db, tokens, request, changes } = fixture(t), before = changes();
+  db.exec("PRAGMA query_only=ON");
+  const response = GET(request(tokens.ADMIN, "?system=" + encodeURIComponent("主线") + "&q=runtime-health"));
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("cache-control"), "private, no-store");
+  const result = await response.json();
+  assert.equal(result.sourceBase, catalog.sourceBase);
+  assert.equal(result.sourceFilesDigest, catalog.sourceFilesDigest);
+  assert.deepEqual(result.sourceFiles, catalog.sourceFiles);
+  assert.deepEqual(result.entries.map((entry: { route: string }) => entry.route).sort(), ["/api/runtime-health", "/runtime-health"]);
+  for (const path of ["systems/project-ops/lib/runtime-health.ts", "systems/project-ops/app/runtime-health/page.tsx", "systems/project-ops/tests/runtime-health.test.ts"]) {
+    const file = result.sourceFiles.find((file: { path: string }) => file.path === path);
+    assert.ok(file, path);
+    assert.equal(file.sha256, createHash("sha256").update(readFileSync(join(root, path), "utf8")).digest("hex"));
+  }
+  assert.equal(changes(), before);
+});
 
 test("新增/删除临时源路由真实改变提取结果，未知能力使分类失败", t => {
   const { directory, put } = sourceFixture(t);
