@@ -1,0 +1,55 @@
+UTC_START: 2026-10-26T18:29:55.086653+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: node ../../docs/work-packages/WP-24/transport-race-probe.mjs
+{
+  "check": "persistent socket loss stays a failure; isolated API probes retain exact HTTP status with no retries",
+  "evidence": [
+    {
+      "closeConnection": false,
+      "observed": {
+        "transportError": true
+      },
+      "events": [
+        {
+          "socket": 1,
+          "path": "/prime",
+          "count": 1,
+          "connection": "keep-alive"
+        },
+        {
+          "socket": 1,
+          "path": "/check",
+          "count": 2,
+          "connection": "keep-alive"
+        }
+      ]
+    },
+    {
+      "closeConnection": true,
+      "observed": {
+        "status": 403,
+        "body": {
+          "status": "DENIED"
+        }
+      },
+      "events": [
+        {
+          "socket": 1,
+          "path": "/prime",
+          "count": 1,
+          "connection": "close"
+        },
+        {
+          "socket": 2,
+          "path": "/check",
+          "count": 1,
+          "connection": "close"
+        }
+      ]
+    }
+  ]
+}
+
+EXIT_CODE: 0
+UTC_END: 2026-10-26T18:29:55.822693+00:00
+ELAPSED_SECONDS: 0.737

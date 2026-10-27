@@ -1,0 +1,68 @@
+UTC_START: 2026-10-26T18:40:33.614782+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: python3 /tmp/wp24-stability-binding.py
+{
+  "code": "34863e7fc4a43041f1f06403804da2d4b3b3d6fa",
+  "app_tree": "a868b4354a951b0a89b3daa49bb5381f2a3162af",
+  "commands": [
+    {
+      "COMMAND": "pnpm test",
+      "EXIT_CODE": "0"
+    },
+    {
+      "COMMAND": "pnpm typecheck",
+      "EXIT_CODE": "0"
+    },
+    {
+      "COMMAND": "pnpm lint",
+      "EXIT_CODE": "0"
+    },
+    {
+      "COMMAND": "pnpm build",
+      "EXIT_CODE": "0"
+    },
+    {
+      "COMMAND": "node tests/favicon-browser.mjs",
+      "EXIT_CODE": "0"
+    }
+  ],
+  "traces": [
+    {
+      "deployment": "after-default",
+      "api_response_count": 30,
+      "all_api_connections_close": true,
+      "server_exits": [
+        {
+          "at": "2026-10-26T18:37:40.254Z",
+          "elapsedMs": 13670,
+          "phase": "controlled-fault",
+          "event": "server-exit",
+          "code": 143,
+          "signal": null,
+          "expectedStop": true
+        }
+      ]
+    },
+    {
+      "deployment": "after-pms",
+      "api_response_count": 30,
+      "all_api_connections_close": true,
+      "server_exits": [
+        {
+          "at": "2026-10-26T18:38:21.637Z",
+          "elapsedMs": 22830,
+          "phase": "controlled-fault",
+          "event": "server-exit",
+          "code": 143,
+          "signal": null,
+          "expectedStop": true
+        }
+      ]
+    }
+  ],
+  "remaining": "historical exact triggers unconfirmed; root release pending"
+}
+
+EXIT_CODE: 0
+UTC_END: 2026-10-26T18:40:33.769629+00:00
+ELAPSED_SECONDS: 0.155
