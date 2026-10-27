@@ -1,6 +1,0 @@
-node_modules/
-.venv/
-.remotion/
-output/*.mp4
-output/*.png
-!output/.gitkeep

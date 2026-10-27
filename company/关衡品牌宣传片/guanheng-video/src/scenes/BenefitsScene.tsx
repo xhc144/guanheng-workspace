@@ -1,5 +1,0 @@
-import React from 'react';
-import {useCurrentFrame} from 'remotion';
-import {Eyebrow,SceneCanvas,SectionIndex,reveal} from '../theme';
-const items=[{no:'01',title:'风险提前预警',desc:'在关键业务节点自动检查，把风险留在发生之前。'},{no:'02',title:'数据全程追溯',desc:'可查询、可记录、可分析、可预警、可追溯。'},{no:'03',title:'多系统高效协同',desc:'连接 SAP、SRM、WMS、财务与服务商系统。'}];
-export const BenefitsScene:React.FC=()=>{const frame=useCurrentFrame();return <SceneCanvas duration={180}><SectionIndex>03 / 合规价值</SectionIndex><div style={{position:'absolute',left:112,top:106}}><Eyebrow>FROM DATA TO CONTROL</Eyebrow><div className="benefits-title">让合规，从被动响应变成主动管理</div></div><div className="benefits-grid">{items.map((item,index)=>{const a=reveal(frame,28+index*12,21);return <div className="benefit" key={item.no} style={{opacity:a,transform:`translateY(${(1-a)*48}px)`}}><div className="benefit__no">{item.no}</div><div className="benefit__icon"><i/><i/><i/></div><h3>{item.title}</h3><p>{item.desc}</p><div className="benefit__rule" style={{transform:`scaleX(${a})`}}/></div>})}</div></SceneCanvas>};
