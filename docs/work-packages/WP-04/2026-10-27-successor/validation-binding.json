@@ -1,0 +1,823 @@
+{
+  "recordedAt": "2026-10-27T04:58:30.268906+00:00",
+  "status": "verified WP04 synchronization slice; no CI or whole-business claim",
+  "base": "44b05e5e3e6917bc60041d29657e67cc37a5c551",
+  "authorHead": "65146233002cb1a279a5a79fe4905c7549cdea8d",
+  "mergeHead": "84130a090c3859f1490c60a9e7928601706a19c7",
+  "coreTestedHead": "138b368bccac4e61432e6132f3e30a9fd94f3571",
+  "coreTestedTree": "98e03cfcb0c58f7c41435d221c1424231a91421a",
+  "browserTestedHead": "2d4f4108a522d93bed849802286ef5d53bf502e8",
+  "browserTestedTree": "9033fd83d07affd3701d020eda729144e7c98a5d",
+  "projectOpsTree": "bab47fe05a824471a6b3a2569a646e732aa5ce4e",
+  "coreAndBrowserAppTreesEqual": true,
+  "sourceBase": "44b05e5e3e6917bc60041d29657e67cc37a5c551",
+  "sourceDigest": "3df07d6c651586f959667f1545f3257946518acf8967f46d5b8fd6054fcbb717",
+  "sourceFilesDigest": "28e942dca7668f6bf4bf3afe98cd1c45693c31b33ab7502ed012a0a40cc695fe",
+  "entryCount": 409,
+  "sourceFileCount": 193,
+  "baselineTests": 110,
+  "capabilityTests": 17,
+  "fullTests": 127,
+  "skipped": 0,
+  "commands": [
+    {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "git",
+        "merge",
+        "--no-edit",
+        "44b05e5e3e6917bc60041d29657e67cc37a5c551"
+      ],
+      "startedAt": "2026-10-27T04:50:51.619499+00:00",
+      "finishedAt": "2026-10-27T04:50:51.675529+00:00",
+      "exitCode": 0,
+      "head": "65146233002cb1a279a5a79fe4905c7549cdea8d",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/01-merge.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "startedAt": "2026-10-27T04:50:53.273201+00:00",
+      "finishedAt": "2026-10-27T04:50:53.776777+00:00",
+      "exitCode": 254,
+      "head": "84130a090c3859f1490c60a9e7928601706a19c7",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/02-install.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "startedAt": "2026-10-27T04:51:03.652225+00:00",
+      "finishedAt": "2026-10-27T04:51:14.500253+00:00",
+      "exitCode": 0,
+      "head": "84130a090c3859f1490c60a9e7928601706a19c7",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/03-install-original-permission.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "node",
+        "tools/capability-inventory/generate.mjs",
+        "--check"
+      ],
+      "startedAt": "2026-10-27T04:51:25.272507+00:00",
+      "finishedAt": "2026-10-27T04:51:26.014947+00:00",
+      "exitCode": 1,
+      "head": "84130a090c3859f1490c60a9e7928601706a19c7",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/04-stale-check.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "node",
+        "tools/capability-inventory/generate.mjs"
+      ],
+      "startedAt": "2026-10-27T04:53:03.893366+00:00",
+      "finishedAt": "2026-10-27T04:53:04.762791+00:00",
+      "exitCode": 0,
+      "head": "84130a090c3859f1490c60a9e7928601706a19c7",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/05-regenerate.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "tests/capabilities.test.ts"
+      ],
+      "startedAt": "2026-10-27T04:53:11.530809+00:00",
+      "finishedAt": "2026-10-27T04:53:17.661569+00:00",
+      "exitCode": 0,
+      "head": "84130a090c3859f1490c60a9e7928601706a19c7",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/06-capabilities.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "startedAt": "2026-10-27T04:53:17.836757+00:00",
+      "finishedAt": "2026-10-27T04:53:26.993065+00:00",
+      "exitCode": 0,
+      "head": "84130a090c3859f1490c60a9e7928601706a19c7",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/07-unit.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAt": "2026-10-27T04:53:52.156158+00:00",
+      "finishedAt": "2026-10-27T04:53:57.694241+00:00",
+      "exitCode": 0,
+      "head": "138b368bccac4e61432e6132f3e30a9fd94f3571",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/08-typecheck.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAt": "2026-10-27T04:54:07.054303+00:00",
+      "finishedAt": "2026-10-27T04:54:13.616492+00:00",
+      "exitCode": 0,
+      "head": "138b368bccac4e61432e6132f3e30a9fd94f3571",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/09-lint.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "python3",
+        "docs/work-packages/WP-04/2026-10-27-successor/review.py"
+      ],
+      "startedAt": "2026-10-27T04:54:38.741407+00:00",
+      "finishedAt": "2026-10-27T04:54:38.844955+00:00",
+      "exitCode": 0,
+      "head": "138b368bccac4e61432e6132f3e30a9fd94f3571",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/10-review-one.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "startedAt": "2026-10-27T04:54:46.690000+00:00",
+      "finishedAt": "2026-10-27T04:54:56.181122+00:00",
+      "exitCode": 0,
+      "head": "138b368bccac4e61432e6132f3e30a9fd94f3571",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/11-unit-frozen.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "startedAt": "2026-10-27T04:54:56.772932+00:00",
+      "finishedAt": "2026-10-27T04:55:14.797033+00:00",
+      "exitCode": 0,
+      "head": "138b368bccac4e61432e6132f3e30a9fd94f3571",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/12-build.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "node",
+        "docs/work-packages/WP-04/browser-check.mjs",
+        "/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs",
+        "/usr/bin/chromium"
+      ],
+      "startedAt": "2026-10-27T04:55:11.525398+00:00",
+      "finishedAt": "2026-10-27T04:55:11.878778+00:00",
+      "exitCode": 1,
+      "head": "138b368bccac4e61432e6132f3e30a9fd94f3571",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/13-browser-one.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "node",
+        "docs/work-packages/WP-04/browser-check.mjs",
+        "/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs",
+        "/usr/bin/chromium"
+      ],
+      "startedAt": "2026-10-27T04:55:19.834004+00:00",
+      "finishedAt": "2026-10-27T04:55:40.057771+00:00",
+      "exitCode": 0,
+      "head": "138b368bccac4e61432e6132f3e30a9fd94f3571",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/14-browser-after-build.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "node",
+        "tools/capability-inventory/generate.mjs",
+        "--check"
+      ],
+      "startedAt": "2026-10-27T04:55:48.691913+00:00",
+      "finishedAt": "2026-10-27T04:55:49.569472+00:00",
+      "exitCode": 0,
+      "head": "138b368bccac4e61432e6132f3e30a9fd94f3571",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/15-check.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "node",
+        "docs/work-packages/WP-04/browser-check.mjs",
+        "/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs",
+        "/usr/bin/chromium"
+      ],
+      "startedAt": "2026-10-27T04:55:49.607283+00:00",
+      "finishedAt": "2026-10-27T04:56:09.314949+00:00",
+      "exitCode": 0,
+      "head": "138b368bccac4e61432e6132f3e30a9fd94f3571",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/16-browser-two.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "node",
+        "docs/work-packages/WP-04/browser-check.mjs",
+        "/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs",
+        "/usr/bin/chromium"
+      ],
+      "startedAt": "2026-10-27T04:56:32.864101+00:00",
+      "finishedAt": "2026-10-27T04:56:53.782966+00:00",
+      "exitCode": 0,
+      "head": "2d4f4108a522d93bed849802286ef5d53bf502e8",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/17-browser-fingerprint-one.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "node",
+        "tools/capability-inventory/generate.mjs",
+        "--check"
+      ],
+      "startedAt": "2026-10-27T04:56:48.812561+00:00",
+      "finishedAt": "2026-10-27T04:56:49.681720+00:00",
+      "exitCode": 0,
+      "head": "2d4f4108a522d93bed849802286ef5d53bf502e8",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/18-check-frozen.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "python3",
+        "tools/validate_plan.py"
+      ],
+      "startedAt": "2026-10-27T04:56:48.810869+00:00",
+      "finishedAt": "2026-10-27T04:56:48.866681+00:00",
+      "exitCode": 0,
+      "head": "2d4f4108a522d93bed849802286ef5d53bf502e8",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/19-plan.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "python3",
+        "docs/work-packages/WP-04/2026-10-27-successor/review.py"
+      ],
+      "startedAt": "2026-10-27T04:56:48.817428+00:00",
+      "finishedAt": "2026-10-27T04:56:48.964316+00:00",
+      "exitCode": 0,
+      "head": "2d4f4108a522d93bed849802286ef5d53bf502e8",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/20-review-two.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "node",
+        "docs/work-packages/WP-04/browser-check.mjs",
+        "/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs",
+        "/usr/bin/chromium"
+      ],
+      "startedAt": "2026-10-27T04:57:06.351133+00:00",
+      "finishedAt": "2026-10-27T04:57:26.913541+00:00",
+      "exitCode": 0,
+      "head": "2d4f4108a522d93bed849802286ef5d53bf502e8",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/21-browser-fingerprint-two.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "python3",
+        "docs/work-packages/WP-04/2026-10-27-successor/review.py"
+      ],
+      "startedAt": "2026-10-27T04:57:48.623742+00:00",
+      "finishedAt": "2026-10-27T04:57:48.740449+00:00",
+      "exitCode": 0,
+      "head": "2d4f4108a522d93bed849802286ef5d53bf502e8",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/22-review-final.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "startedAt": "2026-10-27T04:59:43.343715+00:00",
+      "finishedAt": "2026-10-27T04:59:43.349674+00:00",
+      "exitCode": 2,
+      "head": "2d4f4108a522d93bed849802286ef5d53bf502e8",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/23-staged-format-all.log"
+    },
+    {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "--",
+        ".",
+        ":(exclude)*.log"
+      ],
+      "startedAt": "2026-10-27T04:59:51.459096+00:00",
+      "finishedAt": "2026-10-27T04:59:51.463773+00:00",
+      "exitCode": 0,
+      "head": "2d4f4108a522d93bed849802286ef5d53bf502e8",
+      "log": "docs/work-packages/WP-04/2026-10-27-successor/24-staged-format-source.log"
+    }
+  ],
+  "browsers": [
+    {
+      "command": {
+        "cwd": "/workspace/guanheng-wp04",
+        "command": [
+          "node",
+          "docs/work-packages/WP-04/browser-check.mjs",
+          "/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs",
+          "/usr/bin/chromium"
+        ],
+        "startedAt": "2026-10-27T04:56:32.864101+00:00",
+        "finishedAt": "2026-10-27T04:56:53.782966+00:00",
+        "exitCode": 0,
+        "head": "2d4f4108a522d93bed849802286ef5d53bf502e8",
+        "log": "docs/work-packages/WP-04/2026-10-27-successor/17-browser-fingerprint-one.log"
+      },
+      "runtime": "/tmp/guanheng-wp04-browser-Cm1C4Z",
+      "resultGroups": [
+        {
+          "check": "匿名GET/HEAD拒绝、页面跳转登录",
+          "status": "通过"
+        },
+        {
+          "check": "正式favicon GET/HEAD204零字节、元数据路径；真实G0状态API与375px页面，runner/预算/通道未配置状态真实",
+          "status": "通过"
+        },
+        {
+          "check": "管理员真实登录、GET/HEAD只读且private no-store、POST405与非法页码400",
+          "status": "通过",
+          "sourceBase": "44b05e5e3e6917bc60041d29657e67cc37a5c551",
+          "sourceDigest": "3df07d6c651586f959667f1545f3257946518acf8967f46d5b8fd6054fcbb717",
+          "sourceFilesDigest": "28e942dca7668f6bf4bf3afe98cd1c45693c31b33ab7502ed012a0a40cc695fe"
+        },
+        {
+          "check": "运行诊断目录检索、当前integration基线/实现/测试指纹与新修复页面一致",
+          "status": "通过",
+          "sourceFilesDigest": "28e942dca7668f6bf4bf3afe98cd1c45693c31b33ab7502ed012a0a40cc695fe"
+        },
+        {
+          "check": "375px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+          "status": "通过",
+          "dimensions": {
+            "viewport": 375,
+            "body": 375,
+            "document": 375
+          },
+          "fingerprintDimensions": {
+            "viewport": 375,
+            "body": 375,
+            "document": 375
+          }
+        },
+        {
+          "check": "768px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+          "status": "通过",
+          "dimensions": {
+            "viewport": 768,
+            "body": 768,
+            "document": 768
+          },
+          "fingerprintDimensions": {
+            "viewport": 768,
+            "body": 768,
+            "document": 768
+          }
+        },
+        {
+          "check": "1440px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+          "status": "通过",
+          "dimensions": {
+            "viewport": 1440,
+            "body": 1440,
+            "document": 1440
+          },
+          "fingerprintDimensions": {
+            "viewport": 1440,
+            "body": 1440,
+            "document": 1440
+          }
+        },
+        {
+          "check": "翻页、中文空状态、错误边界与重置恢复",
+          "status": "通过"
+        },
+        {
+          "check": "三个非管理员角色中文拒绝、无目录数据展示",
+          "status": "通过"
+        },
+        {
+          "check": "所有requestfailed事件保留；仅已识别页面RSC GET取消，逐目标真实会话HTTP200，未知/业务API失败不接受",
+          "status": "通过",
+          "cancellationTargetProbes": [
+            {
+              "path": "/",
+              "status": 200
+            },
+            {
+              "path": "/audit",
+              "status": 200
+            },
+            {
+              "path": "/capabilities",
+              "status": 200
+            },
+            {
+              "path": "/commissions",
+              "status": 200
+            },
+            {
+              "path": "/contracts",
+              "status": 200
+            },
+            {
+              "path": "/customers",
+              "status": 200
+            },
+            {
+              "path": "/data",
+              "status": 200
+            },
+            {
+              "path": "/documents",
+              "status": 200
+            },
+            {
+              "path": "/finance",
+              "status": 200
+            },
+            {
+              "path": "/integration-health",
+              "status": 200
+            },
+            {
+              "path": "/notifications",
+              "status": 200
+            },
+            {
+              "path": "/organization",
+              "status": 200
+            },
+            {
+              "path": "/profile",
+              "status": 200
+            },
+            {
+              "path": "/projects",
+              "status": 200
+            },
+            {
+              "path": "/reports",
+              "status": 200
+            },
+            {
+              "path": "/rules",
+              "status": 200
+            },
+            {
+              "path": "/runtime-health",
+              "status": 200
+            },
+            {
+              "path": "/search",
+              "status": 200
+            },
+            {
+              "path": "/services",
+              "status": 200
+            },
+            {
+              "path": "/work",
+              "status": 200
+            }
+          ]
+        },
+        {
+          "check": "合成库移除会话表触发真实500及中文错误边界；恢复表后重试回登录",
+          "status": "通过",
+          "faultPhaseConsoleErrors": [
+            {
+              "message": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+              "location": "http://127.0.0.1:35067/capabilities"
+            },
+            {
+              "message": "Error: Minified React error #441; visit https://react.dev/errors/441 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+              "location": "http://127.0.0.1:35067/_next/static/chunks/3adrxz22zmvfn.js"
+            }
+          ]
+        }
+      ],
+      "normalFlowConsoleErrors": [],
+      "normalFlowFailedResponses": [],
+      "unexpectedRequestFailures": [],
+      "retainedRscCancellations": 326,
+      "allRawEventsRetained": true
+    },
+    {
+      "command": {
+        "cwd": "/workspace/guanheng-wp04",
+        "command": [
+          "node",
+          "docs/work-packages/WP-04/browser-check.mjs",
+          "/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs",
+          "/usr/bin/chromium"
+        ],
+        "startedAt": "2026-10-27T04:57:06.351133+00:00",
+        "finishedAt": "2026-10-27T04:57:26.913541+00:00",
+        "exitCode": 0,
+        "head": "2d4f4108a522d93bed849802286ef5d53bf502e8",
+        "log": "docs/work-packages/WP-04/2026-10-27-successor/21-browser-fingerprint-two.log"
+      },
+      "runtime": "/tmp/guanheng-wp04-browser-UcIgTu",
+      "resultGroups": [
+        {
+          "check": "匿名GET/HEAD拒绝、页面跳转登录",
+          "status": "通过"
+        },
+        {
+          "check": "正式favicon GET/HEAD204零字节、元数据路径；真实G0状态API与375px页面，runner/预算/通道未配置状态真实",
+          "status": "通过"
+        },
+        {
+          "check": "管理员真实登录、GET/HEAD只读且private no-store、POST405与非法页码400",
+          "status": "通过",
+          "sourceBase": "44b05e5e3e6917bc60041d29657e67cc37a5c551",
+          "sourceDigest": "3df07d6c651586f959667f1545f3257946518acf8967f46d5b8fd6054fcbb717",
+          "sourceFilesDigest": "28e942dca7668f6bf4bf3afe98cd1c45693c31b33ab7502ed012a0a40cc695fe"
+        },
+        {
+          "check": "运行诊断目录检索、当前integration基线/实现/测试指纹与新修复页面一致",
+          "status": "通过",
+          "sourceFilesDigest": "28e942dca7668f6bf4bf3afe98cd1c45693c31b33ab7502ed012a0a40cc695fe"
+        },
+        {
+          "check": "375px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+          "status": "通过",
+          "dimensions": {
+            "viewport": 375,
+            "body": 375,
+            "document": 375
+          },
+          "fingerprintDimensions": {
+            "viewport": 375,
+            "body": 375,
+            "document": 375
+          }
+        },
+        {
+          "check": "768px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+          "status": "通过",
+          "dimensions": {
+            "viewport": 768,
+            "body": 768,
+            "document": 768
+          },
+          "fingerprintDimensions": {
+            "viewport": 768,
+            "body": 768,
+            "document": 768
+          }
+        },
+        {
+          "check": "1440px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+          "status": "通过",
+          "dimensions": {
+            "viewport": 1440,
+            "body": 1440,
+            "document": 1440
+          },
+          "fingerprintDimensions": {
+            "viewport": 1440,
+            "body": 1440,
+            "document": 1440
+          }
+        },
+        {
+          "check": "翻页、中文空状态、错误边界与重置恢复",
+          "status": "通过"
+        },
+        {
+          "check": "三个非管理员角色中文拒绝、无目录数据展示",
+          "status": "通过"
+        },
+        {
+          "check": "所有requestfailed事件保留；仅已识别页面RSC GET取消，逐目标真实会话HTTP200，未知/业务API失败不接受",
+          "status": "通过",
+          "cancellationTargetProbes": [
+            {
+              "path": "/",
+              "status": 200
+            },
+            {
+              "path": "/audit",
+              "status": 200
+            },
+            {
+              "path": "/capabilities",
+              "status": 200
+            },
+            {
+              "path": "/commissions",
+              "status": 200
+            },
+            {
+              "path": "/contracts",
+              "status": 200
+            },
+            {
+              "path": "/customers",
+              "status": 200
+            },
+            {
+              "path": "/data",
+              "status": 200
+            },
+            {
+              "path": "/documents",
+              "status": 200
+            },
+            {
+              "path": "/finance",
+              "status": 200
+            },
+            {
+              "path": "/integration-health",
+              "status": 200
+            },
+            {
+              "path": "/notifications",
+              "status": 200
+            },
+            {
+              "path": "/organization",
+              "status": 200
+            },
+            {
+              "path": "/profile",
+              "status": 200
+            },
+            {
+              "path": "/projects",
+              "status": 200
+            },
+            {
+              "path": "/reports",
+              "status": 200
+            },
+            {
+              "path": "/rules",
+              "status": 200
+            },
+            {
+              "path": "/runtime-health",
+              "status": 200
+            },
+            {
+              "path": "/search",
+              "status": 200
+            },
+            {
+              "path": "/services",
+              "status": 200
+            },
+            {
+              "path": "/work",
+              "status": 200
+            }
+          ]
+        },
+        {
+          "check": "合成库移除会话表触发真实500及中文错误边界；恢复表后重试回登录",
+          "status": "通过",
+          "faultPhaseConsoleErrors": [
+            {
+              "message": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+              "location": "http://127.0.0.1:41943/capabilities"
+            },
+            {
+              "message": "Error: Minified React error #441; visit https://react.dev/errors/441 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+              "location": "http://127.0.0.1:41943/_next/static/chunks/3adrxz22zmvfn.js"
+            }
+          ]
+        }
+      ],
+      "normalFlowConsoleErrors": [],
+      "normalFlowFailedResponses": [],
+      "unexpectedRequestFailures": [],
+      "retainedRscCancellations": 321,
+      "allRawEventsRetained": true
+    }
+  ],
+  "frozenFiles": [
+    {
+      "path": "docs/work-packages/WP-04/browser-check.mjs",
+      "sha256": "e18eecae15bb996a4499a061ba5cedcddaf64d596533a1faeef1a361a02f91f0"
+    },
+    {
+      "path": "systems/project-ops/app/api/capabilities/route.ts",
+      "sha256": "1787872fe781487b66e5a73d132f2744daff775f698ad939c00141069c7c5193"
+    },
+    {
+      "path": "systems/project-ops/app/capabilities/capabilities.module.css",
+      "sha256": "436b0ba01b676c50f37e4052b87340509f4065a3db9a4ef512fd957b4b0c5772"
+    },
+    {
+      "path": "systems/project-ops/app/capabilities/error.tsx",
+      "sha256": "be6b08bbc3e81e0f5e63500ed3f42aa9b88ace3d5f184bed03ffa062db9711a8"
+    },
+    {
+      "path": "systems/project-ops/app/capabilities/page.tsx",
+      "sha256": "1bfc29b55d579fab903d4f1ce2ad19daa235f0123a0b03073d1b0508fdaa436a"
+    },
+    {
+      "path": "systems/project-ops/lib/capabilities/catalog.json",
+      "sha256": "95547827f502e79f22a4b9ce969e198a8aa9dda296f88d69a8a569de18c00c85"
+    },
+    {
+      "path": "systems/project-ops/lib/capabilities/service.ts",
+      "sha256": "c2c46d54d0b11b153094144f9ffdea4e8df3a78001da48cf91cc4ab3c0a021e6"
+    },
+    {
+      "path": "systems/project-ops/tests/capabilities.test.ts",
+      "sha256": "f79cbf893267cac757fb4f47ace380ded5ba9695333d324493cc2a0ca5dd5743"
+    },
+    {
+      "path": "tools/capability-inventory/README.md",
+      "sha256": "79a676798bf5eb88978a3badceaeebfd88a54182daedbf65e0c9915cf0b1be14"
+    },
+    {
+      "path": "tools/capability-inventory/generate.mjs",
+      "sha256": "56b43606d361fd6aaa56bf3c06e8cc4a61d5acd1e36f9a958d8d4e77b10f84a2"
+    },
+    {
+      "path": "tools/capability-inventory/mapping.json",
+      "sha256": "221a408d903351d0c5646b3d07ca8fd21d5b8032651692132eea901aa7b17425"
+    },
+    {
+      "path": "tools/capability-inventory/python_routes.py",
+      "sha256": "12d2837730f52275c537a9ba660d337f25d55b804455b95d304f9a3cc36e5a7c"
+    }
+  ],
+  "failuresRetained": [
+    {
+      "command": "02-install",
+      "exitCode": 254,
+      "reason": "Original default pnpm directory not writable; exact command in original directory succeeded after auto-review approved permission, log03. No cache/source/policy change."
+    },
+    {
+      "command": "04-stale-check",
+      "exitCode": 1,
+      "reason": "Expected old source catalog mismatch after integration merge; regenerated and reviewed all 409 identities."
+    },
+    {
+      "command": "13-browser-one",
+      "exitCode": 1,
+      "reason": "Started before build process exit; standalone not present. Build12 completed0; browser14/16 passed. Final strengthened browser17/21 passed."
+    },
+    {
+      "evidence": "review-parser-failure.json",
+      "reason": "Ad hoc review omitted intentional /capabilities hash change; exact two reviewed page hash changes accepted by reproducible review."
+    },
+    {
+      "command": "23-staged-format-all",
+      "exitCode": 2,
+      "reason": "Only raw Next build terminal output whitespace; retained original logs. Explicit source/documentation/JSON check24 excluding .log passes; full check is not labeled green."
+    }
+  ],
+  "history": "Original WP04 logs and failures remain intact. Root-provided integration fixes for pnpm diagnosis and worker close timing are present and all 110 baseline tests pass here; no claim of universal race elimination.",
+  "remaining": [
+    "WP24 capability navigation/registry registration",
+    "WP23 runner and same-owner G1 approval remain outside this task; no gate changes",
+    "PMS suites, proposal suite, Windows and production/external channels not run in this successor task"
+  ],
+  "scope": "Synthetic databases/accounts only; no deployment/merge/ready/main; owned paths only.",
+  "formatChecks": {
+    "allStaged": {
+      "exitCode": 2,
+      "log": "23-staged-format-all.log",
+      "reason": "Raw Next build log retains three progress-line trailing spaces and the original final blank line."
+    },
+    "sourceDocumentationJsonExcludingLogFiles": {
+      "exitCode": 0,
+      "log": "24-staged-format-source.log"
+    },
+    "rawLogsPreserved": true
+  }
+}

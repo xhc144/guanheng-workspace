@@ -1,0 +1,12 @@
+{
+  "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+  "command": [
+    "pnpm",
+    "test"
+  ],
+  "startedAt": "2026-10-27T04:54:46.690000+00:00",
+  "finishedAt": "2026-10-27T04:54:56.181122+00:00",
+  "exitCode": 0,
+  "head": "138b368bccac4e61432e6132f3e30a9fd94f3571",
+  "log": "docs/work-packages/WP-04/2026-10-27-successor/11-unit-frozen.log"
+}

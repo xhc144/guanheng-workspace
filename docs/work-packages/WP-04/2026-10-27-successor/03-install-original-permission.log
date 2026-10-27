@@ -1,0 +1,50 @@
+? Verifying lockfile against supply-chain policies (483 entries)...
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +425
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+   ╭──────────────────────────────────────────╮
+   │                                          │
+   │   Update available! 11.19.0 → 12.15.0.   │
+   │   Changelog: https://pnpm.io/v/12.15.0   │
+   │     To update, run: pnpm add -g pnpm     │
+   │                                          │
+   ╰──────────────────────────────────────────╯
+
+Progress: resolved 425, reused 0, downloaded 0, added 0
+Packages are hard linked from the content-addressable store to the virtual store.
+  Content-addressable store is at: /home/agent/.local/share/pnpm/store/v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 425, reused 0, downloaded 47, added 43
+Progress: resolved 425, reused 0, downloaded 62, added 62
+Progress: resolved 425, reused 0, downloaded 121, added 121
+Progress: resolved 425, reused 0, downloaded 184, added 183
+Progress: resolved 425, reused 0, downloaded 231, added 231
+Progress: resolved 425, reused 0, downloaded 289, added 289
+Progress: resolved 425, reused 0, downloaded 358, added 357
+Progress: resolved 425, reused 0, downloaded 414, added 414
+Progress: resolved 425, reused 0, downloaded 425, added 425, done
+✓ Lockfile passes supply-chain policies (483 entries in 10s)
+.../node_modules/unrs-resolver postinstall$ node postinstall.js
+.../node_modules/unrs-resolver postinstall: Done
+
+dependencies:
++ exceljs 4.4.0
++ lucide-react 1.35.0
++ next 16.3.3
++ nodemailer 9.0.6
++ react 19.2.8
++ react-dom 19.2.8
++ zod 4.4.3
+
+devDependencies:
++ @types/node 24.19.2
++ @types/nodemailer 8.0.1
++ @types/react 19.2.18
++ @types/react-dom 19.2.5
++ eslint 9.39.2
++ eslint-config-next 16.3.3
++ typescript 6.0.2
+
+Done in 10.7s using pnpm v11.19.0
