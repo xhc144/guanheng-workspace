@@ -212,7 +212,7 @@ function extract(directory: string, mode = "scan") {
   return spawnSync(process.execPath, ["--input-type=module", "-e", script, directory, mode, join(root, "tools/capability-inventory/mapping.json")], { encoding: "utf8", timeout: 30000 });
 }
 
-test("映射实现和测试变化即使不增路由也更新文件指纹，恢复后完全可重生成", t => {
+test("映射实现、备份脚本和测试变化即使不增路由也更新文件指纹，恢复后完全可重生成", t => {
   const { directory, put } = sourceFixture(t);
   const rules = JSON.parse(readFileSync(join(root, "tools/capability-inventory/mapping.json"), "utf8"));
   for (const rule of rules) for (const path of [...rule.primarySources, ...rule.relatedTests] as string[]) {
@@ -223,12 +223,12 @@ test("映射实现和测试变化即使不增路由也更新文件指纹，恢�
   }
   const initial = extract(directory, "build"); assert.equal(initial.status, 0, initial.stderr);
   const before = JSON.parse(initial.stdout);
-  for (const path of ["systems/project-ops/lib/runtime-health.ts", "systems/project-ops/tests/runtime-health.test.ts"]) {
+  for (const path of ["systems/project-ops/lib/runtime-health.ts", "systems/project-ops/scripts/backup.ts", "systems/project-ops/tests/runtime-health.test.ts"]) {
     const original = readFileSync(join(directory, path), "utf8");
     put(path, original + "// 合成变更：无新页面或HTTP方法\n");
     const changed = extract(directory, "build"); assert.equal(changed.status, 0, changed.stderr);
     const after = JSON.parse(changed.stdout);
-    assert.deepEqual(after.entries, before.entries, "库/测试变化不应伪造新的路由记录");
+    assert.deepEqual(after.entries, before.entries, "库/备份脚本/测试变化不应伪造新的路由记录");
     assert.equal(after.sourceDigest, before.sourceDigest);
     assert.notEqual(after.sourceFilesDigest, before.sourceFilesDigest, path);
     assert.notDeepEqual(after.sourceFiles, before.sourceFiles);
@@ -238,6 +238,23 @@ test("映射实现和测试变化即使不增路由也更新文件指纹，恢�
   }
   unlinkSync(join(directory, "systems/project-ops/lib/runtime-health.ts"));
   assert.notEqual(extract(directory, "build").status, 0, "映射实现缺失必须失败，不能沿用旧hash");
+});
+
+test("真实管理员API的备份脚本指纹绑定当前源码，目录读取保持只读", async t => {
+  const { db, tokens, request, changes } = fixture(t), before = changes();
+  db.exec("PRAGMA query_only=ON");
+  const response = GET(request(tokens.ADMIN));
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("cache-control"), "private, no-store");
+  assert.equal(response.headers.get("vary"), "Cookie");
+  const result = await response.json();
+  const path = "systems/project-ops/scripts/backup.ts";
+  const fingerprint = result.sourceFiles.find((file: { path: string }) => file.path === path);
+  assert.ok(fingerprint, "备份脚本必须保留为显式映射来源，即使它不是页面或HTTP方法");
+  assert.equal(fingerprint.sha256, createHash("sha256").update(readFileSync(join(root, path), "utf8")).digest("hex"));
+  assert.equal(result.sourceFilesDigest, createHash("sha256").update(JSON.stringify(result.sourceFiles)).digest("hex"));
+  assert.equal(result.total, 409);
+  assert.equal(changes(), before);
 });
 
 test("真实管理员API按运行诊断路径检索并返回当前实现和测试文件指纹", async t => {
