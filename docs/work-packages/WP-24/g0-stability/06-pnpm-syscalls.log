@@ -1,0 +1,80 @@
+{"started": "2026-10-26T19:00:08.014487+00:00", "cwd": "/workspace/guanheng-g0-stability/systems/project-ops", "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f", "command": ["strace", "-f", "-c", "pnpm", "--pm-on-fail=error", "--offline", "--version"]}
+strace: Process 1331 attached
+strace: Process 1332 attached
+strace: Process 1333 attached
+strace: Process 1334 attached
+strace: Process 1335 attached
+strace: Process 1336 attached
+strace: Process 1337 attached
+strace: Process 1338 attached
+strace: Process 1339 attached
+strace: Process 1340 attached
+strace: Process 1341 attached
+strace: Process 1342 attached
+strace: Process 1343 attached
+11.19.0
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- -------------------
+ 81.12    0.704797         545      1291       146 futex
+ 14.34    0.124613        5933        21           epoll_pwait
+  1.26    0.010922          21       517           munmap
+  1.04    0.009077          73       124           read
+  0.44    0.003783           9       385           mmap
+  0.34    0.002990          11       261           madvise
+  0.17    0.001454         363         4         2 wait4
+  0.16    0.001388           8       164        64 openat
+  0.15    0.001273           7       168           rt_sigprocmask
+  0.09    0.000807           6       121           close
+  0.09    0.000781           6       114        45 statx
+  0.08    0.000692           5       135           rt_sigaction
+  0.07    0.000633           6       103           fstat
+  0.06    0.000521          40        13         9 execve
+  0.06    0.000514          10        47           pread64
+  0.05    0.000452           9        48           getpid
+  0.05    0.000440           8        51           write
+  0.05    0.000427           1       264           mprotect
+  0.04    0.000388          35        11           clone3
+  0.04    0.000377           9        40        18 newfstatat
+  0.03    0.000304           5        55           brk
+  0.03    0.000274           8        31        15 fcntl
+  0.03    0.000241          18        13         8 access
+  0.03    0.000233           8        27           geteuid
+  0.02    0.000137           5        27           getgid
+  0.01    0.000124           4        27           getegid
+  0.01    0.000115           3        29           getuid
+  0.01    0.000102           6        17           prlimit64
+  0.01    0.000097           4        22           capget
+  0.01    0.000097           6        15           rseq
+  0.01    0.000093           8        11           prctl
+  0.01    0.000090          30         3           eventfd2
+  0.01    0.000070          35         2           clone
+  0.01    0.000067           8         8           lseek
+  0.01    0.000053           3        17           set_robust_list
+  0.01    0.000052           1        27        27 ioctl
+  0.01    0.000045           7         6           epoll_ctl
+  0.00    0.000042           7         6           pipe2
+  0.00    0.000040           8         5           gettid
+  0.00    0.000040           6         6           getrandom
+  0.00    0.000037           9         4           getppid
+  0.00    0.000028           9         3           epoll_create1
+  0.00    0.000027           9         3         3 io_uring_setup
+  0.00    0.000026           5         5           uname
+  0.00    0.000016           4         4           arch_prctl
+  0.00    0.000014           7         2           umask
+  0.00    0.000013           6         2           rt_sigreturn
+  0.00    0.000012           3         4           set_tid_address
+  0.00    0.000008           2         3           dup2
+  0.00    0.000008           8         1           chdir
+  0.00    0.000007           3         2           getcwd
+  0.00    0.000007           2         3           sched_getaffinity
+  0.00    0.000006           6         1           getpgrp
+  0.00    0.000000           0         1         1 mkdir
+  0.00    0.000000           0         5         4 readlink
+  0.00    0.000000           0         2           sched_getparam
+  0.00    0.000000           0         2           sched_getscheduler
+  0.00    0.000000           0         2           getdents64
+  0.00    0.000000           0         2           clock_nanosleep
+------ ----------- ----------- --------- --------- -------------------
+100.00    0.868854         202      4287       342 total
+
+{"ended": "2026-10-26T19:00:08.790935+00:00", "exitCode": 0, "elapsedSeconds": 0.7724555589999795}

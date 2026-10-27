@@ -1,0 +1,47 @@
+{
+  "repository": "xhc144/guanheng-workspace",
+  "checkout": "/workspace/guanheng-g0-stability",
+  "branch": "wp/g0-stability",
+  "base": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+  "sourceCommit": "2521b5878b5d3b76ceaf809ddce5790db93219ec",
+  "deadlineUtc": "2026-10-26T20:50:00Z",
+  "scope": [
+    "systems/project-ops/lib/runtime-health.ts",
+    "systems/project-ops/app/runtime-health/",
+    "systems/project-ops/app/api/runtime-health/",
+    "systems/project-ops/tests/runtime-health.test.ts",
+    "systems/project-ops/tests/integration-foundation.test.ts",
+    "docs/work-packages/WP-01/",
+    "docs/work-packages/WP-24/",
+    "reports/WP-01.md",
+    "reports/WP-24.md"
+  ],
+  "historicalEvidence": {
+    "pr11": {
+      "url": "https://github.com/xhc144/guanheng-workspace/pull/11",
+      "head": "a34e4fac9d9d076a78b0438fd8dfe879fe106fe6",
+      "stateOnRead": "open draft; ready denied and awaiting user per delegation",
+      "used": "Read only; no cherry-pick, merge, ready transition, or driver import",
+      "driverBlobsReadOnly": {
+        "docs/work-packages/WP-24/browser-check.mjs": "544b6a0f1aae6050add2105736add1692b6c0239",
+        "docs/work-packages/WP-24/browser-runtime.mjs": "54abc2f57a8ec9e480675661c819b8ad0c473da9",
+        "docs/work-packages/WP-24/browser-observer.cjs": "ef86ee26820ccf4eb9394a20ea236e856882a523"
+      }
+    },
+    "pr8": {
+      "url": "https://github.com/xhc144/guanheng-workspace/pull/8",
+      "head": "65146233002cb1a279a5a79fe4905c7549cdea8d",
+      "logBlobsReadOnly": {
+        "docs/work-packages/WP-04/61-g0-final-test.log": "cfab306a5d7edd1f915b154ec7c927fc1cf6d19e",
+        "docs/work-packages/WP-04/71-g0-delivery-test.log": "0186337f3e12977a6a314d6733c87ad434ffbde9"
+      },
+      "facts": ["61: spawnSync pnpm ETIMEDOUT at original 5000ms", "71: verification SELECT database is locked; runtime CLI pnpm unknown"],
+      "used": "Read only; no source mapping/catalog or capability branch changes"
+    }
+  },
+  "protectedRefsAtStart": {
+    "integration": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+    "main": "d551b18d1ac1f5df5422d34bf266089670ea16c1"
+  },
+  "restrictions": ["draft PR to integration only", "no ready, merge, deployment, or production data", "no package, lock, or dependency version changes", "no timeout or performance threshold increases", "no other domain, catalog, financial denied actions, or new business", "WP23 and G1 remain gated"]
+}

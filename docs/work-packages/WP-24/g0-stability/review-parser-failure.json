@@ -1,0 +1,7 @@
+{
+  "action": "second-review staged-file scope audit",
+  "outcome": "failed before commit",
+  "reason": "git diff --name-only quotes non-ASCII paths by default; assertion saw escaped quoted display text",
+  "correction": "read git diff --name-only -z and split NUL; no scope expansion or Git configuration change",
+  "source": "2521b5878b5d3b76ceaf809ddce5790db93219ec"
+}

@@ -55,7 +55,7 @@ export default async function RuntimeHealthPage() {
           <li>版本一致后执行 <code>pnpm install --frozen-lockfile</code>，再执行 <code>pnpm runtime:check</code>。</li>
           <li>安装被安全策略拒绝时保留完整错误，联系维护人员处理；不要更换软件源或关闭校验。</li>
         </ol>
-        <p>pnpm 未安装或读取超时会显示“未读取”，不会被视为检查通过。请把中文错误和版本号交给维护人员。</p>
+        <p>由 pnpm 启动时检查该启动版本，直接运行 Node 时查询本机 pnpm 命令。安装信息无效、命令失败或超时都会显示“未读取”及具体原因，请把中文错误和版本号交给维护人员。</p>
       </section>
     </div>
   </AppShell>;

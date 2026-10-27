@@ -1,0 +1,17 @@
+{"started": "2026-10-26T19:03:45.867077+00:00", "cwd": "/workspace/guanheng-g0-stability", "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f", "command": ["node", "docs/work-packages/WP-24/g0-stability/worker-close-repro.mjs"]}
+{
+  "controlledFixture": "EXCLUSIVE WAL connection, committed transaction, close held by Atomics",
+  "earlyResult": {
+    "success": true,
+    "transactionOpen": false
+  },
+  "verificationBeforeClose": {
+    "code": "ERR_SQLITE_ERROR",
+    "errcode": 5,
+    "message": "database is locked"
+  },
+  "workerExit": 0,
+  "verificationAfterExit": "SELECT succeeded"
+}
+
+{"ended": "2026-10-26T19:03:45.952467+00:00", "exitCode": 0, "elapsedSeconds": 0.0833280549999813}

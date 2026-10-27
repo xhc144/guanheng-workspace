@@ -1,0 +1,431 @@
+{
+  "createdAt": "2026-10-26T19:15:34.272718+00:00",
+  "repository": "xhc144/guanheng-workspace",
+  "base": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+  "source": "2521b5878b5d3b76ceaf809ddce5790db93219ec",
+  "applicationTree": "2c0a70e0605d0092f7f8447cfccfefefc18ab5ec",
+  "frozenInputs": {
+    "systems/project-ops/package.json": {
+      "baseBlob": "edf6e347c1206e1c156e267e7601bfac517e3aa6",
+      "sourceBlob": "edf6e347c1206e1c156e267e7601bfac517e3aa6",
+      "unchanged": true
+    },
+    "systems/project-ops/pnpm-lock.yaml": {
+      "baseBlob": "85f0f1849ba91bad250b4331c20e90be6474b867",
+      "sourceBlob": "85f0f1849ba91bad250b4331c20e90be6474b867",
+      "unchanged": true
+    },
+    "systems/project-ops/pnpm-workspace.yaml": {
+      "baseBlob": "08a830254e4bf894edfccacb4d6f390776ead989",
+      "sourceBlob": "08a830254e4bf894edfccacb4d6f390776ead989",
+      "unchanged": true
+    },
+    "systems/project-ops/.node-version": {
+      "baseBlob": "60ade1ae01e833a5c291c47883bf26fb031f7727",
+      "sourceBlob": "60ade1ae01e833a5c291c47883bf26fb031f7727",
+      "unchanged": true
+    }
+  },
+  "calledDriverBlobs": {
+    "systems/project-ops/tests/favicon-browser.mjs": "87690b863496672ff2b09971dcbde3dbf73b95e2",
+    "docs/work-packages/WP-24/browser-check.mjs": "8f58bb1e5c444eaf170840e25d84bd01d2ee1d03",
+    "docs/work-packages/WP-01/browser-check.mjs": "9cd07fa3d1dd70b7d1b69f7cd0a0b21b9063d3d3"
+  },
+  "logs": [
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/01-install.log",
+      "sha256": "96a590295b9a97d8c41708f82bc308f1e5d7ae9960bdd2467a0cfd496c27a0e0",
+      "started": "2026-10-26T18:58:26.350675+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "ended": "2026-10-26T18:58:27.393264+00:00",
+      "exitCode": 254,
+      "elapsedSeconds": 1.0403396350000023,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/02-install-original-permission.log",
+      "sha256": "2740072490d15d618c08b31b76b311251bac08fd98a80fba4ad1cad0d7bf07c1",
+      "started": "2026-10-26T18:58:44.645066+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "ended": "2026-10-26T18:59:04.303164+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 19.654765257000008,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/03-pnpm-version-before.log",
+      "sha256": "679d1866a7a734cb05b0cb2b5ad0a6031d7a166fc1da610d0ac1137193be570c",
+      "started": "2026-10-26T18:59:04.066798+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "pnpm",
+        "--pm-on-fail=error",
+        "--offline",
+        "--version"
+      ],
+      "ended": "2026-10-26T18:59:04.675963+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.6064679639999895,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/04-baseline-focused.log",
+      "sha256": "c4b2d7abbf25e004fdce75e974048937e026327fe5917f518be2ed89f6e1a5b3",
+      "started": "2026-10-26T18:59:21.265466+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "tests/runtime-health.test.ts",
+        "tests/integration-foundation.test.ts"
+      ],
+      "ended": "2026-10-26T18:59:24.439092+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 3.1672092880000093,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/05-baseline-full.log",
+      "sha256": "9ae43919862e8c9af34a3e0ead21d8412000ec38b5fbe77369954eb2a33d4e52",
+      "started": "2026-10-26T18:59:42.771845+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "ended": "2026-10-26T18:59:48.474172+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 5.69996443399998,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/06-pnpm-syscalls.log",
+      "sha256": "e4d7e38226c6bffd252629fcdcf2a11e01559bc8e9ed770b5ee814de1e87754e",
+      "started": "2026-10-26T19:00:08.014487+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "strace",
+        "-f",
+        "-c",
+        "pnpm",
+        "--pm-on-fail=error",
+        "--offline",
+        "--version"
+      ],
+      "ended": "2026-10-26T19:00:08.790935+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.7724555589999795,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/07-pnpm-cpu.log",
+      "sha256": "8f884f78b536c5d2dd1b3c70e2cee695144c32f7373e780900b5d0e94dd32a1b",
+      "started": "2026-10-26T19:00:54.976197+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "node",
+        "--cpu-prof",
+        "--cpu-prof-dir=/tmp/g0-pnpm-profile",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/pnpm/bin/pnpm.mjs",
+        "--pm-on-fail=error",
+        "--offline",
+        "--version"
+      ],
+      "ended": "2026-10-26T19:00:55.701407+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.7183254310000109,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/08-pnpm-contention-before.log",
+      "sha256": "5ca1f1c9dac225b99982deb7bb0f07df956a73412a2b62783b5dfed0eb5ecafd",
+      "started": "2026-10-26T19:01:45.824971+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "node",
+        "/tmp/g0-pnpm-contention.mjs"
+      ],
+      "ended": "2026-10-26T19:01:49.257580+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 3.430077474999962,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/09-worker-close-before.log",
+      "sha256": "24ea8a0cdbca880061c8d888f8a892cc027417a9b9490c29e782b0ee56184d2c",
+      "started": "2026-10-26T19:03:39.376862+00:00",
+      "cwd": "/workspace/guanheng-g0-stability",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "node",
+        "../../docs/work-packages/WP-24/g0-stability/worker-close-repro.mjs"
+      ],
+      "ended": "2026-10-26T19:03:39.410740+00:00",
+      "exitCode": 1,
+      "elapsedSeconds": 0.03187387899998839,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/10-worker-close-before-correct-cwd.log",
+      "sha256": "9134a6d25b973bc41903c9adb074783422550c370fe82f69557898c85c0d7ec7",
+      "started": "2026-10-26T19:03:45.867077+00:00",
+      "cwd": "/workspace/guanheng-g0-stability",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "node",
+        "docs/work-packages/WP-24/g0-stability/worker-close-repro.mjs"
+      ],
+      "ended": "2026-10-26T19:03:45.952467+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.0833280549999813,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/11-focused-after.log",
+      "sha256": "514920cf32a506af9c8447130068d47d05d2fe21a6024f32514365c7af451e5f",
+      "started": "2026-10-26T19:06:49.258728+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "tests/runtime-health.test.ts",
+        "tests/integration-foundation.test.ts"
+      ],
+      "ended": "2026-10-26T19:06:58.507378+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 9.245588497999961,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/12-runtime-command-after.log",
+      "sha256": "b61a2abf869a22618dc2835ae18bd5512da36d157eda8a7ed6d83dd310cc828b",
+      "started": "2026-10-26T19:07:11.550015+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "pnpm",
+        "runtime:check"
+      ],
+      "ended": "2026-10-26T19:07:12.301197+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 0.7484619109999358,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/13-typecheck-first.log",
+      "sha256": "d8cb1f69784b2fd86bd2ed2ab3039e8eb4768b3c901e9fd2d8146e36866cbf58",
+      "started": "2026-10-26T19:07:12.458431+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "ended": "2026-10-26T19:07:23.792184+00:00",
+      "exitCode": 2,
+      "elapsedSeconds": 11.33049414900006,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/14-lint-first.log",
+      "sha256": "aa5e7e4e89e230ca1cccd4198d37403b45903c27f17f6d61ea89e596190bc80d",
+      "started": "2026-10-26T19:07:13.702968+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "ended": "2026-10-26T19:07:27.377366+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 13.659309477999955,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/15-pnpm-contention-comparison.log",
+      "sha256": "e33a1f1b13f970ee334cc39895008d28ebc3cbcd92b505c0fbb967541da52f9b",
+      "started": "2026-10-26T19:08:44.161302+00:00",
+      "cwd": "/workspace/guanheng-g0-stability",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "node",
+        "docs/work-packages/WP-24/g0-stability/pnpm-contention-repro.mjs",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/pnpm/bin/pnpm.mjs"
+      ],
+      "ended": "2026-10-26T19:08:50.687093+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 6.523403848999919,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/16-negative-old-runtime.log",
+      "sha256": "ada956edb91339de3e19ccef4935477033bd2df82cbcf6bc854dc1ea7f926201",
+      "started": "2026-10-26T19:10:10.503066+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-name-pattern=启动器版本每次",
+        "tests/runtime-health.test.ts"
+      ],
+      "ended": "2026-10-26T19:10:11.581990+00:00",
+      "exitCode": 1,
+      "elapsedSeconds": 1.0742669500000375,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/17-negative-early-result.log",
+      "sha256": "afe3e45a5c6a3ce9416251a2b907495a7d866b83bcceff7ee9ec7972823cab01",
+      "started": "2026-10-26T19:10:11.712579+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-name-pattern=worker结果先于关闭",
+        "tests/integration-foundation.test.ts"
+      ],
+      "ended": "2026-10-26T19:10:12.266203+00:00",
+      "exitCode": 1,
+      "elapsedSeconds": 0.5514578180000171,
+      "phase": "baseline, exploratory, or controlled negative; not final fixed-source validation"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/18-final-test.log",
+      "sha256": "f28cd391a052c21df83130671595ace4dbea15033fe5054140d07cfd72bd7553",
+      "started": "2026-10-26T19:10:34.213742+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "2521b5878b5d3b76ceaf809ddce5790db93219ec",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "ended": "2026-10-26T19:10:47.387971+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 13.170850895000058,
+      "phase": "final fixed source"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/19-final-typecheck.log",
+      "sha256": "7460452f7b2c2142dbde473de4800ad6d5ed8f5c73ebb62395f5209761f419ea",
+      "started": "2026-10-26T19:10:34.211323+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "2521b5878b5d3b76ceaf809ddce5790db93219ec",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "ended": "2026-10-26T19:10:39.891687+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 5.6771290879999015,
+      "phase": "final fixed source"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/20-final-lint.log",
+      "sha256": "0071617b6ef7263847a312d15d1111aeb3f39c4ab1dd2a4efe1f9b1c8134695f",
+      "started": "2026-10-26T19:10:34.224200+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "2521b5878b5d3b76ceaf809ddce5790db93219ec",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "ended": "2026-10-26T19:10:45.359402+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 11.13313983799992,
+      "phase": "final fixed source"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/21-final-build.log",
+      "sha256": "ff995a04ebfe3f6f8e4175c835d7e333003b5b746bfbc19cf1c520735f05e5f2",
+      "started": "2026-10-26T19:11:35.139771+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "2521b5878b5d3b76ceaf809ddce5790db93219ec",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "ended": "2026-10-26T19:12:02.626294+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 27.490832222999984,
+      "phase": "final fixed source"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/22-final-browser.log",
+      "sha256": "c8c342d5b2ea6c89bf09ad96c65eba16f33501e8aed6acc73b60d078045e59fb",
+      "started": "2026-10-26T19:12:26.187032+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "2521b5878b5d3b76ceaf809ddce5790db93219ec",
+      "command": [
+        "node",
+        "tests/favicon-browser.mjs"
+      ],
+      "ended": "2026-10-26T19:13:16.927982+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 50.73899104100008,
+      "phase": "final fixed source"
+    },
+    {
+      "path": "docs/work-packages/WP-24/g0-stability/23-final-runtime-browser.log",
+      "sha256": "6878e76deefffa362a386371b8b7c5f9617af1f424adbbefa55cecd25fea9481",
+      "started": "2026-10-26T19:13:44.892279+00:00",
+      "cwd": "/workspace/guanheng-g0-stability/systems/project-ops",
+      "source": "2521b5878b5d3b76ceaf809ddce5790db93219ec",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "../../docs/work-packages/WP-01/browser-check.mjs",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs",
+        "/usr/bin/chromium",
+        "/pms"
+      ],
+      "ended": "2026-10-26T19:13:57.281560+00:00",
+      "exitCode": 0,
+      "elapsedSeconds": 12.38729861999991,
+      "phase": "final fixed source"
+    }
+  ],
+  "browserValidation": {
+    "standardGate": "22-final-browser.log: default build0/browser0 and /pms build0/browser0; console/pageerror/all >=400 assertions preserved",
+    "runtimeDomain": "23-final-runtime-browser.log: /pms, real versions, GET/HEAD/POST, four roles, 375/768/1440, refresh, console empty",
+    "pr11DriverImported": false
+  },
+  "testSummary": {
+    "tests": 110,
+    "passCount": 110,
+    "failCount": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0
+  },
+  "limitations": [
+    "Direct Node/Corepack/unrecognized launcher still uses real original 5000ms offline CLI and returns attention on failure; no stale healthy result",
+    "Controlled CPU contention and EXCLUSIVE WAL connection fixtures prove mechanisms, not the precise timing/resource trigger of every historical failure",
+    "Windows/macOS and real production were not run",
+    "PR11 ready remains denied pending user; no ready/merge/deploy or WP23/G1/new business"
+  ]
+}
