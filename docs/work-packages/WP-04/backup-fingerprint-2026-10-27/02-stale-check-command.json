@@ -1,0 +1,19 @@
+{
+  "cwd": "/workspace/guanheng-wp04",
+  "command": [
+    "node",
+    "tools/capability-inventory/generate.mjs",
+    "--check"
+  ],
+  "startedAt": "2026-10-27T05:31:20.159935+00:00",
+  "finishedAt": "2026-10-27T05:31:21.001581+00:00",
+  "exitCode": 1,
+  "head": "7cda6f5b8955715cc456b3c3aaffcd844fcaf42a",
+  "sourceHashes": {
+    "tools/capability-inventory/generate.mjs": "56b43606d361fd6aaa56bf3c06e8cc4a61d5acd1e36f9a958d8d4e77b10f84a2",
+    "systems/project-ops/tests/capabilities.test.ts": "f79cbf893267cac757fb4f47ace380ded5ba9695333d324493cc2a0ca5dd5743",
+    "systems/project-ops/lib/capabilities/catalog.json": "95547827f502e79f22a4b9ce969e198a8aa9dda296f88d69a8a569de18c00c85",
+    "docs/work-packages/WP-04/browser-check.mjs": "e18eecae15bb996a4499a061ba5cedcddaf64d596533a1faeef1a361a02f91f0"
+  },
+  "log": "docs/work-packages/WP-04/backup-fingerprint-2026-10-27/02-stale-check.log"
+}

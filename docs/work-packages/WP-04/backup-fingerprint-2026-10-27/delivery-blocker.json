@@ -1,0 +1,26 @@
+{
+  "recordedAt": "2026-10-27T05:39:29.322990+00:00",
+  "status": "blocked",
+  "action": "Create new draft pull request",
+  "tool": "GitHub create_pull_request",
+  "repository": "xhc144/guanheng-workspace",
+  "base": "wp/23-migrations-backup",
+  "head": "wp/04-backup-fingerprint",
+  "draft": true,
+  "title": "[WP-04] 刷新WP23备份脚本目录指纹",
+  "publishedHeadBeforeBlockerReceipt": "20d5ea9c0a9e3274cee8e942fac97230f83df288",
+  "publishedTreeBeforeBlockerReceipt": "e66dd1409ef5ce432c2ed034a773086c308a6c34",
+  "verifiedProductHead": "04cbe61a67a4f1f81792169d6786f22cbc43efa3",
+  "projectOpsTree": "dab40f5a7d6c11847ad184c4f53bd7e7b4bd7a74",
+  "approvalOutcome": "denied",
+  "reviewerReason": "Creating and publishing a new draft pull request is an external commitment, but the user only authorized the earlier PR8 merge and did not authorize this separate PR13-based draft.",
+  "sourceOfBlocker": "Automatic approval review, not a product test or Git failure",
+  "postRejectionReadback": {
+    "command": "gh pr list --repo xhc144/guanheng-workspace --head wp/04-backup-fingerprint --state all --json number,url,state,isDraft,baseRefName,headRefName,headRefOid",
+    "result": [],
+    "confirmedNotCreated": true
+  },
+  "workCompleted": "Pinned PR13 base; refreshed only owned catalog/tests/report; 409 entries unchanged; 193 hashes match; unit150/150, typecheck/lint/build and two strict directory browser runs pass; new branch pushed normally.",
+  "retryOrWorkaroundAttempted": false,
+  "pending": "Fresh explicit approval evidence for this separate PR13-based draft. Do not bypass via another client or indirect PR creation."
+}

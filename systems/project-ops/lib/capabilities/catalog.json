@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "sourceBase": "44b05e5e3e6917bc60041d29657e67cc37a5c551",
   "sourceDigest": "3df07d6c651586f959667f1545f3257946518acf8967f46d5b8fd6054fcbb717",
-  "sourceFilesDigest": "28e942dca7668f6bf4bf3afe98cd1c45693c31b33ab7502ed012a0a40cc695fe",
+  "sourceFilesDigest": "9f9358d50fe9be51402f6b74ea50094ff5969f81385e7c13f4a23fe548507b0c",
   "sourceFiles": [
     {
       "path": "systems/pms-suite/DeepSeek版/backend/app/main.py",
@@ -678,7 +678,7 @@
     },
     {
       "path": "systems/project-ops/scripts/backup.ts",
-      "sha256": "f8188f2d298c9fe47000c52d230970414b6a7393e54c83dba7f5e0caf8cea8f7"
+      "sha256": "c149ab2f5f104e4f96d2bf6d62428d5f0e664d6a6f171135854458359019c471"
     },
     {
       "path": "systems/project-ops/tests/auth-permissions.test.ts",
@@ -686,7 +686,7 @@
     },
     {
       "path": "systems/project-ops/tests/capabilities.test.ts",
-      "sha256": "f79cbf893267cac757fb4f47ace380ded5ba9695333d324493cc2a0ca5dd5743"
+      "sha256": "aeb33b7139b7c4307141397a7b7415579a16d52fc345cedb68407040f118322c"
     },
     {
       "path": "systems/project-ops/tests/commissions.test.ts",
