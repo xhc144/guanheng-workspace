@@ -103,6 +103,13 @@ try {
   await page.getByRole('heading',{name:'盘点不等于运行通过',exact:true}).waitFor();
   assert.match(await page.locator('main').innerText(),/114项完成/);
   assert.equal(await page.locator('ul[aria-label="能力来源记录"] > li').count(),25);
+  const versionSummary=page.getByText('盘点范围与版本',{exact:true});await versionSummary.click();
+  assert.match(await page.locator('main').innerText(),new RegExp(sourceCatalog.sourceBase));
+  assert.match(await page.locator('main').innerText(),new RegExp(sourceCatalog.sourceFilesDigest));
+  const fingerprintDimensions=await page.evaluate(()=>({viewport:innerWidth,body:document.body.scrollWidth,document:document.documentElement.scrollWidth}));
+  assert.ok(fingerprintDimensions.body<=width&&fingerprintDimensions.document<=width,`${width}px文件指纹区域横向溢出`);
+  await page.screenshot({path:join(runtime,`screenshots/capabilities-fingerprint-${width}.png`),fullPage:true});
+  await versionSummary.click();
   await page.getByLabel('来源系统',{exact:true}).selectOption('DeepSeek版');
   await page.getByLabel('搜索来源或能力',{exact:true}).fill('预算');
   const apply=page.getByRole('button',{name:'应用筛选',exact:true});
@@ -116,7 +123,7 @@ try {
   assert.ok(dimensions.body<=width&&dimensions.document<=width,`${width}px横向溢出`);
   await page.screenshot({path:join(runtime,`screenshots/capabilities-${width}.png`),fullPage:true});
   if(width===375)await page.screenshot({path:join(runtime,'screenshots/capabilities-375-viewport.png')});
-  results.push({check:`${width}px真实中文筛选、证据展开、键盘焦点、44px触控及布局`,status:'通过',dimensions});
+  results.push({check:`${width}px真实中文筛选、证据展开、键盘焦点、44px触控及布局`,status:'通过',dimensions,fingerprintDimensions});
  }
  await navigate(`${base}/capabilities`);await follow(page.getByRole('link',{name:'下一页',exact:true}));await page.waitForURL(url=>url.searchParams.get('page')==='2');assert.match(await page.getByRole('status').innerText(),/第 2/);
  await navigate(`${base}/capabilities?q=WP04_不存在的合成能力`);await page.getByRole('heading',{name:'没有符合条件的来源记录',exact:true}).waitFor();

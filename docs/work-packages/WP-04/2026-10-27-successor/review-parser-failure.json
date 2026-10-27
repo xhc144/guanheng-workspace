@@ -1,0 +1,11 @@
+{
+  "action": "Compare original 409 entries with refreshed catalog",
+  "outcome": "failed assertion in an ad hoc review, no product test failed",
+  "reason": "The first review expected only /runtime-health to change its source hash, overlooking this task's intentional /capabilities page change.",
+  "observed": [
+    {"route": "/capabilities", "fields": ["sha256"]},
+    {"route": "/runtime-health", "fields": ["sha256"]}
+  ],
+  "resolution": "The reproducible review.py accepts exactly these two reviewed page fingerprints; all entry identities, decisions, owners and mapping rules must remain unchanged. It also binds runtime implementation, page and test hashes to the authorized integration commit.",
+  "permissions": "No denied operation was retried or rerouted."
+}
