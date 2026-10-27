@@ -1,0 +1,92 @@
+[
+  {
+    "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+    "command": "pnpm install --frozen-lockfile",
+    "exitCode": 254,
+    "finishedAtFromLogMtime": "2026-10-26T17:12:26.734020+00:00",
+    "startedAt": null,
+    "note": "默认pnpm目录不可写；随后获准原路径安装",
+    "log": "docs/work-packages/WP-04/01-install.log"
+  },
+  {
+    "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+    "command": "pnpm install --frozen-lockfile",
+    "exitCode": 0,
+    "finishedAtFromLogMtime": "2026-10-26T17:13:15.407586+00:00",
+    "startedAt": null,
+    "note": "原源原默认存储安装成功；Node24.19.0/pnpm11.19.0",
+    "log": "docs/work-packages/WP-04/02-install-original-store.log"
+  },
+  {
+    "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+    "command": "pnpm test",
+    "exitCode": 0,
+    "finishedAtFromLogMtime": "2026-10-26T17:18:42.291516+00:00",
+    "startedAt": null,
+    "note": "当时82通过（包含早期1条本包测试），不是最终测试数",
+    "log": "docs/work-packages/WP-04/03-test-first.log"
+  },
+  {
+    "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+    "command": "pnpm typecheck",
+    "exitCode": 0,
+    "finishedAtFromLogMtime": "2026-10-26T17:18:29.500144+00:00",
+    "startedAt": null,
+    "note": "早期版本通过",
+    "log": "docs/work-packages/WP-04/04-typecheck-first.log"
+  },
+  {
+    "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+    "command": "pnpm lint",
+    "exitCode": 0,
+    "finishedAtFromLogMtime": "2026-10-26T17:18:28.320202+00:00",
+    "startedAt": null,
+    "note": "早期版本通过",
+    "log": "docs/work-packages/WP-04/05-lint-first.log"
+  },
+  {
+    "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+    "command": "node --experimental-strip-types --test tests/capabilities.test.ts",
+    "exitCode": 1,
+    "finishedAtFromLogMtime": "2026-10-26T17:21:57.993993+00:00",
+    "startedAt": null,
+    "note": "合成基础版缺失详情组件使提取器崩溃；修成按真实分支提取",
+    "log": "docs/work-packages/WP-04/06-capabilities-first.log"
+  },
+  {
+    "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+    "command": "pnpm build",
+    "exitCode": 0,
+    "finishedAtFromLogMtime": "2026-10-26T17:22:23.968720+00:00",
+    "startedAt": null,
+    "note": "早期构建通过",
+    "log": "docs/work-packages/WP-04/07-build-first.log"
+  },
+  {
+    "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+    "command": "node --experimental-strip-types --test tests/capabilities.test.ts",
+    "exitCode": 0,
+    "finishedAtFromLogMtime": "2026-10-26T17:22:58.823016+00:00",
+    "startedAt": null,
+    "note": "12条本包回归通过",
+    "log": "docs/work-packages/WP-04/08-capabilities-retest.log"
+  },
+  {
+    "cwd": "/workspace/guanheng-wp04",
+    "command": "node docs/work-packages/WP-04/browser-check.mjs /opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs /usr/bin/chromium",
+    "exitCode": 1,
+    "finishedAtFromLogMtime": "2026-10-26T17:24:11.211480+00:00",
+    "startedAt": null,
+    "note": "Vary含Next追加字段，修正脚本包含Cookie的断言",
+    "log": "docs/work-packages/WP-04/09-browser-first.log"
+  },
+  {
+    "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+    "command": "node --experimental-strip-types --test tests/capabilities.test.ts",
+    "exitCode": 0,
+    "finishedAtFromLogMtime": "2026-10-26T17:27:38.497049+00:00",
+    "startedAt": null,
+    "note": "14条本包回归通过",
+    "log": "docs/work-packages/WP-04/11-capabilities-boundaries.log"
+  }
+]

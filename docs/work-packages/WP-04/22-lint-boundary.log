@@ -1,0 +1,8 @@
+cwd: /workspace/guanheng-wp04/systems/project-ops
+command: ["pnpm", "lint"]
+startedAt: 2026-10-26T17:34:40.526478+00:00
+
+$ eslint .
+
+finishedAt: 2026-10-26T17:35:04.446707+00:00
+exitCode: 0

@@ -1,0 +1,31 @@
+{
+  "recordedAt": "2026-10-27T05:01:49.345256+00:00",
+  "repository": "xhc144/guanheng-workspace",
+  "branch": "wp/04-capabilities",
+  "pr": "https://github.com/xhc144/guanheng-workspace/pull/8",
+  "verifiedPublishedHead": "364ec21229e2675b77c48d9bec2435909e4821ab",
+  "verifiedPublishedTree": "fa5779f2abc99e3a042c00279fd82263d54c7876",
+  "baseRefName": "integration",
+  "isDraft": true,
+  "state": "OPEN",
+  "statusCheckRollup": [],
+  "nativePush": {
+    "exitCode": 0,
+    "range": "6514623..364ec21",
+    "force": false
+  },
+  "descriptionUpdate": {
+    "firstAction": "gh pr edit 8 --repo xhc144/guanheng-workspace --body-file /tmp/wp04-pr-body.md",
+    "firstExitCode": 1,
+    "error": "GraphQL: Projects (classic) is being deprecated ... (repository.pullRequest.projectCards)",
+    "firstOutcome": "Readback confirmed old description unchanged; head push had succeeded.",
+    "failureKind": "CLI GraphQL compatibility error, no policy or permission denial",
+    "secondAction": "GitHub update_pull_request, body only",
+    "secondOutcome": "Action completed; subsequent native readback body exactly equals prepared text",
+    "bodySha256": "ea933adfdc3e84e30a56432f003eabda545eaeb686880174ac8e2d966c51d938"
+  },
+  "allFrozenFilesVerifiedAfterCommit": true,
+  "workingTreeCleanAfterCommit": true,
+  "publicationOnlyFollowup": "This receipt is committed afterward; final pushed receipt-only head and tree are reported in final handoff. Product/test/browser freeze and app subtree remain unchanged.",
+  "limits": "No ready/merge/main/deployment/CI-green claim; no blocked or denied actions remain."
+}

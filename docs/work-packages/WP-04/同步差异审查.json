@@ -1,0 +1,302 @@
+{
+  "integrationMerged": "22aab8477eeef3cb498f3be3c739b631b295ea12",
+  "mergeCommit": "24c34536197c156a16650b8b1c7c175f978a9567",
+  "sourceBase": "22aab8477eeef3cb498f3be3c739b631b295ea12",
+  "oldDigest": "7309ddef9ea7b498369240c896d77a54f05334c86295c815f5804346741d6cf7",
+  "newDigest": "3f9c8386e24b5eb57b8f58a26b1f1d7a5a6d758ed332673f1f9a080302a5d558",
+  "recordCount": 405,
+  "businessDecisionChanges": [],
+  "mappingSha256": "674efd5f4cfc843ed289320d5307ef2a832f5eb04015e796ed6ffb33f505535b",
+  "sourceHashChanged": [
+    {
+      "system": "DeepSeek版",
+      "route": "/api/config",
+      "method": "GET",
+      "path": "systems/pms-suite/DeepSeek版/backend/app/main.py",
+      "oldSha": "56b8e3051a493ae1185fa8a553b065a1e63e1ba8f72d7979df9ec2822e1edc8b",
+      "newSha": "cae5f430eb40ca843b71f612bf5f7f167a215ad8b35a4cabb8483737d8325298"
+    },
+    {
+      "system": "DeepSeek版",
+      "route": "/api/health",
+      "method": "GET",
+      "path": "systems/pms-suite/DeepSeek版/backend/app/main.py",
+      "oldSha": "56b8e3051a493ae1185fa8a553b065a1e63e1ba8f72d7979df9ec2822e1edc8b",
+      "newSha": "cae5f430eb40ca843b71f612bf5f7f167a215ad8b35a4cabb8483737d8325298"
+    },
+    {
+      "system": "DeepSeek版",
+      "route": "/api/status",
+      "method": "GET",
+      "path": "systems/pms-suite/DeepSeek版/backend/app/main.py",
+      "oldSha": "56b8e3051a493ae1185fa8a553b065a1e63e1ba8f72d7979df9ec2822e1edc8b",
+      "newSha": "cae5f430eb40ca843b71f612bf5f7f167a215ad8b35a4cabb8483737d8325298"
+    },
+    {
+      "system": "DeepSeek版",
+      "route": "/login",
+      "method": "PAGE",
+      "path": "systems/pms-suite/DeepSeek版/frontend/src/pages/Login.tsx",
+      "oldSha": "b221c1dc6e6614024fadda98204c66c6e5f2115963e8b76641a882bc891e233b",
+      "newSha": "c3a835b886a3d7f370ed4b1c9695fff84a37ff310d50eeb0f30492add00f542e"
+    },
+    {
+      "system": "Kimi版",
+      "route": "/api/v1/health",
+      "method": "GET",
+      "path": "systems/pms-suite/Kimi版/backend/app/main.py",
+      "oldSha": "9bf5945d8389be08dffc8e96484b56e5a8fff8dfaea4125e5cc70a5015fd861a",
+      "newSha": "7e0a575cb5765fe7a3b3e4d83cf59615c41442bc7f2c3657ba90619a8330bb1d"
+    },
+    {
+      "system": "Kimi版",
+      "route": "/login",
+      "method": "PAGE",
+      "path": "systems/pms-suite/Kimi版/frontend/src/pages/Login.tsx",
+      "oldSha": "063648bb48b91d35f0c4ae64ccb72f46c3f81a5d65e71d455b2d5a9d340ab81c",
+      "newSha": "4d2d6e0d99abde9e2a63d21084b5dac2ffb0e7d6644ddeef9c90a51acb09a0ec"
+    },
+    {
+      "system": "主线",
+      "route": "/capabilities",
+      "method": "PAGE",
+      "path": "systems/project-ops/app/capabilities/page.tsx",
+      "oldSha": "3497adee449e89cf3fea622aca498db73607fd11f2b34e1e083c78476cf81357",
+      "newSha": "96a7b4bc49ca6bc33c644142466132f0b8eb338903e26673273c30cb06d43fbf"
+    }
+  ],
+  "referenceAdded": [
+    [
+      "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+      "test_actual_process_restart_preserves_changed_password",
+      204,
+      "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+    ],
+    [
+      "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+      "test_demo_symlink_refused_without_touching_external_file",
+      163,
+      "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+    ],
+    [
+      "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+      "test_explicit_synthetic_nonsequential_key_can_load",
+      247,
+      "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+    ],
+    [
+      "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+      "test_file_only_key_and_explicit_override_refused",
+      63,
+      "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+    ],
+    [
+      "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+      "test_fresh_demo_login_and_all_seed_entrypoints_preserve_password",
+      100,
+      "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+    ],
+    [
+      "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+      "test_production_demo_mode_refused",
+      80,
+      "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+    ],
+    [
+      "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+      "test_production_existing_synthetic_database_unchanged",
+      185,
+      "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+    ],
+    [
+      "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+      "test_production_refuses_missing_empty_default_and_weak_keys",
+      37,
+      "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+    ],
+    [
+      "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+      "test_production_seeder_refused_without_database_write",
+      151,
+      "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+    ],
+    [
+      "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+      "test_production_startup_does_not_create_database",
+      89,
+      "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+    ],
+    [
+      "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+      "test_unknown_environment_refused",
+      57,
+      "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+    ],
+    [
+      "systems/pms-suite/DeepSeek版/backend/tests/test_auth_config.py",
+      "test_valid_runtime_key_loads_without_disclosure",
+      47,
+      "13ae16e894800d1d3c849a7dfaac2d80282213d47069df336f08c29e546a6486"
+    ],
+    [
+      "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+      "test_actual_process_restart_preserves_changed_password",
+      158,
+      "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+    ],
+    [
+      "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+      "test_demo_identity_override_refused",
+      109,
+      "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+    ],
+    [
+      "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+      "test_demo_symlink_refused_without_touching_external_file",
+      117,
+      "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+    ],
+    [
+      "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+      "test_explicit_synthetic_nonsequential_key_can_load",
+      207,
+      "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+    ],
+    [
+      "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+      "test_file_only_key_and_explicit_override_refused",
+      63,
+      "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+    ],
+    [
+      "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+      "test_production_demo_mode_refused",
+      80,
+      "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+    ],
+    [
+      "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+      "test_production_existing_synthetic_database_unchanged",
+      139,
+      "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+    ],
+    [
+      "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+      "test_production_refuses_missing_empty_default_and_weak_keys",
+      37,
+      "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+    ],
+    [
+      "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+      "test_production_seed_baseline_refused_without_database_write",
+      100,
+      "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+    ],
+    [
+      "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+      "test_production_startup_does_not_create_database",
+      89,
+      "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+    ],
+    [
+      "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+      "test_unknown_environment_refused",
+      57,
+      "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+    ],
+    [
+      "systems/pms-suite/Kimi版/backend/tests/test_auth_config.py",
+      "test_valid_runtime_key_loads_without_disclosure",
+      47,
+      "ae19b2553a58845c6d8dbff4e74e7cbe7f726338350894fb76ae612807382c48"
+    ],
+    [
+      "systems/pms-suite/Kimi版/backend/tests/test_auth_smoke.py",
+      "test_admin_login_smoke",
+      9,
+      "ae24a1a591db55d4dc7e048cbee9420096b7f938aa0565c5f9df64eeb5638fc7"
+    ],
+    [
+      "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+      "test_actual_process_restart_preserves_changed_password",
+      133,
+      "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+    ],
+    [
+      "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+      "test_basic_production_rejects_demo_startup_and_reset",
+      80,
+      "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+    ],
+    [
+      "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+      "test_demo_symlink_refused_without_touching_external_file",
+      92,
+      "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+    ],
+    [
+      "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+      "test_explicit_synthetic_nonsequential_key_can_load",
+      176,
+      "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+    ],
+    [
+      "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+      "test_file_only_key_and_explicit_override_refused",
+      63,
+      "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+    ],
+    [
+      "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+      "test_production_existing_synthetic_database_unchanged",
+      114,
+      "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+    ],
+    [
+      "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+      "test_production_refuses_missing_empty_default_and_weak_keys",
+      37,
+      "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+    ],
+    [
+      "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+      "test_unknown_environment_refused",
+      57,
+      "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+    ],
+    [
+      "systems/pms-suite/基础版/backend/tests/test_auth_config.py",
+      "test_valid_runtime_key_loads_without_disclosure",
+      47,
+      "7c4934cdf6e3d6475a32ab974351f548d1c5461fab1f70fac1bd721e1210ff8a"
+    ],
+    [
+      "systems/pms-suite/基础版/backend/tests/test_login_flow.py",
+      "test_health_and_login_flow",
+      11,
+      "3e8d39d4c5317be9b76a4f282cb5f9090a730ac01925e50f44c548b6636d6889"
+    ]
+  ],
+  "referenceRemovedOrReplaced": [
+    [
+      "systems/pms-suite/Kimi版/backend/tests/test_auth_smoke.py",
+      "test_admin_login_smoke",
+      10,
+      "42523fef0fa85ca22ec1d9937b40cb90188f598bd3728665f5911b8c58aef55d"
+    ],
+    [
+      "systems/pms-suite/基础版/backend/tests/test_login_flow.py",
+      "test_health_and_login_flow",
+      6,
+      "dbf79d5c4f8fc176358ea94638a4d9bbeb8f98780d04b9b171d129202b6625be"
+    ]
+  ],
+  "authConfigReferenceCounts": {
+    "基础版": 9,
+    "Kimi版": 12,
+    "DeepSeek版": 12
+  },
+  "checkedAt": "2026-10-26T17:50:54.080507+00:00",
+  "comparisonHead": "28f6b78371d2c80f6bc7e6866764b21ae5a6b7c5",
+  "fixedSourceCommit": "db9bd2ba3c19fcde92524aba61053adda2919dfe"
+}
