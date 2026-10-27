@@ -1,0 +1,398 @@
+前置原始回显（时间区间：2026-10-26 16:29:06–16:31:24 UTC；这些初始命令未逐条计秒，不补造精确秒）
+cwd: /workspace/guanheng-wp18/company/投标方案生成服务/方案生成服务
+命令: npm install --package-lock=false
+退出码: 1
+原始输出:
+npm error code ENOENT
+npm error syscall mkdir
+npm error path /home/agent/.npm/_cacache
+npm error errno ENOENT
+npm error enoent Invalid response body while trying to fetch https://registry.npmjs.org/qrcode: ENOENT: no such file or directory, mkdir '/home/agent/.npm/_cacache'
+npm error enoent This is related to npm not being able to find a file.
+npm error enoent
+npm error Log files were not written due to an error writing to the directory: /home/agent/.npm/_logs
+npm error You can rerun the command with `--loglevel=verbose` to see the logs in your terminal
+
+命令: npm test
+退出码: 1
+原始输出:
+> guanheng-proposals@1.0.0 test
+> node --test test/*.test.js
+
+✔ polling cannot re-enable submit; duplicate clicks blocked; reload keeps request identity (59.967183ms)
+✖ HTTP login, fixed amount, unpaid download protection, owner isolation and disabled payments (23.520975ms)
+✔ price is server controlled; retry persists same order across restart (5.751354ms)
+✔ orders cannot be read by other users or by traversal (0.99061ms)
+✔ only exact verified payment queues an order, transaction cannot pay twice (1.333569ms)
+✔ signed AES-GCM callback verifies, tampering fails, wrong merchant and amount fail (203.165432ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 427.22722
+
+✖ failing tests:
+
+test at test/http.test.js:2:1
+✖ HTTP login, fixed amount, unpaid download protection, owner isolation and disabled payments (23.520975ms)
+  Error: Cannot find module './templates/manifest.json'
+  Require stack:
+  - /workspace/guanheng-wp18/company/投标方案生成服务/方案生成服务/generator.js
+  - /workspace/guanheng-wp18/company/投标方案生成服务/方案生成服务/server.js
+  - /workspace/guanheng-wp18/company/投标方案生成服务/方案生成服务/test/http.test.js
+      at Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+      at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+      at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+      at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+      at Module._load (node:internal/modules/cjs/loader:1294:5)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+      at Module.require (node:internal/modules/cjs/loader:1617:12)
+      at require (node:internal/modules/helpers:153:16)
+      at Object.<anonymous> (/workspace/guanheng-wp18/company/投标方案生成服务/方案生成服务/generator.js:4:16)
+      at Module._compile (node:internal/modules/cjs/loader:1872:14) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [
+      '/workspace/guanheng-wp18/company/投标方案生成服务/方案生成服务/generator.js',
+      '/workspace/guanheng-wp18/company/投标方案生成服务/方案生成服务/server.js',
+      '/workspace/guanheng-wp18/company/投标方案生成服务/方案生成服务/test/http.test.js'
+    ]
+  }
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+
+同路径重试安装：通过工具仅增加/home/agent/.npm写权限，命令和默认缓存不变，无策略拒绝/关闭策略/换源。
+命令: npm install --package-lock=false
+退出码: 0
+原始输出:
+added 29 packages in 8s
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+
+开发阶段失败保留（前置区间之后、16:38:44 UTC之前，未逐条计秒）
+命令: node --test test/generator.test.js test/orders.test.js
+退出码: 1
+原始输出:
+✔ 缺母版仍可加载服务；生成入口以中文拒绝且不创建订单文件夹 (79.389422ms)
+✔ 虚构清单严格验证槽位、长度与编号；密钥及真实导出仍需独立配置 (1.454168ms)
+✔ 内容校验会纠正缺失/多余编号、超长、空值、旧客户标记、截断及错误JSON (30.857426ms)
+✔ 连续三次无效输出保留失败订单；重试使用同一付款和订单且不制造文件 (4.835076ms)
+✔ 导出失败可用已验证缓存重试；坏缓存、异客户及更新清单不会复用旧内容 (5.872237ms)
+✖ 并发排队只执行一单，未支付不会生成；服务恢复不丢失已付款任务 (5.306395ms)
+✔ price is server controlled; retry persists same order across restart (13.455077ms)
+✔ orders cannot be read by other users or by traversal (1.132781ms)
+✔ only exact verified payment queues an order, transaction cannot pay twice (2.00183ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 265.811353
+
+✖ failing tests:
+
+test at test/generator.test.js:142:1
+✖ 并发排队只执行一单，未支付不会生成；服务恢复不丢失已付款任务 (5.306395ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'queued'
+  - 'generating'
+
+      at TestContext.<anonymous> (/workspace/guanheng-wp18/company/投标方案生成服务/方案生成服务/test/generator.test.js:155:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'queued',
+    expected: 'generating',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+修复：队列由文件名顺序改为创建时间排序，测试设置明确先后时间；保留断言并复测11/11，再随新增边界测试增长到最终套件。
+
+以下为最终检查的自动时间戳与完整回显：
+
+开始UTC: 2026-10-26T16:52:21.163677+00:00
+结束UTC: 2026-10-26T16:52:21.639304+00:00
+cwd: /workspace/guanheng-wp18/company/投标方案生成服务/方案生成服务
+命令: npm install --package-lock=false
+退出码: 0
+原始输出:
+
+up to date in 391ms
+
+开始UTC: 2026-10-26T16:52:33.910452+00:00
+结束UTC: 2026-10-26T16:52:34.993467+00:00
+cwd: /workspace/guanheng-wp18/company/投标方案生成服务/方案生成服务
+命令: npm test
+退出码: 0
+原始输出:
+
+> guanheng-proposals@1.0.0 test
+> node --test test/*.test.js
+
+✔ polling cannot re-enable submit; duplicate clicks blocked; reload keeps request identity (19.841913ms)
+✔ 缺母版时中文说明降级且禁止程序化提交，草稿仍可保存，历史订单无假支付/重试按钮 (45.505076ms)
+✔ 配置读取失败保持禁止提交，浏览器草稿写入失败有中文说明 (4.71891ms)
+✔ 历史已付款失败单可在支付关闭时重试；网络故障仍返回中文，未付款失败单无假按钮 (3.167347ms)
+✔ 缺母版仍可加载生成器；生成入口以中文拒绝且不创建订单文件夹 (102.729479ms)
+✔ 虚构清单严格验证槽位、长度与编号；密钥及真实导出仍需独立配置 (2.22055ms)
+✔ 内容校验会纠正缺失/多余编号、超长、空值、旧客户标记、截断及错误JSON (26.949455ms)
+✔ 连续三次无效输出保留失败订单；重试使用同一付款和订单且不制造文件 (6.288595ms)
+✔ 导出失败可用已验证缓存重试；坏缓存、异客户及更新清单不会复用旧内容 (8.082027ms)
+✔ 并发排队只执行一单，未支付不会生成；服务恢复不丢失已付款任务 (4.638612ms)
+✔ 51个槽位按50+1真实分批，边界长度可用，强制客户名超长会失败且不导出 (6.75248ms)
+✔ 同资料不同账号/订单也不能复用他单缓存；本单资料改变后必须重新适配 (3.844546ms)
+✔ 外部请求失败不吞成成功，失败后释放队列锁并可处理后续订单 (4.056343ms)
+✔ 原生导出使用独立尝试目录；外部命令无输出不能算成功，失败会清理尝试目录 (1.699355ms)
+✔ HTTP login, fixed amount, unpaid download protection, owner isolation and disabled payments (122.460875ms)
+✔ 无母版时模块无磁盘副作用，健康/配置和已有订单接口可用并说明中文降级 (106.825634ms)
+✔ 即使传入完整虚构商户配置也不能下单、拉起支付或接收付款回调 (10.129392ms)
+✔ 真实HTTP免费重试闭环：本人已付款失败单入队，重复请求幂等且不会重新收费 (21.936355ms)
+✔ 缺母版不能重试已付款失败单；订单、付款和失败状态全部保留 (6.922191ms)
+✔ 下载拒绝未支付、非本人、畸形ID、路径穿越及文件/目录符号链接 (23.439987ms)
+✔ 过期/未知会话与缺账户文件返回401，坏账户文件返回中文503 (11.908715ms)
+✔ 母版版本与历史订单不一致时拒绝重试，保留失败状态而不反复入队 (5.879909ms)
+✔ price is server controlled; retry persists same order across restart (9.287596ms)
+✔ orders cannot be read by other users or by traversal (2.163372ms)
+✔ only exact verified payment queues an order, transaction cannot pay twice (3.782083ms)
+✔ 免费重试按本人和已付款失败状态校验，重复请求只保留一条事件 (4.878413ms)
+✔ 完成状态仍不能让未支付订单公开下载，畸形UUID与路径穿越均拒绝 (1.019852ms)
+✔ 请求标识必须为字符串，数组与对象不能绕开幂等校验 (0.547305ms)
+✔ 真实命令行进程无母版也可启动，健康接口降级且未登录订单仍受保护 (147.655046ms)
+✔ 无效端口和不可写数据目标以中文退出1，不默默启动其他端口 (284.183974ms)
+✔ 端口占用以中文退出1，不保留后台生成定时器 (69.705203ms)
+✔ signed AES-GCM callback verifies, tampering fails, wrong merchant and amount fail (93.467387ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 894.038156
+
+开始UTC: 2026-10-26T16:54:11.258946+00:00
+结束UTC: 2026-10-26T16:54:12.301426+00:00
+cwd: /workspace/guanheng-wp18/company/投标方案生成服务/方案生成服务
+命令: npm test
+退出码: 0
+原始输出:
+
+> guanheng-proposals@1.0.0 test
+> node --test test/*.test.js
+
+✔ polling cannot re-enable submit; duplicate clicks blocked; reload keeps request identity (12.861988ms)
+✔ 缺母版时中文说明降级且禁止程序化提交，草稿仍可保存，历史订单无假支付/重试按钮 (31.759137ms)
+✔ 配置读取失败保持禁止提交，浏览器草稿写入失败有中文说明 (2.975597ms)
+✔ 历史已付款失败单可在支付关闭时重试；网络故障仍返回中文，未付款失败单无假按钮 (3.333449ms)
+✔ 缺母版仍可加载生成器；生成入口以中文拒绝且不创建订单文件夹 (62.769893ms)
+✔ 虚构清单严格验证槽位、长度与编号；密钥及真实导出仍需独立配置 (2.692113ms)
+✔ 内容校验会纠正缺失/多余编号、超长、空值、旧客户标记、截断及错误JSON (20.072448ms)
+✔ 连续三次无效输出保留失败订单；重试使用同一付款和订单且不制造文件 (3.764306ms)
+✔ 导出失败可用已验证缓存重试；坏缓存、异客户及更新清单不会复用旧内容 (6.789907ms)
+✔ 并发排队只执行一单，未支付不会生成；服务恢复不丢失已付款任务 (3.358716ms)
+✔ 51个槽位按50+1真实分批，边界长度可用，强制客户名超长会失败且不导出 (3.375799ms)
+✔ 同资料不同账号/订单也不能复用他单缓存；本单资料改变后必须重新适配 (2.334091ms)
+✔ 外部请求失败不吞成成功，失败后释放队列锁并可处理后续订单 (1.901737ms)
+✔ 原生导出使用独立尝试目录；外部命令无输出不能算成功，失败会清理尝试目录 (1.088037ms)
+✔ HTTP login, fixed amount, unpaid download protection, owner isolation and disabled payments (80.021957ms)
+✔ 无母版时模块无磁盘副作用，健康/配置和已有订单接口可用并说明中文降级 (75.267264ms)
+✔ 即使传入完整虚构商户配置也不能下单、拉起支付或接收付款回调 (11.617895ms)
+✔ 真实HTTP免费重试闭环：本人已付款失败单入队，重复请求幂等且不会重新收费 (18.815749ms)
+✔ 缺母版不能重试已付款失败单；订单、付款和失败状态全部保留 (4.436007ms)
+✔ 下载拒绝未支付、非本人、畸形ID、路径穿越及文件/目录符号链接 (18.645615ms)
+✔ 过期/未知会话与缺账户文件返回401，坏账户文件返回中文503 (8.611441ms)
+✔ 母版版本与历史订单不一致时拒绝重试，保留失败状态而不反复入队 (3.660746ms)
+✔ price is server controlled; retry persists same order across restart (7.949299ms)
+✔ orders cannot be read by other users or by traversal (0.766645ms)
+✔ only exact verified payment queues an order, transaction cannot pay twice (2.528647ms)
+✔ 免费重试按本人和已付款失败状态校验，重复请求只保留一条事件 (4.656874ms)
+✔ 完成状态仍不能让未支付订单公开下载，畸形UUID与路径穿越均拒绝 (1.630483ms)
+✔ 请求标识必须为字符串，数组与对象不能绕开幂等校验 (1.40465ms)
+✔ 真实命令行进程无母版也可启动，健康接口降级且未登录订单仍受保护 (163.739291ms)
+✔ 无效端口和不可写数据目标以中文退出1，不默默启动其他端口 (328.599733ms)
+✔ 端口占用以中文退出1，不保留后台生成定时器 (70.825794ms)
+✔ signed AES-GCM callback verifies, tampering fails, wrong merchant and amount fail (32.532462ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 863.619519
+
+开始UTC: 2026-10-26T16:54:12.301622+00:00
+结束UTC: 2026-10-26T16:54:25.668371+00:00
+cwd: /workspace/guanheng-wp18
+命令: python3 docs/work-packages/WP-18/browser-check.py --screens-dir /tmp/guanheng-wp18-final-visual
+退出码: 0
+原始输出:
+{
+  "ok": true,
+  "browser": "Chromium",
+  "syntheticOnly": true,
+  "results": [
+    {
+      "width": 375,
+      "pageWidth": 375,
+      "orders": 2,
+      "posts": 0,
+      "pageErrors": [],
+      "expectedMissingAssets": [
+        "/guanheng-media/logo/logo.png"
+      ],
+      "draftRestored": true
+    },
+    {
+      "width": 768,
+      "pageWidth": 768,
+      "orders": 2,
+      "posts": 0,
+      "pageErrors": [],
+      "expectedMissingAssets": [
+        "/guanheng-media/logo/logo.png"
+      ],
+      "draftRestored": true
+    },
+    {
+      "width": 1440,
+      "pageWidth": 1440,
+      "orders": 2,
+      "posts": 0,
+      "pageErrors": [],
+      "expectedMissingAssets": [
+        "/guanheng-media/logo/logo.png"
+      ],
+      "draftRestored": true
+    }
+  ]
+}
+
+平板视觉复核后调整为整行表单；重新检查三尺寸。
+开始UTC: 2026-10-26T16:55:21.784104+00:00
+结束UTC: 2026-10-26T16:55:31.482966+00:00
+cwd: /workspace/guanheng-wp18
+命令: python3 docs/work-packages/WP-18/browser-check.py --screens-dir /tmp/guanheng-wp18-final-visual
+退出码: 0
+原始输出:
+{
+  "ok": true,
+  "browser": "Chromium",
+  "syntheticOnly": true,
+  "results": [
+    {
+      "width": 375,
+      "pageWidth": 375,
+      "orders": 2,
+      "posts": 0,
+      "pageErrors": [],
+      "expectedMissingAssets": [
+        "/guanheng-media/logo/logo.png"
+      ],
+      "draftRestored": true
+    },
+    {
+      "width": 768,
+      "pageWidth": 768,
+      "orders": 2,
+      "posts": 0,
+      "pageErrors": [],
+      "expectedMissingAssets": [
+        "/guanheng-media/logo/logo.png"
+      ],
+      "draftRestored": true
+    },
+    {
+      "width": 1440,
+      "pageWidth": 1440,
+      "orders": 2,
+      "posts": 0,
+      "pageErrors": [],
+      "expectedMissingAssets": [
+        "/guanheng-media/logo/logo.png"
+      ],
+      "draftRestored": true
+    }
+  ]
+}
+
+开始UTC: 2026-10-26T16:56:11.419129+00:00
+结束UTC: 2026-10-26T16:56:11.511471+00:00
+cwd: /workspace/guanheng-wp18
+命令: python3 docs/work-packages/WP-18/scope-check.py
+退出码: 0
+原始输出:
+{
+  "ok": true,
+  "base": "d14f98939429e4f860fd82ac6c48ea4fbf1629a4",
+  "head": "1aad81d6ee984f02d5cf0237adee33e4302d3824",
+  "branch": "wp/18-proposal-service",
+  "files": [
+    "company/投标方案生成服务/方案生成服务/README.md",
+    "company/投标方案生成服务/方案生成服务/generator.js",
+    "company/投标方案生成服务/方案生成服务/orders.js",
+    "company/投标方案生成服务/方案生成服务/proposal.html",
+    "company/投标方案生成服务/方案生成服务/proposal.js",
+    "company/投标方案生成服务/方案生成服务/server.js",
+    "company/投标方案生成服务/方案生成服务/templates/README.md",
+    "company/投标方案生成服务/方案生成服务/test/browser-server.js",
+    "company/投标方案生成服务/方案生成服务/test/frontend.test.js",
+    "company/投标方案生成服务/方案生成服务/test/generator.test.js",
+    "company/投标方案生成服务/方案生成服务/test/helpers.js",
+    "company/投标方案生成服务/方案生成服务/test/http.test.js",
+    "company/投标方案生成服务/方案生成服务/test/orders.test.js",
+    "company/投标方案生成服务/方案生成服务/test/startup.test.js",
+    "docs/work-packages/WP-18/browser-check.py",
+    "docs/work-packages/WP-18/scope-check.py",
+    "docs/work-packages/WP-18/验收说明.md",
+    "docs/work-packages/WP-18/验证输出.txt"
+  ],
+  "textOnly": true,
+  "ownershipPassed": true,
+  "credentialPatternCheckPassed": true
+}
+
+开始UTC: 2026-10-26T16:56:11.511622+00:00
+结束UTC: 2026-10-26T16:56:11.518569+00:00
+cwd: /workspace/guanheng-wp18
+命令: git diff --check
+退出码: 0
+原始输出:
+
+开始UTC: 2026-10-26T16:56:11.518679+00:00
+结束UTC: 2026-10-26T16:56:11.526039+00:00
+cwd: /workspace/guanheng-wp18
+命令: node --version
+退出码: 0
+原始输出:
+v24.19.0
+
+开始UTC: 2026-10-26T16:56:11.526629+00:00
+结束UTC: 2026-10-26T16:56:11.643422+00:00
+cwd: /workspace/guanheng-wp18
+命令: npm --version
+退出码: 0
+原始输出:
+11.9.0
+
+开始UTC: 2026-10-26T16:56:11.643536+00:00
+结束UTC: 2026-10-26T16:56:11.752411+00:00
+cwd: /workspace/guanheng-wp18
+命令: chromium --version
+退出码: 0
+原始输出:
+Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)
+

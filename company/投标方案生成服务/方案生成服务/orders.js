@@ -4,6 +4,7 @@ const path = require('node:path');
 const crypto = require('node:crypto');
 const fail = (status, message) => Object.assign(new Error(message), {status});
 const PRICE_FEN = 9900;
+const ORDER_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const fields = {company:100, industry:100, products:300, locations:200, erp:100, mode:100, needs:2200, timeline:100};
 function validate(input) {
   if (!input || typeof input !== 'object' || Array.isArray(input)) throw fail(400, '请填写公司资料。');
@@ -21,7 +22,7 @@ class OrderStore {
     fs.mkdirSync(dir, {recursive:true, mode:0o700});
   }
   file(id) {
-    if (!/^[0-9a-f]{8}-[0-9a-f-]{27}$/.test(id)) throw fail(404, '订单不存在。');
+    if (typeof id !== 'string' || !ORDER_ID.test(id)) throw fail(404, '订单不存在。');
     return path.join(this.dir, id+'.json');
   }
   read(id) {
@@ -36,7 +37,7 @@ class OrderStore {
     return order;
   }
   all() {
-    return fs.readdirSync(this.dir).filter(x=>/^[0-9a-f-]{36}\.json$/.test(x)).map(x=>this.read(x.slice(0,-5)));
+    return fs.readdirSync(this.dir).filter(x=>x.endsWith('.json') && ORDER_ID.test(x.slice(0,-5))).map(x=>this.read(x.slice(0,-5)));
   }
   owned(id, email) {
     const order=this.read(id);
@@ -44,8 +45,8 @@ class OrderStore {
     return order;
   }
   create(email, input, idempotencyKey) {
-    if (!email) throw fail(401, '请先登录。');
-    if (!/^[a-zA-Z0-9_-]{16,80}$/.test(idempotencyKey||'')) throw fail(400, '请求标识无效，请刷新后重试。');
+    if (typeof email !== 'string' || !email) throw fail(401, '请先登录。');
+    if (typeof idempotencyKey !== 'string' || !/^[a-zA-Z0-9_-]{16,80}$/.test(idempotencyKey)) throw fail(400, '请求标识无效，请刷新后重试。');
     const profile=validate(input), digest=crypto.createHash('sha256').update(JSON.stringify(profile)).digest('hex');
     const existing=this.all().find(o=>o.email===email && o.idempotencyKey===idempotencyKey);
     if (existing) {
@@ -71,7 +72,16 @@ class OrderStore {
     return this.save(order);
   }
   public(order) {
-    return {id:order.id,company:order.profile.company,amountFen:order.amountFen,currency:order.currency,state:order.state,createdAt:order.createdAt,paid:!!order.payment,message:order.message||'',downloadReady:order.state==='completed'};
+    return {id:order.id,company:order.profile.company,amountFen:order.amountFen,currency:order.currency,state:order.state,createdAt:order.createdAt,paid:!!order.payment,message:order.message||'',downloadReady:order.state==='completed' && !!order.payment};
+  }
+  retry(id, email) {
+    const order=this.owned(id,email);
+    if (!order.payment || !['failed','queued'].includes(order.state)) throw fail(409,'当前订单无需重试。');
+    if (order.state==='queued') return order;
+    order.state='queued';
+    order.message='已安排免费重试';
+    order.events.push({type:'generation_retry_requested',at:Date.now(),operator:email});
+    return this.save(order);
   }
 }
 module.exports={OrderStore,PRICE_FEN,validate,fail};
