@@ -1,0 +1,61 @@
+{"started": "2026-10-26T18:58:44.645066+00:00", "cwd": "/workspace/guanheng-g0-stability/systems/project-ops", "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f", "command": ["pnpm", "install", "--frozen-lockfile"]}
+? Verifying lockfile against supply-chain policies (483 entries)...
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +425
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+   ╭──────────────────────────────────────────╮
+   │                                          │
+   │   Update available! 11.19.0 → 12.15.0.   │
+   │   Changelog: https://pnpm.io/v/12.15.0   │
+   │     To update, run: pnpm add -g pnpm     │
+   │                                          │
+   ╰──────────────────────────────────────────╯
+
+Progress: resolved 425, reused 0, downloaded 0, added 0
+Progress: resolved 425, reused 0, downloaded 1, added 0
+Packages are hard linked from the content-addressable store to the virtual store.
+  Content-addressable store is at: /home/agent/.local/share/pnpm/store/v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 425, reused 0, downloaded 19, added 19
+Progress: resolved 425, reused 0, downloaded 37, added 37
+Progress: resolved 425, reused 0, downloaded 63, added 63
+Progress: resolved 425, reused 0, downloaded 64, added 63
+Progress: resolved 425, reused 0, downloaded 99, added 99
+Progress: resolved 425, reused 0, downloaded 126, added 126
+Progress: resolved 425, reused 0, downloaded 149, added 149
+Progress: resolved 425, reused 0, downloaded 185, added 185
+Progress: resolved 425, reused 0, downloaded 190, added 190
+Progress: resolved 425, reused 0, downloaded 235, added 235
+Progress: resolved 425, reused 0, downloaded 258, added 258
+Progress: resolved 425, reused 0, downloaded 316, added 316
+Progress: resolved 425, reused 0, downloaded 344, added 343
+Progress: resolved 425, reused 0, downloaded 382, added 382
+Progress: resolved 425, reused 0, downloaded 423, added 423
+Progress: resolved 425, reused 0, downloaded 425, added 425, done
+✓ Lockfile passes supply-chain policies (483 entries in 18.7s)
+.../node_modules/unrs-resolver postinstall$ node postinstall.js
+.../node_modules/unrs-resolver postinstall: Done
+
+dependencies:
++ exceljs 4.4.0
++ lucide-react 1.35.0
++ next 16.3.3
++ nodemailer 9.0.6
++ react 19.2.8
++ react-dom 19.2.8
++ zod 4.4.3
+
+devDependencies:
++ @types/node 24.19.2
++ @types/nodemailer 8.0.1
++ @types/react 19.2.18
++ @types/react-dom 19.2.5
++ eslint 9.39.2
++ eslint-config-next 16.3.3
++ typescript 6.0.2
+
+Done in 19.5s using pnpm v11.19.0
+
+{"ended": "2026-10-26T18:59:04.303164+00:00", "exitCode": 0, "elapsedSeconds": 19.654765257000008}

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { spawnSync, execFileSync } from "node:child_process";
-import { mkdtempSync, readFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, join, parse } from "node:path";
 import { tmpdir } from "node:os";
@@ -48,7 +48,7 @@ test("全部直接依赖使用精确版本，实际安装与清单一致", () =>
   assert.equal(manifest.engines.pnpm, actualPnpm);
 });
 
-test("真实运行诊断报告当前Node、pnpm、Next和React，检查时间有效", () => {
+test("真实运行诊断报告当前Node、pnpm、Next和React，检查时间有效", t => {
   const before = Date.now();
   const health = inspectRuntime();
   assert.equal(health.status, "ok");
@@ -59,6 +59,79 @@ test("真实运行诊断报告当前Node、pnpm、Next和React，检查时间有
     ["React DOM", installedVersion("react-dom")],
   ]);
   assert.ok(health.checks.every(check => check.status === "ok"));
+  t.diagnostic(`真实运行诊断耗时 ${Date.now() - before}ms；pnpm启动器信息${process.env.npm_execpath ? "存在" : "不存在"}`);
+});
+
+test("启动器版本每次从实际文件读取；不兼容、损坏或删除不能沿用健康结果", t => {
+  const directory = mkdtempSync(join(tmpdir(), "guanheng-wp01-launcher-"));
+  const bin = join(directory, "bin"), entry = join(bin, "pnpm.mjs"), metadata = join(directory, "package.json");
+  mkdirSync(bin);
+  writeFileSync(entry, "throw new Error('synthetic launcher must not execute');\n");
+  const original = process.env.npm_execpath, userAgent = process.env.npm_config_user_agent;
+  t.after(() => {
+    if (original === undefined) delete process.env.npm_execpath; else process.env.npm_execpath = original;
+    if (userAgent === undefined) delete process.env.npm_config_user_agent; else process.env.npm_config_user_agent = userAgent;
+    rmSync(directory, { recursive: true, force: true });
+  });
+  process.env.npm_execpath = entry;
+  process.env.npm_config_user_agent = `pnpm/${manifest.engines.pnpm}`;
+  const pnpm = () => inspectRuntime().checks.find(check => check.component === "pnpm")!;
+  for (const version of ["0.0.1", "0.0.2"]) {
+    writeFileSync(metadata, JSON.stringify({ name: "pnpm", version, bin: { pnpm: "bin/pnpm.mjs" } }));
+    const check = pnpm();
+    assert.equal(check.actual, version); assert.equal(check.status, "error");
+    assert.match(check.message, /版本不兼容/);
+  }
+  for (const version of [null, [manifest.engines.pnpm], "WP01_SYNTHETIC_PRIVATE_VALUE"]) {
+    writeFileSync(metadata, JSON.stringify({ name: "pnpm", version, bin: { pnpm: "bin/pnpm.mjs" } }));
+    assert.equal(pnpm().status, "unknown");
+    assert.doesNotMatch(JSON.stringify(pnpm()), /WP01_SYNTHETIC_PRIVATE_VALUE|\/tmp|launcher-/);
+  }
+  writeFileSync(metadata, JSON.stringify({ name: "pnpm", version: manifest.engines.pnpm, bin: { pnpm: "bin/missing.mjs" } }));
+  assert.equal(pnpm().status, "unknown", "bin必须对应当前真实启动器");
+  writeFileSync(metadata, "WP01_SYNTHETIC_PRIVATE_VALUE");
+  assert.equal(pnpm().status, "unknown");
+  rmSync(entry);
+  assert.equal(pnpm().status, "unknown", "启动器移除后不能使用旧版本");
+});
+
+test("直接Node启动仍真实查询本机pnpm，不把user-agent当安装证据", () => {
+  const env: NodeJS.ProcessEnv = { ...process.env, npm_config_user_agent: "pnpm/0.0.1" };
+  delete env.npm_execpath;
+  const result = spawnSync(process.execPath, ["--experimental-strip-types", "--input-type=module", "-e", `
+    import { inspectRuntime } from ${JSON.stringify(new URL("../lib/runtime-health.ts", import.meta.url).href)};
+    const health=inspectRuntime(); console.log(JSON.stringify(health));
+    process.exitCode=health.status==='ok'?0:1;
+  `], { cwd: projectRoot, env, encoding: "utf8", timeout: 15_000 });
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.equal(JSON.parse(result.stdout).checks.find((check: { component: string }) => check.component === "pnpm").actual, manifest.engines.pnpm);
+});
+
+test("真实版本命令失败、无效输出及原5秒超时都保留unknown和中文原因", { timeout: 15_000 }, t => {
+  const directory = mkdtempSync(join(tmpdir(), "guanheng-wp01-probe-failure-"));
+  t.after(() => rmSync(directory, { recursive: true, force: true }));
+  const command = join(directory, process.platform === "win32" ? "pnpm.cmd" : "pnpm");
+  const script = join(directory, "probe.cjs");
+  if (process.platform === "win32") writeFileSync(command, `@echo off\r\n"${process.execPath}" "${script}"\r\n`);
+  const env: NodeJS.ProcessEnv = { ...process.env, PATH: directory };
+  delete env.npm_execpath;
+  for (const [body, reason] of [
+    ["console.error('WP01_SYNTHETIC_PRIVATE_VALUE');process.exitCode=7", /命令执行失败/],
+    ["console.log('WP01_SYNTHETIC_PRIVATE_VALUE')", /未返回有效版本/],
+    ["Atomics.wait(new Int32Array(new SharedArrayBuffer(4)),0,0,6500)", /查询超时/],
+  ] as const) {
+    writeFileSync(script, body);
+    if (process.platform !== "win32") writeFileSync(command, `#!${process.execPath}\n${body}\n`, { mode: 0o755 });
+    const result = spawnSync(process.execPath, ["--experimental-strip-types", "--input-type=module", "-e", `
+      import { inspectRuntime } from ${JSON.stringify(new URL("../lib/runtime-health.ts", import.meta.url).href)};
+      console.log(JSON.stringify(inspectRuntime()));
+    `], { cwd: projectRoot, env, encoding: "utf8", timeout: 10_000 });
+    assert.equal(result.status, 0, result.stderr);
+    const health = JSON.parse(result.stdout), check = health.checks.find((value: { component: string }) => value.component === "pnpm");
+    assert.equal(health.status, "attention"); assert.equal(check.actual, null); assert.equal(check.status, "unknown");
+    assert.match(check.message, reason);
+    assert.doesNotMatch(result.stdout, /WP01_SYNTHETIC_PRIVATE_VALUE|probe-failure-/);
+  }
 });
 
 test("不兼容Node版本和预发布版得到中文拒绝，合法基线通过", () => {

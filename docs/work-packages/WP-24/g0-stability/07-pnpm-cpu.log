@@ -1,0 +1,4 @@
+{"started": "2026-10-26T19:00:54.976197+00:00", "cwd": "/workspace/guanheng-g0-stability/systems/project-ops", "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f", "command": ["node", "--cpu-prof", "--cpu-prof-dir=/tmp/g0-pnpm-profile", "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/pnpm/bin/pnpm.mjs", "--pm-on-fail=error", "--offline", "--version"]}
+11.19.0
+
+{"ended": "2026-10-26T19:00:55.701407+00:00", "exitCode": 0, "elapsedSeconds": 0.7183254310000109}

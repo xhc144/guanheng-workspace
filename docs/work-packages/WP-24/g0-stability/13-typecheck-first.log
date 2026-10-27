@@ -1,0 +1,7 @@
+{"started": "2026-10-26T19:07:12.458431+00:00", "cwd": "/workspace/guanheng-g0-stability/systems/project-ops", "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f", "command": ["pnpm", "typecheck"]}
+$ tsc --noEmit
+tests/runtime-health.test.ts(100,14): error TS2339: Property 'npm_execpath' does not exist on type '{ npm_config_user_agent: string; NODE_ENV: "development" | "production" | "test"; }'.
+tests/runtime-health.test.ts(117,14): error TS2339: Property 'npm_execpath' does not exist on type '{ PATH: string; NODE_ENV: "development" | "production" | "test"; }'.
+[ELIFECYCLE] Command failed with exit code 2.
+
+{"ended": "2026-10-26T19:07:23.792184+00:00", "exitCode": 2, "elapsedSeconds": 11.33049414900006}

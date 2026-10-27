@@ -1,0 +1,604 @@
+{"started": "2026-10-26T19:08:44.161302+00:00", "cwd": "/workspace/guanheng-g0-stability", "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f", "command": ["node", "docs/work-packages/WP-24/g0-stability/pnpm-contention-repro.mjs", "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/pnpm/bin/pnpm.mjs"]}
+{
+  "fixture": "32 concurrent queries, same installed launcher, original 5000ms deadline, one run per group",
+  "launcher": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/pnpm/bin/pnpm.mjs",
+  "version": "11.19.0",
+  "cpuQuota": "400000 100000",
+  "runtimeSha256": "e9595a0b08c9114e8629daf18f328fef9a3ac5cbc09427c5e1de0f4526955720",
+  "summary": {
+    "before": {
+      "count": 32,
+      "failed": 22,
+      "minMs": 3218,
+      "maxMs": 5090
+    },
+    "after": {
+      "count": 32,
+      "failed": 0,
+      "minMs": 310,
+      "maxMs": 1155
+    }
+  },
+  "before": [
+    {
+      "index": 0,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5067,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 1,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5061,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 2,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5060,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 3,
+      "code": 0,
+      "signal": null,
+      "ms": 3282,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 4,
+      "code": 0,
+      "signal": null,
+      "ms": 3227,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 5,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5052,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 6,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5079,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 7,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5090,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 8,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5081,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 9,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5035,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 10,
+      "code": 0,
+      "signal": null,
+      "ms": 3295,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 11,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5042,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 12,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5056,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 13,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5051,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 14,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5028,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 15,
+      "code": 0,
+      "signal": null,
+      "ms": 3269,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 16,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5031,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 17,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5047,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 18,
+      "code": 0,
+      "signal": null,
+      "ms": 4243,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 19,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5032,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 20,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5030,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 21,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5077,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 22,
+      "code": 0,
+      "signal": null,
+      "ms": 4734,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 23,
+      "code": 0,
+      "signal": null,
+      "ms": 3218,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 24,
+      "code": 0,
+      "signal": null,
+      "ms": 4150,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 25,
+      "code": 0,
+      "signal": null,
+      "ms": 4718,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 26,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5012,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 27,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5020,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 28,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5016,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 29,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5011,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 30,
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 5032,
+      "version": "",
+      "stderrBytes": 0
+    },
+    {
+      "index": 31,
+      "code": 0,
+      "signal": null,
+      "ms": 4843,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    }
+  ],
+  "after": [
+    {
+      "index": 0,
+      "code": 0,
+      "signal": null,
+      "ms": 527,
+      "probeMs": 1.9105369999999766,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 1,
+      "code": 0,
+      "signal": null,
+      "ms": 831,
+      "probeMs": 1.5296150000000353,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 2,
+      "code": 0,
+      "signal": null,
+      "ms": 398,
+      "probeMs": 13.399729999999977,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 3,
+      "code": 0,
+      "signal": null,
+      "ms": 755,
+      "probeMs": 45.92736500000001,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 4,
+      "code": 0,
+      "signal": null,
+      "ms": 1154,
+      "probeMs": 14.199883999999884,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 5,
+      "code": 0,
+      "signal": null,
+      "ms": 1155,
+      "probeMs": 1.8380670000001373,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 6,
+      "code": 0,
+      "signal": null,
+      "ms": 602,
+      "probeMs": 14.154397000000017,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 7,
+      "code": 0,
+      "signal": null,
+      "ms": 400,
+      "probeMs": 11.488036000000022,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 8,
+      "code": 0,
+      "signal": null,
+      "ms": 1000,
+      "probeMs": 1.537813999999912,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 9,
+      "code": 0,
+      "signal": null,
+      "ms": 983,
+      "probeMs": 1.4139010000000098,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 10,
+      "code": 0,
+      "signal": null,
+      "ms": 398,
+      "probeMs": 1.4357479999999896,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 11,
+      "code": 0,
+      "signal": null,
+      "ms": 1035,
+      "probeMs": 25.753147000000013,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 12,
+      "code": 0,
+      "signal": null,
+      "ms": 1070,
+      "probeMs": 1.7803189999999631,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 13,
+      "code": 0,
+      "signal": null,
+      "ms": 928,
+      "probeMs": 1.2342669999999316,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 14,
+      "code": 0,
+      "signal": null,
+      "ms": 1077,
+      "probeMs": 3.288727999999992,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 15,
+      "code": 0,
+      "signal": null,
+      "ms": 1121,
+      "probeMs": 1.1082519999999931,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 16,
+      "code": 0,
+      "signal": null,
+      "ms": 1076,
+      "probeMs": 2.804725000000076,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 17,
+      "code": 0,
+      "signal": null,
+      "ms": 1046,
+      "probeMs": 26.84508299999993,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 18,
+      "code": 0,
+      "signal": null,
+      "ms": 923,
+      "probeMs": 0.9269719999999779,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 19,
+      "code": 0,
+      "signal": null,
+      "ms": 1079,
+      "probeMs": 0.927214000000049,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 20,
+      "code": 0,
+      "signal": null,
+      "ms": 923,
+      "probeMs": 3.48130900000001,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 21,
+      "code": 0,
+      "signal": null,
+      "ms": 1025,
+      "probeMs": 1.6927269999999908,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 22,
+      "code": 0,
+      "signal": null,
+      "ms": 1012,
+      "probeMs": 3.421336999999994,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 23,
+      "code": 0,
+      "signal": null,
+      "ms": 944,
+      "probeMs": 1.7537489999999707,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 24,
+      "code": 0,
+      "signal": null,
+      "ms": 843,
+      "probeMs": 26.798375000000078,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 25,
+      "code": 0,
+      "signal": null,
+      "ms": 516,
+      "probeMs": 1.2709310000000187,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 26,
+      "code": 0,
+      "signal": null,
+      "ms": 971,
+      "probeMs": 1.6414330000000064,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 27,
+      "code": 0,
+      "signal": null,
+      "ms": 934,
+      "probeMs": 4.143952999999897,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 28,
+      "code": 0,
+      "signal": null,
+      "ms": 390,
+      "probeMs": 1.3875280000000316,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 29,
+      "code": 0,
+      "signal": null,
+      "ms": 777,
+      "probeMs": 3.5209859999999935,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 30,
+      "code": 0,
+      "signal": null,
+      "ms": 310,
+      "probeMs": 1.862889999999993,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 31,
+      "code": 0,
+      "signal": null,
+      "ms": 697,
+      "probeMs": 10.183296000000041,
+      "status": "ok",
+      "version": "11.19.0",
+      "stderrBytes": 0
+    }
+  ]
+}
+
+{"ended": "2026-10-26T19:08:50.687093+00:00", "exitCode": 0, "elapsedSeconds": 6.523403848999919}
