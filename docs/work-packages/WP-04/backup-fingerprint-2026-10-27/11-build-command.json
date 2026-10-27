@@ -1,0 +1,18 @@
+{
+  "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+  "command": [
+    "pnpm",
+    "build"
+  ],
+  "startedAt": "2026-10-27T05:34:01.482716+00:00",
+  "finishedAt": "2026-10-27T05:34:08.263088+00:00",
+  "exitCode": 0,
+  "head": "04cbe61a67a4f1f81792169d6786f22cbc43efa3",
+  "sourceHashes": {
+    "tools/capability-inventory/generate.mjs": "56b43606d361fd6aaa56bf3c06e8cc4a61d5acd1e36f9a958d8d4e77b10f84a2",
+    "systems/project-ops/tests/capabilities.test.ts": "aeb33b7139b7c4307141397a7b7415579a16d52fc345cedb68407040f118322c",
+    "systems/project-ops/lib/capabilities/catalog.json": "00137a42f3c31ee8fb0778096f2a5a74401e6ba206ad914d65232c912bc3462f",
+    "docs/work-packages/WP-04/browser-check.mjs": "e18eecae15bb996a4499a061ba5cedcddaf64d596533a1faeef1a361a02f91f0"
+  },
+  "log": "docs/work-packages/WP-04/backup-fingerprint-2026-10-27/11-build.log"
+}
