@@ -1,0 +1,9 @@
+{"started": "2026-10-26T19:07:11.550015+00:00", "cwd": "/workspace/guanheng-g0-stability/systems/project-ops", "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f", "command": ["pnpm", "runtime:check"]}
+$ node -e "const p=require('./package.json');if(process.versions.node!==p.engines.node){console.error('Node.js 版本不兼容：当前 '+process.versions.node+'，请安装 '+p.engines.node+' 后重试。');process.exit(1)}" && node --experimental-strip-types lib/runtime-health.ts --check
+通过：Node.js 版本符合已验证基线。
+通过：pnpm 版本符合已验证基线。
+通过：Next.js 版本符合已验证基线。
+通过：React 版本符合已验证基线。
+通过：React DOM 版本符合已验证基线。
+
+{"ended": "2026-10-26T19:07:12.301197+00:00", "exitCode": 0, "elapsedSeconds": 0.7484619109999358}

@@ -1,0 +1,97 @@
+{
+  "recorded_utc": "2026-10-26T18:40:33.756408+00:00",
+  "base_integration": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+  "tested_verification_code_sha": "34863e7fc4a43041f1f06403804da2d4b3b3d6fa",
+  "application_tree": "a868b4354a951b0a89b3daa49bb5381f2a3162af",
+  "application_unchanged_from_base": true,
+  "driver_blobs": {
+    "docs/work-packages/WP-24/browser-check.mjs": "544b6a0f1aae6050add2105736add1692b6c0239",
+    "docs/work-packages/WP-24/browser-observer.cjs": "ef86ee26820ccf4eb9394a20ea236e856882a523",
+    "docs/work-packages/WP-24/browser-runtime.mjs": "54abc2f57a8ec9e480675661c819b8ad0c473da9",
+    "systems/project-ops/tests/favicon-browser.mjs": "87690b863496672ff2b09971dcbde3dbf73b95e2"
+  },
+  "commands": [
+    {
+      "UTC_START": "2026-10-26T18:33:29.316159+00:00",
+      "COMMAND": "pnpm test",
+      "CWD": "/workspace/guanheng-wp24/systems/project-ops",
+      "EXIT_CODE": "0",
+      "UTC_END": "2026-10-26T18:33:40.925403+00:00",
+      "file": "docs/work-packages/WP-24/63-stability-test.log",
+      "sha256": "126e57f1e1c91cc8aa0a0f71a5c56ac6e53391e7d2b48083e084fccbbfca5b6f"
+    },
+    {
+      "UTC_START": "2026-10-26T18:33:29.335299+00:00",
+      "COMMAND": "pnpm typecheck",
+      "CWD": "/workspace/guanheng-wp24/systems/project-ops",
+      "EXIT_CODE": "0",
+      "UTC_END": "2026-10-26T18:33:35.346808+00:00",
+      "file": "docs/work-packages/WP-24/64-stability-typecheck.log",
+      "sha256": "514e40bf3fcf9687f389a6874f7c28e39ef764549143327e015b915cdb3f425b"
+    },
+    {
+      "UTC_START": "2026-10-26T18:33:29.342432+00:00",
+      "COMMAND": "pnpm lint",
+      "CWD": "/workspace/guanheng-wp24/systems/project-ops",
+      "EXIT_CODE": "0",
+      "UTC_END": "2026-10-26T18:33:44.276410+00:00",
+      "file": "docs/work-packages/WP-24/65-stability-lint.log",
+      "sha256": "e538689131e72abbaaa6ee5e6f2c9c7f2c89a758e7b7d49b33b14f7915026baa"
+    },
+    {
+      "UTC_START": "2026-10-26T18:36:12.328222+00:00",
+      "COMMAND": "pnpm build",
+      "CWD": "/workspace/guanheng-wp24/systems/project-ops",
+      "EXIT_CODE": "0",
+      "UTC_END": "2026-10-26T18:36:21.358879+00:00",
+      "file": "docs/work-packages/WP-24/67-stability-build.log",
+      "sha256": "cda6df86e3397f16484ba85ae0d2ab6134dd06ba3c42783797c68d55f558b120"
+    },
+    {
+      "UTC_START": "2026-10-26T18:37:09.571800+00:00",
+      "COMMAND": "node tests/favicon-browser.mjs",
+      "CWD": "/workspace/guanheng-wp24/systems/project-ops",
+      "EXIT_CODE": "0",
+      "UTC_END": "2026-10-26T18:38:22.021141+00:00",
+      "file": "docs/work-packages/WP-24/68-stability-browser.log",
+      "sha256": "26d7570304867d63899d2b8a1453bb83df6b3376cc3d1674cdb7038ebc6ff682"
+    }
+  ],
+  "trace_checks": [
+    {
+      "deployment": "after-default",
+      "api_response_count": 30,
+      "all_api_connections_close": true,
+      "server_exits": [
+        {
+          "at": "2026-10-26T18:37:40.254Z",
+          "elapsedMs": 13670,
+          "phase": "controlled-fault",
+          "event": "server-exit",
+          "code": 143,
+          "signal": null,
+          "expectedStop": true
+        }
+      ]
+    },
+    {
+      "deployment": "after-pms",
+      "api_response_count": 30,
+      "all_api_connections_close": true,
+      "server_exits": [
+        {
+          "at": "2026-10-26T18:38:21.637Z",
+          "elapsedMs": 22830,
+          "phase": "controlled-fault",
+          "event": "server-exit",
+          "code": 143,
+          "signal": null,
+          "expectedStop": true
+        }
+      ]
+    }
+  ],
+  "historical_exact_causes": "NOT_FULLY_CONFIRMED",
+  "WP23_G1": "NOT_EXECUTED",
+  "root_release": "PENDING_ROOT_REVIEW"
+}

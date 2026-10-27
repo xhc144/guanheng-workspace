@@ -1,55 +1,86 @@
-# 官网99元方案生成服务
+# 方案服务：无客户母版时的安全降级
 
-生产入口：https://www.guanhengsoft.com/proposal.html
+本仓库缺少客户方案母版及其清单，这是预期状态。服务可以启动，返回中文配置状态、验证客户会话并查询已有订单；生成入口会明确拒绝未配置。**支付固定关闭**：即使提供了商户配置，也不能通过本服务下单、创建二维码或提交支付回调。
 
-以48页关衡V3.0方案为模板，复用原始版式、流程图与案例。DeepSeek仅改写客户相关段落；生成PPT后由LibreOffice转为PDF。用户使用现有官网邮箱登录，订单及下载按账号隔离。
+本次没有连接真实账户、支付、AI 服务或生产数据，没有生成 PPT/PDF，也没有发布线上网站。旧 README 中有关线上环境、密钥和生成验证的历史描述不作为本分支验收依据。
 
-## 部署位置
+## 本地检查
 
-- 服务代码：`/opt/guanheng-proposals`
-- 订单和生成文件：`/var/lib/guanheng-proposals`，不在静态网站目录
-- 服务：`guanheng-proposals.service`，仅监听`127.0.0.1:8789`
-- 路由：`/etc/nginx/snippets/proposal-api.conf`
-- 官网根目录目前由`/var/www/portal`指向`/var/www/guanheng-release-20260907`
-- 本次首页及Nginx备份：`/var/backups/guanheng-proposals/20260907-182053`
+使用支持内置 `fetch`、`node:test` 的 Node.js（本轮实测 Node 24.19.0 / npm 11.9.0）。在本目录运行：
 
-## 微信支付待配置
+```sh
+npm install --package-lock=false
+npm test
+```
 
-采用微信支付API v3的Native扫码支付。尚未配置商户资料，页面因此禁止下单收费。服务器已有DeepSeek密钥，直接复用现有环境文件，未复制到前端。
+启动时显式选择一个私有测试目录，避免碰到部署环境的默认数据路径。Linux 示例：
 
-将`wechat.env.example`中的参数填入`/etc/guanheng-proposals/wechat.env`，设置为仅root和服务用户可读。商户私钥、微信支付公钥分别放在配置对应路径，同样限制读取权限。需要：
+```sh
+PROPOSAL_DATA_DIR="$(mktemp -d /tmp/guanheng-proposals-local-XXXXXX)" npm start
+```
 
-1. 已开通Native支付的商户号和绑定AppID。
-2. 商户API证书序列号及商户私钥。
-3. 32字节API v3密钥。
-4. 微信支付公钥ID及对应公钥文件。
+Windows PowerShell 对应命令（本轮未在 Windows 实机验证）：
 
-回调地址：`https://www.guanhengsoft.com/proposal-api/wechat/notify`。
+```powershell
+$env:PROPOSAL_DATA_DIR = Join-Path $env:TEMP ('guanheng-proposals-' + [guid]::NewGuid().ToString('N'))
+npm start
+```
 
-配置完成后重启服务，检查`/proposal-api/config`，再由用户扫码完成一次真实99元测试，核对微信账单、验签回调、生成状态、PPT和PDF下载。尚不能用模拟验签测试替代真实商户验收。
+服务默认仅监听 `127.0.0.1:8789`。`PROPOSAL_PORT` 可指定端口；0 表示由系统分配空闲端口，启动消息会打印实际端口。无效端口、端口占用、私有目录不可写均以中文说明并退出 1。
 
-## 文件职责
+`GET /health` 是本机健康探测，可直接访问。业务接口仍要求 HTTPS 代理信息；本机检查时可显式发送 `X-Forwarded-Proto: https`。未提供有效客户会话时，订单接口返回 401，不会自动创建演示身份。现有 nginx 配置是只读参考，本轮未运行部署脚本或更改路由。
 
-- `orders.js`：订单验证、9900分固定价格、请求幂等、收款状态、账号隔离。
-- `wechat.js`：Native下单、主动查单、RSA验签、AES-GCM通知解密、到账信息核对。
-- `generator.js`：后台队列、DeepSeek段落适配、输出长度与客户残留校验、分批缓存、文件导出。
-- `template.py`：从PPT提取段落并填写原始OOXML，保留原版式与图形。
-- `templates/base-v3.pptx`：用户提供的48页模板副本。
-- `templates/manifest.json`：模板段落位置、原文与长度限制；模板更新后需重新提取。
-- `server.js`：独立HTTP接口，复用官网登录，保护订单与下载。
-- `proposal.html` / `proposal.js`：填写资料、草稿、支付二维码、订单进度和下载页面。
-- `test/`：订单、支付密码学、HTTP访问控制测试，不使用真实资金。
-- `smoke-generate.js`：隔离测试数据实际调用DeepSeek与PDF导出，不向真实订单伪造付款。
-- `deploy-web.py`：带备份的增量网站部署脚本。
+## 接口状态与拒绝语义
 
-## 验证与限制
+| 接口 | 本分支行为 |
+| --- | --- |
+| `GET /health` | 进程可用时 200；分别返回 `paymentReady` 和 `generationReady`，进程存活不代表生成已配置 |
+| `GET /config` | 200；缺母版时 `generationReady:false`、`generationCode:template_missing` 和中文原因；`paymentReady` 始终为 false |
+| `GET /orders`、`GET /orders/:id` | 从私有 JSON 存储查询当前会话邮箱的已有订单；跨账号返回 404 |
+| `POST /orders` | 登录后仍返回 503，不创建订单；页面草稿只在浏览器本地保存 |
+| `POST /orders/:id/payment` | 对本人订单返回 503，不请求微信、不读取商户私钥、不创建二维码 |
+| `POST /wechat/notify` | 返回 503，不验收回调、不改变付款状态 |
+| `POST /orders/:id/retry` | 仅本人已付款的失败单可重新排队；同一排队单的重复请求不重复记事件；未配置或母版版本不兼容时 503 且保留原记录 |
+| `GET /orders/:id/pdf`、`pptx` | 未登录 401，非本人/畸形路径 404，未付款或未完成 409；缺文件或符号链接 404，不返回伪文件 |
 
-已通过6项自动化测试，覆盖固定金额、重复请求与付款、跨账号访问、未付费下载阻断、伪造签名、错误商户与金额，以及提交期间轮询不能重新启用按钮、重复点击阻断、刷新后复用请求标识。真实DeepSeek测试资料为“海澜精密制造（测试）有限公司”，存放独立`verification`目录。
+订单金额继续沿用已有服务的 9900 分字段；本分支不收费，也没有新增报价或退款算法。已有订单及付款记录保留，免费重试不会创建新订单或再次收款。
 
-现有PPT资料是业务参考，不代表所有数字、产品能力、证书或服务期限均适用于所有未来客户。模板案例页保留原资料，正式使用仍需业务方审阅；用户已说明后续继续优化。
+配置页返回稳定状态码：`template_missing`、`template_invalid`、`generation_key_missing`、`generation_unavailable`。生成及历史订单重试另会拒绝 `template_version_mismatch`。响应不包含私有文件路径、客户资料或密钥。
 
-微信Native二维码需要另一台设备扫码；手机内直接调起微信支付需后续补充JSAPI/H5产品配置。退款目前由关衡人工按订单处理。微信公钥轮换后须更新公钥ID与文件。
+## 生成器与测试边界
 
-修改模板后应清楚升级版本并验证旧订单重试的兼容性；当前模板文件不要直接覆盖已投入收费的版本。页面视觉验收仍待可用浏览器连接；当前浏览器控制连续超时。
+`generator.js` 在调用配置检查或生成时才读取并验证母版清单。模块加载不会 `require` 缺失清单。清单必须具有版本、页码、唯一段落编号、原文和正整数长度上限；内容必须返回全部且仅指定编号，符合长度、非空和已知模板识别词限制。
 
-官方接口参考：https://api-docs.deepseek.com/ ，https://pay.wechatpay.cn/doc/v3/merchant/4012791877
+缓存位于各订单私有目录，并以订单、邮箱、完整资料及清单的 SHA-256 指纹绑定。每次命中仍重新校验内容；损坏、旧格式、跨订单或资料/清单变化的缓存会重新适配。超过 50 个槽位会分批处理；导出失败后可复用本单已验证的文字缓存。队列按创建时间处理，实例内并发调用只执行一单；只有已确认付款的排队单会进入生成。部署仍限定为单服务进程，没有新增多实例协调器。
+
+原生导出保留 Python 填版和 LibreOffice 转换流程，使用每次独立的临时尝试目录。只有新产生的两个文件均满足大小和文件头检查后才发布到订单目录；命令退出成功却没有产物会失败，不会误把旧文件当作成功。本轮没有客户母版，因此没有执行真实填版或转换，版式、48 页内容和真实下载成功仍未验。
+
+构造 `Generator(store, dir, env, dependencies)` 可由可信的测试代码注入 `loadManifest`、`fetcher`、`exportProposal` 或 `runCommand`。`createService({dataDir, accountsFile, env, generatorDependencies})` 为 HTTP 测试提供相同入口。HTTP 请求和环境变量都不能指定替身。生产默认路径只会调用真实导出器，不会创建占位文件。
+
+`test/helpers.js` 的最小清单和客户资料全部虚构。测试导出替身仅读取/记录文字 JSON，队列测试中的 `completed` 是替身已完成的状态断言，**不代表生成过真实文件**。HTTP 用例进一步断言此类无文件订单下载返回 404。原生导出失败测试使用不产出文件的命令替身，确认不能假成功。下载攻击测试仅创建指向虚构 `.txt` 的符号链接，不生成任何 PPT/PDF 二进制。
+
+## 页面与浏览器验证
+
+页面在缺母版时显示原因、禁止提交、隐藏无效支付/重试按钮，并保留草稿保存、当前账号信息和历史订单查询。已付款失败单在生成配置恢复后才提供重试；网络故障显示中文信息。手机端为单列，长公司名和订单号可换行，按钮触控高度至少 44px。
+
+从仓库根执行（需要 Python Playwright 和 Chromium）：
+
+```sh
+python3 docs/work-packages/WP-18/browser-check.py
+```
+
+检查器只启动 `test/browser-server.js` 的本机隔离服务，使用临时会话/订单、真实生产接口处理器及仓库已有 CSS/JS。外部请求会被阻断；不会启动生成 worker。自动检查 375、768、1440px 的草稿保存/恢复、禁止提交、订单展示、键盘焦点、控件尺寸与整页溢出。可选 `--screens-dir /tmp/guanheng-wp18-visual` 保存本地截图；截图不提交。
+
+品牌 logo 缺失按预期报告，未添加占位媒体。该浏览器测试中的门户会话为测试适配，不代表真实线上邮箱登录或完整官网集成验收。
+
+## 文件与后续事项
+
+- `orders.js`：固定价格、资料校验、持久 JSON 订单、付款校验、幂等与本人重试事件。
+- `server.js`：惰性默认服务、可隔离构造的 HTTP 处理器、中文降级、支付关闭及安全下载。
+- `generator.js`：按需清单校验、段落适配、缓存、顺序队列、真实导出及失败恢复。
+- `wechat.js`：保留原有密码学单元测试；HTTP 服务不开放真实支付能力。
+- `proposal.html` / `proposal.js`：中文配置反馈、草稿、历史订单与响应式页面。
+- `templates/README.md`：说明母版缺失和保密边界。
+- `smoke-generate.js` / `deploy-web.py`：保留的历史外部生成/部署工具，本轮未执行，不属于本包运行步骤。
+
+验收证据、失败记录、文件范围、两轮自查及待确认事项见仓库 `reports/WP-18.md` 和 `docs/work-packages/WP-18/`。未来母版版本兼容、人工退款处理和重新开放收费须另行确认；本包不猜测这些业务口径。

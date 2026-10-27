@@ -1,0 +1,82 @@
+{
+  "source": "installed pnpm 11.19.0; 07-pnpm-cpu.log",
+  "sampledMilliseconds": 610.921,
+  "topSamples": [
+    {
+      "function": "__require3",
+      "url": "file://pnpm/dist/pnpm.mjs",
+      "milliseconds": 131.102
+    },
+    {
+      "function": "compileSourceTextModule",
+      "url": "node:internal/modules/esm/utils",
+      "milliseconds": 68.246
+    },
+    {
+      "function": "__init",
+      "url": "file://pnpm/dist/pnpm.mjs",
+      "milliseconds": 66.281
+    },
+    {
+      "function": "(program)",
+      "url": "",
+      "milliseconds": 32.274
+    },
+    {
+      "function": "",
+      "url": "file://pnpm/dist/pnpm.mjs",
+      "milliseconds": 25.656
+    },
+    {
+      "function": "compileForInternalLoader",
+      "url": "node:internal/bootstrap/realm",
+      "milliseconds": 18.785
+    },
+    {
+      "function": "(garbage collector)",
+      "url": "",
+      "milliseconds": 15.876
+    },
+    {
+      "function": "decodeUTF8",
+      "url": "",
+      "milliseconds": 15.496
+    },
+    {
+      "function": "__copyProps",
+      "url": "file://pnpm/dist/pnpm.mjs",
+      "milliseconds": 13.771
+    },
+    {
+      "function": "read",
+      "url": "",
+      "milliseconds": 10.703
+    },
+    {
+      "function": "sortTranspositions",
+      "url": "file://pnpm/dist/pnpm.mjs",
+      "milliseconds": 10.068
+    },
+    {
+      "function": "../../../../../setup-pnpm/store/v11/links/@/msgpackr/2.0.5/120f9075aeb95a409234328542916ec7ee3248f89cf91e593ced8e5252fd92a6/node_modules/msgpackr/pack.js",
+      "url": "file://pnpm/dist/pnpm.mjs",
+      "milliseconds": 8.632
+    },
+    {
+      "function": "__require",
+      "url": "node:internal/deps/undici/undici",
+      "milliseconds": 8.177
+    },
+    {
+      "function": "ModuleWrap",
+      "url": "",
+      "milliseconds": 7.295
+    },
+    {
+      "function": "../../../../../setup-pnpm/store/v11/links/@/string-width/8.2.2/e09316091c64e1901513e1c1275adb2516eae4fe1da6ba06d0ba7978bcacf09d/node_modules/string-width/index.js",
+      "url": "file://pnpm/dist/pnpm.mjs",
+      "milliseconds": 4.377
+    }
+  ],
+  "interpretation": "Most sampled cost is CLI bundle compilation/initialization; this profile is not proof of every historical slowdown trigger."
+}

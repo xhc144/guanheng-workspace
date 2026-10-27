@@ -1,0 +1,72 @@
+UTC_START: 2026-10-26T18:19:39.975981+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: pnpm build
+$ pnpm runtime:check && next build
+$ node -e "const p=require('./package.json');if(process.versions.node!==p.engines.node){console.error('Node.js 版本不兼容：当前 '+process.versions.node+'，请安装 '+p.engines.node+' 后重试。');process.exit(1)}" && node --experimental-strip-types lib/runtime-health.ts --check
+通过：Node.js 版本符合已验证基线。
+通过：pnpm 版本符合已验证基线。
+通过：Next.js 版本符合已验证基线。
+通过：React 版本符合已验证基线。
+通过：React DOM 版本符合已验证基线。
+▲ Next.js 16.3.3 (Turbopack)
+✓ Running next.config.ts took 38ms
+- Experiments (use with caution):
+  · serverActions
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 7.3s
+  Running TypeScript ...
+  Finished TypeScript in 2.7s ...
+  Collecting page data using 4 workers ...
+  Generating static pages using 4 workers (0/10) ...
+  Generating static pages using 4 workers (2/10) 
+  Generating static pages using 4 workers (4/10) 
+  Generating static pages using 4 workers (7/10) 
+✓ Generating static pages using 4 workers (10/10) in 281ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /api/auth/login
+├ ƒ /api/auth/logout
+├ ƒ /api/auth/me
+├ ƒ /api/auth/request-code
+├ ƒ /api/customers/[id]
+├ ƒ /api/documents/[id]
+├ ƒ /api/excel/import-errors/[id]
+├ ƒ /api/excel/receivables
+├ ƒ /api/excel/template
+├ ƒ /api/finance/[kind]
+├ ƒ /api/integration-health
+├ ƒ /api/runtime-health
+├ ƒ /api/search
+├ ƒ /audit
+├ ƒ /commissions
+├ ƒ /contracts
+├ ƒ /customers
+├ ƒ /customers/[id]
+├ ƒ /data
+├ ƒ /documents
+├ ƒ /finance
+├ ƒ /integration-health
+├ ○ /login
+├ ƒ /notifications
+├ ƒ /organization
+├ ƒ /profile
+├ ƒ /projects
+├ ƒ /reports
+├ ƒ /rules
+├ ƒ /runtime-health
+├ ƒ /search
+├ ƒ /services
+└ ƒ /work
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+
+EXIT_CODE: 0
+UTC_END: 2026-10-26T18:19:55.825097+00:00
+ELAPSED_SECONDS: 15.851

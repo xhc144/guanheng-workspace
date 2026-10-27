@@ -1,0 +1,10 @@
+{"started": "2026-10-26T19:19:35.668154+00:00", "cwd": "/workspace/guanheng-g0-stability", "source": "dc0e9aee112988fcf9cd13b807d38411a90e9a28", "command": ["git", "push", "--set-upstream", "origin", "HEAD:refs/heads/wp/g0-stability"]}
+remote: 
+remote: Create a pull request for 'wp/g0-stability' on GitHub by visiting:        
+remote:      https://github.com/xhc144/guanheng-workspace/pull/new/wp/g0-stability        
+remote: 
+To https://github.com/xhc144/guanheng-workspace.git
+ * [new branch]      HEAD -> wp/g0-stability
+branch 'wp/g0-stability' set up to track 'origin/wp/g0-stability'.
+
+{"ended": "2026-10-26T19:19:37.378449+00:00", "exitCode": 0, "elapsedSeconds": 1.708101655000064}

@@ -1,4 +1,6 @@
 import { execFileSync } from "node:child_process";
+import { readFileSync, realpathSync } from "node:fs";
+import { basename, dirname, isAbsolute, join } from "node:path";
 import { pathToFileURL } from "node:url";
 import nextPackage from "next/package.json" with { type: "json" };
 import reactPackage from "react/package.json" with { type: "json" };
@@ -21,8 +23,8 @@ export interface RuntimeHealth {
 }
 
 // 只接收版本格式。命令输出、异常、路径和环境变量都不进入诊断响应。
-function publicVersion(value: string | undefined): string | null {
-  return value && /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(value) ? value : null;
+function publicVersion(value: unknown): string | null {
+  return typeof value === "string" && /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(value) ? value : null;
 }
 
 export function checkVersion(component: string, version: string | undefined, expected: string): VersionCheck {
@@ -43,7 +45,32 @@ export function checkNodeVersion(version = process.versions.node) {
   return checkVersion("Node.js", version, manifest.engines.node);
 }
 
-function installedPnpmVersion(): string | undefined {
+type PnpmProbe = { version: string } | { failure: "launcher" | "missing" | "timeout" | "command" | "output" };
+
+function pnpmLauncherVersion(): PnpmProbe | undefined {
+  // pnpm 为脚本提供实际 npm_execpath。每次重读安装清单，不信任 user-agent
+  // 或清单中的期望版本，也不缓存先前的健康结果。
+  const entry = process.env.npm_execpath;
+  if (!entry || !isAbsolute(entry)) return undefined;
+  let launcher: string;
+  try { launcher = realpathSync(entry); }
+  catch { return /^pnpm\.[cm]?js$/i.test(basename(entry)) ? { failure: "launcher" } : undefined; }
+  if (!/^pnpm\.[cm]?js$/i.test(basename(launcher))) return undefined;
+  try {
+    const root = dirname(dirname(launcher));
+    const metadata = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
+    // Corepack 等其他包的同名 shim 仍走真实命令查询。
+    if (metadata.name !== "pnpm") return undefined;
+    if (typeof metadata.bin?.pnpm !== "string"
+      || realpathSync(join(root, metadata.bin.pnpm)) !== launcher) return { failure: "launcher" };
+    const version = publicVersion(metadata.version);
+    return version ? { version } : { failure: "launcher" };
+  } catch { return { failure: "launcher" }; }
+}
+
+function installedPnpmVersion(): PnpmProbe {
+  const launcher = pnpmLauncherVersion();
+  if (launcher) return launcher;
   try {
     // 只查询版本：离线且版本不符即拒绝，防止 pnpm 自动下载/切换包管理器。
     // Windows 的 .cmd 由固定命令调用，不含用户输入或 shell 插值。
@@ -55,16 +82,25 @@ function installedPnpmVersion(): string | undefined {
       timeout: 5_000, maxBuffer: 1_024, encoding: "utf8", windowsHide: true,
       stdio: ["ignore", "pipe", "ignore"],
     });
-    return publicVersion(output.trim()) ?? undefined;
-  } catch {
-    return undefined;
+    const version = publicVersion(output.trim());
+    return version ? { version } : { failure: "output" };
+  } catch (error) {
+    const code = (error as NodeJS.ErrnoException).code;
+    return { failure: code === "ETIMEDOUT" ? "timeout" : code === "ENOENT" ? "missing" : "command" };
   }
 }
 
 export function inspectRuntime(): RuntimeHealth {
+  const pnpm = installedPnpmVersion();
+  const pnpmCheck = checkVersion("pnpm", "version" in pnpm ? pnpm.version : undefined, manifest.engines.pnpm);
+  if ("failure" in pnpm) {
+    const reasons = { launcher: "启动器安装信息不可读或无效", missing: "未找到本机命令",
+      timeout: "本机命令查询超时", command: "本机命令执行失败", output: "本机命令未返回有效版本" };
+    pnpmCheck.message = `无法读取 pnpm 版本：${reasons[pnpm.failure]}，请在项目目录核对并安装 ${manifest.engines.pnpm}。`;
+  }
   const checks = [
     checkNodeVersion(),
-    checkVersion("pnpm", installedPnpmVersion(), manifest.engines.pnpm),
+    pnpmCheck,
     checkVersion("Next.js", nextPackage.version, manifest.dependencies.next),
     checkVersion("React", reactPackage.version, manifest.dependencies.react),
     checkVersion("React DOM", reactDomPackage.version, manifest.dependencies["react-dom"]),

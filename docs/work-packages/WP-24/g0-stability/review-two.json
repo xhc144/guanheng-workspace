@@ -1,0 +1,74 @@
+{
+  "at": "2026-10-26T19:19:23.352406+00:00",
+  "source": "2521b5878b5d3b76ceaf809ddce5790db93219ec",
+  "applicationTree": "2c0a70e0605d0092f7f8447cfccfefefc18ab5ec",
+  "logsHashedAndMatched": 23,
+  "finalCommandsAllSourceBoundAndExitZero": true,
+  "finalTestCounts": {
+    "tests": 110,
+    "passCount": 110,
+    "failCount": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0
+  },
+  "sourceWorktreeMatches": true,
+  "stagedFilesChecked": [
+    "docs/work-packages/WP-24/g0-stability/01-install.log",
+    "docs/work-packages/WP-24/g0-stability/02-install-original-permission.log",
+    "docs/work-packages/WP-24/g0-stability/03-pnpm-version-before.log",
+    "docs/work-packages/WP-24/g0-stability/04-baseline-focused.log",
+    "docs/work-packages/WP-24/g0-stability/05-baseline-full.log",
+    "docs/work-packages/WP-24/g0-stability/06-pnpm-syscalls.log",
+    "docs/work-packages/WP-24/g0-stability/07-pnpm-cpu.log",
+    "docs/work-packages/WP-24/g0-stability/08-pnpm-contention-before.log",
+    "docs/work-packages/WP-24/g0-stability/09-worker-close-before.log",
+    "docs/work-packages/WP-24/g0-stability/10-worker-close-before-correct-cwd.log",
+    "docs/work-packages/WP-24/g0-stability/11-focused-after.log",
+    "docs/work-packages/WP-24/g0-stability/12-runtime-command-after.log",
+    "docs/work-packages/WP-24/g0-stability/13-typecheck-first.log",
+    "docs/work-packages/WP-24/g0-stability/14-lint-first.log",
+    "docs/work-packages/WP-24/g0-stability/15-pnpm-contention-comparison.log",
+    "docs/work-packages/WP-24/g0-stability/16-negative-old-runtime.log",
+    "docs/work-packages/WP-24/g0-stability/17-negative-early-result.log",
+    "docs/work-packages/WP-24/g0-stability/18-final-test.log",
+    "docs/work-packages/WP-24/g0-stability/19-final-typecheck.log",
+    "docs/work-packages/WP-24/g0-stability/20-final-lint.log",
+    "docs/work-packages/WP-24/g0-stability/21-final-build.log",
+    "docs/work-packages/WP-24/g0-stability/22-final-browser.log",
+    "docs/work-packages/WP-24/g0-stability/23-final-runtime-browser.log",
+    "docs/work-packages/WP-24/g0-stability/environment-interruption.json",
+    "docs/work-packages/WP-24/g0-stability/pnpm-cpu-summary.json",
+    "docs/work-packages/WP-24/g0-stability/review-one.json",
+    "docs/work-packages/WP-24/g0-stability/source-context.json",
+    "docs/work-packages/WP-24/g0-stability/validation-binding.json",
+    "docs/work-packages/WP-24/g0-stability/修复与复验.md",
+    "reports/WP-01.md",
+    "reports/WP-24.md"
+  ],
+  "stagedUtf8Only": true,
+  "stagedSourceDocumentationFormat": {
+    "exitCode": 0,
+    "output": ""
+  },
+  "rawOriginalLogFormat": {
+    "exitCode": 2,
+    "output": "docs/work-packages/WP-24/g0-stability/16-negative-old-runtime.log:17: trailing whitespace.\n+  \ndocs/work-packages/WP-24/g0-stability/16-negative-old-runtime.log:19: trailing whitespace.\n+  \ndocs/work-packages/WP-24/g0-stability/17-negative-early-result.log:17: trailing whitespace.\n+  \ndocs/work-packages/WP-24/g0-stability/17-negative-early-result.log:19: trailing whitespace.\n+  \ndocs/work-packages/WP-24/g0-stability/21-final-build.log:20: trailing whitespace.\n+  Generating static pages using 4 workers (2/10) \ndocs/work-packages/WP-24/g0-stability/21-final-build.log:21: trailing whitespace.\n+  Generating static pages using 4 workers (4/10) \ndocs/work-packages/WP-24/g0-stability/21-final-build.log:22: trailing whitespace.\n+  Generating static pages using 4 workers (7/10) \ndocs/work-packages/WP-24/g0-stability/22-final-browser.log:21: trailing whitespace.\n+  Generating static pages using 4 workers (2/10) \ndocs/work-packages/WP-24/g0-stability/22-final-browser.log:22: trailing whitespace.\n+  Generating static pages using 4 workers (4/10) \ndocs/work-packages/WP-24/g0-stability/22-final-browser.log:23: trailing whitespace.\n+  Generating static pages using 4 workers (7/10) \ndocs/work-packages/WP-24/g0-stability/22-final-browser.log:165: trailing whitespace.\n+  Generating static pages using 4 workers (2/10) \ndocs/work-packages/WP-24/g0-stability/22-final-browser.log:166: trailing whitespace.\n+  Generating static pages using 4 workers (4/10) \ndocs/work-packages/WP-24/g0-stability/22-final-browser.log:167: trailing whitespace.\n+  Generating static pages using 4 workers (7/10) \n",
+    "explanation": "Original terminal output is preserved, including trailing whitespace; source/docs/JSON checked separately."
+  },
+  "localEvidenceLinksChecked": 60,
+  "pr11Observed": {
+    "head": "a34e4fac9d9d076a78b0438fd8dfe879fe106fe6",
+    "draft": true,
+    "merged": false,
+    "action": "read only; ready pending user per delegation"
+  },
+  "remainingGoals": [
+    "Direct Node/Corepack/unrecognized launcher still uses real original 5000ms offline CLI and returns attention on failure; no stale healthy result",
+    "Controlled CPU contention and EXCLUSIVE WAL connection fixtures prove mechanisms, not the precise timing/resource trigger of every historical failure",
+    "Windows/macOS and real production were not run",
+    "PR11 ready remains denied pending user; no ready/merge/deploy or WP23/G1/new business"
+  ],
+  "auditParserCorrection": "review-parser-failure.json records failed display-path parse; NUL-delimited audit succeeded",
+  "findings": "Review two found no new source or evidence inconsistency; no final test/browser rerun needed."
+}
