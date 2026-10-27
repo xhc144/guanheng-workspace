@@ -1,0 +1,14 @@
+[
+  {
+    "cwd": "/workspace/guanheng-wp04",
+    "command": [
+      "node",
+      "tools/capability-inventory/generate.mjs",
+      "--check"
+    ],
+    "startedAt": "2026-10-26T17:46:47.839394+00:00",
+    "finishedAt": "2026-10-26T17:46:49.414656+00:00",
+    "exitCode": 1,
+    "log": "docs/work-packages/WP-04/28-sync-stale-check.log"
+  }
+]

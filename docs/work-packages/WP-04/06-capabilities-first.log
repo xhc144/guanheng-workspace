@@ -1,0 +1,132 @@
+✔ 能力目录服务拒绝未登录和非管理员，不能只靠页面隐藏 (1.862828ms)
+✔ 真实API会话鉴权拒绝匿名、伪造及三个非管理员角色，读取无数据库写入 (28.963025ms)
+✔ 管理员API在query_only合成库返回可追溯来源与未知运行状态，重复读取幂等 (17.490778ms)
+✔ 筛选、空结果、页边界和待确认功能真实返回，不能假报完成 (14.61471ms)
+✔ 无效筛选和重复参数以中文400返回，不回显内部错误 (16.537626ms)
+✔ 管理员停用、降权及会话过期后API立即拒绝 (6.788039ms)
+✔ 数据库异常返回通用中文500且不暴露连接错误 (9.222543ms)
+✔ 无会话API在空临时cwd不初始化data或数据库 (609.68456ms)
+✔ 真实仓库提取、逐来源摘要及映射全部一致，测试文件仅作线索 (1520.996443ms)
+✖ 新增/删除临时源路由真实改变提取结果，未知能力使分类失败 (371.700244ms)
+✖ 临时重复动态路由被拒绝，不把不同参数名当不同接口 (436.300979ms)
+✖ Python路由静态解析不会执行副作用，未挂载路由直接失败 (504.889081ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 9
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4169.776432
+
+✖ failing tests:
+
+test at tests/capabilities.test.ts:165:1
+✖ 新增/删除临时源路由真实改变提取结果，未知能力使分类失败 (371.700244ms)
+  AssertionError [ERR_ASSERTION]: file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:26
+  function line(source,node) { return source.getLineAndCharacterOfPosition(node.getStart(source)).line+1; }
+                                                                                ^
+  
+  TypeError: Cannot read properties of undefined (reading 'getStart')
+      at line (file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:26:79)
+      at add (file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:29:119)
+      at addPage (file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:70:7)
+      at scan (file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:93:44)
+      at file:///workspace/guanheng-wp04/systems/project-ops/[eval1]:3:19
+      at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+      at async node:internal/modules/esm/loader:224:26
+      at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:221:20)
+      at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+  
+  Node.js v24.19.0
+  
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/guanheng-wp04/systems/project-ops/tests/capabilities.test.ts:167:45)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/capabilities.test.ts:178:1
+✖ 临时重复动态路由被拒绝，不把不同参数名当不同接口 (436.300979ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /重复路由/. Input:
+  
+  'file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:26\n' +
+    'function line(source,node) { return source.getLineAndCharacterOfPosition(node.getStart(source)).line+1; }\n' +
+    '                                                                              ^\n' +
+    '\n' +
+    "TypeError: Cannot read properties of undefined (reading 'getStart')\n" +
+    '    at line (file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:26:79)\n' +
+    '    at add (file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:29:119)\n' +
+    '    at addPage (file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:70:7)\n' +
+    '    at scan (file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:93:44)\n' +
+    '    at file:///workspace/guanheng-wp04/systems/project-ops/[eval1]:3:19\n' +
+    '    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n' +
+    '    at async node:internal/modules/esm/loader:224:26\n' +
+    '    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:221:20)\n' +
+    '    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n' +
+    '\n' +
+    'Node.js v24.19.0\n'
+  
+      at TestContext.<anonymous> (file:///workspace/guanheng-wp04/systems/project-ops/tests/capabilities.test.ts:181:77)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: "file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:26\nfunction line(source,node) { return source.getLineAndCharacterOfPosition(node.getStart(source)).line+1; }\n                                                                              ^\n\nTypeError: Cannot read properties of undefined (reading 'getStart')\n    at line (file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:26:79)\n    at add (file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:29:119)\n    at addPage (file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:70:7)\n    at scan (file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:93:44)\n    at file:///workspace/guanheng-wp04/systems/project-ops/[eval1]:3:19\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:224:26\n    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:221:20)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.19.0\n",
+    expected: /重复路由/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/capabilities.test.ts:184:1
+✖ Python路由静态解析不会执行副作用，未挂载路由直接失败 (504.889081ms)
+  AssertionError [ERR_ASSERTION]: file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:26
+  function line(source,node) { return source.getLineAndCharacterOfPosition(node.getStart(source)).line+1; }
+                                                                                ^
+  
+  TypeError: Cannot read properties of undefined (reading 'getStart')
+      at line (file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:26:79)
+      at add (file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:29:119)
+      at addPage (file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:70:7)
+      at scan (file:///workspace/guanheng-wp04/tools/capability-inventory/generate.mjs:93:44)
+      at file:///workspace/guanheng-wp04/systems/project-ops/[eval1]:3:19
+      at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+      at async node:internal/modules/esm/loader:224:26
+      at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:221:20)
+      at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+  
+  Node.js v24.19.0
+  
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///workspace/guanheng-wp04/systems/project-ops/tests/capabilities.test.ts:187:43)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

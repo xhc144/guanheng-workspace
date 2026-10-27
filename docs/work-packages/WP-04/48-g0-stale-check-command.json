@@ -1,0 +1,14 @@
+[
+  {
+    "cwd": "/workspace/guanheng-wp04",
+    "command": [
+      "node",
+      "tools/capability-inventory/generate.mjs",
+      "--check"
+    ],
+    "startedAt": "2026-10-26T18:03:48.781607+00:00",
+    "finishedAt": "2026-10-26T18:03:49.798673+00:00",
+    "exitCode": 1,
+    "log": "docs/work-packages/WP-04/48-g0-stale-check.log"
+  }
+]

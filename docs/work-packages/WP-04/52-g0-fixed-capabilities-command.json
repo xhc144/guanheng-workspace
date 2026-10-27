@@ -1,0 +1,15 @@
+[
+  {
+    "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+    "command": [
+      "node",
+      "--experimental-strip-types",
+      "--test",
+      "tests/capabilities.test.ts"
+    ],
+    "startedAt": "2026-10-26T18:08:33.464721+00:00",
+    "finishedAt": "2026-10-26T18:08:41.276802+00:00",
+    "exitCode": 0,
+    "log": "docs/work-packages/WP-04/52-g0-fixed-capabilities.log"
+  }
+]

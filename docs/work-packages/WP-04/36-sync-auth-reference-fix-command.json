@@ -1,0 +1,13 @@
+[
+  {
+    "cwd": "/workspace/guanheng-wp04",
+    "command": [
+      "node",
+      "tools/capability-inventory/generate.mjs"
+    ],
+    "startedAt": "2026-10-26T17:50:35.517099+00:00",
+    "finishedAt": "2026-10-26T17:50:37.458542+00:00",
+    "exitCode": 0,
+    "log": "docs/work-packages/WP-04/36-sync-auth-reference-fix.log"
+  }
+]

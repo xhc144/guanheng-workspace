@@ -1,0 +1,8 @@
+cwd: /workspace/guanheng-wp04
+command: ["node", "tools/capability-inventory/generate.mjs", "--check"]
+startedAt: 2026-10-26T17:46:47.839394+00:00
+
+能力目录与源码/映射不一致，请重新生成并审查差异
+
+finishedAt: 2026-10-26T17:46:49.414656+00:00
+exitCode: 1

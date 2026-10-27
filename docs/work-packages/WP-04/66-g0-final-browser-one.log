@@ -1,0 +1,2694 @@
+cwd: /workspace/guanheng-wp04
+command: ["node", "docs/work-packages/WP-04/browser-check.mjs", "/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs", "/usr/bin/chromium"]
+startedAt: 2026-10-26T18:22:06.074952+00:00
+
+{"resourceStatus":500,"path":"/capabilities"}
+{
+  "runtime": "/tmp/guanheng-wp04-browser-v72d7I",
+  "port": 46447,
+  "results": [
+    {
+      "check": "匿名GET/HEAD拒绝、页面跳转登录",
+      "status": "通过"
+    },
+    {
+      "check": "正式favicon GET/HEAD204零字节、元数据路径；真实G0状态API与375px页面，runner/预算/通道未配置状态真实",
+      "status": "通过"
+    },
+    {
+      "check": "管理员真实登录、GET/HEAD只读、POST405与非法页码400",
+      "status": "通过",
+      "sourceDigest": "3ef611554d6c85bdf172f2d09a1b4e4c83867e7d229feb7cacd14473549f36c8"
+    },
+    {
+      "check": "375px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+      "status": "通过",
+      "dimensions": {
+        "viewport": 375,
+        "body": 375,
+        "document": 375
+      }
+    },
+    {
+      "check": "768px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+      "status": "通过",
+      "dimensions": {
+        "viewport": 768,
+        "body": 768,
+        "document": 768
+      }
+    },
+    {
+      "check": "1440px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+      "status": "通过",
+      "dimensions": {
+        "viewport": 1440,
+        "body": 1440,
+        "document": 1440
+      }
+    },
+    {
+      "check": "翻页、中文空状态、错误边界与重置恢复",
+      "status": "通过"
+    },
+    {
+      "check": "三个非管理员角色中文拒绝、无目录数据展示",
+      "status": "通过"
+    },
+    {
+      "check": "合成库移除会话表触发真实500及中文错误边界；恢复表后重试回登录",
+      "status": "通过",
+      "faultPhaseConsoleErrors": [
+        {
+          "message": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "location": "http://127.0.0.1:46447/capabilities"
+        },
+        {
+          "message": "Error: Minified React error #441; visit https://react.dev/errors/441 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+          "location": "http://127.0.0.1:46447/_next/static/chunks/3adrxz22zmvfn.js"
+        }
+      ]
+    }
+  ],
+  "normalFlowConsoleErrors": [],
+  "normalFlowFailedResponses": [],
+  "normalFlowRequestFailures": [
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/capabilities",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/capabilities",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/capabilities",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/capabilities",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/organization",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/runtime-health",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/integration-health",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/organization",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/audit",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/integration-health",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/organization",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/runtime-health",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/integration-health",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/organization",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/audit",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/integration-health",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/organization",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/audit",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/runtime-health",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/integration-health",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/organization",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/audit",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/capabilities",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/integration-health",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/capabilities",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/organization",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/audit",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/organization",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/runtime-health",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/capabilities",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/integration-health",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/organization",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/audit",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/runtime-health",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/integration-health",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/organization",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/integration-health",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/runtime-health",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/capabilities",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/commissions",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/customers",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/search",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/services",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/contracts",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/projects",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/finance",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/work",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/rules",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/documents",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/notifications",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/reports",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/profile",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "path": "/data",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "scope": "本包目录交互及G0诊断/正式favicon检查，不证明全部被盘点业务或Windows通过"
+}
+AssertionError [ERR_ASSERTION]: 正常流程存在网络请求错误
++ actual - expected
+
++ [
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/commissions'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/work'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/documents'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/capabilities'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/capabilities'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/capabilities'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/capabilities'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/commissions'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/commissions'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/work'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/data'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/reports'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/organization'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/runtime-health'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/integration-health'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/commissions'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/data'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/documents'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/reports'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/organization'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/audit'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/integration-health'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/work'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/documents'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/data'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/reports'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/organization'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/runtime-health'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/integration-health'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/commissions'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/work'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/documents'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/data'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/organization'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/audit'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/integration-health'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/commissions'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/work'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/documents'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/data'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/reports'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/organization'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/audit'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/runtime-health'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/integration-health'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/commissions'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/documents'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/data'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/reports'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/organization'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/audit'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/capabilities'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/integration-health'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/capabilities'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/commissions'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/work'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/documents'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/data'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/reports'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/organization'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/audit'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/commissions'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/work'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/reports'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/organization'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/data'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/runtime-health'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/capabilities'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/integration-health'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/commissions'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/work'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/documents'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/data'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/organization'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/audit'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/runtime-health'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/integration-health'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/work'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/documents'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/reports'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/data'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/organization'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/integration-health'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/runtime-health'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/capabilities'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/commissions'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/work'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/commissions'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/work'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/reports'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/documents'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/data'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/work'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/data'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/reports'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/commissions'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/work'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/data'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/documents'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/work'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/commissions'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/data'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/documents'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/reports'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/commissions'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/documents'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/data'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/reports'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/commissions'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/work'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/documents'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/reports'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/reports'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/customers'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/documents'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/search'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/services'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/contracts'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/projects'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/finance'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/work'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/rules'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/documents'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/notifications'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/reports'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/profile'
++   },
++   {
++     error: 'net::ERR_ABORTED',
++     path: '/data'
++   }
++ ]
+- []
+
+    at file:///workspace/guanheng-wp04/docs/work-packages/WP-04/browser-check.mjs:133:9 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [Array],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+▲ Next.js 16.3.3
+- Local:         http://127.0.0.1:46447
+- Network:       http://127.0.0.1:46447
+✓ Ready in 0ms
+✓ Running next.config took 4ms
+⨯ Error: no such table: sessions
+    at <unknown> (.next/server/chunks/ssr/_0vd_x-v._.js:1:181)
+    at p (.next/server/chunks/ssr/app_capabilities_1e_xito._.js:1:675509) {
+  code: 'ERR_SQLITE_ERROR',
+  errcode: 1,
+  errstr: 'SQL logic error',
+  digest: '1954829182'
+}
+
+
+finishedAt: 2026-10-26T18:22:44.025604+00:00
+exitCode: 1

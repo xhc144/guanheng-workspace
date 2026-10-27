@@ -1,0 +1,707 @@
+{
+  "integrationBase": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+  "mergeCommit": "ce8eee4406a66983c4a5b3904180dc2f59817d08",
+  "fixedSourceCommit": "ca294dec964e0a0ac58cb9a640bb11890b83bf64",
+  "sourceDigest": "3ef611554d6c85bdf172f2d09a1b4e4c83867e7d229feb7cacd14473549f36c8",
+  "staticEntryCount": 409,
+  "existing405EntriesAndBusinessDecisionsUnchanged": true,
+  "addedSourceRecords": [
+    "GET /api/integration-health",
+    "PAGE /integration-health",
+    "GET /favicon.ico",
+    "HEAD /favicon.ico"
+  ],
+  "allEntryRuntimeStatus": "未逐项运行",
+  "commands": {
+    "56": {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "env",
+        "WP24_PLAYWRIGHT_MODULE=/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs",
+        "WP24_CHROMIUM=/usr/bin/chromium",
+        "node",
+        "tests/favicon-browser.mjs"
+      ],
+      "startedAt": "2026-10-26T18:11:07.673225+00:00",
+      "finishedAt": "2026-10-26T18:12:18.405512+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/56-g0-official-favicon-gate.log"
+    },
+    "69": {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "sourceCommit": "ca294dec964e0a0ac58cb9a640bb11890b83bf64",
+      "startedAt": null,
+      "finishedAtFromLogMtime": "2026-10-26T18:29:18.290462+00:00",
+      "exitCode": 0,
+      "outputSummary": "Already up to date\nDone in 768ms using pnpm v11.19.0\n",
+      "note": "使用原registry和原默认存储，依赖/lock/workspace未变。开始时间未另记。"
+    },
+    "70": {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "tests/capabilities.test.ts"
+      ],
+      "startedAt": "2026-10-26T18:29:18.464121+00:00",
+      "finishedAt": "2026-10-26T18:29:26.963313+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/70-g0-delivery-capabilities.log"
+    },
+    "72": {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAt": "2026-10-26T18:31:09.404124+00:00",
+      "finishedAt": "2026-10-26T18:31:13.472788+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/72-g0-delivery-typecheck.log"
+    },
+    "73": {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "startedAt": "2026-10-26T18:31:09.422190+00:00",
+      "finishedAt": "2026-10-26T18:31:21.194527+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/73-g0-delivery-lint.log"
+    },
+    "74": {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "startedAt": "2026-10-26T18:32:40.893651+00:00",
+      "finishedAt": "2026-10-26T18:32:51.949538+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/74-g0-delivery-test-retry.log"
+    },
+    "75": {
+      "cwd": "/workspace/guanheng-wp04/systems/project-ops",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "startedAt": "2026-10-26T18:33:29.732561+00:00",
+      "finishedAt": "2026-10-26T18:33:39.884790+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/75-g0-delivery-build.log"
+    },
+    "76": {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "node",
+        "docs/work-packages/WP-04/browser-check.mjs",
+        "/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs",
+        "/usr/bin/chromium"
+      ],
+      "startedAt": "2026-10-26T18:34:20.262248+00:00",
+      "finishedAt": "2026-10-26T18:34:44.731563+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/76-g0-delivery-browser-one.log"
+    },
+    "77": {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "node",
+        "tools/capability-inventory/generate.mjs",
+        "--check"
+      ],
+      "startedAt": "2026-10-26T18:35:50.830305+00:00",
+      "finishedAt": "2026-10-26T18:35:52.343554+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/77-g0-delivery-check.log"
+    },
+    "78": {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "python3",
+        "tools/validate_plan.py"
+      ],
+      "startedAt": "2026-10-26T18:35:52.134184+00:00",
+      "finishedAt": "2026-10-26T18:35:52.245031+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/78-g0-delivery-plan.log"
+    },
+    "79": {
+      "cwd": "/workspace/guanheng-wp04",
+      "command": [
+        "node",
+        "docs/work-packages/WP-04/browser-check.mjs",
+        "/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs",
+        "/usr/bin/chromium"
+      ],
+      "startedAt": "2026-10-26T18:36:05.424214+00:00",
+      "finishedAt": "2026-10-26T18:36:31.532401+00:00",
+      "exitCode": 0,
+      "log": "docs/work-packages/WP-04/79-g0-delivery-browser-two.log"
+    }
+  },
+  "browserRounds": [
+    {
+      "log": "docs/work-packages/WP-04/76-g0-delivery-browser-one.log",
+      "command": {
+        "cwd": "/workspace/guanheng-wp04",
+        "command": [
+          "node",
+          "docs/work-packages/WP-04/browser-check.mjs",
+          "/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs",
+          "/usr/bin/chromium"
+        ],
+        "startedAt": "2026-10-26T18:34:20.262248+00:00",
+        "finishedAt": "2026-10-26T18:34:44.731563+00:00",
+        "exitCode": 0,
+        "log": "docs/work-packages/WP-04/76-g0-delivery-browser-one.log"
+      },
+      "resultGroups": [
+        {
+          "check": "匿名GET/HEAD拒绝、页面跳转登录",
+          "status": "通过"
+        },
+        {
+          "check": "正式favicon GET/HEAD204零字节、元数据路径；真实G0状态API与375px页面，runner/预算/通道未配置状态真实",
+          "status": "通过"
+        },
+        {
+          "check": "管理员真实登录、GET/HEAD只读、POST405与非法页码400",
+          "status": "通过",
+          "sourceDigest": "3ef611554d6c85bdf172f2d09a1b4e4c83867e7d229feb7cacd14473549f36c8"
+        },
+        {
+          "check": "375px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+          "status": "通过",
+          "dimensions": {
+            "viewport": 375,
+            "body": 375,
+            "document": 375
+          }
+        },
+        {
+          "check": "768px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+          "status": "通过",
+          "dimensions": {
+            "viewport": 768,
+            "body": 768,
+            "document": 768
+          }
+        },
+        {
+          "check": "1440px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+          "status": "通过",
+          "dimensions": {
+            "viewport": 1440,
+            "body": 1440,
+            "document": 1440
+          }
+        },
+        {
+          "check": "翻页、中文空状态、错误边界与重置恢复",
+          "status": "通过"
+        },
+        {
+          "check": "三个非管理员角色中文拒绝、无目录数据展示",
+          "status": "通过"
+        },
+        {
+          "check": "所有requestfailed事件保留；仅已识别页面RSC GET取消，逐目标真实会话HTTP200，未知/业务API失败不接受",
+          "status": "通过",
+          "cancellationTargetProbes": [
+            {
+              "path": "/",
+              "status": 200
+            },
+            {
+              "path": "/audit",
+              "status": 200
+            },
+            {
+              "path": "/capabilities",
+              "status": 200
+            },
+            {
+              "path": "/commissions",
+              "status": 200
+            },
+            {
+              "path": "/contracts",
+              "status": 200
+            },
+            {
+              "path": "/customers",
+              "status": 200
+            },
+            {
+              "path": "/data",
+              "status": 200
+            },
+            {
+              "path": "/documents",
+              "status": 200
+            },
+            {
+              "path": "/finance",
+              "status": 200
+            },
+            {
+              "path": "/integration-health",
+              "status": 200
+            },
+            {
+              "path": "/notifications",
+              "status": 200
+            },
+            {
+              "path": "/organization",
+              "status": 200
+            },
+            {
+              "path": "/profile",
+              "status": 200
+            },
+            {
+              "path": "/projects",
+              "status": 200
+            },
+            {
+              "path": "/reports",
+              "status": 200
+            },
+            {
+              "path": "/rules",
+              "status": 200
+            },
+            {
+              "path": "/runtime-health",
+              "status": 200
+            },
+            {
+              "path": "/search",
+              "status": 200
+            },
+            {
+              "path": "/services",
+              "status": 200
+            },
+            {
+              "path": "/work",
+              "status": 200
+            }
+          ]
+        },
+        {
+          "check": "合成库移除会话表触发真实500及中文错误边界；恢复表后重试回登录",
+          "status": "通过",
+          "faultPhaseConsoleErrors": [
+            {
+              "message": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+              "location": "http://127.0.0.1:46631/capabilities"
+            },
+            {
+              "message": "Error: Minified React error #441; visit https://react.dev/errors/441 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+              "location": "http://127.0.0.1:46631/_next/static/chunks/3adrxz22zmvfn.js"
+            }
+          ]
+        }
+      ],
+      "normalFlowConsoleErrors": [],
+      "normalFlowFailedResponses": [],
+      "unexpectedRequestFailures": [],
+      "retainedRscCancellationCount": 318,
+      "distinctTargetProbes": [
+        {
+          "path": "/",
+          "status": 200
+        },
+        {
+          "path": "/audit",
+          "status": 200
+        },
+        {
+          "path": "/capabilities",
+          "status": 200
+        },
+        {
+          "path": "/commissions",
+          "status": 200
+        },
+        {
+          "path": "/contracts",
+          "status": 200
+        },
+        {
+          "path": "/customers",
+          "status": 200
+        },
+        {
+          "path": "/data",
+          "status": 200
+        },
+        {
+          "path": "/documents",
+          "status": 200
+        },
+        {
+          "path": "/finance",
+          "status": 200
+        },
+        {
+          "path": "/integration-health",
+          "status": 200
+        },
+        {
+          "path": "/notifications",
+          "status": 200
+        },
+        {
+          "path": "/organization",
+          "status": 200
+        },
+        {
+          "path": "/profile",
+          "status": 200
+        },
+        {
+          "path": "/projects",
+          "status": 200
+        },
+        {
+          "path": "/reports",
+          "status": 200
+        },
+        {
+          "path": "/rules",
+          "status": 200
+        },
+        {
+          "path": "/runtime-health",
+          "status": 200
+        },
+        {
+          "path": "/search",
+          "status": 200
+        },
+        {
+          "path": "/services",
+          "status": 200
+        },
+        {
+          "path": "/work",
+          "status": 200
+        }
+      ],
+      "rawEventsRetainedInLog": true,
+      "scope": "本包目录交互及G0诊断/正式favicon检查，不证明全部被盘点业务或Windows通过"
+    },
+    {
+      "log": "docs/work-packages/WP-04/79-g0-delivery-browser-two.log",
+      "command": {
+        "cwd": "/workspace/guanheng-wp04",
+        "command": [
+          "node",
+          "docs/work-packages/WP-04/browser-check.mjs",
+          "/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs",
+          "/usr/bin/chromium"
+        ],
+        "startedAt": "2026-10-26T18:36:05.424214+00:00",
+        "finishedAt": "2026-10-26T18:36:31.532401+00:00",
+        "exitCode": 0,
+        "log": "docs/work-packages/WP-04/79-g0-delivery-browser-two.log"
+      },
+      "resultGroups": [
+        {
+          "check": "匿名GET/HEAD拒绝、页面跳转登录",
+          "status": "通过"
+        },
+        {
+          "check": "正式favicon GET/HEAD204零字节、元数据路径；真实G0状态API与375px页面，runner/预算/通道未配置状态真实",
+          "status": "通过"
+        },
+        {
+          "check": "管理员真实登录、GET/HEAD只读、POST405与非法页码400",
+          "status": "通过",
+          "sourceDigest": "3ef611554d6c85bdf172f2d09a1b4e4c83867e7d229feb7cacd14473549f36c8"
+        },
+        {
+          "check": "375px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+          "status": "通过",
+          "dimensions": {
+            "viewport": 375,
+            "body": 375,
+            "document": 375
+          }
+        },
+        {
+          "check": "768px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+          "status": "通过",
+          "dimensions": {
+            "viewport": 768,
+            "body": 768,
+            "document": 768
+          }
+        },
+        {
+          "check": "1440px真实中文筛选、证据展开、键盘焦点、44px触控及布局",
+          "status": "通过",
+          "dimensions": {
+            "viewport": 1440,
+            "body": 1440,
+            "document": 1440
+          }
+        },
+        {
+          "check": "翻页、中文空状态、错误边界与重置恢复",
+          "status": "通过"
+        },
+        {
+          "check": "三个非管理员角色中文拒绝、无目录数据展示",
+          "status": "通过"
+        },
+        {
+          "check": "所有requestfailed事件保留；仅已识别页面RSC GET取消，逐目标真实会话HTTP200，未知/业务API失败不接受",
+          "status": "通过",
+          "cancellationTargetProbes": [
+            {
+              "path": "/",
+              "status": 200
+            },
+            {
+              "path": "/audit",
+              "status": 200
+            },
+            {
+              "path": "/capabilities",
+              "status": 200
+            },
+            {
+              "path": "/commissions",
+              "status": 200
+            },
+            {
+              "path": "/contracts",
+              "status": 200
+            },
+            {
+              "path": "/customers",
+              "status": 200
+            },
+            {
+              "path": "/data",
+              "status": 200
+            },
+            {
+              "path": "/documents",
+              "status": 200
+            },
+            {
+              "path": "/finance",
+              "status": 200
+            },
+            {
+              "path": "/integration-health",
+              "status": 200
+            },
+            {
+              "path": "/notifications",
+              "status": 200
+            },
+            {
+              "path": "/organization",
+              "status": 200
+            },
+            {
+              "path": "/profile",
+              "status": 200
+            },
+            {
+              "path": "/projects",
+              "status": 200
+            },
+            {
+              "path": "/reports",
+              "status": 200
+            },
+            {
+              "path": "/rules",
+              "status": 200
+            },
+            {
+              "path": "/runtime-health",
+              "status": 200
+            },
+            {
+              "path": "/search",
+              "status": 200
+            },
+            {
+              "path": "/services",
+              "status": 200
+            },
+            {
+              "path": "/work",
+              "status": 200
+            }
+          ]
+        },
+        {
+          "check": "合成库移除会话表触发真实500及中文错误边界；恢复表后重试回登录",
+          "status": "通过",
+          "faultPhaseConsoleErrors": [
+            {
+              "message": "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+              "location": "http://127.0.0.1:37167/capabilities"
+            },
+            {
+              "message": "Error: Minified React error #441; visit https://react.dev/errors/441 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.",
+              "location": "http://127.0.0.1:37167/_next/static/chunks/3adrxz22zmvfn.js"
+            }
+          ]
+        }
+      ],
+      "normalFlowConsoleErrors": [],
+      "normalFlowFailedResponses": [],
+      "unexpectedRequestFailures": [],
+      "retainedRscCancellationCount": 324,
+      "distinctTargetProbes": [
+        {
+          "path": "/",
+          "status": 200
+        },
+        {
+          "path": "/audit",
+          "status": 200
+        },
+        {
+          "path": "/capabilities",
+          "status": 200
+        },
+        {
+          "path": "/commissions",
+          "status": 200
+        },
+        {
+          "path": "/contracts",
+          "status": 200
+        },
+        {
+          "path": "/customers",
+          "status": 200
+        },
+        {
+          "path": "/data",
+          "status": 200
+        },
+        {
+          "path": "/documents",
+          "status": 200
+        },
+        {
+          "path": "/finance",
+          "status": 200
+        },
+        {
+          "path": "/integration-health",
+          "status": 200
+        },
+        {
+          "path": "/notifications",
+          "status": 200
+        },
+        {
+          "path": "/organization",
+          "status": 200
+        },
+        {
+          "path": "/profile",
+          "status": 200
+        },
+        {
+          "path": "/projects",
+          "status": 200
+        },
+        {
+          "path": "/reports",
+          "status": 200
+        },
+        {
+          "path": "/rules",
+          "status": 200
+        },
+        {
+          "path": "/runtime-health",
+          "status": 200
+        },
+        {
+          "path": "/search",
+          "status": 200
+        },
+        {
+          "path": "/services",
+          "status": 200
+        },
+        {
+          "path": "/work",
+          "status": 200
+        }
+      ],
+      "rawEventsRetainedInLog": true,
+      "scope": "本包目录交互及G0诊断/正式favicon检查，不证明全部被盘点业务或Windows通过"
+    }
+  ],
+  "officialFaviconGate": {
+    "commandRecord": "56",
+    "deployments": [
+      {
+        "basePath": "",
+        "build": 0,
+        "browser": 0
+      },
+      {
+        "basePath": "/pms",
+        "build": 0,
+        "browser": 0
+      }
+    ],
+    "sharedScriptUnmodified": true
+  },
+  "failuresRetained": [
+    "48：旧提取器拒绝正式HEAD=GET；严格支持本地const函数别名并新增回归",
+    "58/66/67：新增全requestfailed为空判据不符合Next真实取消语义；保留原事件并逐目标真实请求200，console及HTTP错误检查不变",
+    "61：runtime-health原5秒spawnSync pnpm ETIMEDOUT；未改限制",
+    "71：并发回款验证SELECT database is locked；另有原pnpm版本读取失败；未改共享测试"
+  ],
+  "defaultFullTestRetry": {
+    "record": "74",
+    "passed": 120,
+    "failed": 0,
+    "skipped": 0,
+    "sharedIntermittentIssuesStillNeedOwnerReview": true
+  },
+  "pendingOwnerActions": {
+    "WP24": [
+      "审查G0并发回款验证时序与数据库锁问题",
+      "登记capabilities管理员导航/只读路由，迁移数组为空"
+    ],
+    "WP01": [
+      "审查runtime-health读取pnpm版本的原5秒超时与可诊断性"
+    ]
+  },
+  "notClaimed": [
+    "CI绿",
+    "409项业务运行通过",
+    "PMS全量基线修复",
+    "Windows验收",
+    "G1/迁移runner/真实预算provider已实现"
+  ],
+  "checkedAt": "2026-10-26T18:41:27.204149+00:00"
+}
