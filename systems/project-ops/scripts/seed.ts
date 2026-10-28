@@ -90,7 +90,7 @@ try {
   const args = process.argv.slice(2).filter(arg => arg !== "--");
   if (args.length === 1 && args[0] === "--upgrade-only") {
     const result = upgradeWorkspace(process.cwd(), process.env.DATABASE_FILENAME ?? "app.db");
-    console.log("结构升级完成，未写入演示数据；领域迁移注册待 WP24 G1");
+    console.log("结构升级完成，未写入演示数据；G1 迁移执行器已接入");
     console.log(JSON.stringify(result));
   } else {
     if (args.length) throw new Error("仅支持 --upgrade-only 参数");

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "sourceBase": "44b05e5e3e6917bc60041d29657e67cc37a5c551",
-  "sourceDigest": "3df07d6c651586f959667f1545f3257946518acf8967f46d5b8fd6054fcbb717",
-  "sourceFilesDigest": "9f9358d50fe9be51402f6b74ea50094ff5969f81385e7c13f4a23fe548507b0c",
+  "sourceDigest": "5a424d2aea1ff2e03cb3b0a2504004d936e55465d21787d20aee0bbc95a13f2a",
+  "sourceFilesDigest": "30a19316fc5283dc79b22bfca5ef8cd6f588e470de72b839e6b6bbcfa71794f2",
   "sourceFiles": [
     {
       "path": "systems/pms-suite/DeepSeek版/backend/app/main.py",
@@ -506,7 +506,7 @@
     },
     {
       "path": "systems/project-ops/app/integration-health/page.tsx",
-      "sha256": "7322c83f7c5b9fb3c61e18e8fb77edc5346e1b4a17738cdacf8d07418d20c1a1"
+      "sha256": "4cbe9072c2f9a84a287ccbb40cad17daed3308940f9696eb6ccee039dbecd12f"
     },
     {
       "path": "systems/project-ops/app/layout.tsx",
@@ -614,7 +614,7 @@
     },
     {
       "path": "systems/project-ops/lib/db.ts",
-      "sha256": "80722a6d4d7b3a959f1a058e7ffc8cbf95ba6a9072b17b48b13b8508d8650e1d"
+      "sha256": "75a4f069955f2a0784af2d663bc6ef6fb2e69b3f596b00cf3dc1c861096f73d8"
     },
     {
       "path": "systems/project-ops/lib/documents.ts",
@@ -626,11 +626,11 @@
     },
     {
       "path": "systems/project-ops/lib/extension-contracts.ts",
-      "sha256": "db09f7983981d74aad7785663c35d2f616e5ed00214f6eaa8bb28b9e3a2d894b"
+      "sha256": "a39d68a9d5ca962bc594e10f5d7856436d417ca077d20d7750da356a111ec85a"
     },
     {
       "path": "systems/project-ops/lib/extension-registry.ts",
-      "sha256": "db2ee815c1c90bfa7734c5d70f72dd4d716f808e8b1079e4253706db3fbbe7a8"
+      "sha256": "5f805a5c2ebbd4ce613d23175faff5d6809f95b96cd95f7bf6673f5e9c95d408"
     },
     {
       "path": "systems/project-ops/lib/finance.ts",
@@ -722,7 +722,7 @@
     },
     {
       "path": "systems/project-ops/tests/integration-foundation.test.ts",
-      "sha256": "d0ce64d139544bb82722570944ffe8a4a3b1b6c9bea9eb56e24b9156dcf6b8b9"
+      "sha256": "f7c2478fba3a7b39ff7cd2ec55b57ecd3131705847b4333f5a70bcfe6b6e3f18"
     },
     {
       "path": "systems/project-ops/tests/legacy-import.test.ts",
@@ -19008,7 +19008,7 @@
         "redirect",
         "route.methods.join"
       ],
-      "sha256": "7322c83f7c5b9fb3c61e18e8fb77edc5346e1b4a17738cdacf8d07418d20c1a1",
+      "sha256": "4cbe9072c2f9a84a287ccbb40cad17daed3308940f9696eb6ccee039dbecd12f",
       "domain": "foundation",
       "label": "共享G0地基与集成状态",
       "decision": "主线已有",

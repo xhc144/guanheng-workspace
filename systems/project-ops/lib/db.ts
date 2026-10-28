@@ -4,17 +4,25 @@ import { DatabaseSync } from "node:sqlite";
 import { randomUUID } from "node:crypto";
 import { isAsyncFunction } from "node:util/types";
 import { initializeSchema } from "./schema.ts";
+import { initializeExtensionMigrations } from "./extension-registry.ts";
 
 declare global {
   var __pmsDatabase: DatabaseSync | undefined;
 }
 
-export function openDatabase(path: string) {
+export function openDatabaseWithMigrations(path: string) {
   if (path !== ":memory:") mkdirSync(dirname(path), { recursive: true });
   const db = new DatabaseSync(path);
-  try { initializeSchema(db); }
+  try {
+    initializeSchema(db);
+    const migrations = initializeExtensionMigrations(db);
+    return { db, migrations };
+  }
   catch (error) { db.close(); throw error; }
-  return db;
+}
+
+export function openDatabase(path: string) {
+  return openDatabaseWithMigrations(path).db;
 }
 
 export function getDb() {

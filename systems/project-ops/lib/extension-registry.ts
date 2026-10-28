@@ -1,12 +1,17 @@
 import type { DatabaseSync } from "node:sqlite";
 import type { Role, SessionUser } from "./auth.ts";
 import { canAccessEntity } from "./entity-access.ts";
-import type { ApprovalSubject, BudgetSnapshotProvider, BudgetSnapshotResult, ModuleRegistration } from "./extension-contracts.ts";
+import type { ApplyMigrations, ApprovalSubject, BudgetSnapshotProvider, BudgetSnapshotResult, Migration, ModuleRegistration } from "./extension-contracts.ts";
+import { applyMigrations, migrationLedger } from "./migrations/index.ts";
+
+// Installed modules contribute complete, reviewed declarations. Public health
+// responses expose only id/checksum metadata, never the operation payload.
+type InstalledModule = Omit<ModuleRegistration, "migrations"> & { migrations: readonly Migration[] };
 
 const internalRoles: readonly Role[] = Object.freeze(["ADMIN", "FINANCE", "DEPARTMENT_MANAGER", "PROJECT_MEMBER"]);
 const adminRoles: readonly Role[] = Object.freeze(["ADMIN"]);
 function baseline(id: string, label: string, href: string, order: number, adminOnly = false,
-  apis: readonly string[] = []): ModuleRegistration {
+  apis: readonly string[] = []): InstalledModule {
   const roles = adminOnly ? adminRoles : internalRoles;
   return Object.freeze({ id, label, owner: id === "runtime-health" ? "WP-01" : id === "integration-health" ? "WP-24" : "BASELINE",
     routes: Object.freeze([
@@ -19,7 +24,7 @@ function baseline(id: string, label: string, href: string, order: number, adminO
 }
 
 // Only existing modules are registered. G1 changes this list in the public owner's branch.
-export const extensionRegistry: readonly ModuleRegistration[] = Object.freeze([
+export const extensionRegistry: readonly InstalledModule[] = Object.freeze([
   baseline("dashboard", "经营总览", "/", 10),
   baseline("search", "全局搜索", "/search", 20, false, ["/api/search"]),
   baseline("customers", "客户档案", "/customers", 30, false, ["/api/customers/[id]"]),
@@ -40,6 +45,14 @@ export const extensionRegistry: readonly ModuleRegistration[] = Object.freeze([
   baseline("runtime-health", "运行诊断", "/runtime-health", 170, true, ["/api/runtime-health"]),
   baseline("integration-health", "集成状态", "/integration-health", 180, true, ["/api/integration-health"]),
 ]);
+
+// This is the actual WP23 executor, not a replacement implementation or a
+// mutable runtime registration hook. Future G1 batches add reviewed domain
+// declarations to the module list above; no synthetic migration is installed.
+export const migrationRunner: ApplyMigrations = applyMigrations;
+export function initializeExtensionMigrations(db: DatabaseSync) {
+  return migrationRunner(db, extensionRegistry.flatMap(module => module.migrations));
+}
 
 export function navigationFor(user: SessionUser) {
   return extensionRegistry.filter(module => module.navigation && module.routes.some(route =>
@@ -91,12 +104,16 @@ export function loadBudgetSnapshot(db: DatabaseSync, actor: SessionUser, project
 
 export function getIntegrationHealth(db: DatabaseSync, actor: SessionUser | null) {
   requireIntegrationAdmin(actor);
-  const tables = db.prepare("SELECT name FROM sqlite_schema WHERE type='table' AND name NOT GLOB 'sqlite_*'").all();
+  const tables = db.prepare("SELECT name FROM sqlite_schema WHERE type='table' AND name NOT GLOB 'sqlite_*'").all() as { name: string }[];
+  const ledgerPresent = tables.some(table => table.name === migrationLedger);
+  const applied = ledgerPresent ? Number(db.prepare("SELECT COUNT(*) count FROM schema_migrations").get()!.count) : 0;
+  const registered = extensionRegistry.reduce((sum, module) => sum + module.migrations.length, 0);
   return {
-    checkedAt: new Date().toISOString(), phase: "G0" as const,
-    schema: { tableCount: tables.length, baselineTableCount: 36 },
-    migrationRunner: { status: "NOT_REGISTERED" as const, applied: null },
+    checkedAt: new Date().toISOString(), phase: "G1" as const,
+    schema: { tableCount: tables.filter(table => table.name !== migrationLedger).length, baselineTableCount: 36 },
+    migrationRunner: { status: "REGISTERED" as const, owner: "WP-23" as const, applied, registered, ledgerPresent },
     providers: { budget: "NOT_CONFIGURED" as const, approvalSubjects: Object.keys(approvalResolvers), notificationChannels: [] as string[] },
-    modules: extensionRegistry.map(module => ({ ...module, routeStatus: "REGISTERED" as const })),
+    modules: extensionRegistry.map(module => ({ ...module, migrations: module.migrations.map(({ id, checksum }) => ({ id, checksum })),
+      routeStatus: "REGISTERED" as const })),
   };
 }

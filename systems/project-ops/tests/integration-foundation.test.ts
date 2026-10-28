@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { DatabaseSync } from "node:sqlite";
-import { mkdtempSync, existsSync, rmSync } from "node:fs";
+import { cpSync, mkdirSync, mkdtempSync, existsSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { createRequire } from "node:module";
@@ -13,7 +13,8 @@ import { initializeSchema } from "../lib/schema.ts";
 import { writeAudit } from "../lib/audit.ts";
 import { createSession, type SessionUser } from "../lib/auth.ts";
 import { assertMigrations, type Migration } from "../lib/extension-contracts.ts";
-import { extensionRegistry, navigationFor, resolveApprovalSubject, loadBudgetSnapshot, getIntegrationHealth } from "../lib/extension-registry.ts";
+import { extensionRegistry, initializeExtensionMigrations, migrationRunner, navigationFor, resolveApprovalSubject, loadBudgetSnapshot, getIntegrationHealth } from "../lib/extension-registry.ts";
+import { applyMigrations, migrationChecksum } from "../lib/migrations/index.ts";
 import { GET } from "../app/api/integration-health/route.ts";
 const require = createRequire(import.meta.url);
 const { NextRequest } = await import(pathToFileURL(require.resolve("next/server.js")).href);
@@ -254,8 +255,8 @@ test("注册表只列真实已实现路由，导航和管理员状态目录同�
     assert.ok(existsSync(new URL(`../app${route.path === "/" ? "" : route.path}/${route.kind === "PAGE" ? "page.tsx" : "route.ts"}`, import.meta.url)), route.path);
   }
   const health = getIntegrationHealth(db, actor("a"));
-  assert.equal(health.schema.tableCount, 36); assert.equal(health.migrationRunner.status, "NOT_REGISTERED");
-  assert.equal(health.migrationRunner.applied, null);
+  assert.equal(health.phase, "G1"); assert.equal(health.schema.tableCount, 36);
+  assert.deepEqual(health.migrationRunner, { status: "REGISTERED", owner: "WP-23", applied: 0, registered: 0, ledgerPresent: false });
   assert.equal(health.modules.length, navigationFor(actor("a")).length);
   assert.ok(navigationFor(actor("a")).some(item => item.href === "/runtime-health"));
   for (const id of ["f", "m", "u"]) assert.ok(!navigationFor(actor(id)).some(item => /health|audit|organization/.test(item.href)));
@@ -264,6 +265,170 @@ test("注册表只列真实已实现路由，导航和管理员状态目录同�
   // SQL LIKE treats underscore as a wildcard; sqlitex_* is an ordinary table prefix.
   db.exec("CREATE TABLE sqlitex_synthetic (id TEXT)");
   assert.equal(getIntegrationHealth(db, actor("a")).schema.tableCount, 37);
+});
+
+function runnerMigration(id: string, table: string): Migration {
+  const operations: Migration["operations"] = [{ kind: "createTable", table, columns: [
+    { name: "id", type: "TEXT", nullable: false },
+    { name: "amount_cents", type: "INTEGER", nullable: false, minimum: 0 },
+  ], primaryKey: ["id"] }];
+  return { id, checksum: migrationChecksum(id, operations), operations };
+}
+
+test("G1绑定WP23真实执行器，空注册批次重复启动不造账本或演示业务", t => {
+  const directory = mkdtempSync(join(tmpdir(), "gh-wp24-g1-startup-")), filename = join(directory, "synthetic.db");
+  t.after(() => rmSync(directory, { recursive: true, force: true }));
+  assert.equal(migrationRunner, applyMigrations, "必须直接绑定已合WP23执行器");
+  for (let run = 0; run < 2; run++) {
+    const db = openDatabase(filename);
+    try {
+      assert.deepEqual(initializeExtensionMigrations(db), { applied: [], skipped: [] });
+      assert.equal(db.prepare("SELECT 1 FROM sqlite_schema WHERE name='schema_migrations'").get(), undefined);
+      assert.equal(count(db, "users"), 0); assert.equal(count(db, "customers"), 0);
+      assert.equal(db.isTransaction, false);
+    } finally { db.close(); }
+  }
+});
+
+test("G1公开runner可执行非空声明、幂等跳过，重开连接后从真实账本统计", t => {
+  const directory = mkdtempSync(join(tmpdir(), "gh-wp24-g1-ledger-")), filename = join(directory, "synthetic.db");
+  t.after(() => rmSync(directory, { recursive: true, force: true }));
+  const actor: SessionUser = { id: "a", username: "a", name: "合成", email: null, role: "ADMIN", departmentId: null };
+  const migration = runnerMigration("wp24.synthetic.001", "synthetic_g1_items");
+  const db = openDatabase(filename);
+  try {
+    assert.deepEqual(migrationRunner(db, [migration]), { applied: [migration.id], skipped: [] });
+    db.prepare("INSERT INTO synthetic_g1_items(id,amount_cents) VALUES(?,?)").run("synthetic-row", 12345);
+    assert.deepEqual(migrationRunner(db, [migration]), { applied: [], skipped: [migration.id] });
+    assert.equal(count(db, "schema_migrations"), 1);
+    assert.equal(db.prepare("SELECT checksum FROM schema_migrations WHERE id=?").get(migration.id)!.checksum, migration.checksum);
+  } finally { db.close(); }
+  const reopened = openDatabase(filename);
+  try {
+    const before = reopened.prepare("SELECT total_changes() n").get()!.n;
+    reopened.exec("PRAGMA query_only=ON");
+    const health = getIntegrationHealth(reopened, actor);
+    assert.equal(health.schema.tableCount, 37, "内部账本不计入业务表");
+    assert.deepEqual(health.migrationRunner, { status: "REGISTERED", owner: "WP-23", applied: 1, registered: 0, ledgerPresent: true });
+    assert.equal(reopened.prepare("SELECT amount_cents FROM synthetic_g1_items WHERE id='synthetic-row'").get()!.amount_cents, 12345);
+    assert.equal(reopened.prepare("SELECT total_changes() n").get()!.n, before);
+    assert.doesNotMatch(JSON.stringify(health), /wp24.synthetic.001|synthetic-row|operations_json|12345/);
+  } finally { reopened.close(); }
+});
+
+test("G1生产启动消费模块声明：跨进程幂等、失败不缓存连接、修正声明后可重试", t => {
+  const directory = mkdtempSync(join(tmpdir(), "gh-wp24-g1-module-")), filename = join(directory, "data/synthetic.db");
+  t.after(() => rmSync(directory, { recursive: true, force: true }));
+  // Copy source only. A synthetic declaration in an isolated registry exercises
+  // the real default getDb -> openDatabase -> WP23 path without a production
+  // mutable registration API or a mocked executor.
+  for (const path of ["db.ts", "schema.ts", "extension-registry.ts", "extension-contracts.ts", "entity-access.ts", "permissions.ts", "migrations/index.ts"]) {
+    const target = join(directory, "lib", path);
+    mkdirSync(join(directory, "lib", path.includes("/") ? "migrations" : ""), { recursive: true });
+    cpSync(new URL(`../lib/${path}`, import.meta.url), target);
+  }
+  const registryPath = join(directory, "lib/extension-registry.ts"), source = readFileSync(registryPath, "utf8");
+  const anchor = "export const extensionRegistry: readonly InstalledModule[] = Object.freeze([";
+  assert.equal(source.split(anchor).length, 2, "临时合成注册必须插入唯一清单入口");
+  const install = (migrations: readonly Migration[]) => {
+    const entries = migrations.map((migration, index) => ({ id: `synthetic-g1-${index}`, label: "纯合成模块", owner: "SYNTHETIC", routes: [], migrations: [migration] }));
+    writeFileSync(registryPath, source.replace(anchor, `${anchor}\n  ${entries.map(entry => JSON.stringify(entry)).join(",\n  ")},`));
+  };
+  const saved = openDatabase(filename);
+  try { saved.exec("INSERT INTO customers(id,name) VALUES('saved','合成旧行')"); }
+  finally { saved.close(); }
+  const first = runnerMigration("wp24.startup.001", "synthetic_g1_startup");
+  const second = runnerMigration("wp24.startup.002", "synthetic_g1_second");
+  const operations: Migration["operations"] = [{ kind: "createIndex", table: "customers", name: "synthetic_g1_invalid", columns: ["missing_column"] }];
+  const bad: Migration = { id: "wp24.startup.bad", checksum: migrationChecksum("wp24.startup.bad", operations), operations };
+  const start = () => {
+    const result = spawnSync(process.execPath, ["--experimental-strip-types", "--input-type=module", "-e", `
+      import {getDb} from ${JSON.stringify(pathToFileURL(join(directory, "lib/db.ts")).href)};
+      import {getIntegrationHealth} from ${JSON.stringify(pathToFileURL(registryPath).href)};
+      try {
+        const db=getDb(); const health=getIntegrationHealth(db,{role:'ADMIN'});
+        console.log(JSON.stringify({ok:true,cached:getDb()===db,health,users:db.prepare('SELECT COUNT(*) n FROM users').get().n}));
+        db.close();
+      } catch(error) { console.log(JSON.stringify({ok:false,cached:globalThis.__pmsDatabase!==undefined,error:error.message})); }
+    `], { cwd: directory, env: { ...process.env, DATABASE_FILENAME: "synthetic.db" }, encoding: "utf8", timeout: 10_000 });
+    assert.equal(result.status, 0, result.stderr);
+    return JSON.parse(result.stdout);
+  };
+  install([first]);
+  for (let run = 0; run < 2; run++) {
+    const result = start();
+    assert.equal(result.ok, true); assert.equal(result.cached, true); assert.equal(result.users, 0);
+    assert.deepEqual(result.health.migrationRunner, { status: "REGISTERED", owner: "WP-23", applied: 1, registered: 1, ledgerPresent: true });
+    assert.equal(result.health.schema.tableCount, 37);
+    const entry = result.health.modules.find((item: { id: string }) => item.id === "synthetic-g1-0");
+    assert.deepEqual(entry.migrations, [{ id: first.id, checksum: first.checksum }]);
+    assert.doesNotMatch(JSON.stringify(result.health), /operations|amount_cents/);
+  }
+  install([first, second, bad]);
+  const failed = start();
+  assert.equal(failed.ok, false); assert.equal(failed.cached, false); assert.match(failed.error, /no such column/);
+  for (const [declarations, expected] of [
+    [[first, first], /受限白名单/],
+    [[first, { ...second, checksum: "0".repeat(64) }], /校验和不匹配/],
+    [[{ ...second, id: first.id, checksum: migrationChecksum(first.id, second.operations) }], /已执行迁移发生变化/],
+  ] as const) {
+    install(declarations);
+    const rejected = start();
+    assert.equal(rejected.ok, false); assert.equal(rejected.cached, false); assert.match(rejected.error, expected);
+  }
+  const afterFailure = new DatabaseSync(filename);
+  try {
+    assert.equal(afterFailure.prepare("SELECT 1 FROM sqlite_schema WHERE name='synthetic_g1_second'").get(), undefined);
+    assert.equal(count(afterFailure, "schema_migrations"), 1);
+    assert.equal(afterFailure.prepare("SELECT name FROM customers WHERE id='saved'").get()!.name, "合成旧行");
+  } finally { afterFailure.close(); }
+  install([first, second]);
+  const retried = start();
+  assert.equal(retried.ok, true); assert.equal(retried.health.migrationRunner.applied, 2);
+  assert.equal(retried.health.migrationRunner.registered, 2); assert.equal(retried.health.schema.tableCount, 38);
+});
+
+test("G1真实runner整批失败回滚DDL和账本，修正后重试并保留旧行", t => {
+  const { db } = fixture(); t.after(() => db.close());
+  const first = runnerMigration("wp24.synthetic.retry", "synthetic_g1_retry");
+  const operations: Migration["operations"] = [{ kind: "createIndex", table: "customers", name: "synthetic_g1_bad_index", columns: ["missing_column"] }];
+  const bad: Migration = { id: "wp24.synthetic.bad", checksum: migrationChecksum("wp24.synthetic.bad", operations), operations };
+  const before = db.prepare("SELECT * FROM customers ORDER BY id").all();
+  assert.throws(() => migrationRunner(db, [first, bad]), /no such column/);
+  assert.equal(db.prepare("SELECT 1 FROM sqlite_schema WHERE name='synthetic_g1_retry'").get(), undefined);
+  assert.equal(db.prepare("SELECT 1 FROM sqlite_schema WHERE name='schema_migrations'").get(), undefined);
+  assert.deepEqual(db.prepare("SELECT * FROM customers ORDER BY id").all(), before);
+  assert.equal(db.isTransaction, false);
+  assert.deepEqual(migrationRunner(db, [first]), { applied: [first.id], skipped: [] });
+  assert.equal(count(db, "schema_migrations"), 1);
+  assert.deepEqual(db.prepare("SELECT * FROM customers ORDER BY id").all(), before);
+});
+
+test("G1真实runner与业务/审计共用外层事务，保存点成功后外层失败仍全部撤回", t => {
+  const db = openDatabase(":memory:"); t.after(() => db.close());
+  const migration = runnerMigration("wp24.synthetic.atomic", "synthetic_g1_atomic");
+  assert.throws(() => inTransaction(db, () => {
+    assert.deepEqual(migrationRunner(db, [migration]), { applied: [migration.id], skipped: [] });
+    insert(db, "atomic-customer");
+    db.exec("INSERT INTO synthetic_g1_atomic(id,amount_cents) VALUES('atomic-row',100)");
+    throw new Error("合成外层失败");
+  }), /合成外层失败/);
+  for (const name of ["schema_migrations", "synthetic_g1_atomic"]) {
+    assert.equal(db.prepare("SELECT 1 FROM sqlite_schema WHERE name=?").get(name), undefined);
+  }
+  assert.equal(count(db, "customers"), 0); assert.equal(count(db, "audit_logs"), 0);
+  assert.deepEqual(migrationRunner(db, [migration]), { applied: [migration.id], skipped: [] });
+});
+
+test("G1真实runner拒绝伪SQL与错误校验和，不因注册接回放宽WP23校验", t => {
+  const { db } = fixture(); t.after(() => db.close());
+  const safe = runnerMigration("wp24.synthetic.reject", "synthetic_g1_reject");
+  const before = db.prepare("SELECT * FROM users ORDER BY id").all();
+  assert.throws(() => migrationRunner(db, [{ ...safe, checksum: "0".repeat(64) }]), /校验和不匹配/);
+  assert.throws(() => migrationRunner(db, [{ ...safe, exec: "DELETE FROM users" } as Migration]), /受限白名单/);
+  assert.equal(db.prepare("SELECT 1 FROM sqlite_schema WHERE name='synthetic_g1_reject'").get(), undefined);
+  assert.equal(db.prepare("SELECT 1 FROM sqlite_schema WHERE name='schema_migrations'").get(), undefined);
+  assert.deepEqual(db.prepare("SELECT * FROM users ORDER BY id").all(), before);
 });
 
 function apiFixture(t: test.TestContext) {
@@ -276,6 +441,8 @@ function apiFixture(t: test.TestContext) {
 
 test("真实API的401/403/200及无缓存、只读、会话撤销、500中文错误边界", async t => {
   const { db, actor, tokens, request } = apiFixture(t);
+  const migration = runnerMigration("wp24.api.synthetic.001", "synthetic_g1_api");
+  assert.deepEqual(migrationRunner(db, [migration]), { applied: [migration.id], skipped: [] });
   for (const token of [undefined, "forged"]) assert.equal(GET(request(token)).status, 401);
   for (const id of ["f", "m", "u"]) {
     const response = GET(request(tokens[id])); assert.equal(response.status, 403);
@@ -287,6 +454,7 @@ test("真实API的401/403/200及无缓存、只读、会话撤销、500中文错
   assert.equal(response.headers.get("cache-control"), "private, no-store"); assert.equal(response.headers.get("vary"), "Cookie");
   const body = await response.json(), direct = getIntegrationHealth(db, actor("a"));
   assert.deepEqual(body.modules, direct.modules); assert.deepEqual(body.migrationRunner, direct.migrationRunner);
+  assert.equal(body.phase, "G1"); assert.equal(body.migrationRunner.applied, 1); assert.equal(body.schema.tableCount, 37);
   assert.equal(db.prepare("SELECT total_changes() n").get()!.n, before);
   assert.doesNotMatch(JSON.stringify(body), /password|token|\/workspace|\/tmp|customer_id|SMTP/);
   db.exec("PRAGMA query_only=OFF; UPDATE users SET role='FINANCE' WHERE id='a'");

@@ -16,7 +16,7 @@ export type AdditiveOperation =
   | { kind: "addColumn"; table: string; column: ColumnSpec }
   | { kind: "createIndex"; table: string; name: string; columns: readonly string[]; unique?: boolean };
 export type Migration = { id: string; checksum: string; operations: readonly AdditiveOperation[] };
-// WP23 implements this signature internally; G0 does not supply an executor.
+// WP23 owns the executor; WP24 G1 binds it in extension-registry and database startup.
 export type ApplyMigrations = (db: DatabaseSync, items: readonly Migration[]) => { applied: string[]; skipped: string[] };
 export type ModuleRegistration = {
   id: string; label: string; owner: string;

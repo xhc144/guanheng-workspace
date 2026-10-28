@@ -95,9 +95,12 @@ export function verifyMigrationWorkspace(log: (value: unknown) => void = value =
       assert.deepEqual(applyMigrations(legacy, [item]).skipped, [id]);
       assert.deepEqual(snapshot(legacy, before), before);
     } finally { legacy.close(); }
-    run("pnpm", ["db:seed", "--", "--upgrade-only"], "legacy.db", { production: true });
-    run("pnpm", ["db:seed", "--", "--upgrade-only"], "legacy.db", { production: true });
-    run(process.execPath, ["--experimental-strip-types", "scripts/upgrade.ts", "--upgrade-only"], "legacy.db", { production: true });
+    const upgrades = [
+      run("pnpm", ["db:seed", "--", "--upgrade-only"], "legacy.db", { production: true }),
+      run("pnpm", ["db:seed", "--", "--upgrade-only"], "legacy.db", { production: true }),
+      run(process.execPath, ["--experimental-strip-types", "scripts/upgrade.ts", "--upgrade-only"], "legacy.db", { production: true }),
+    ];
+    for (const upgrade of upgrades) assert.equal(upgrade?.domainRegistration, "REGISTERED");
     const upgraded = new DatabaseSync(legacyFile);
     let tables: string[];
     try {
@@ -161,7 +164,7 @@ export function verifyMigrationWorkspace(log: (value: unknown) => void = value =
       assert.equal(existsSync(join(dataRoot, "dependency-rejection.db")), false);
     } finally { writeFileSync(temporaryManifest, frozenManifest); }
     assert.deepEqual(readFileSync(temporaryManifest), readFileSync(join(sourceRoot, "package.json")));
-    const result = { event: "verified", root, dataRoot, uploads, commands, backup, restored, applicationTables: tables, domainRegistration: "PENDING_WP24_G1", sourceDataInput: false };
+    const result = { event: "verified", root, dataRoot, uploads, commands, backup, restored, applicationTables: tables, domainRegistration: upgrades[0]!.domainRegistration, sourceDataInput: false };
     log({ ...result, commands: commands.map(({ command, cwd, dataRoot, exitCode, expectedExitCode }) => ({ command, cwd, dataRoot, exitCode, expectedExitCode })) });
     return result;
   } finally {

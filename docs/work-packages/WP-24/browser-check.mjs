@@ -10,6 +10,8 @@ import { DatabaseSync } from "node:sqlite";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { openDatabase } from "../../../systems/project-ops/lib/db.ts";
 import { hashPassword } from "../../../systems/project-ops/lib/auth.ts";
+import { migrationRunner } from "../../../systems/project-ops/lib/extension-registry.ts";
+import { migrationChecksum } from "../../../systems/project-ops/lib/migrations/index.ts";
 import { assertRuntimeNavigation } from "./browser-runtime.mjs";
 
 assert.ok(process.argv.length === 4 || process.argv.length === 5, "请指定已安装的Playwright模块和Chromium，可选basePath");
@@ -142,8 +144,8 @@ try {
   assert.equal(response.status(), 200); assert.equal(response.headers()["cache-control"], "private, no-store");
   assert.ok(response.headers()["vary"].split(",").map(value => value.trim().toLowerCase()).includes("cookie"));
   const health = await response.json();
-  assert.equal(health.phase, "G0"); assert.equal(health.schema.tableCount, 36);
-  assert.deepEqual(health.migrationRunner, { status: "NOT_REGISTERED", applied: null });
+  assert.equal(health.phase, "G1"); assert.equal(health.schema.tableCount, 36);
+  assert.deepEqual(health.migrationRunner, { status: "REGISTERED", owner: "WP-23", applied: 0, registered: 0, ledgerPresent: false });
   assert.equal(health.providers.budget, "NOT_CONFIGURED");
   assert.deepEqual(health.providers.approvalSubjects, ["PROJECT", "WORK_ITEM"]);
   assert.equal(health.modules.length, 18);
@@ -152,14 +154,30 @@ try {
     const pageResponse = await api(context, "get", `${base}${module.navigation.href}`, { headers });
     assert.equal(pageResponse.status(), 200, `登记模块实际页面不可达：${module.id}`);
   }
-  results.push({ check: "管理员API实际返回G0、36表、未注册runner/预算，18个登记页面均HTTP200，POST405", status: "通过" });
+  results.push({ check: "管理员API实际返回G1、36表、WP23执行器已绑定/预算未配置，18个登记页面均HTTP200，POST405", status: "通过" });
+  // Exercise the real G1 binding against this isolated synthetic database. The
+  // running app must observe the persisted ledger, not a fixed status counter.
+  const ledgerDb = new DatabaseSync(join(runtime, "data/wp24-synthetic.db"));
+  try {
+    ledgerDb.exec("PRAGMA foreign_keys=ON");
+    const id = "wp24.browser.synthetic.001", operations = [{ kind: "createTable", table: "synthetic_g1_browser", columns: [
+      { name: "id", type: "TEXT", nullable: false },
+    ], primaryKey: ["id"] }];
+    const declaration = { id, checksum: migrationChecksum(id, operations), operations };
+    assert.deepEqual(migrationRunner(ledgerDb, [declaration]), { applied: [id], skipped: [] });
+    assert.deepEqual(migrationRunner(ledgerDb, [declaration]), { applied: [], skipped: [id] });
+  } finally { ledgerDb.close(); }
+  const afterMigration = await (await api(context, "get", `${base}/api/integration-health`, { headers })).json();
+  assert.equal(afterMigration.schema.tableCount, 37);
+  assert.deepEqual(afterMigration.migrationRunner, { status: "REGISTERED", owner: "WP-23", applied: 1, registered: 0, ledgerPresent: true });
+  results.push({ check: "G1真实绑定执行合成非空迁移并幂等，运行中HTTP读取真实账本1项且内部表不计业务表", status: "通过" });
   // Opt-in diagnosis only: exercise repeated real navigation, never retry a failed assertion.
   if (process.env.WP24_NAVIGATION_PROBE === "1") {
     for (let navigation = 0; navigation < 12; navigation++) {
       phase = `targeted-navigation-${navigation}`; mark("phase-start");
       await page.setViewportSize({ width: 375, height: 1000 });
       await page.goto(`${base}/integration-health`);
-      await page.getByRole("heading", { name: "G0 地基 · 基线模块已登记", exact: true }).waitFor();
+      await page.getByRole("heading", { name: "G1 地基 · 迁移执行器已接入", exact: true }).waitFor();
       await page.locator(".mobile-nav summary").click();
       await page.locator(".mobile-nav").getByRole("link", { name: "运行诊断", exact: true }).click();
       await assertRuntimeNavigation(page, `${basePath}/runtime-health`);
@@ -168,7 +186,8 @@ try {
   }
   for (const width of [375, 768, 1440]) {
     await page.setViewportSize({ width, height: 1000 }); await page.goto(`${base}/integration-health`);
-    await page.getByRole("heading", { name: "G0 地基 · 基线模块已登记", exact: true }).waitFor();
+    await page.getByRole("heading", { name: "G1 地基 · 迁移执行器已接入", exact: true }).waitFor();
+    assert.match(await page.locator("main").innerText(), /当前库账本已执行 1 项/);
     assert.equal(await page.locator("main li.work-panel").count(), health.modules.length);
     const dimensions = await page.evaluate(() => ({ viewport: innerWidth, document: document.documentElement.scrollWidth, body: document.body.scrollWidth }));
     assert.ok(dimensions.document <= width && dimensions.body <= width, JSON.stringify(dimensions));
@@ -187,7 +206,7 @@ try {
     assert.ok(new URL(page.url()).pathname.endsWith("/runtime-health"));
     if (width <= 780 && !await nav.getAttribute("open")) await nav.locator("summary").click();
     await nav.getByRole("link", { name: "集成状态", exact: true }).click();
-    await page.getByRole("heading", { name: "G0 地基 · 基线模块已登记", exact: true }).waitFor();
+    await page.getByRole("heading", { name: "G1 地基 · 迁移执行器已接入", exact: true }).waitFor();
     results.push({ check: `${width}px真实布局、44px按钮、键盘焦点、刷新时间及两个管理员导航可操作`, status: "通过", dimensions });
   }
   for (const role of ["FINANCE", "DEPARTMENT_MANAGER", "PROJECT_MEMBER"]) {
@@ -199,7 +218,7 @@ try {
     await page.goto(`${base}/integration-health`);
     await page.getByRole("heading", { name: "仅管理员可查看集成状态", exact: true }).waitFor();
     assert.equal(await page.locator("time").count(), 0);
-    assert.doesNotMatch(await page.locator("main").innerText(), /36|NOT_REGISTERED|G0|PROJECT|WORK_ITEM/);
+    assert.doesNotMatch(await page.locator("main").innerText(), /36|37|REGISTERED|G0|G1|WP-23|PROJECT|WORK_ITEM/);
     await page.getByRole("link", { name: "返回经营总览", exact: true }).click(); await page.locator(".app-shell").waitFor();
     results.push({ check: `${role}实际登录后API403、页面拒绝、不泄露目录，返回总览可操作`, status: "通过" });
   }
@@ -232,7 +251,7 @@ try {
     faultDb.exec("ALTER TABLE users RENAME COLUMN wp24_synthetic_role TO role"); faultDb.close();
   }
   await faultPage.getByRole("button", { name: "重新检查", exact: true }).click();
-  await faultPage.getByRole("heading", { name: "G0 地基 · 基线模块已登记", exact: true }).waitFor();
+  await faultPage.getByRole("heading", { name: "G1 地基 · 迁移执行器已接入", exact: true }).waitFor();
   assert.equal((await api(faultContext, "get", `${base}/api/integration-health`, { headers: await sessionHeaders() })).status(), 200);
   assert.doesNotMatch(faultErrors.join("\n"), /wp24_synthetic_role|no such column|SELECT|WP24_SYNTHETIC_CONFIG/);
   assert.deepEqual(faultPageErrors, [], "预期的服务端故障不应导致未处理客户端异常");
