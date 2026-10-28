@@ -1,0 +1,11 @@
+pms-basic-frontend@0.1.0 /tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版/frontend
+├── @eslint/js@10.0.1
+├── @vitejs/plugin-react@6.0.5
+├── eslint-plugin-react-hooks@7.1.1
+├── eslint-plugin-react-refresh@0.5.4
+├── eslint@10.8.1
+├── globals@17.11.0
+├── react-dom@19.2.8
+├── react@19.2.8
+└── vite@8.2.1
+

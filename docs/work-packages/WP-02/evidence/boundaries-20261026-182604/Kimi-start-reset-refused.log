@@ -1,0 +1,5 @@
+Exception: /tmp/WP02 中文 空格 uo31ubmp/PMS 系列/Kimi版/start.ps1:4
+Line |
+   4 |  … esetDemo) { throw '启动入口不重置已有数据。确需清空演示库时，停止服务后单独运行 demo.ps1 -Action Re …
+     |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | 启动入口不重置已有数据。确需清空演示库时，停止服务后单独运行 demo.ps1 -Action Reset -Confirm。

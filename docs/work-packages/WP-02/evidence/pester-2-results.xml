@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="6" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-10-26" time="17:56:45">
+  <environment clr-version="10.0.14" os-version="6.18.55" cwd="/workspace/guanheng-wp02" nunit-version="2.5.8.0" platform="Linux" machine-name="e44cc596dc3c" user="agent" user-domain="" />
+  <culture-info current-culture="" current-uiculture="" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="5.7971" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="/workspace/guanheng-wp02/systems/pms-suite/tests/bootstrap.Tests.ps1" executed="True" result="Success" success="True" time="5.7971" asserts="0" description="/workspace/guanheng-wp02/systems/pms-suite/tests/bootstrap.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="PMS bootstrap real refusal paths (no mocked service success)" executed="True" result="Success" success="True" time="4.4261" asserts="0" description="PMS bootstrap real refusal paths (no mocked service success)">
+            <results>
+              <test-case description="从中文空格路径定位，缺少Python时中文拒绝且未创建venv/演示库" name="PMS bootstrap real refusal paths (no mocked service success).从中文空格路径定位，缺少Python时中文拒绝且未创建venv/演示库" time="0.9132" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="真实监听器占用端口时拒绝，保留占用者和原演示内容" name="PMS bootstrap real refusal paths (no mocked service success).真实监听器占用端口时拒绝，保留占用者和原演示内容" time="0.7245" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="生产环境拒绝且不回显合成密钥" name="PMS bootstrap real refusal paths (no mocked service success).生产环境拒绝且不回显合成密钥" time="0.6383" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="其他DATABASE_URL拒绝且保留合成保护文件" name="PMS bootstrap real refusal paths (no mocked service success).其他DATABASE_URL拒绝且保留合成保护文件" time="0.5853" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="前端环境文件拒绝且不读取或覆盖内容" name="PMS bootstrap real refusal paths (no mocked service success).前端环境文件拒绝且不读取或覆盖内容" time="0.597" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="并发安装锁拒绝，不启动任何服务" name="PMS bootstrap real refusal paths (no mocked service success).并发安装锁拒绝，不启动任何服务" time="0.8899" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

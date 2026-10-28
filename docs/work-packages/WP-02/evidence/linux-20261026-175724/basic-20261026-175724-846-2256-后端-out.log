@@ -1,0 +1,7 @@
+INFO:     127.0.0.1:54486 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33362 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33372 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33380 - "GET /api/auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:33382 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:33396 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33408 - "GET /api/auth/me HTTP/1.1" 200 OK

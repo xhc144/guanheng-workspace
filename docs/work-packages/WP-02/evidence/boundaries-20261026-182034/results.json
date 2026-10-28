@@ -1,0 +1,236 @@
+{
+  "platform": "Linux PowerShell 7",
+  "reused_synthetic_suite": "/tmp/WP02 中文 空格 kod81oim/PMS 系列",
+  "fresh_setup_suite": "/tmp/WP02 setup 中文 空格 _xy1m44c/PMS 系列",
+  "results": [
+    {
+      "case": "Basic-reset-whatif",
+      "cwd": "/tmp",
+      "command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版/scripts/reset-demo.ps1",
+        "-WhatIf"
+      ],
+      "exit_code": 0,
+      "database_preserved": true
+    },
+    {
+      "case": "DeepSeek-reset-whatif",
+      "cwd": "/tmp",
+      "command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 kod81oim/PMS 系列/DeepSeek版/reset-demo.ps1",
+        "-Action",
+        "Reset",
+        "-WhatIf"
+      ],
+      "exit_code": 0,
+      "database_preserved": true
+    },
+    {
+      "case": "Kimi-reset-whatif",
+      "cwd": "/tmp",
+      "command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 kod81oim/PMS 系列/Kimi版/demo.ps1",
+        "-Action",
+        "Reset",
+        "-WhatIf"
+      ],
+      "exit_code": 0
+    },
+    {
+      "case": "Kimi-prepare-existing",
+      "cwd": "/tmp",
+      "command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 kod81oim/PMS 系列/Kimi版/demo.ps1"
+      ],
+      "exit_code": 0
+    },
+    {
+      "case": "Kimi-start-reset-refused",
+      "cwd": "/tmp",
+      "command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 kod81oim/PMS 系列/Kimi版/start.ps1",
+        "-ResetDemo",
+        "-NoBrowser",
+        "-NoPopup"
+      ],
+      "exit_code": 1,
+      "database_preserved": true
+    },
+    {
+      "case": "missing-node",
+      "cwd": "/tmp",
+      "command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 kod81oim/PMS 系列/start-helper.ps1",
+        "-Edition",
+        "Basic",
+        "-NoBrowser",
+        "-NoPopup"
+      ],
+      "exit_code": 1
+    },
+    {
+      "case": "repair-damaged-node-modules",
+      "cwd": "/tmp",
+      "command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 kod81oim/PMS 系列/start-helper.ps1",
+        "-Edition",
+        "Basic",
+        "-NoBrowser",
+        "-NoPopup",
+        "-InstallOnly"
+      ],
+      "exit_code": 0,
+      "repaired_vite_and_preserved_database": true
+    },
+    {
+      "case": "npm-ci-rejects-invalid-fixture-lock",
+      "cwd": "/tmp",
+      "command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 kod81oim/PMS 系列/start-helper.ps1",
+        "-Edition",
+        "Basic",
+        "-NoBrowser",
+        "-NoPopup",
+        "-InstallOnly"
+      ],
+      "exit_code": 1,
+      "no_service_and_database_preserved": true
+    },
+    {
+      "case": "repair-with-original-lock",
+      "cwd": "/tmp",
+      "command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 kod81oim/PMS 系列/start-helper.ps1",
+        "-Edition",
+        "Basic",
+        "-NoBrowser",
+        "-NoPopup",
+        "-InstallOnly"
+      ],
+      "exit_code": 0
+    },
+    {
+      "case": "frontend-startup-failure-cleans-owned-backend",
+      "cwd": "/tmp",
+      "command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 kod81oim/PMS 系列/start-helper.ps1",
+        "-Edition",
+        "Basic",
+        "-NoBrowser",
+        "-NoPopup"
+      ],
+      "exit_code": 1,
+      "backend_cleaned_database_preserved": true
+    },
+    {
+      "case": "kimi-restores-caller-environment",
+      "cwd": "/tmp",
+      "command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-Command",
+        "$env:DEMO_MODE='WP02-synthetic-original'; Remove-Item Env:DATABASE_URL -ErrorAction SilentlyContinue; & '/tmp/WP02 中文 空格 kod81oim/PMS 系列/Kimi版/demo.ps1' -Action Verify; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; if ($env:DEMO_MODE -ne 'WP02-synthetic-original' -or (Test-Path Env:DATABASE_URL)) { exit 7 }; Write-Output 'caller environment restored'"
+      ],
+      "exit_code": 0
+    },
+    {
+      "case": "basic-split-backend",
+      "command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版/scripts/start-backend.ps1",
+        "-NoBrowser",
+        "-NoPopup"
+      ],
+      "cwd": "/tmp",
+      "ready": true
+    },
+    {
+      "case": "basic-split-frontend",
+      "command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版/scripts/start-frontend.ps1",
+        "-NoBrowser",
+        "-NoPopup"
+      ],
+      "cwd": "/tmp",
+      "ready": true
+    },
+    {
+      "case": "whole-stack-refuses-split-owner",
+      "cwd": "/tmp",
+      "command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 kod81oim/PMS 系列/start-helper.ps1",
+        "-Edition",
+        "Basic",
+        "-NoBrowser",
+        "-NoPopup"
+      ],
+      "exit_code": 1
+    },
+    {
+      "case": "reset-refuses-live-owner",
+      "cwd": "/tmp",
+      "command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 kod81oim/PMS 系列/基础版/scripts/reset-demo.ps1",
+        "-Confirm:$false"
+      ],
+      "exit_code": 1,
+      "owners_alive_database_preserved": true
+    },
+    {
+      "case": "deepseek-setup-fresh-installonly",
+      "cwd": "/tmp",
+      "command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 setup 中文 空格 _xy1m44c/PMS 系列/DeepSeek版/setup.ps1"
+      ],
+      "exit_code": 0,
+      "created_correct_venv": true,
+      "no_database_created": true,
+      "old_venv_preserved": true,
+      "partial_venv_repaired": true
+    }
+  ]
+}

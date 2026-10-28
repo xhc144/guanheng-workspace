@@ -1,0 +1,10 @@
+2026-10-26T17:58:57.5695909+00:00 [Kimi][检查目录与演示边界]
+2026-10-26T17:58:57.6771836+00:00 [Kimi][检查端口]
+2026-10-26T17:58:57.7347226+00:00 [Kimi][检查运行时]
+2026-10-26T17:58:57.9001645+00:00 [Kimi][检查Python版本]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/Kimi版; step=检查Python版本; exit=0
+2026-10-26T17:58:57.9465615+00:00 [Kimi][检查Node版本]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/Kimi版; step=检查Node版本; exit=0
+2026-10-26T17:58:58.0169334+00:00 [Kimi][安装Python依赖]
+cwd=/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/Kimi版/backend; step=安装Python依赖; exit=1
+启动失败 [Kimi][安装Python依赖]：子命令失败，退出码 1；详情：/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/logs/kimi-20261026-175857-549-3018/安装Python依赖.log；日志：/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/logs/kimi-20261026-175857-549-3018

@@ -1,0 +1,16 @@
+{
+  "base": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+  "base_ref": "integration",
+  "draft": true,
+  "head": "ff774b6f4460b5c302107fc086762cdf6a3e7108",
+  "html_url": "https://github.com/xhc144/guanheng-workspace/pull/10",
+  "mergeable": true,
+  "mergeable_state": "clean",
+  "merged": false,
+  "number": 10,
+  "state": "open",
+  "verified_at": "2026-10-26T18:32:58.715689+00:00",
+  "first_push_command": "git push -u origin wp/02-pms-bootstrap",
+  "first_push_exit_code": 0,
+  "ls_remote_verified_head": "ff774b6f4460b5c302107fc086762cdf6a3e7108"
+}

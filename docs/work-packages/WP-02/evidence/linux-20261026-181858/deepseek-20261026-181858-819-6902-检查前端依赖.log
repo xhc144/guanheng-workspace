@@ -1,0 +1,25 @@
+pms-frontend@0.1.0 /tmp/WP02 中文 空格 kod81oim/PMS 系列/DeepSeek版/frontend
+├── @ant-design/icons@5.6.1
+├── @eslint/js@9.39.5
+├── @tanstack/react-query@5.101.4
+├── @testing-library/jest-dom@6.9.1
+├── @testing-library/react@16.3.2
+├── @types/react-dom@18.3.7
+├── @types/react@18.3.31
+├── @vitejs/plugin-react@4.7.0
+├── antd@5.29.3
+├── axios@1.18.1
+├── dayjs@1.11.21
+├── echarts-for-react@3.0.6
+├── echarts@5.6.0
+├── eslint@9.39.5
+├── jsdom@24.1.3
+├── react-dom@18.3.1
+├── react-router-dom@6.30.4
+├── react@18.3.1
+├── typescript-eslint@8.67.0
+├── typescript@5.9.3
+├── vite-plugin-compression@0.5.1
+├── vite@5.4.21
+└── vitest@2.1.9
+

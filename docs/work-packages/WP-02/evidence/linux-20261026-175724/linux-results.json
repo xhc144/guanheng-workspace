@@ -1,0 +1,202 @@
+{
+  "platform": "linux",
+  "fixture": "/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列",
+  "results": [
+    {
+      "edition": "Basic",
+      "fixture": "/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/基础版",
+      "start_epoch": 1793037444.1671472,
+      "fresh_command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/start-helper.ps1",
+        "-Edition",
+        "Basic",
+        "-NoBrowser",
+        "-NoPopup"
+      ],
+      "fresh_cwd": "/tmp",
+      "fresh_api": {
+        "health": [
+          {
+            "port": 8100,
+            "health": 200
+          },
+          {
+            "port": 5180,
+            "health": 200
+          }
+        ],
+        "frontend": 200,
+        "anonymous_identity": 401,
+        "wrong_password": 401,
+        "login": 200,
+        "identity": 200
+      },
+      "created_venv": true,
+      "protected_file_unchanged": true,
+      "actual_child_cwds": [
+        "/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/基础版/backend",
+        "/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/基础版/frontend"
+      ],
+      "duplicate_refused_and_owner_alive": true,
+      "ctrl_c_cleanup": true,
+      "restart_api": {
+        "health": [
+          {
+            "port": 8100,
+            "health": 200
+          },
+          {
+            "port": 5180,
+            "health": 200
+          }
+        ],
+        "frontend": 200,
+        "anonymous_identity": 401,
+        "wrong_password": 401,
+        "login": 200,
+        "identity": 200
+      },
+      "restart_preserves_users_password_marker": true,
+      "owned_child_failure_exit": 143,
+      "owned_child_failure_cleans_peer": true,
+      "frozen_manifests_unchanged": true,
+      "native_install_failure_exit": 1,
+      "end_epoch": 1793037508.046789,
+      "status": "passed"
+    },
+    {
+      "edition": "Kimi",
+      "fixture": "/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/Kimi版",
+      "start_epoch": 1793037444.1673934,
+      "fresh_command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/start-helper.ps1",
+        "-Edition",
+        "Kimi",
+        "-NoBrowser",
+        "-NoPopup"
+      ],
+      "fresh_cwd": "/tmp",
+      "fresh_api": {
+        "health": [
+          {
+            "port": 8101,
+            "health": 200
+          },
+          {
+            "port": 5181,
+            "health": 200
+          }
+        ],
+        "frontend": 200,
+        "anonymous_identity": 401,
+        "wrong_password": 401,
+        "login": 200,
+        "identity": 200
+      },
+      "created_venv": true,
+      "protected_file_unchanged": true,
+      "actual_child_cwds": [
+        "/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/Kimi版/backend",
+        "/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/Kimi版/frontend"
+      ],
+      "duplicate_refused_and_owner_alive": true,
+      "ctrl_c_cleanup": true,
+      "restart_api": {
+        "health": [
+          {
+            "port": 8101,
+            "health": 200
+          },
+          {
+            "port": 5181,
+            "health": 200
+          }
+        ],
+        "frontend": 200,
+        "anonymous_identity": 401,
+        "wrong_password": 401,
+        "login": 200,
+        "identity": 200
+      },
+      "restart_preserves_users_password_marker": true,
+      "owned_child_failure_exit": 143,
+      "owned_child_failure_cleans_peer": true,
+      "frozen_manifests_unchanged": true,
+      "native_install_failure_exit": 1,
+      "end_epoch": 1793037538.966288,
+      "status": "passed"
+    },
+    {
+      "edition": "DeepSeek",
+      "fixture": "/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/DeepSeek版",
+      "start_epoch": 1793037444.166548,
+      "fresh_command": [
+        "/tmp/guanheng-wp02-tools/pwsh/pwsh",
+        "-NoProfile",
+        "-File",
+        "/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/start-helper.ps1",
+        "-Edition",
+        "DeepSeek",
+        "-NoBrowser",
+        "-NoPopup"
+      ],
+      "fresh_cwd": "/tmp",
+      "fresh_api": {
+        "health": [
+          {
+            "port": 8102,
+            "health": 200
+          },
+          {
+            "port": 5182,
+            "health": 200
+          }
+        ],
+        "frontend": 200,
+        "anonymous_identity": 401,
+        "wrong_password": 401,
+        "login": 200,
+        "identity": 200
+      },
+      "created_venv": true,
+      "protected_file_unchanged": true,
+      "actual_child_cwds": [
+        "/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/DeepSeek版/backend",
+        "/tmp/WP02 中文 空格 4j1ru1hp/PMS 系列/DeepSeek版/frontend"
+      ],
+      "duplicate_refused_and_owner_alive": true,
+      "ctrl_c_cleanup": true,
+      "restart_api": {
+        "health": [
+          {
+            "port": 8102,
+            "health": 200
+          },
+          {
+            "port": 5182,
+            "health": 200
+          }
+        ],
+        "frontend": 200,
+        "anonymous_identity": 401,
+        "wrong_password": 401,
+        "login": 200,
+        "identity": 200
+      },
+      "restart_preserves_users_password_marker": true,
+      "owned_child_failure_exit": 143,
+      "owned_child_failure_cleans_peer": true,
+      "frozen_manifests_unchanged": true,
+      "native_install_failure_exit": 1,
+      "end_epoch": 1793037542.1703646,
+      "status": "passed"
+    }
+  ],
+  "failures": []
+}

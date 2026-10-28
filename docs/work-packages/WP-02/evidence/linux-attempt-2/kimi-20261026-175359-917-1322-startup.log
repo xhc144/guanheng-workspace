@@ -1,0 +1,21 @@
+2026-10-26T17:53:59.9357404+00:00 [Kimi][检查目录与演示边界]
+2026-10-26T17:54:00.3338765+00:00 [Kimi][检查端口]
+2026-10-26T17:54:00.4696657+00:00 [Kimi][检查运行时]
+2026-10-26T17:54:01.7038230+00:00 [Kimi][检查Python版本]
+cwd=/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/Kimi版; step=检查Python版本; exit=0
+2026-10-26T17:54:01.8658964+00:00 [Kimi][检查Node版本]
+cwd=/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/Kimi版; step=检查Node版本; exit=0
+2026-10-26T17:54:01.9760761+00:00 [Kimi][创建隔离venv]
+cwd=/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/Kimi版/backend; step=创建隔离venv; exit=0
+2026-10-26T17:54:08.3456269+00:00 [Kimi][安装Python依赖]
+cwd=/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/Kimi版/backend; step=安装Python依赖; exit=0
+2026-10-26T17:54:31.9784597+00:00 [Kimi][检查Python依赖]
+cwd=/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/Kimi版/backend; step=检查Python依赖; exit=0
+2026-10-26T17:54:32.4298221+00:00 [Kimi][按原锁安装前端]
+cwd=/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/Kimi版/frontend; step=按原锁安装前端; exit=0
+2026-10-26T17:54:58.5197985+00:00 [Kimi][检查前端依赖]
+cwd=/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/Kimi版/frontend; step=检查前端依赖; exit=0
+2026-10-26T17:54:59.9002094+00:00 [Kimi][准备受控演示库（保留已有数据）]
+2026-10-26T17:54:59.9014352+00:00 [Kimi][迁移新Kimi演示库]
+cwd=/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/Kimi版/backend; step=迁移新Kimi演示库; exit=1
+启动失败 [Kimi][迁移新Kimi演示库]：子命令失败，退出码 1；详情：/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/logs/kimi-20261026-175359-917-1322/迁移新Kimi演示库.log；日志：/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/logs/kimi-20261026-175359-917-1322

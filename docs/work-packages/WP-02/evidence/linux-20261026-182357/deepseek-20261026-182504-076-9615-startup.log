@@ -1,0 +1,10 @@
+2026-10-26T18:25:04.0882371+00:00 [DeepSeek][检查目录与演示边界]
+2026-10-26T18:25:04.2692072+00:00 [DeepSeek][检查端口]
+2026-10-26T18:25:04.3091623+00:00 [DeepSeek][检查运行时]
+2026-10-26T18:25:04.4288855+00:00 [DeepSeek][检查Python版本]
+{"exit":0,"arguments":["-c","import sys; sys.exit(0 if sys.version_info >= (3,10) else 2)"],"cwd":"/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版","step":"检查Python版本","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python"}
+2026-10-26T18:25:04.5178752+00:00 [DeepSeek][检查Node版本]
+{"exit":0,"arguments":["-e","process.exit(Number(process.versions.node.split(String.fromCharCode(46))[0])>=22 && (Number(process.versions.node.split(String.fromCharCode(46))[0])>22 || Number(process.versions.node.split(String.fromCharCode(46))[1])>=12)?0:2)"],"cwd":"/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版","step":"检查Node版本","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node"}
+2026-10-26T18:25:04.6669903+00:00 [DeepSeek][安装Python依赖]
+{"exit":1,"arguments":["-m","pip","install","-r","requirements.txt"],"cwd":"/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版/backend","step":"安装Python依赖","executable":"/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版/backend/.venv/bin/python"}
+启动失败 [DeepSeek][安装Python依赖]：子命令失败，退出码 1；详情：/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/logs/deepseek-20261026-182504-076-9615/安装Python依赖.log；日志：/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/logs/deepseek-20261026-182504-076-9615

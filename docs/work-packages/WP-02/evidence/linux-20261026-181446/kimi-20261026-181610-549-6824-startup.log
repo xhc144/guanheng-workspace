@@ -1,0 +1,10 @@
+2026-10-26T18:16:10.5615337+00:00 [Kimi][检查目录与演示边界]
+2026-10-26T18:16:10.6129324+00:00 [Kimi][检查端口]
+2026-10-26T18:16:10.6449589+00:00 [Kimi][检查运行时]
+2026-10-26T18:16:10.7360763+00:00 [Kimi][检查Python版本]
+{"step":"检查Python版本","cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python","exit":0,"arguments":["-c","import sys; sys.exit(0 if sys.version_info >= (3,10) else 2)"]}
+2026-10-26T18:16:10.7896041+00:00 [Kimi][检查Node版本]
+{"step":"检查Node版本","cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版","executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node","exit":0,"arguments":["-e","process.exit(Number(process.versions.node.split(String.fromCharCode(46))[0])>=22 && (Number(process.versions.node.split(String.fromCharCode(46))[0])>22 || Number(process.versions.node.split(String.fromCharCode(46))[1])>=12)?0:2)"]}
+2026-10-26T18:16:10.8458733+00:00 [Kimi][安装Python依赖]
+{"step":"安装Python依赖","cwd":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/backend","executable":"/tmp/WP02 中文 空格 md0c6g06/PMS 系列/Kimi版/backend/.venv/bin/python","exit":1,"arguments":["-m","pip","install","-r","requirements.txt"]}
+启动失败 [Kimi][安装Python依赖]：子命令失败，退出码 1；详情：/tmp/WP02 中文 空格 md0c6g06/PMS 系列/logs/kimi-20261026-181610-549-6824/安装Python依赖.log；日志：/tmp/WP02 中文 空格 md0c6g06/PMS 系列/logs/kimi-20261026-181610-549-6824

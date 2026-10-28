@@ -1,0 +1,16 @@
+{
+  "systems/pms-suite/DeepSeek版/reset-demo.ps1": "99743467999af5092a55163f9411869ff7eab57805327e062aea30e5cd7ae482",
+  "systems/pms-suite/DeepSeek版/setup.ps1": "a4b8f3beb8f3385d7d611d3c13f6e4670324c2b05c856ee77e3bc617d845d027",
+  "systems/pms-suite/DeepSeek版/start.bat": "17112c9db656882f105a6449d90dd2428b468ed96e4f886cd6b5a297e0881dbd",
+  "systems/pms-suite/Kimi版/demo.ps1": "d05a7394145b4171a64b207075368ed86605a971b15364c6567c1a997070437f",
+  "systems/pms-suite/Kimi版/start.ps1": "6689789b9eb747695f3926d81761192f0d6c38f423669704df28c52d55d4ebf7",
+  "systems/pms-suite/start-helper.ps1": "d691614412ad868255744940d5c05ffe9b7beeeb14716ec3ab0f0aeb0ca4ea10",
+  "systems/pms-suite/tests/bootstrap.Tests.ps1": "539d7048cbc5555fcfee246220862e488a9d5ada73a0d017819352d82c717008",
+  "systems/pms-suite/一键启动-DeepSeek版.bat": "4561f1dbbb145db7ce23e7ced2f434db57805955bb5ece038146a35e2ed83609",
+  "systems/pms-suite/一键启动-Kimi版.bat": "c3852e4321e5f3bf67ebb5acc94b3e0fe59c3109b3905a657ff8f21515c20c36",
+  "systems/pms-suite/一键启动-基础版.bat": "8b469c73d5150102a6a6e0a1e9ff4abf3054c400a18c6390ea23817c43bdd6a7",
+  "systems/pms-suite/基础版/scripts/reset-demo.ps1": "8908b895513365a76b0a5165c6a14ff6942ede8f5b4e33e87e7a9a0594bf85b2",
+  "systems/pms-suite/基础版/scripts/start-backend.ps1": "562016d2e0c563dc2ef24e249519396cd1214a16dd1459259283a16352e026f7",
+  "systems/pms-suite/基础版/scripts/start-frontend.ps1": "4447e8f63c6f43346f69a3b27a4bbe5e52d9381adfd412503067dc118760f488",
+  "systems/pms-suite/基础版/scripts/verify-full.ps1": "28eae17db50637b762bc6122fe13f95ee7e9e39606b7f29c89c512da9aa4443f"
+}

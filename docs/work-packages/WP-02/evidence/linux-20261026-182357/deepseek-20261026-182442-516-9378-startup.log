@@ -1,0 +1,26 @@
+2026-10-26T18:24:42.5236293+00:00 [DeepSeek][检查目录与演示边界]
+2026-10-26T18:24:42.6007126+00:00 [DeepSeek][检查端口]
+2026-10-26T18:24:42.6341003+00:00 [DeepSeek][检查运行时]
+2026-10-26T18:24:42.7297745+00:00 [DeepSeek][检查Python版本]
+{"arguments":["-c","import sys; sys.exit(0 if sys.version_info >= (3,10) else 2)"],"executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python","cwd":"/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版","exit":0,"step":"检查Python版本"}
+2026-10-26T18:24:42.8242628+00:00 [DeepSeek][检查Node版本]
+{"arguments":["-e","process.exit(Number(process.versions.node.split(String.fromCharCode(46))[0])>=22 && (Number(process.versions.node.split(String.fromCharCode(46))[0])>22 || Number(process.versions.node.split(String.fromCharCode(46))[1])>=12)?0:2)"],"executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node","cwd":"/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版","exit":0,"step":"检查Node版本"}
+2026-10-26T18:24:42.9322292+00:00 [DeepSeek][安装Python依赖]
+{"arguments":["-m","pip","install","-r","requirements.txt"],"executable":"/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版/backend/.venv/bin/python","cwd":"/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版/backend","exit":0,"step":"安装Python依赖"}
+2026-10-26T18:24:43.5830895+00:00 [DeepSeek][检查Python依赖]
+{"arguments":["-m","pip","check"],"executable":"/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版/backend/.venv/bin/python","cwd":"/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版/backend","exit":0,"step":"检查Python依赖"}
+2026-10-26T18:24:43.9657460+00:00 [DeepSeek][按原锁安装前端]
+{"arguments":["ci","--no-audit","--no-fund"],"executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/npm","cwd":"/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版/frontend","exit":0,"step":"按原锁安装前端"}
+2026-10-26T18:24:54.0668209+00:00 [DeepSeek][检查前端依赖]
+{"arguments":["ls","--depth=0"],"executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/npm","cwd":"/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版/frontend","exit":0,"step":"检查前端依赖"}
+2026-10-26T18:24:54.5571644+00:00 [DeepSeek][准备受控演示库（保留已有数据）]
+2026-10-26T18:24:54.5653970+00:00 [DeepSeek][启动后端]
+cwd=/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版/backend; service=后端; pid=9529
+{"arguments":["-m","uvicorn","app.main:app","--host","127.0.0.1","--port","8102"],"executable":"/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版/backend/.venv/bin/python","cwd":"/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版/backend","pid":9529,"service":"后端"}
+2026-10-26T18:24:54.5831794+00:00 [DeepSeek][检查后端]
+2026-10-26T18:24:56.8202991+00:00 [DeepSeek][启动前端]
+cwd=/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版/frontend; service=前端; pid=9563
+{"arguments":["node_modules/vite/bin/vite.js","--host","127.0.0.1","--port","5182","--strictPort"],"executable":"/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node","cwd":"/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/DeepSeek版/frontend","pid":9563,"service":"前端"}
+2026-10-26T18:24:56.8240748+00:00 [DeepSeek][检查前端]
+2026-10-26T18:24:57.3763668+00:00 [DeepSeek][就绪]
+启动失败 [DeepSeek][就绪]：服务 PID 9529 已退出，退出码 143。；日志：/tmp/WP02 中文 空格 uo31ubmp/PMS 系列/logs/deepseek-20261026-182442-516-9378

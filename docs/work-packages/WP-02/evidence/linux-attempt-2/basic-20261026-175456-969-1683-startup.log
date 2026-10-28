@@ -1,0 +1,24 @@
+2026-10-26T17:54:56.9782404+00:00 [Basic][检查目录与演示边界]
+2026-10-26T17:54:57.0875298+00:00 [Basic][检查端口]
+2026-10-26T17:54:57.1414561+00:00 [Basic][检查运行时]
+2026-10-26T17:54:57.2596724+00:00 [Basic][检查Python版本]
+cwd=/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/基础版; step=检查Python版本; exit=0
+2026-10-26T17:54:57.3191249+00:00 [Basic][检查Node版本]
+cwd=/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/基础版; step=检查Node版本; exit=0
+2026-10-26T17:54:57.3916701+00:00 [Basic][安装Python依赖]
+cwd=/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/基础版/backend; step=安装Python依赖; exit=0
+2026-10-26T17:54:58.8681187+00:00 [Basic][检查Python依赖]
+cwd=/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/基础版/backend; step=检查Python依赖; exit=0
+2026-10-26T17:54:59.4290238+00:00 [Basic][按原锁安装前端]
+cwd=/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/基础版/frontend; step=按原锁安装前端; exit=0
+2026-10-26T17:55:05.7210331+00:00 [Basic][检查前端依赖]
+cwd=/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/基础版/frontend; step=检查前端依赖; exit=0
+2026-10-26T17:55:06.5583923+00:00 [Basic][准备受控演示库（保留已有数据）]
+2026-10-26T17:55:06.7457432+00:00 [Basic][启动后端]
+cwd=/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/基础版/backend; service=后端; pid=1798
+2026-10-26T17:55:06.7859853+00:00 [Basic][检查后端]
+2026-10-26T17:55:12.8671330+00:00 [Basic][启动前端]
+cwd=/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/基础版/frontend; service=前端; pid=1808
+2026-10-26T17:55:12.8757473+00:00 [Basic][检查前端]
+2026-10-26T17:55:13.9509193+00:00 [Basic][就绪]
+启动失败 [Basic][就绪]：服务 PID 1798 已退出，退出码 143。；日志：/tmp/WP02 中文 空格 pbpc5oa2/PMS 系列/logs/basic-20261026-175456-969-1683
