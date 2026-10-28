@@ -13,19 +13,20 @@ def confirmed_payments(db: Session, contract_id: int):
 
 
 def received_amount(db: Session, contract_id: int) -> Decimal:
-    """已收 = 已确认回款 - 已被冲销的金额。冲销单本身为负数记录时直接求和即可。"""
+    """保留已冲销原单与负数冲销单一起求和，冲销后的净额为零。"""
     total = db.query(func.coalesce(func.sum(models.Payment.amount), 0)).filter(
         models.Payment.contract_id == contract_id,
-        models.Payment.status.in_(["confirmed"]),
+        models.Payment.status.in_(["confirmed", "reversed"]),
     ).scalar()
     return Decimal(total)
 
 
 def plan_allocated(db: Session, plan_id: int, exclude_payment_id: int | None = None) -> Decimal:
-    """某应收节点已被核销金额（仅统计 confirmed 回款的分配）。"""
+    """核销原单与冲销分配同时计入；草稿不入账。"""
     q = db.query(func.coalesce(func.sum(models.PaymentAllocation.amount), 0)).join(
         models.Payment, models.Payment.id == models.PaymentAllocation.payment_id
-    ).filter(models.PaymentAllocation.plan_id == plan_id, models.Payment.status == "confirmed")
+    ).filter(models.PaymentAllocation.plan_id == plan_id,
+             models.Payment.status.in_(["confirmed", "reversed"]))
     if exclude_payment_id:
         q = q.filter(models.Payment.id != exclude_payment_id)
     return Decimal(q.scalar())

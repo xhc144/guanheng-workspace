@@ -106,17 +106,20 @@ def confirm_payment(payment_id: int, allocations: list[AllocationIn] = [], idemp
     if duplicate is not None: return duplicate
     if p.status != "draft": raise HTTPException(409, "只有草稿回款可以确认")
     total = Decimal("0")
+    requested_by_plan: dict[int, Decimal] = {}
     for item in allocations:
         plan = db.get(models.PaymentPlan, item.plan_id)
         if not plan or plan.contract_id != p.contract_id: raise HTTPException(422, "核销节点不属于该合同")
         remaining = Decimal(plan.amount) - plan_allocated(db, plan.id)
-        if item.amount > remaining: raise HTTPException(422, "核销金额超过应收余额")
+        requested_by_plan[plan.id] = requested_by_plan.get(plan.id, Decimal("0")) + item.amount
+        if requested_by_plan[plan.id] > remaining: raise HTTPException(422, "核销金额超过应收余额")
         total += item.amount
     if total > Decimal(p.amount): raise HTTPException(422, "核销金额超过回款金额")
     p.status = "confirmed"
-    for item in allocations: db.add(models.PaymentAllocation(payment_id=p.id, plan_id=item.plan_id, amount=item.amount))
+    for plan_id, amount in requested_by_plan.items():
+        db.add(models.PaymentAllocation(payment_id=p.id, plan_id=plan_id, amount=amount))
     db.flush()
-    for item in allocations: refresh_plan_status(db, db.get(models.PaymentPlan, item.plan_id))
+    for plan_id in requested_by_plan: refresh_plan_status(db, db.get(models.PaymentPlan, plan_id))
     result = {"ok": True, "payment": payment_out(p)}; audit(db, user, "payment", p.id, "confirm"); store_idempotent_response(db, idempotency_key, result); db.commit(); return result
 
 @router.post("/payments/{payment_id}/reverse")
@@ -126,7 +129,7 @@ def reverse_payment(payment_id: int, idempotency_key: str | None = Header(defaul
     c = db.get(models.Contract, original.contract_id); check_project_access(user, db, c.project_id)
     duplicate = check_idempotency(db, idempotency_key, user.id, f"finance.payments.{payment_id}.reverse")
     if duplicate is not None: return duplicate
-    if original.status != "confirmed" or original.reversed_by_id: raise HTTPException(409, "只能冲销未冲销的已确认回款")
+    if original.status != "confirmed" or original.reversed_by_id or original.reversal_of_id: raise HTTPException(409, "只能冲销未冲销的已确认回款原单")
     reversal = models.Payment(contract_id=original.contract_id, serial_no=f"REV-{original.serial_no}", amount=-Decimal(original.amount), paid_at=original.paid_at, method=original.method, status="confirmed", reversal_of_id=original.id, remark="冲销")
     original.status = "reversed"; db.add(reversal); db.flush(); original.reversed_by_id = reversal.id
     for allocation in original.allocations:
