@@ -1,19 +1,10 @@
 """基础版完整主链路回归：所有操作使用受控演示库，不访问默认业务数据库。"""
+from decimal import Decimal
 from uuid import uuid4
-from fastapi.testclient import TestClient
-
-from app.main import app
 
 
-def client_and_headers():
-    client = TestClient(app)
-    result = client.post("/api/auth/login", json={"username": "admin", "password": "Admin@123456"})
-    assert result.status_code == 200
-    return client, {"Authorization": f"Bearer {result.json()['access_token']}"}
-
-
-def test_project_task_risk_finance_flow():
-    client, headers = client_and_headers()
+def test_project_task_risk_finance_flow(api_session):
+    client, headers = api_session
     suffix = uuid4().hex[:8]
     project = client.post("/api/projects", headers=headers, json={"code": f"TEST-FLOW-{suffix}", "name": "全流程项目"})
     assert project.status_code == 200
@@ -32,18 +23,27 @@ def test_project_task_risk_finance_flow():
     contract_id = contract.json()["id"]
     plan = client.post("/api/finance/plans", headers=headers, json={"contract_id": contract_id, "name": "验收款", "amount": "1000"})
     assert plan.status_code == 200
-    payment = client.post("/api/finance/payments", headers={**headers, "Idempotency-Key": "test-full-flow-payment"}, json={"contract_id": contract_id, "serial_no": f"TEST-S-{suffix}", "amount": "1000"})
+    payment = client.post("/api/finance/payments", headers={**headers, "Idempotency-Key": f"test-full-flow-payment-{suffix}"}, json={"contract_id": contract_id, "serial_no": f"TEST-S-{suffix}", "amount": "1000"})
     assert payment.status_code == 200
     payment_id = payment.json()["id"]
-    confirmed = client.post(f"/api/finance/payments/{payment_id}/confirm", headers={**headers, "Idempotency-Key": "test-full-flow-confirm"}, json=[{"plan_id": plan.json()["id"], "amount": "1000"}])
+    confirmed = client.post(f"/api/finance/payments/{payment_id}/confirm", headers={**headers, "Idempotency-Key": f"test-full-flow-confirm-{suffix}"}, json=[{"plan_id": plan.json()["id"], "amount": "1000"}])
     assert confirmed.status_code == 200
-    assert client.get("/api/finance/summary", headers=headers).status_code == 200
+    summary = client.get(f"/api/finance/summary?project_id={project_id}", headers=headers)
+    assert summary.status_code == 200
+    assert Decimal(summary.json()["received"]) == Decimal("1000.00")
+    assert Decimal(summary.json()["receivable"]) == Decimal("0.00")
+    plans = client.get(f"/api/finance/plans?contract_id={contract_id}", headers=headers)
+    assert plans.status_code == 200
+    assert plans.json()[0]["status"] == "paid"
     assert client.get(f"/api/projects/{project_id}/summary", headers=headers).status_code == 200
 
 
-def test_governance_and_data_ops():
-    client, headers = client_and_headers()
-    project_id = client.get("/api/projects", headers=headers).json()["items"][0]["id"]
+def test_governance_and_data_ops(api_session):
+    client, headers = api_session
+    project = client.post("/api/projects", headers=headers, json={
+        "code": "GOVERNANCE-INDEPENDENT", "name": "独立治理回归项目"})
+    assert project.status_code == 200
+    project_id = project.json()["id"]
     budget = client.post("/api/budgets", headers=headers, json={"project_id": project_id, "category": "测试", "amount": "100"})
     assert budget.status_code == 200
     cost = client.post("/api/costs", headers=headers, json={"project_id": project_id, "category": "测试", "amount": "20"})

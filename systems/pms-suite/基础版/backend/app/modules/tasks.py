@@ -103,12 +103,12 @@ def add_dependency(task_id: int, body: DependencyIn, db: Session = Depends(get_d
     if task.project_id != dependency.project_id or task.id == dependency.id: raise HTTPException(422, "依赖必须是同一项目中的其他任务")
     if db.get(models.TaskDependency, {"task_id": task.id, "depends_on_id": dependency.id}): return {"ok": True}
     # 从依赖节点沿边遍历，禁止形成回路。
-    pending = [task.id]; seen = set()
+    pending = [dependency.id]; seen = set()
     while pending:
         current = pending.pop()
         if current in seen: continue
         seen.add(current)
-        if current == dependency.id: raise HTTPException(409, "任务依赖会形成循环")
+        if current == task.id: raise HTTPException(409, "任务依赖会形成循环")
         pending.extend(x.depends_on_id for x in db.query(models.TaskDependency).filter_by(task_id=current).all())
     db.add(models.TaskDependency(task_id=task.id, depends_on_id=dependency.id)); audit(db, user, "task_dependency", task.id, "create"); db.commit(); return {"ok": True}
 
