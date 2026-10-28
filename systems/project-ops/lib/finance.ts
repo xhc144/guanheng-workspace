@@ -7,14 +7,24 @@ import { multiplyBasisPoints } from "./money.ts";
 export interface AllocationInput { receivableId: string; amountCents: number }
 
 function validateAllocations(allocations: AllocationInput[]) {
-  if (!allocations.length) throw new Error("至少需要一条分摊明细");
+  if (!Array.isArray(allocations) || !allocations.length) throw new Error("至少需要一条分摊明细");
   const ids = new Set<string>();
+  let total = 0;
   for (const item of allocations) {
-    if (!item.receivableId || !Number.isSafeInteger(item.amountCents) || item.amountCents <= 0) {
+    if (!item || typeof item.receivableId !== "string" || !item.receivableId.trim() || !Number.isSafeInteger(item.amountCents) || item.amountCents <= 0) {
       throw new Error("分摊明细不正确");
     }
     if (ids.has(item.receivableId)) throw new Error("同一应收不能重复分摊");
     ids.add(item.receivableId);
+    total += item.amountCents;
+    if (!Number.isSafeInteger(total)) throw new Error("分摊合计超出安全金额范围");
+  }
+}
+
+function validateDate(value: string) {
+  const date = new Date(`${value}T00:00:00Z`);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || Number.isNaN(date.valueOf()) || date.toISOString().slice(0, 10) !== value) {
+    throw new Error("业务日期不正确，请填写真实日历日期");
   }
 }
 
@@ -36,7 +46,7 @@ function assertReceivableCapacity(
     `).get(item.receivableId) as Record<string, unknown> | undefined;
     if (!row || row.voided_at) throw new Error("应收不存在或已作废");
     if (row.customer_id !== customerId) throw new Error("分摊应收与付款客户不一致");
-    if (Number(row.allocated_cents) + item.amountCents > Number(row.amount_cents)) {
+    if (item.amountCents > Number(row.amount_cents) - Number(row.allocated_cents)) {
       throw new Error("分摊金额超过应收余额");
     }
   }
@@ -65,6 +75,7 @@ export function createReceiptWithAllocations(db: DatabaseSync, input: {
   allocations: AllocationInput[];
 }) {
   if (!input.idempotencyKey) throw new Error("缺少幂等键");
+  validateDate(input.receivedDate);
   validateAllocations(input.allocations);
   if (!Number.isSafeInteger(input.amountCents) || input.amountCents <= 0) throw new Error("回款金额不正确");
   const requestHash = hashRequest("CREATE_RECEIPT", {
@@ -89,7 +100,7 @@ export function createReceiptWithAllocations(db: DatabaseSync, input: {
       (id, customer_id, received_date, amount_cents, payer_account, payment_method, reference_number, notes)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`)
       .run(id, input.customerId, input.receivedDate, input.amountCents, input.payerAccount ?? null,
-        input.paymentMethod ?? null, input.referenceNumber ?? null, input.notes ?? null);
+        input.paymentMethod ?? null, input.referenceNumber?.trim() ? input.referenceNumber : null, input.notes ?? null);
     const statement = db.prepare("INSERT INTO receipt_allocations (id, receipt_id, receivable_id, amount_cents) VALUES (?, ?, ?, ?)");
     for (const item of input.allocations) statement.run(randomUUID(), id, item.receivableId, item.amountCents);
     db.prepare("INSERT INTO idempotency_keys (key, operation, result_id, request_hash) VALUES (?, 'CREATE_RECEIPT', ?, ?)")
@@ -104,8 +115,12 @@ export function createInvoiceWithAllocations(db: DatabaseSync, input: {
   allocations: AllocationInput[];
 }) {
   if (!input.idempotencyKey) throw new Error("缺少幂等键");
+  validateDate(input.invoiceDate);
   validateAllocations(input.allocations);
   if (!Number.isSafeInteger(input.amountCents) || input.amountCents <= 0) throw new Error("发票金额不正确");
+  if (!input.invoiceNumber.trim()) throw new Error("发票号不能为空");
+  if (!Number.isSafeInteger(input.taxRateBasisPoints ?? 0) || (input.taxRateBasisPoints ?? 0) < 0 || (input.taxRateBasisPoints ?? 0) > 10000) throw new Error("税率须在0%至100%之间");
+  if (!Number.isSafeInteger(input.taxCents ?? 0) || (input.taxCents ?? 0) < 0 || (input.taxCents ?? 0) > input.amountCents) throw new Error("税额不得超过发票金额");
   const requestHash = hashRequest("CREATE_INVOICE", {
     invoiceNumber: input.invoiceNumber,
     customerId: input.customerId,
@@ -142,9 +157,10 @@ export function voidFinanceRecord(db: DatabaseSync, input: {
   id: string;
   reason: string;
 }) {
+  if (input.kind !== "invoices" && input.kind !== "receipts") throw new Error("财务记录类型不存在");
   const reason = input.reason.trim();
   if (!input.id) throw new Error("财务记录编号不能为空");
-  if (reason.length < 2) throw new Error("请填写作废原因");
+  if (reason.length < 2 || reason.length > 500) throw new Error("作废原因须为2至500字");
   return inTransaction(db, () => {
     const before = db.prepare(`SELECT * FROM ${input.kind} WHERE id=? AND voided_at IS NULL`)
       .get(input.id) as Record<string, unknown> | undefined;

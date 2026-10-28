@@ -1,0 +1,8 @@
+.form { min-width: 0; }
+.fields { min-width: 0; border: 0; padding: 0; margin: 0; }
+.fields:disabled { opacity: .7; }
+.form input:not([type="hidden"]), .form select, .form button { min-height: 44px; }
+.form :global(.form-grid) { grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); }
+.voidForm { max-width: min(280px, 70vw); overflow-wrap: anywhere; }
+.voidForm label { display: grid; gap: 6px; }
+.voidForm input, .voidForm button { min-height: 44px; }
