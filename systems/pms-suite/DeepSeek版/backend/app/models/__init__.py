@@ -224,6 +224,15 @@ class Receipt(Base):
     __table_args__ = (Index("ix_receipts_bank_ref_status", "bank_ref", "status"),)
 
 
+class ReceiptRequest(Base):
+    """持久幂等请求；与回款和审计在同一事务提交，不再解析业务备注。"""
+    __tablename__ = "receipt_requests"
+    key = Column(String(128), primary_key=True)
+    user_id = Column(String(32), ForeignKey("users.id"), nullable=False)
+    signature = Column(Text, nullable=False)
+    receipt_id = Column(String(32), ForeignKey("receipts.id"), nullable=False, unique=True)
+
+
 class ReceiptAllocation(Base):
     """回款核销关联表：多对多"""
     __tablename__ = "receipt_allocations"

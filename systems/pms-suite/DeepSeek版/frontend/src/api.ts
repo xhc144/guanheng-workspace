@@ -4,36 +4,44 @@ const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE || '/api',
 });
 
+// Separate browser credentials: a portal login must not replace an internal session.
+export const portalApi = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE || '/api',
+});
+
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
-let isRefreshing = false;
-type QueueHandler = (value?: unknown) => void;
-let failedQueue: Array<{ resolve: QueueHandler; reject: QueueHandler }> = [];
+portalApi.interceptors.request.use((config) => {
+  const token = localStorage.getItem('portal_token');
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
 
-const processQueue = (error: unknown) => {
-  failedQueue.forEach(({ resolve, reject }) => (error ? reject(error) : resolve(undefined)));
-  failedQueue = [];
-};
+portalApi.interceptors.response.use(
+  (res) => res,
+  (err) => {
+    if (err.response?.status === 401 && err.config?.url !== '/portal/login') {
+      localStorage.removeItem('portal_token');
+      localStorage.removeItem('portal_user');
+      window.dispatchEvent(new Event('pms:portal-session-expired'));
+    }
+    return Promise.reject(err);
+  },
+);
 
 api.interceptors.response.use(
   (res) => res,
   (err) => {
     if (err.response?.status === 401) {
-      if (!isRefreshing) {
-        isRefreshing = true;
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        processQueue(err);
-        if (window.location.pathname !== '/login') window.location.href = '/login';
-      } else {
-        return new Promise((resolve, reject) => {
-          failedQueue.push({ resolve, reject });
-        });
-      }
+      // There is no refresh-token API. Reject every failed request promptly;
+      // queuing it would leave later login attempts pending forever.
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      if (window.location.pathname !== '/login') window.location.href = '/login';
     }
     if (err.response?.status === 422 && err.response?.data?.errors) {
       const msg = err.response.data.errors.map((e: any) => `${e.field}: ${e.message}`).join("; ");
@@ -83,7 +91,7 @@ export const deleteTask = (id: string) => api.delete(`/tasks/${id}`).then(r => r
 export const fetchContracts = (params?: any) => api.get('/contracts', { params }).then(r => r.data);
 export const createContract = (data: any) => api.post('/contracts', data).then(r => r.data);
 export const fetchReceipts = (params?: any) => api.get('/receipts', { params }).then(r => r.data);
-export const createReceipt = (data: any) => api.post('/receipts', data).then(r => r.data);
+export const createReceipt = (data: any) => api.post(data.idempotency_key ? '/finance/receipts' : '/receipts', data).then(r => r.data);
 export const confirmReceipt = (id: string) => api.put(`/receipts/${id}/confirm`).then(r => r.data);
 export const reverseReceipt = (id: string) => api.put(`/receipts/${id}/reverse`).then(r => r.data);
 export const fetchReceiptStats = (projectId: string) => api.get(`/receipts/project/${projectId}/stats`).then(r => r.data);
@@ -166,9 +174,9 @@ export const createSavedView = (data: any) => api.post('/saved-views', data).the
 export const deleteSavedView = (id: string) => api.delete(`/saved-views/${id}`).then(r => r.data);
 
 // ============ P1: 客户门户 ============
-export const portalLogin = (username: string, password: string) => api.post('/portal/login', { username, password }).then(r => r.data);
-export const fetchPortalProjects = () => api.get('/portal/projects').then(r => r.data);
-export const fetchPortalProject = (id: string) => api.get(`/portal/projects/${id}`).then(r => r.data);
+export const portalLogin = (username: string, password: string) => portalApi.post('/portal/login', { username, password }).then(r => r.data);
+export const fetchPortalProjects = () => portalApi.get('/portal/projects').then(r => r.data);
+export const fetchPortalProject = (id: string) => portalApi.get(`/portal/projects/${id}`).then(r => r.data);
 export const grantPortalUser = (customerId: string, data: any) => api.post(`/customers/${customerId}/portal-users`, data).then(r => r.data);
 export const fetchPortalUsers = (customerId: string) => api.get(`/customers/${customerId}/portal-users`).then(r => r.data);
 

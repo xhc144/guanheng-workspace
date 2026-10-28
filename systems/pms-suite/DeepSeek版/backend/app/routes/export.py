@@ -8,6 +8,7 @@ from datetime import datetime
 from app.database import get_db
 from app.models import Project, Task, Customer, Contract, Receipt, ReceiptAllocation, User
 from app.auth import get_current_user
+from app.routes.project_access import require_project, scope_project_rows, visible_project_ids
 from sqlalchemy import func
 
 router = APIRouter(prefix="/api/export", tags=["导出"])
@@ -20,7 +21,7 @@ def export_projects(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    q = db.query(Project).filter(Project.is_archived == False)
+    q = scope_project_rows(db.query(Project), Project.id, current_user).filter(Project.is_archived == False)
     if search:
         q = q.filter(Project.name.contains(search) | Project.code.contains(search))
     if status:
@@ -85,8 +86,9 @@ def export_receipts(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    q = db.query(Receipt)
+    q = scope_project_rows(db.query(Receipt), Receipt.project_id, current_user)
     if project_id:
+        require_project(db, current_user, project_id)
         q = q.filter(Receipt.project_id == project_id)
     receipts = q.order_by(Receipt.received_date.desc()).limit(500).all()
 
@@ -128,6 +130,7 @@ def export_receipts(
 
 @router.get("/aging")
 def export_aging(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    project_ids = visible_project_ids(current_user)
     try:
         import openpyxl
     except ImportError:
@@ -139,7 +142,7 @@ def export_aging(db: Session = Depends(get_db), current_user: User = Depends(get
     ws.append(["项目编号", "项目名称", "客户名称", "回款金额", "回款日期", "账龄(天)", "状态"])
     receipts = db.query(Receipt).join(Project, Receipt.project_id == Project.id)\
         .join(Customer, Project.customer_id == Customer.id)\
-        .filter(Receipt.status.in_(["draft", "confirmed"]))\
+        .filter(Receipt.status.in_(["draft", "confirmed"]), Receipt.project_id.in_(project_ids))\
         .order_by(Receipt.received_date.desc()).all()
     for r in receipts:
         aging = (datetime.utcnow() - r.received_date).days if r.received_date else 0
@@ -157,6 +160,7 @@ def export_aging(db: Session = Depends(get_db), current_user: User = Depends(get
 
 @router.get("/contracts")
 def export_contracts(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    project_ids = visible_project_ids(current_user)
     try:
         import openpyxl
     except ImportError:
@@ -168,6 +172,7 @@ def export_contracts(db: Session = Depends(get_db), current_user: User = Depends
     ws.append(["合同编号", "合同名称", "项目名称", "客户名称", "金额", "签订日期", "状态"])
     contracts = db.query(Contract).join(Project, Contract.project_id == Project.id)\
         .outerjoin(Customer, Project.customer_id == Customer.id)\
+        .filter(Contract.project_id.in_(project_ids))\
         .order_by(Contract.signed_date.desc()).all()
     for c in contracts:
         ws.append([c.code, c.name, c.project.name, c.project.customer.name if c.project.customer else "",

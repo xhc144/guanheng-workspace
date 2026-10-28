@@ -14,6 +14,7 @@ from sqlalchemy.orm import Session
 
 from app.auth import get_current_user, require_role, ROLE_HIERARCHY
 from app.database import get_db
+from app.routes.project_access import require_project, scope_project_rows
 from app.models import (
     Contract, Customer, Document, DocumentVersion, ExpenseEntry, Milestone,
     Project, ProjectMember, Receipt, SavedView, Task, TimesheetEntry, User,
@@ -45,9 +46,7 @@ def _task_payload(t: Task) -> dict:
 
 @gantt_router.get("/{project_id}")
 def get_gantt(project_id: str, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
-    project = db.query(Project).filter(Project.id == project_id).first()
-    if not project:
-        raise HTTPException(status_code=404, detail="项目不存在")
+    project = require_project(db, current_user, project_id)
     tasks = db.query(Task).filter(Task.project_id == project_id).order_by(Task.created_at).all()
     milestones = db.query(Milestone).filter(Milestone.project_id == project_id).order_by(Milestone.sort_order).all()
     return {
@@ -82,14 +81,16 @@ def get_calendar(
     current_user: User = Depends(get_current_user),
 ):
     """返回起止范围内的任务与里程碑（带日期），供日历视图渲染。"""
+    if project_id:
+        require_project(db, current_user, project_id)
     now = datetime.utcnow()
     start_dt = datetime.fromisoformat(start) if start else now.replace(day=1)
     end_dt = datetime.fromisoformat(end) if end else (start_dt + timedelta(days=62))
 
-    task_q = db.query(Task).filter(Task.due_date.isnot(None), Task.due_date >= start_dt, Task.due_date <= end_dt)
+    task_q = scope_project_rows(db.query(Task), Task.project_id, current_user).filter(Task.due_date.isnot(None), Task.due_date >= start_dt, Task.due_date <= end_dt)
     if project_id:
         task_q = task_q.filter(Task.project_id == project_id)
-    ms_q = db.query(Milestone).filter(Milestone.due_date.isnot(None), Milestone.due_date >= start_dt, Milestone.due_date <= end_dt)
+    ms_q = scope_project_rows(db.query(Milestone), Milestone.project_id, current_user).filter(Milestone.due_date.isnot(None), Milestone.due_date >= start_dt, Milestone.due_date <= end_dt)
     if project_id:
         ms_q = ms_q.filter(Milestone.project_id == project_id)
 
@@ -142,10 +143,11 @@ def list_timesheets(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    q = db.query(TimesheetEntry)
+    q = scope_project_rows(db.query(TimesheetEntry), TimesheetEntry.project_id, current_user)
     if user_id:
         q = q.filter(TimesheetEntry.user_id == user_id)
     if project_id:
+        require_project(db, current_user, project_id)
         q = q.filter(TimesheetEntry.project_id == project_id)
     if status:
         q = q.filter(TimesheetEntry.status == status)
@@ -158,6 +160,11 @@ def list_timesheets(
 
 @timesheet_router.post("")
 def create_timesheet(req: TimesheetCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    require_project(db, current_user, req.project_id)
+    if req.task_id:
+        task = db.get(Task, req.task_id)
+        if task is None or task.project_id != req.project_id:
+            raise HTTPException(status_code=400, detail="工时任务不属于当前项目")
     if req.hours <= 0:
         raise HTTPException(status_code=400, detail="工时必须大于0")
     if req.hours > 24:
@@ -178,6 +185,7 @@ def delete_timesheet(entry_id: str, db: Session = Depends(get_db), current_user:
     t = db.query(TimesheetEntry).filter(TimesheetEntry.id == entry_id).first()
     if not t:
         raise HTTPException(status_code=404, detail="工时记录不存在")
+    require_project(db, current_user, t.project_id)
     if t.user_id != current_user.id and ROLE_HIERARCHY.get(current_user.role, 0) < 60:
         raise HTTPException(status_code=403, detail="只能删除自己的工时记录")
     db.delete(t)
@@ -196,6 +204,7 @@ def approve_timesheet(entry_id: str, req: TimesheetDecision, db: Session = Depen
     t = db.query(TimesheetEntry).filter(TimesheetEntry.id == entry_id).first()
     if not t:
         raise HTTPException(status_code=404, detail="工时记录不存在")
+    require_project(db, current_user, t.project_id)
     if t.status != "submitted":
         raise HTTPException(status_code=400, detail="只能审批已提交的工时")
     t.status = "approved"
@@ -213,6 +222,7 @@ def reject_timesheet(entry_id: str, req: TimesheetDecision, db: Session = Depend
     t = db.query(TimesheetEntry).filter(TimesheetEntry.id == entry_id).first()
     if not t:
         raise HTTPException(status_code=404, detail="工时记录不存在")
+    require_project(db, current_user, t.project_id)
     if t.status != "submitted":
         raise HTTPException(status_code=400, detail="只能审批已提交的工时")
     t.status = "rejected"
@@ -232,8 +242,9 @@ def timesheet_summary(
     current_user: User = Depends(get_current_user),
 ):
     """按用户/项目聚合已提交+已审批工时。"""
-    q = db.query(TimesheetEntry).filter(TimesheetEntry.status.in_(["submitted", "approved"]))
+    q = scope_project_rows(db.query(TimesheetEntry), TimesheetEntry.project_id, current_user).filter(TimesheetEntry.status.in_(["submitted", "approved"]))
     if project_id:
+        require_project(db, current_user, project_id)
         q = q.filter(TimesheetEntry.project_id == project_id)
     if start:
         q = q.filter(TimesheetEntry.work_date >= datetime.fromisoformat(start))
@@ -268,8 +279,9 @@ def get_resource_load(
     """按成员统计进行中任务数与预估工时，判断负载状态。"""
     now = datetime.utcnow()
     horizon = now + timedelta(days=30)
-    q = db.query(Task).filter(Task.status.in_(["todo", "in_progress", "review"]), Task.assignee_id.isnot(None))
+    q = scope_project_rows(db.query(Task), Task.project_id, current_user).filter(Task.status.in_(["todo", "in_progress", "review"]), Task.assignee_id.isnot(None))
     if project_id:
+        require_project(db, current_user, project_id)
         q = q.filter(Task.project_id == project_id)
     tasks = q.all()
 
@@ -348,14 +360,16 @@ def _exp_payload(e: ExpenseEntry) -> dict:
 
 @expense_router.get("")
 def list_expenses(project_id: Optional[str] = Query(None), db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
-    q = db.query(ExpenseEntry)
+    q = scope_project_rows(db.query(ExpenseEntry), ExpenseEntry.project_id, current_user)
     if project_id:
+        require_project(db, current_user, project_id)
         q = q.filter(ExpenseEntry.project_id == project_id)
     return [_exp_payload(e) for e in q.order_by(ExpenseEntry.expense_date.desc()).limit(500).all()]
 
 
 @expense_router.post("")
 def create_expense(req: ExpenseCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    require_project(db, current_user, req.project_id)
     e = ExpenseEntry(
         project_id=req.project_id, category=req.category, amount=req.amount,
         expense_date=req.expense_date or datetime.utcnow(), description=req.description,
@@ -372,6 +386,7 @@ def delete_expense(expense_id: str, db: Session = Depends(get_db), current_user:
     e = db.query(ExpenseEntry).filter(ExpenseEntry.id == expense_id).first()
     if not e:
         raise HTTPException(status_code=404, detail="成本记录不存在")
+    require_project(db, current_user, e.project_id)
     db.delete(e)
     db.commit()
     return {"ok": True}
@@ -383,7 +398,7 @@ cost_profit_router = APIRouter(prefix="/api/reports/cost-profit", tags=["成本�
 
 @cost_profit_router.get("")
 def get_cost_profit(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
-    projects = db.query(Project).filter(Project.is_archived == False).all()
+    projects = scope_project_rows(db.query(Project), Project.id, current_user).filter(Project.is_archived == False).all()
     rows = []
     for p in projects:
         budget = float(p.budget or 0)
@@ -431,8 +446,9 @@ def _doc_payload(d: Document, db: Session) -> dict:
 
 @doc_router.get("")
 def list_documents(project_id: Optional[str] = Query(None), db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
-    q = db.query(Document)
+    q = scope_project_rows(db.query(Document), Document.project_id, current_user)
     if project_id:
+        require_project(db, current_user, project_id)
         q = q.filter(Document.project_id == project_id)
     return [_doc_payload(d, db) for d in q.order_by(Document.updated_at.desc()).all()]
 
@@ -443,6 +459,7 @@ def create_document(req: dict, db: Session = Depends(get_db), current_user: User
     name = (req.get("name") or "").strip()
     if not project_id or not name:
         raise HTTPException(status_code=400, detail="项目与文档名称必填")
+    require_project(db, current_user, project_id)
     d = Document(project_id=project_id, name=name, description=req.get("description", ""), created_by=current_user.id)
     db.add(d)
     db.commit()
@@ -455,6 +472,7 @@ def list_versions(doc_id: str, db: Session = Depends(get_db), current_user: User
     doc = db.query(Document).filter(Document.id == doc_id).first()
     if not doc:
         raise HTTPException(status_code=404, detail="文档不存在")
+    require_project(db, current_user, doc.project_id)
     versions = db.query(DocumentVersion).filter(DocumentVersion.document_id == doc_id).order_by(DocumentVersion.version_no.desc()).all()
     return {
         "document": {"id": doc.id, "name": doc.name, "description": doc.description, "project_id": doc.project_id},
@@ -480,6 +498,7 @@ async def upload_version(
     doc = db.query(Document).filter(Document.id == doc_id).first()
     if not doc:
         raise HTTPException(status_code=404, detail="文档不存在")
+    require_project(db, current_user, doc.project_id)
     latest = db.query(DocumentVersion).filter(DocumentVersion.document_id == doc_id).order_by(DocumentVersion.version_no.desc()).first()
     version_no = (latest.version_no + 1) if latest else 1
     save_dir = UPLOAD_DIR / doc_id
@@ -508,6 +527,10 @@ async def upload_version(
 
 @doc_router.get("/{doc_id}/versions/{version_id}/download")
 def download_version(doc_id: str, version_id: str, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    doc = db.get(Document, doc_id)
+    if doc is None:
+        raise HTTPException(status_code=404, detail="文档不存在")
+    require_project(db, current_user, doc.project_id)
     v = db.query(DocumentVersion).filter(DocumentVersion.id == version_id, DocumentVersion.document_id == doc_id).first()
     if not v:
         raise HTTPException(status_code=404, detail="版本不存在")
@@ -522,6 +545,7 @@ def delete_document(doc_id: str, db: Session = Depends(get_db), current_user: Us
     doc = db.query(Document).filter(Document.id == doc_id).first()
     if not doc:
         raise HTTPException(status_code=404, detail="文档不存在")
+    require_project(db, current_user, doc.project_id)
     doc_dir = UPLOAD_DIR / doc_id
     if doc_dir.exists():
         shutil.rmtree(doc_dir, ignore_errors=True)

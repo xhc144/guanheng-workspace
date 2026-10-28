@@ -1,0 +1,230 @@
+{
+  "source_commit": "f3bcdb603b2b1395ffae8b12cf27d5732a56afa0",
+  "source_tree": "671d457f27d7aa6b6aec10bbf4495c388905b716",
+  "publication_parent": "52714fa8acce62fbfef67c1ba218e1bc2b269e1c",
+  "target_repository": "xhc144/guanheng-workspace",
+  "target_branch": "wave3/deepseek-archive-reviewed",
+  "purpose": "Publish existing frozen ordinary source and synthetic tests only; no new development or functional test runs.",
+  "preserved_files": [
+    {
+      "path": "docs/work-packages/WP-27/browser_check.py",
+      "git_blob": "fe172b2543957592d009bc0606d896a452b6b625",
+      "sha256": "2b3d6caf1265e88242b32c540fc93de21a77499c4bbb9febb38d3ecda70ec9de"
+    },
+    {
+      "path": "docs/work-packages/WP-27/capability-review.md",
+      "git_blob": "d89eac1fb0335d206398ba8ac764ea560210bca2",
+      "sha256": "4db7174c0ff907f307cab28136b9385c66656bc809d3f7d3598e3db6fc74e471"
+    },
+    {
+      "path": "docs/work-packages/WP-27/probe_policy_gaps.py",
+      "git_blob": "589fbb40cd30b272613ea689bcfce6d0469939d3",
+      "sha256": "735de8936aacaf624ca49d9032fd9dd6f42fc5f4f4ffaa08db3bdb3f1ad03c7c"
+    },
+    {
+      "path": "docs/work-packages/WP-27/restart_check.py",
+      "git_blob": "e3125cdb23fa76d9ac4363431b2f6f6606b0e26c",
+      "sha256": "c90e83adb33623e101fb88804d4de076a9a5c3844fa013cb661c8841a9a7d124"
+    },
+    {
+      "path": "docs/work-packages/WP-27/verify_scope.py",
+      "git_blob": "c59ba1a613b6d59d0e7f9152bd3f1c6582839212",
+      "sha256": "ac15906784adae9140209df2866b36a41e2ae4722b9936f27262fe91d6790803"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/FINAL_STATUS.md",
+      "git_blob": "d0b2f311bb35f7d8901c372e2828c1d3352ed1e3",
+      "sha256": "59b2fab1c8ad64bf24f4c37a12c7c8100e387cb8c651e5eff0e0e6555a289992"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/IMPROVEMENTS.md",
+      "git_blob": "ba3053f182c2fd1249a4a73e2c49106d62c0d07d",
+      "sha256": "842874444a36a7cf897b8c633c3db13c3da88c8446c4f183d97119e1d7312989"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/README.md",
+      "git_blob": "d0f0791155bfdb408b4597abbca702b92fee9ee2",
+      "sha256": "9b4fb9903f5f20c0ed846dac5294ecd47b7d271832690698aba07ccec26b2dd2"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/backend/app/models/__init__.py",
+      "git_blob": "4a55cd2fecbd94445d605e27f4b1775098442a7c",
+      "sha256": "3da268b934b9cee3c48a79039cd61125082bd051cbee20f73e1417ba3cf18f33"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/backend/app/routes/business.py",
+      "git_blob": "d887ea9926f16bfc66fa9234df6f094ee7f3663f",
+      "sha256": "251ef8eb7c39129730b9140669646a637212993ace872703ea40fe19f2c81219"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/backend/app/routes/export.py",
+      "git_blob": "c0a9b6df643de548611b4d20b895d0786da3d72f",
+      "sha256": "bf43648b00023b8faa847aae5cbe1e3e2ec5a7a7fbe97db68ec87e015bdd0166"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/backend/app/routes/files.py",
+      "git_blob": "5691c7306d3faa56c47313b4a952520644e863b6",
+      "sha256": "ab06b3e2eb0f050921db228b9ca4c2c501f962b5e6a839c34eba92204425cbf2"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/backend/app/routes/finance.py",
+      "git_blob": "8d7db02dd23b4d5afc915320e8efd63642f985f7",
+      "sha256": "cca3b47b9b7f9f482826fa5545050881bbd9abbd520c0802806c8a38adbe8a5d"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/backend/app/routes/operations.py",
+      "git_blob": "80a6ada9d439f26ff9720c5eb769c7e619612b0f",
+      "sha256": "a7026dc04b9a1976b6ac58f5d5db1f4afee393e54b2a104e481a60a4addee2b7"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/backend/app/routes/pmo.py",
+      "git_blob": "df856c80742d2f38811116ff85d97c5a8688282e",
+      "sha256": "cdfb4f9f3954435b727cb031193a1418019708ba476c6985bc676ece229ebff2"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/backend/app/routes/project_access.py",
+      "git_blob": "04503466b90caaaa91969ac09da7a8b0cf0b0d75",
+      "sha256": "6aa00f539377e046cfcb4704b9a32bd224aec4ee611769ca06b94aee7736f924"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/backend/app/routes/report.py",
+      "git_blob": "28eacdddfdfb0abb5f6a0843d37c79e81add8734",
+      "sha256": "c8eab62c034441cf2b5aff5bbab17576a2f0c069a954d2d7a534a483262556e2"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/backend/app/routes/search.py",
+      "git_blob": "af70a525a49da27a24e58a88aa1e8af7d59c4105",
+      "sha256": "53a885de1f5c3453f8ee3860ab1a30c9a29b510649187889a0187b490400b277"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/backend/app/schemas.py",
+      "git_blob": "e9b54a842584b58e14cd95c6d217d90eb0e3131f",
+      "sha256": "d08aa6fe5f7dfd5169ae0e829635b567fb3e02df4b97ca982b84acd3313ab803"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/backend/tests/test_archive_lifecycle.py",
+      "git_blob": "60f89add9fa7a30c20827251ced2217d09587b8a",
+      "sha256": "de9e7b08661caf1b39772e3a20114d50f25ebf3a466a31f5a830967adbd351df"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/frontend/src/App.tsx",
+      "git_blob": "8bc3d47d20b2f66d9d72690dda942326188d72de",
+      "sha256": "861bc85cf02eeb18ca85d1a9bf8e6f3d2271aff145e22c0c2aaf5fa697009831"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/frontend/src/api.test.ts",
+      "git_blob": "d68e5954e32a77014129856048a842e2c3bc329e",
+      "sha256": "63c38987165b64f850787ac04d5660aa60b1cf49471ea593e7e3dca8a1dfc1ad"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/frontend/src/api.ts",
+      "git_blob": "24b36f646923e00f852356ec7b63210714b4c524",
+      "sha256": "6727684f108255d78f74a2c64f81668a8e9a288369b9741b66ece6e03b99ef8e"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/frontend/src/archive.test.tsx",
+      "git_blob": "2f723505e80097f9165a87843b88f1497592632b",
+      "sha256": "4841495b20c610efb671051842d001453a22766db5a49b673e001e663b52c5b6"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/frontend/src/components/archive/ArchiveShell.tsx",
+      "git_blob": "8ba3e9075b317fad194cba2b6caca4bccc7fc34c",
+      "sha256": "3cbbbe78f480e6aa81295f1bd3b9c1fbd16630023a23d42957034752664f7541"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/frontend/src/components/archive/archive.css",
+      "git_blob": "31ed6a7d7abe7e46f5d35ddca7ed2c0bab6d0989",
+      "sha256": "45dd75c94d3b8beeb5fddb963aae6a4e96b4fd4dc95799331644a7f2065f534f"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/frontend/src/index.css",
+      "git_blob": "32cd54aad7a039f3468c33545f22c80375592763",
+      "sha256": "d59b553b6e4b56af95fe105c0444c57a62bee8757cc96fad3b5843209793bc6e"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/frontend/src/main.tsx",
+      "git_blob": "6089c6cb1a8d9543e1e2ebcd3f25e78a21e6f24c",
+      "sha256": "f4c9b9172198865ffde3e1e6726209b11608f6940d9516670ab1317250dfdccb"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/frontend/src/pages/Portal.tsx",
+      "git_blob": "b7bd089976c1bf485ff65b65e8c20fafdbee8952",
+      "sha256": "9f10ae120b865a7e4ea898138437e305e4baa08a33fb883e13f75943d63ec1c5"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/frontend/src/pages/Receivables.tsx",
+      "git_blob": "b1a0a7856329d32c7ce2f3f89b16f6c67a347ed1",
+      "sha256": "abbba92f5a7fb43b00ded81d87a9b65ad4e019dd3c3936db286ae7608482329a"
+    },
+    {
+      "path": "systems/pms-suite/DeepSeek版/frontend/src/receivables.test.tsx",
+      "git_blob": "8f56ff09c406fb3264fc188be701dc5a9a7a9caa",
+      "sha256": "657a58b4eb9bafcd7e794c82e227457a846b3346ed6aa6a179f8485dca480b6e"
+    }
+  ],
+  "publication_only_document_changes": [
+    "docs/work-packages/WP-27/README.md",
+    "reports/WP-27.md",
+    "docs/work-packages/WP-27/publication.json"
+  ],
+  "excluded_temporary_evidence": [
+    {
+      "path": "docs/work-packages/WP-27/assertion-preservation.json",
+      "bytes": 839,
+      "sha256": "8ea9bf024f1b5d416341fd4d1258ab108a340cfa755c77c6ce17a64be5fbc8f7"
+    },
+    {
+      "path": "docs/work-packages/WP-27/browser-final.json",
+      "bytes": 13473,
+      "sha256": "c1e2109e4c4e717f29f71b6c0cdaa835c5863faf775b58f793633381c709af80"
+    },
+    {
+      "path": "docs/work-packages/WP-27/browser-flow-final.json",
+      "bytes": 2249,
+      "sha256": "d861672773da313693c2878243b905de0c25c7f8f26641647c7a10d1a5ef2338"
+    },
+    {
+      "path": "docs/work-packages/WP-27/browser-pages-round1.json",
+      "bytes": 11417,
+      "sha256": "f3029b812c9b3bffc1f8dd41ace068a38fff5a93af3824d6c246d64905145c34"
+    },
+    {
+      "path": "docs/work-packages/WP-27/browser-security-final.json",
+      "bytes": 14420,
+      "sha256": "3be75d0730a773e2960056125ed132976b3c34d4cb90060eb11acd04010cd637"
+    },
+    {
+      "path": "docs/work-packages/WP-27/python-runtime.txt",
+      "bytes": 848,
+      "sha256": "229bb6ecce3a3924274ec06946ae6f9facda5473c022fa52c43783b30c216c1f"
+    },
+    {
+      "path": "docs/work-packages/WP-27/scope-result.json",
+      "bytes": 2819,
+      "sha256": "b3060d1c2640d00bb413a00f2c9470b98dea3238ab8dd5bac2d3fed193ced961"
+    },
+    {
+      "path": "docs/work-packages/WP-27/verification.json",
+      "bytes": 31589,
+      "sha256": "8720aa0d05ed260b6b7970ea572988b735942f013e20af30c71c060b07c71372"
+    }
+  ],
+  "backend_tree": "f715f14bf0719636477a31ca74f24e866f8d5ee4",
+  "frontend_tree": "720366c2fa16b3c3420a0a10353c9754aa28946b",
+  "historical_verification_only": {
+    "backend_passed": 195,
+    "frontend_passed": 12,
+    "browser_page_viewport_combinations": 60,
+    "typecheck": "passed",
+    "build": "passed",
+    "real_process_restarts": 2
+  },
+  "unrun": [
+    "Windows/Pester/double click",
+    "PostgreSQL",
+    "Production migration",
+    "Full-system production security audit",
+    "Shared mainline capability catalog check"
+  ],
+  "no_real_data_or_credentials_added": true
+}

@@ -7,6 +7,7 @@ from typing import Optional
 from app.database import get_db
 from app.models import Project, Contract, Receipt, User
 from app.auth import get_current_user
+from app.routes.project_access import require_project, scope_project_rows
 
 router = APIRouter(prefix="/api/reports", tags=["报告"])
 
@@ -17,8 +18,9 @@ def budget_vs_actual(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    q = db.query(Project).filter(Project.is_archived == False)
+    q = scope_project_rows(db.query(Project), Project.id, current_user).filter(Project.is_archived == False)
     if project_id:
+        require_project(db, current_user, project_id)
         q = q.filter(Project.id == project_id)
     projects = q.all()
     result = []
