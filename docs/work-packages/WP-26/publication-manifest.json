@@ -1,0 +1,147 @@
+{
+  "frozen_commit": "dade14b280c8f20f026871d2fe9db74ff2b5f375",
+  "frozen_tree": "9b0fff86c6b618ec9c4b8541a01bba8c58d1539f",
+  "publication_parent": "52714fa8acce62fbfef67c1ba218e1bc2b269e1c",
+  "target_branch": "wave3/kimi-archive-reviewed",
+  "preserved_frozen_files": [
+    {
+      "path": "systems/pms-suite/Kimi版/README.md",
+      "frozen_blob": "8f61e05d90871b148a736c3b2f9eb743cdc958ff",
+      "sha256": "0cf2b11a700fb32ac4a0eeef401fceb4b972207fefcf76e22804e66f0f116cce",
+      "bytes": 7350,
+      "publication_bytes": "identical"
+    },
+    {
+      "path": "systems/pms-suite/Kimi版/backend/app/routers/finance.py",
+      "frozen_blob": "b6d592ea9f98ae57af5aaa1d2d1d63c8bca72d36",
+      "sha256": "680bc601602bf05657c214b5b87467a6dd79337d987ec1639c93fadaa377b0db",
+      "bytes": 12399,
+      "publication_bytes": "identical"
+    },
+    {
+      "path": "systems/pms-suite/Kimi版/backend/app/routers/imports.py",
+      "frozen_blob": "e98f8bbbf8b6d1dcca62613d8881a308e1fb2125",
+      "sha256": "772fccd788017b97801c640f64ea08da25037251f10d792596722b6c1554b001",
+      "bytes": 10434,
+      "publication_bytes": "identical"
+    },
+    {
+      "path": "systems/pms-suite/Kimi版/backend/app/routers/risks.py",
+      "frozen_blob": "0725c94f0ee53817c2193da1c5733cace1c04c8c",
+      "sha256": "99d1714abfa6450f69152b8a5429dbb26881bc736f41e0cc5bc582a01307dbb3",
+      "bytes": 5598,
+      "publication_bytes": "identical"
+    },
+    {
+      "path": "systems/pms-suite/Kimi版/backend/app/services.py",
+      "frozen_blob": "3a06546564cde0c8dd426d9e018775230800920e",
+      "sha256": "2189e93a204bc66a234bd261e3c9afe7dedf9c10a545d36de966ce16169adc54",
+      "bytes": 7773,
+      "publication_bytes": "identical"
+    },
+    {
+      "path": "systems/pms-suite/Kimi版/backend/tests/test_archive_regressions.py",
+      "frozen_blob": "8e0ec83db9fabb7a73b4a82d707bf3cee65032e4",
+      "sha256": "4c4e75712a87ec30bea2e1825fa8eab0b433edef2d3cff921a8aeff63bfdde9e",
+      "bytes": 27849,
+      "publication_bytes": "identical"
+    },
+    {
+      "path": "systems/pms-suite/Kimi版/backend/tests/test_core_flow.py",
+      "frozen_blob": "49e26bdc1d5fa48666790d7dfe6012f816b6cfdd",
+      "sha256": "db0236661466b03e58371ca7c541cd7e6084866bd4a3636ab3367bc06ff176e1",
+      "bytes": 21086,
+      "publication_bytes": "identical"
+    },
+    {
+      "path": "systems/pms-suite/Kimi版/backend/tests/test_finance_access.py",
+      "frozen_blob": "b5a128fd836be6a61c986fa80f83a47de7678cf5",
+      "sha256": "19902e9f8c2baedc764a2b9997f6622b0aad438b78b72494ecd16e77e315f688",
+      "bytes": 16633,
+      "publication_bytes": "identical"
+    },
+    {
+      "path": "systems/pms-suite/Kimi版/backend/tests/test_services.py",
+      "frozen_blob": "872d24cf7859061b1dcbbb4909ee16185ff45c5f",
+      "sha256": "47f48857aa1a7061dfa5250866b4febe00938d234d89dde8f721e676e47bc57e",
+      "bytes": 3299,
+      "publication_bytes": "identical"
+    },
+    {
+      "path": "systems/pms-suite/Kimi版/frontend/src/components/archive/ArchiveNotice.tsx",
+      "frozen_blob": "4cea6988d1bd77e24788f5bf1852d5db98bb6b5c",
+      "sha256": "5637a91c8204a5a73cc766a5a48ecdf9db3037aaa974314e3a167b6499bc78f4",
+      "bytes": 1125,
+      "publication_bytes": "identical"
+    },
+    {
+      "path": "systems/pms-suite/Kimi版/frontend/src/main.tsx",
+      "frozen_blob": "7fc39ca8a708bdb564282bdbbabbcc26db5d03d7",
+      "sha256": "7496744b7924a51f47d6b4480820a970d763546b732a5e38c9505e057809448a",
+      "bytes": 538,
+      "publication_bytes": "identical"
+    },
+    {
+      "path": "docs/work-packages/WP-26/browser-smoke.cjs",
+      "frozen_blob": "477d81caf2da464cb3319441dc2d72cd51deba7d",
+      "sha256": "0ba40e3de37609b55937a228e6a1a9e1dcc9af5843c998a703cf5ac1b2f42e9e",
+      "bytes": 9067,
+      "publication_bytes": "identical"
+    },
+    {
+      "path": "docs/work-packages/WP-26/finance-access.md",
+      "frozen_blob": "28a8daec684d564dd84eb0dc86b2ec70fe277d3a",
+      "sha256": "98be2491ccd024348d20874bcaaf76ddf78e114dca752ca49f68108f43afa2bd",
+      "bytes": 2804,
+      "publication_bytes": "identical"
+    }
+  ],
+  "publication_only_document_changes": [
+    "docs/work-packages/WP-26/README.md",
+    "reports/WP-26.md",
+    "docs/work-packages/WP-26/publication-manifest.json"
+  ],
+  "excluded_frozen_paths": [
+    "docs/work-packages/WP-26/evidence/baseline-full-pytest.log",
+    "docs/work-packages/WP-26/evidence/baseline-new-regressions.log",
+    "docs/work-packages/WP-26/evidence/browser-attempt1.log",
+    "docs/work-packages/WP-26/evidence/browser-attempt2.log",
+    "docs/work-packages/WP-26/evidence/browser-final.log",
+    "docs/work-packages/WP-26/evidence/build.log",
+    "docs/work-packages/WP-26/evidence/commands.json",
+    "docs/work-packages/WP-26/evidence/final-full-pytest.log",
+    "docs/work-packages/WP-26/evidence/finance/additional-red.log",
+    "docs/work-packages/WP-26/evidence/finance/browser-green.log",
+    "docs/work-packages/WP-26/evidence/finance/commands.json",
+    "docs/work-packages/WP-26/evidence/finance/full-green.log",
+    "docs/work-packages/WP-26/evidence/finance/initial-red.log",
+    "docs/work-packages/WP-26/evidence/finance/legacy-reference-red.log",
+    "docs/work-packages/WP-26/evidence/finance/log-normalization.json",
+    "docs/work-packages/WP-26/evidence/finance/reverse-green.log",
+    "docs/work-packages/WP-26/evidence/finance/tested-source-manifest.json",
+    "docs/work-packages/WP-26/evidence/first-fixed-full-pytest.log",
+    "docs/work-packages/WP-26/evidence/import-atomic-green.log",
+    "docs/work-packages/WP-26/evidence/import-atomic-red.log",
+    "docs/work-packages/WP-26/evidence/initial-new-regressions.log",
+    "docs/work-packages/WP-26/evidence/log-normalization.json",
+    "docs/work-packages/WP-26/evidence/npm-ci-failed.log",
+    "docs/work-packages/WP-26/evidence/npm-ci-retry.log",
+    "docs/work-packages/WP-26/evidence/permissions/browser-green.log",
+    "docs/work-packages/WP-26/evidence/permissions/commands.json",
+    "docs/work-packages/WP-26/evidence/permissions/confirmed-red.log",
+    "docs/work-packages/WP-26/evidence/permissions/draft-red.log",
+    "docs/work-packages/WP-26/evidence/permissions/full-green.log",
+    "docs/work-packages/WP-26/evidence/permissions/log-normalization.json",
+    "docs/work-packages/WP-26/evidence/permissions/reverse-green.log",
+    "docs/work-packages/WP-26/evidence/permissions/tested-source-manifest.json",
+    "docs/work-packages/WP-26/evidence/pip-install.log",
+    "docs/work-packages/WP-26/evidence/python-resolved-versions.txt",
+    "docs/work-packages/WP-26/evidence/remote-refs.txt",
+    "docs/work-packages/WP-26/evidence/reverse-regressions.log",
+    "docs/work-packages/WP-26/evidence/tested-source-manifest.json",
+    "docs/work-packages/WP-26/evidence/typecheck.log"
+  ],
+  "business_logic_changes_during_publication": false,
+  "tests_run_during_publication": false,
+  "privacy": "Only ordinary task source, synthetic tests and concise task documentation; no raw evidence logs or runtime/user data."
+}

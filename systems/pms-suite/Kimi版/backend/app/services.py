@@ -28,15 +28,15 @@ def customer_health(db: Session, customer_id: int) -> dict:
                                         Project.is_archived == False).all()  # noqa: E712
     score = 100.0
     factors = {}
-    overdue = sum(overdue_amount(db, p.id) for p in projects)
-    contract = sum(float(contract_amount(db, p.id)) for p in projects)
+    overdue = sum((overdue_amount(db, p.id) for p in projects), Decimal("0"))
+    contract = sum((contract_amount(db, p.id) for p in projects), Decimal("0"))
     if contract > 0:
         o_ratio = overdue / contract
-        penalty = min(40, o_ratio * 100)
+        penalty = min(40.0, float(o_ratio * 100))
         score -= penalty
         factors["逾期扣减"] = round(penalty, 1)
-    received = sum(confirmed_received(db, p.id) for p in projects)
-    if contract > 0 and received / contract < 0.5:
+    received = sum((confirmed_received(db, p.id) for p in projects), Decimal("0"))
+    if contract > 0 and received / contract < Decimal("0.5"):
         score -= 10
         factors["回款率低"] = -10
     high_risks = sum(1 for p in projects for r in db.query(Risk).filter(
@@ -55,7 +55,7 @@ def customer_health(db: Session, customer_id: int) -> dict:
     score = max(0, round(score, 1))
     level = "健康" if score >= 80 else "关注" if score >= 60 else "预警"
     return {"score": score, "level": level, "factors": factors,
-            "project_count": len(projects), "overdue_amount": round(overdue, 2)}
+            "project_count": len(projects), "overdue_amount": float(round(overdue, 2))}
 
 
 def activity(db: Session, project_id: int | None, user, action: str, detail: str = ""):
@@ -65,6 +65,9 @@ def activity(db: Session, project_id: int | None, user, action: str, detail: str
 
 def project_progress(db: Session, project_id: int) -> float:
     """进度 = 已完成任务权重 / 全部任务权重（无任务时看里程碑）"""
+    # SessionLocal disables autoflush. Include pending task/status changes in this
+    # transaction without committing them; the caller still controls rollback.
+    db.flush()
     total, done = db.query(
         func.coalesce(func.sum(models.Task.weight), 0),
         func.coalesce(func.sum(models.Task.weight).filter(models.Task.status == "已完成"), 0),
