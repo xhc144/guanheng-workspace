@@ -2,6 +2,7 @@
 import io
 import os
 import tempfile
+from datetime import date, timedelta
 
 os.environ["DATABASE_URL"] = f"sqlite:///{tempfile.mktemp(suffix='.db')}"
 
@@ -126,8 +127,13 @@ def test_risk_workbench_dashboard():
                                            "due_date": "2030-01-01"}, headers=auth(token))
     assert r.json()["level"] == "高" and "判定" in r.json()["level_reason"]
     rid = r.json()["id"]
-    client.post(f"/api/v1/risks/{rid}/followups",
-                json={"content": "跟进中", "promise_date": "2020-01-01"}, headers=auth(token))
+    followup = client.post(f"/api/v1/risks/{rid}/followups",
+                          json={"content": "跟进中", "promise_date": "2020-01-01"}, headers=auth(token))
+    assert followup.status_code == 201, followup.text
+    risks = client.get("/api/v1/risks", params={"project_id": pid}, headers=auth(token)).json()
+    saved = next(r for r in risks if r["id"] == rid)
+    assert saved["status"] == "跟进中"
+    assert saved["followups"][0]["promise_date"] == "2020-01-01"
     wb = client.get("/api/v1/dashboard/workbench", headers=auth(token)).json()
     assert "my_tasks" in wb and "notifications" in wb
     ex = client.get("/api/v1/dashboard/executive", headers=auth(token)).json()
@@ -207,7 +213,8 @@ def test_approval_flow():
 def test_timesheet_flow():
     token, pid = T["admin"], T["pid"]
     pm_token = login("pm1", "pm123456")
-    r = client.post("/api/v1/timesheets", json={"project_id": pid, "work_date": "2024-01-02",
+    work_date = (date.today() - timedelta(days=1)).isoformat()
+    r = client.post("/api/v1/timesheets", json={"project_id": pid, "work_date": work_date,
                                                 "hours": 6.5, "content": "开发"},
                     headers=auth(pm_token))
     assert r.status_code == 201, r.text
@@ -221,7 +228,11 @@ def test_timesheet_flow():
     assert client.post("/api/v1/timesheets", json={"project_id": pid, "work_date": "2099-01-01",
                                                    "hours": 1}, headers=auth(pm_token)).status_code == 422
     wl = client.get("/api/v1/reports/workload?days=400", headers=auth(token)).json()
-    assert any(m["total_hours"] >= 6.5 for m in wl["members"])
+    pm_id = next(u["id"] for u in client.get("/api/v1/users", headers=auth(token)).json()
+                 if u["username"] == "pm1")
+    member = next(m for m in wl["members"] if m["user_id"] == pm_id)
+    assert member["total_hours"] == 6.5
+    assert member["projects"] == [{"project_id": pid, "project_name": "测试项目", "hours": 6.5}]
 
 
 def test_budget_cost_warning():

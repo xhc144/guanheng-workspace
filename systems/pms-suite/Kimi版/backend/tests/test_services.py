@@ -41,6 +41,10 @@ def test_progress_and_finance_rollback():
     finally:
         s.rollback()
         s.close()
+    # project_progress may flush, but must never commit the caller's transaction.
+    with _session() as check:
+        assert check.query(models.Project).filter_by(code="UT1").count() == 0
+        assert check.query(models.Contract).filter_by(code="UT-HT1").count() == 0
 
 
 def _run(s):
