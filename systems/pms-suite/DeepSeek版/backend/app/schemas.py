@@ -1,5 +1,5 @@
 """Pydantic 数据校验模型"""
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 from typing import Optional, List
 from datetime import datetime
 from decimal import Decimal
@@ -151,15 +151,27 @@ class InvoiceCreate(BaseModel):
     notes: str = ""
 
 
+class ReceiptAllocationCreate(BaseModel):
+    invoice_id: str = Field(min_length=1)
+    allocated_amount: Decimal = Field(gt=0, max_digits=18, decimal_places=2)
+
+
 class ReceiptCreate(BaseModel):
     project_id: str
-    amount: Decimal
+    amount: Decimal = Field(gt=0, max_digits=18, decimal_places=2)
     received_date: datetime
     payer: str = ""
     bank_ref: str = ""
     payment_method: str = ""
     notes: str = ""
-    allocations: List[dict] = []  # [{"invoice_id":"...","allocated_amount":Decimal}]
+    allocations: List[ReceiptAllocationCreate] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def unique_invoices(self):
+        ids = [allocation.invoice_id for allocation in self.allocations]
+        if len(ids) != len(set(ids)):
+            raise ValueError("同一发票不能在一笔回款中重复核销")
+        return self
 
 
 class RiskCreate(BaseModel):

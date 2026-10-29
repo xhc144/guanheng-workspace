@@ -1,27 +1,39 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { Card, Table, Button, Modal, Form, Input, InputNumber, DatePicker, Select, Tag, message, Typography, Space, Popconfirm, Drawer, Descriptions } from 'antd';
+import { App as AntApp, Card, Table, Button, Modal, Form, Input, InputNumber, DatePicker, Select, Tag, Typography, Space, Popconfirm, Drawer, Descriptions } from 'antd';
 import { PlusOutlined, CheckOutlined, RollbackOutlined } from '@ant-design/icons';
 import { fetchReceipts, createReceipt, confirmReceipt, reverseReceipt, fetchProjects } from '../api';
 import dayjs from 'dayjs';
 
 const ReceivablesPage: React.FC = () => {
+  const { message } = AntApp.useApp();
   const [open, setOpen] = useState(false);
   const [detail, setDetail] = useState<any>(null);
   const [selectedRowKeys, setSelectedRowKeys] = useState<string[]>([]);
   const [dateRange, setDateRange] = useState<[dayjs.Dayjs | null, dayjs.Dayjs | null] | null>(null);
   const [form] = Form.useForm();
+  const requestKey = React.useRef(crypto.randomUUID());
   const qc = useQueryClient();
   const { data: receipts, isLoading } = useQuery({ queryKey: ['receipts'], queryFn: () => fetchReceipts() });
   const { data: projectsData } = useQuery({ queryKey: ['projects'], queryFn: () => fetchProjects() });
   const projects = projectsData?.items || [];
 
-  const createMut = useMutation({ mutationFn: createReceipt, onSuccess: () => { qc.invalidateQueries({ queryKey: ['receipts'] }); setOpen(false); message.success('回款登记成功'); } });
-  const confirmMut = useMutation({ mutationFn: confirmReceipt, onSuccess: () => { qc.invalidateQueries({ queryKey: ['receipts'] }); message.success('回款已确认'); } });
-  const reverseMut = useMutation({ mutationFn: reverseReceipt, onSuccess: () => { qc.invalidateQueries({ queryKey: ['receipts'] }); message.success('回款已冲销'); } });
+  const showError = (error: any) => message.error(error?.response?.data?.detail || '操作失败，请检查本地服务并核对记录后重试');
+  const createMut = useMutation({ mutationFn: createReceipt, onError: showError, onSuccess: () => {
+    qc.invalidateQueries({ queryKey: ['receipts'] }); setOpen(false); form.resetFields();
+    requestKey.current = crypto.randomUUID(); message.success('回款登记成功');
+  } });
+  const confirmMut = useMutation({ mutationFn: confirmReceipt, onError: showError, onSuccess: () => { qc.invalidateQueries({ queryKey: ['receipts'] }); message.success('回款已确认'); } });
+  const reverseMut = useMutation({ mutationFn: reverseReceipt, onError: showError, onSuccess: () => { qc.invalidateQueries({ queryKey: ['receipts'] }); message.success('回款已冲销'); } });
   const batchConfirmMut = useMutation({
-    mutationFn: (ids: string[]) => Promise.all(ids.map(id => confirmReceipt(id))),
-    onSuccess: () => { qc.invalidateQueries({ queryKey: ['receipts'] }); setSelectedRowKeys([]); message.success('批量确认完成'); },
+    mutationFn: async (ids: string[]) => ({ ids, results: await Promise.allSettled(ids.map(id => confirmReceipt(id))) }),
+    onSuccess: ({ ids, results }) => {
+      qc.invalidateQueries({ queryKey: ['receipts'] });
+      const failed = ids.filter((_, index) => results[index].status === 'rejected');
+      setSelectedRowKeys(failed);
+      if (failed.length) message.warning(`已确认 ${ids.length - failed.length} 笔，${failed.length} 笔失败，请核对后重试`);
+      else message.success(`已确认 ${ids.length} 笔回款`);
+    },
   });
 
   const statusColors: Record<string, string> = { draft: 'default', confirmed: 'green', reversed: 'red' };
@@ -79,14 +91,14 @@ const ReceivablesPage: React.FC = () => {
       </div>
       <Card>
         <Table dataSource={filteredData} columns={columns} rowKey="id" loading={isLoading} pagination={{ pageSize: 20 }} size="small"
-          rowSelection={{ selectedRowKeys, onChange: (keys) => setSelectedRowKeys(keys as string[]) }} />
+          rowSelection={{ selectedRowKeys, onChange: (keys) => setSelectedRowKeys(keys as string[]), getCheckboxProps: (record: any) => ({ disabled: record.status !== 'draft' }) }} />
       </Card>
       <Modal title="登记回款" open={open} onCancel={() => setOpen(false)} onOk={() => form.submit()} confirmLoading={createMut.isPending} width={500}>
-        <Form form={form} layout="vertical" onFinish={(v) => createMut.mutate({ ...v, received_date: v.received_date?.toISOString() })}>
+        <Form form={form} layout="vertical" disabled={createMut.isPending} onFinish={(v) => createMut.mutate({ ...v, idempotency_key: requestKey.current, received_date: v.received_date?.toISOString() })}>
           <Form.Item name="project_id" label="所属项目" rules={[{ required: true }]}>
             <Select showSearch options={projects.map((p: any) => ({ label: `${p.code} ${p.name}`, value: p.id }))} placeholder="选择项目" />
           </Form.Item>
-          <Form.Item name="amount" label="回款金额" rules={[{ required: true }]}><InputNumber style={{ width: '100%' }} min={0} precision={2} prefix="¥" /></Form.Item>
+          <Form.Item name="amount" label="回款金额" rules={[{ required: true, message: '请输入大于零的回款金额' }, { type: 'number', min: 0.01, message: '回款金额必须大于零' }]}><InputNumber style={{ width: '100%' }} min={0.01} precision={2} prefix="¥" /></Form.Item>
           <Form.Item name="received_date" label="回款日期" rules={[{ required: true }]}><DatePicker style={{ width: '100%' }} /></Form.Item>
           <Form.Item name="payer" label="付款方"><Input /></Form.Item>
           <Form.Item name="bank_ref" label="银行流水号"><Input /></Form.Item>

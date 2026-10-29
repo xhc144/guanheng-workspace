@@ -69,6 +69,7 @@ const menuItems = [
 const App: React.FC = () => {
   const location = useLocation();
   const [collapsed, setCollapsed] = React.useState(false);
+  const [compactViewport, setCompactViewport] = React.useState(false);
   const { token: themeToken } = theme.useToken();
   const navigate = useNavigate();
 
@@ -98,9 +99,10 @@ const App: React.FC = () => {
         trigger={null}
         collapsible
         collapsed={collapsed}
+        collapsedWidth={compactViewport ? 0 : 80}
         width={220}
         breakpoint="lg"
-        onBreakpoint={(broken) => setCollapsed(broken)}
+        onBreakpoint={(broken) => { setCompactViewport(broken); setCollapsed(broken); }}
         style={{ background: themeToken.colorBgContainer, borderRight: '1px solid #f0f0f0' }}
       >
         <div style={{ height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: collapsed ? 14 : 16, borderBottom: '1px solid #f0f0f0' }}>
@@ -111,13 +113,13 @@ const App: React.FC = () => {
           selectedKeys={[currentKey]}
           defaultOpenKeys={['/planning', '/finance-analysis']}
           items={menuItems}
-          onClick={({ key }) => navigate(key)}
+          onClick={({ key }) => { navigate(key); if (compactViewport) setCollapsed(true); }}
           style={{ borderRight: 0 }}
         />
       </Sider>
       <Layout>
         <Header style={{ background: themeToken.colorBgContainer, padding: '0 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #f0f0f0' }}>
-          <Button type="text" icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />} onClick={() => setCollapsed(!collapsed)} />
+          <Button type="text" aria-label={collapsed ? '展开导航' : '收起导航'} icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />} onClick={() => setCollapsed(!collapsed)} />
           <Space size="middle">
             <Badge count={0} size="small"><BellOutlined style={{ fontSize: 18, cursor: 'pointer' }} onClick={() => navigate('/notifications')} /></Badge>
             <Dropdown menu={{ items: [
