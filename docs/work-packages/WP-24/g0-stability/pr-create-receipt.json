@@ -1,0 +1,22 @@
+{
+  "url": "https://github.com/xhc144/guanheng-workspace/pull/12",
+  "number": 12,
+  "state": "open",
+  "merged": false,
+  "draft": true,
+  "title": "[G0] 修复 pnpm 版本探测与并发验证关闭时序",
+  "base": "integration",
+  "base_sha": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+  "head": "wp/g0-stability",
+  "head_sha": "dc0e9aee112988fcf9cd13b807d38411a90e9a28",
+  "created_at": "2026-10-26T19:20:23Z",
+  "commits": 2,
+  "changed_files": 40,
+  "note": "Creation receipt only. Subsequent receipt-only commit keeps application source 2521b5878b5d3b76ceaf809ddce5790db93219ec unchanged; final remote head is verified in the handoff reply.",
+  "initialPushLog": {
+    "path": "24-push.log",
+    "sha256": "dc6a46e5f21ac6a6a99280c9a6f9510edf7fc75d8460f1d0ea7becbcc20b2513",
+    "exitCode": 0,
+    "head": "dc0e9aee112988fcf9cd13b807d38411a90e9a28"
+  }
+}

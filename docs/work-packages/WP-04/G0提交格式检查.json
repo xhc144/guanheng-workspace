@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-26T18:42:06.982650+00:00",
+  "fullStagedDiffCheck": {
+    "command": [
+      "git",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "exitCode": 2,
+    "reason": "原始Next构建进度行含CR及尾空格，71原始Node断言输出含空白行；只在56/57/65/71/75原始.log，保留原始证据，不裁剪改写。"
+  },
+  "sourceAndDocumentsDiffCheck": {
+    "command": [
+      "git",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      ".",
+      ":(exclude)*.log"
+    ],
+    "exitCode": 0,
+    "scope": "明确排除原始命令输出后，源码/文档/JSON均无空白格式问题；不将此结果冒充完整diff检查通过。"
+  }
+}

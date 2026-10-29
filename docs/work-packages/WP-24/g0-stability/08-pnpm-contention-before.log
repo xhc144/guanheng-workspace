@@ -1,0 +1,137 @@
+{"started": "2026-10-26T19:01:45.824971+00:00", "cwd": "/workspace/guanheng-g0-stability/systems/project-ops", "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f", "command": ["node", "/tmp/g0-pnpm-contention.mjs"]}
+{
+  "experiment": "16 simultaneous real offline version queries, original 5000ms deadline",
+  "cpuQuota": "400000 100000",
+  "results": [
+    {
+      "index": 0,
+      "code": 0,
+      "signal": null,
+      "ms": 2929,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 1,
+      "code": 0,
+      "signal": null,
+      "ms": 3172,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 2,
+      "code": 0,
+      "signal": null,
+      "ms": 2610,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 3,
+      "code": 0,
+      "signal": null,
+      "ms": 3074,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 4,
+      "code": 0,
+      "signal": null,
+      "ms": 2942,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 5,
+      "code": 0,
+      "signal": null,
+      "ms": 3364,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 6,
+      "code": 0,
+      "signal": null,
+      "ms": 3166,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 7,
+      "code": 0,
+      "signal": null,
+      "ms": 3329,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 8,
+      "code": 0,
+      "signal": null,
+      "ms": 2631,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 9,
+      "code": 0,
+      "signal": null,
+      "ms": 3129,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 10,
+      "code": 0,
+      "signal": null,
+      "ms": 3133,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 11,
+      "code": 0,
+      "signal": null,
+      "ms": 3193,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 12,
+      "code": 0,
+      "signal": null,
+      "ms": 3322,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 13,
+      "code": 0,
+      "signal": null,
+      "ms": 3025,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 14,
+      "code": 0,
+      "signal": null,
+      "ms": 2688,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    },
+    {
+      "index": 15,
+      "code": 0,
+      "signal": null,
+      "ms": 2736,
+      "version": "11.19.0",
+      "stderrBytes": 0
+    }
+  ]
+}
+
+{"ended": "2026-10-26T19:01:49.257580+00:00", "exitCode": 0, "elapsedSeconds": 3.430077474999962}

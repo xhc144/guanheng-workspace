@@ -1,0 +1,69 @@
+开始时间: 2026-10-26T16:54:08.090124+00:00
+实际cwd: /workspace/guanheng-wp01
+完整命令: python3 /tmp/wp01-audit.py
+{
+  "结果": "通过",
+  "起点": "d14f98939429e4f860fd82ac6c48ea4fbf1629a4",
+  "当前代码提交": "e1147ad46fd3d610f322671ad63400f878825fb3",
+  "分支": "wp/01-dependencies",
+  "直接依赖数": 14,
+  "检查项": [
+    "所有变更含未跟踪文件均在WP-01 owns",
+    "所有提交候选均为UTF-8代码或文本",
+    "无新DB/附件/媒体/真实配置",
+    "精确依赖与正确分支/祖先",
+    "git diff --check"
+  ],
+  "变更路径": [
+    "docs/work-packages/WP-01/01-install-baseline.log",
+    "docs/work-packages/WP-01/02-install-baseline-permitted.log",
+    "docs/work-packages/WP-01/03-install-baseline-reviewed.log",
+    "docs/work-packages/WP-01/04-lock-exact.log",
+    "docs/work-packages/WP-01/05-runtime-check.log",
+    "docs/work-packages/WP-01/06-install-exact-frozen.log",
+    "docs/work-packages/WP-01/07-runtime-check.log",
+    "docs/work-packages/WP-01/08-test-first.log",
+    "docs/work-packages/WP-01/09-typecheck-first.log",
+    "docs/work-packages/WP-01/10-lint-first.log",
+    "docs/work-packages/WP-01/11-build-first.log",
+    "docs/work-packages/WP-01/12-browser-first.log",
+    "docs/work-packages/WP-01/13-browser-session-fix.log",
+    "docs/work-packages/WP-01/14-node-types-candidates.log",
+    "docs/work-packages/WP-01/15-browser-resource-diagnosis.log",
+    "docs/work-packages/WP-01/16-align-node-types.log",
+    "docs/work-packages/WP-01/17-install-final-frozen.log",
+    "docs/work-packages/WP-01/18-test-final.log",
+    "docs/work-packages/WP-01/19-typecheck-final.log",
+    "docs/work-packages/WP-01/20-lint-final.log",
+    "docs/work-packages/WP-01/21-build-final.log",
+    "docs/work-packages/WP-01/22-preauth-regression-before.log",
+    "docs/work-packages/WP-01/23-preauth-regression-before.log",
+    "docs/work-packages/WP-01/24-preauth-regression-after.log",
+    "docs/work-packages/WP-01/25-test-self-review.log",
+    "docs/work-packages/WP-01/26-typecheck-self-review.log",
+    "docs/work-packages/WP-01/27-lint-self-review.log",
+    "docs/work-packages/WP-01/28-build-basepath.log",
+    "docs/work-packages/WP-01/29-browser-basepath.log",
+    "docs/work-packages/WP-01/30-browser-basepath-canonical.log",
+    "docs/work-packages/WP-01/31-build-delivery.log",
+    "docs/work-packages/WP-01/32-browser-delivery.log",
+    "docs/work-packages/WP-01/33-self-review-one.log",
+    "docs/work-packages/WP-01/browser-check.mjs",
+    "docs/work-packages/WP-01/命令索引.md",
+    "docs/work-packages/WP-01/运行与冻结契约.md",
+    "reports/WP-01.md",
+    "systems/project-ops/.node-version",
+    "systems/project-ops/app/api/runtime-health/route.ts",
+    "systems/project-ops/app/runtime-health/page.tsx",
+    "systems/project-ops/app/runtime-health/runtime-health.module.css",
+    "systems/project-ops/lib/runtime-health.ts",
+    "systems/project-ops/package.json",
+    "systems/project-ops/pnpm-lock.yaml",
+    "systems/project-ops/pnpm-workspace.yaml",
+    "systems/project-ops/tests/runtime-health.test.ts"
+  ]
+}
+
+退出码: 0
+结束时间: 2026-10-26T16:54:08.259333+00:00
+用时秒: 0.17

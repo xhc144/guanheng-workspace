@@ -16,7 +16,12 @@ DEMO_PASSWORD = "Admin@123456"
 
 def ensure_demo_database_url() -> None:
     """阻止演示命令连接或删除任何非受控数据库。"""
-    configured_url = get_settings().DATABASE_URL
+    settings = get_settings()
+    if settings.is_production:
+        raise RuntimeError("基础版仅提供本地演示；生产模式禁止启动演示库、播种或重置账号")
+    if DEMO_DB_PATH.is_symlink() or DEMO_DB_PATH.parent.is_symlink():
+        raise RuntimeError("拒绝访问演示库：backend/.demo 或 demo.db 不能是符号链接")
+    configured_url = settings.DATABASE_URL
     if configured_url != DEMO_DATABASE_URL:
         raise RuntimeError(
             "演示命令只允许使用 backend/.demo/demo.db；"
@@ -49,9 +54,9 @@ def _seed(session: Session) -> None:
     role.permissions = list(permission_rows.values())
     user = session.query(models.User).filter_by(username=DEMO_USERNAME).first()
     if not user:
-        user = models.User(username=DEMO_USERNAME, real_name="演示管理员", is_active=True)
+        user = models.User(username=DEMO_USERNAME, real_name="演示管理员", is_active=True,
+                           password_hash=hash_password(DEMO_PASSWORD))
         session.add(user)
-    user.password_hash = hash_password(DEMO_PASSWORD)
     user.roles = [role]
     department = session.query(models.Department).filter_by(name="总经办").first()
     if not department:

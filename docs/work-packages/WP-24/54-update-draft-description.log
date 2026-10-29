@@ -1,0 +1,8 @@
+UTC_START: 2026-10-26T17:56:22.001320+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: gh pr edit 9 --repo xhc144/guanheng-workspace --body-file /tmp/wp24-pr-body.md
+GraphQL: Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. (repository.pullRequest.projectCards)
+
+EXIT_CODE: 1
+UTC_END: 2026-10-26T17:56:22.744810+00:00
+ELAPSED_SECONDS: 0.745

@@ -1,0 +1,31 @@
+{"started": "2026-10-26T19:10:11.712579+00:00", "cwd": "/workspace/guanheng-g0-stability/systems/project-ops", "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f", "command": ["node", "--experimental-strip-types", "--test", "--test-name-pattern=worker结果先于关闭", "tests/integration-foundation.test.ts"]}
+✖ worker结果先于关闭时必须等退出；真实锁释放后才能验证数据库 (129.958035ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 441.672164
+
+✖ failing tests:
+
+test at tests/integration-foundation.test.ts:315:1
+✖ worker结果先于关闭时必须等退出；真实锁释放后才能验证数据库 (129.958035ms)
+  AssertionError [ERR_ASSERTION]: 结果消息不代表worker已经关闭并退出
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/guanheng-g0-stability/systems/project-ops/tests/integration-foundation.test.ts:336:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+{"ended": "2026-10-26T19:10:12.266203+00:00", "exitCode": 1, "elapsedSeconds": 0.5514578180000171}

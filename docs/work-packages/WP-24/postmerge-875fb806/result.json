@@ -1,0 +1,137 @@
+{
+  "recorded_utc": "2026-10-26T18:12:20.830866+00:00",
+  "repository": "xhc144/guanheng-workspace",
+  "source_sha": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+  "application_tree": "a868b4354a951b0a89b3daa49bb5381f2a3162af",
+  "application_tree_matches_prior_review": true,
+  "fresh_postmerge_commands": true,
+  "tracked_source_diff": [],
+  "commands": [
+    {
+      "UTC_START": "2026-10-26T18:02:56.449284+00:00",
+      "CWD": "/workspace/guanheng-wp24/systems/project-ops",
+      "SOURCE_BEFORE": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "APP_TREE_BEFORE": "a868b4354a951b0a89b3daa49bb5381f2a3162af",
+      "COMMAND": "pnpm test",
+      "EXIT_CODE": "0",
+      "SOURCE_AFTER": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "UTC_END": "2026-10-26T18:03:08.116219+00:00",
+      "file": "01-test.log",
+      "sha256": "e83c80332273f7b02a530ac8e607968c973463cfa195f267278850526e815184"
+    },
+    {
+      "UTC_START": "2026-10-26T18:02:56.466355+00:00",
+      "CWD": "/workspace/guanheng-wp24/systems/project-ops",
+      "SOURCE_BEFORE": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "APP_TREE_BEFORE": "a868b4354a951b0a89b3daa49bb5381f2a3162af",
+      "COMMAND": "pnpm typecheck",
+      "EXIT_CODE": "0",
+      "SOURCE_AFTER": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "UTC_END": "2026-10-26T18:03:03.882508+00:00",
+      "file": "02-typecheck.log",
+      "sha256": "3c6d12dc44384f21372dd1c497bb24bfe03fc727935b76dbc86316855ec5ad86"
+    },
+    {
+      "UTC_START": "2026-10-26T18:02:56.433449+00:00",
+      "CWD": "/workspace/guanheng-wp24/systems/project-ops",
+      "SOURCE_BEFORE": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "APP_TREE_BEFORE": "a868b4354a951b0a89b3daa49bb5381f2a3162af",
+      "COMMAND": "pnpm lint",
+      "EXIT_CODE": "0",
+      "SOURCE_AFTER": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "UTC_END": "2026-10-26T18:03:11.173418+00:00",
+      "file": "03-lint.log",
+      "sha256": "a08e4cf655df1f573323bdac98bdd5d911f1c77badb752b502e723b7f81c9240"
+    },
+    {
+      "UTC_START": "2026-10-26T18:03:53.859012+00:00",
+      "CWD": "/workspace/guanheng-wp24/systems/project-ops",
+      "SOURCE_BEFORE": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "APP_TREE_BEFORE": "a868b4354a951b0a89b3daa49bb5381f2a3162af",
+      "COMMAND": "pnpm build",
+      "EXIT_CODE": "0",
+      "SOURCE_AFTER": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "UTC_END": "2026-10-26T18:04:14.523024+00:00",
+      "file": "04-build.log",
+      "sha256": "b6ef6963ebdc23f26179ec39d6b820e8a42585ae7afb27208fb4a73519c6abcf"
+    },
+    {
+      "UTC_START": "2026-10-26T18:04:44.940300+00:00",
+      "CWD": "/workspace/guanheng-wp24/systems/project-ops",
+      "SOURCE_BEFORE": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "APP_TREE_BEFORE": "a868b4354a951b0a89b3daa49bb5381f2a3162af",
+      "COMMAND": "node tests/favicon-browser.mjs",
+      "EXIT_CODE": "1",
+      "SOURCE_AFTER": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "UTC_END": "2026-10-26T18:05:43.768440+00:00",
+      "file": "05-favicon-browser.log",
+      "sha256": "79b0e692f6f0b5649c34474e8704199850589d3a4220c39dafb3d4a9e1063456"
+    },
+    {
+      "UTC_START": "2026-10-26T18:06:26.054636+00:00",
+      "CWD": "/workspace/guanheng-wp24/systems/project-ops",
+      "SOURCE_BEFORE": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "APP_TREE_BEFORE": "a868b4354a951b0a89b3daa49bb5381f2a3162af",
+      "COMMAND": "node tests/favicon-browser.mjs",
+      "EXIT_CODE": "1",
+      "SOURCE_AFTER": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "UTC_END": "2026-10-26T18:08:12.829403+00:00",
+      "file": "06-favicon-browser-retry.log",
+      "sha256": "d276fcd7613299b9e5640fb522654028aa99bc8d18cd33e0306482812390883c"
+    }
+  ],
+  "strict_browser_attempts": [
+    {
+      "log": "05-favicon-browser.log",
+      "results": [
+        {
+          "basePath": "",
+          "build": 0,
+          "browser": 0
+        },
+        {
+          "basePath": "/pms",
+          "build": 0,
+          "browser": 1
+        }
+      ]
+    },
+    {
+      "log": "06-favicon-browser-retry.log",
+      "results": [
+        {
+          "basePath": "",
+          "build": 0,
+          "browser": 1
+        },
+        {
+          "basePath": "/pms",
+          "build": 0,
+          "browser": 0
+        }
+      ]
+    }
+  ],
+  "verification_status": "NOT_PASSED_STRICT_BROWSER_GATE",
+  "blockers": [
+    {
+      "action": "node tests/favicon-browser.mjs",
+      "target": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "attempt": 1,
+      "failure": "/pms non-admin integration-health API read ECONNRESET",
+      "status": "FAILED_NOT_DENIED",
+      "cause": "UNDETERMINED"
+    },
+    {
+      "action": "node tests/favicon-browser.mjs",
+      "target": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f",
+      "attempt": 2,
+      "failure": "default deployment runtime-health heading wait timeout 30000ms at browser-check.mjs:125",
+      "status": "FAILED_NOT_DENIED",
+      "cause": "UNDETERMINED"
+    }
+  ],
+  "G1": "NOT_EXECUTED",
+  "WP23_release": "GATE_NOT_SATISFIED",
+  "commits_or_pushes_this_round": false
+}

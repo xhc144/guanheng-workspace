@@ -55,13 +55,15 @@ export function contractScopeSql(user: SessionUser, alias = "ct") {
 export function receivableScopeSql(user: SessionUser, alias = "r") {
   if (user.role !== "PROJECT_MEMBER") return { sql: "1 = 1", params: [] as string[] };
   const project = projectScopeSql(user, "scope_p");
+  // A specific project takes precedence over other projects on the contract.
+  // Contract membership remains the fallback only for unassigned receivables.
   return {
     sql: `(${alias}.owner_user_id=? OR EXISTS (
       SELECT 1 FROM projects scope_p WHERE scope_p.id=${alias}.project_id AND ${project.sql}
-    ) OR EXISTS (
+    ) OR (${alias}.project_id IS NULL AND EXISTS (
       SELECT 1 FROM contract_projects scope_cp JOIN projects scope_p ON scope_p.id=scope_cp.project_id
       WHERE scope_cp.contract_id=${alias}.contract_id AND ${project.sql}
-    ))`,
+    )))`,
     params: [user.id, ...project.params, ...project.params],
   };
 }

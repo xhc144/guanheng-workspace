@@ -1,0 +1,9 @@
+{"cwd": "/workspace/guanheng-wp03/systems/pms-suite/DeepSeek版/frontend", "command": ["npm", "run", "dev"], "time": "2026-10-26T16:40:15.190718+00:00"}
+
+> pms-frontend@0.1.0 dev
+> vite
+
+
+  VITE v5.4.21  ready in 567 ms
+
+  ➜  Local:   http://127.0.0.1:5182/

@@ -1,0 +1,11 @@
+{"cwd": "/tmp/guanheng-WP-03-kimi/backend", "command": "/tmp/guanheng-WP-03-kimi/venv/bin/python -m alembic upgrade head", "start": "2026-10-26T16:37:56.072789+00:00", "end": "2026-10-26T16:37:57.838115+00:00", "exit_code": 0}
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001_initial, initial schema
+INFO  [alembic.runtime.migration] Running upgrade 0001_initial -> 0002_approvals, approvals table
+INFO  [alembic.runtime.migration] Running upgrade 0002_approvals -> 0003_timesheets, timesheets table
+INFO  [alembic.runtime.migration] Running upgrade 0003_timesheets -> 0004_budget_cost, budgets & costs
+INFO  [alembic.runtime.migration] Running upgrade 0004_budget_cost -> 0005_documents, documents table
+INFO  [alembic.runtime.migration] Running upgrade 0005_documents -> 0006_dict_items, dict_items table
+INFO  [alembic.runtime.migration] Running upgrade 0006_dict_items -> 0007_wiki, wiki pages & history
+INFO  [alembic.runtime.migration] Running upgrade 0007_wiki -> 0008_task_version, task optimistic-lock version column (guarded)

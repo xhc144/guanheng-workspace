@@ -2,6 +2,8 @@ packages:
   - "."
 
 confirmModulesPurge: false
+saveExact: true
+pmOnFail: error
 
 allowBuilds:
   unrs-resolver: true

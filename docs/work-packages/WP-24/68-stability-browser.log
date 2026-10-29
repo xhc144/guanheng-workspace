@@ -1,0 +1,309 @@
+UTC_START: 2026-10-26T18:37:09.571800+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: node tests/favicon-browser.mjs
+{"started":"2026-10-26T18:37:09.626Z","cwd":"/workspace/guanheng-wp24/systems/project-ops/","command":["pnpm","build"],"basePath":""}
+$ pnpm runtime:check && next build
+$ node -e "const p=require('./package.json');if(process.versions.node!==p.engines.node){console.error('Node.js 版本不兼容：当前 '+process.versions.node+'，请安装 '+p.engines.node+' 后重试。');process.exit(1)}" && node --experimental-strip-types lib/runtime-health.ts --check
+通过：Node.js 版本符合已验证基线。
+通过：pnpm 版本符合已验证基线。
+通过：Next.js 版本符合已验证基线。
+通过：React 版本符合已验证基线。
+通过：React DOM 版本符合已验证基线。
+▲ Next.js 16.3.3 (Turbopack)
+✓ Running next.config.ts took 48ms
+- Experiments (use with caution):
+  · serverActions
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 637ms
+  Running TypeScript ...
+  Finished TypeScript in 3.5s ...
+  Collecting page data using 4 workers ...
+  Generating static pages using 4 workers (0/10) ...
+  Generating static pages using 4 workers (2/10) 
+  Generating static pages using 4 workers (4/10) 
+  Generating static pages using 4 workers (7/10) 
+✓ Generating static pages using 4 workers (10/10) in 427ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /api/auth/login
+├ ƒ /api/auth/logout
+├ ƒ /api/auth/me
+├ ƒ /api/auth/request-code
+├ ƒ /api/customers/[id]
+├ ƒ /api/documents/[id]
+├ ƒ /api/excel/import-errors/[id]
+├ ƒ /api/excel/receivables
+├ ƒ /api/excel/template
+├ ƒ /api/finance/[kind]
+├ ƒ /api/integration-health
+├ ƒ /api/runtime-health
+├ ƒ /api/search
+├ ƒ /audit
+├ ƒ /commissions
+├ ƒ /contracts
+├ ƒ /customers
+├ ƒ /customers/[id]
+├ ƒ /data
+├ ƒ /documents
+├ ƒ /finance
+├ ƒ /integration-health
+├ ○ /login
+├ ƒ /notifications
+├ ƒ /organization
+├ ƒ /profile
+├ ƒ /projects
+├ ƒ /reports
+├ ƒ /rules
+├ ƒ /runtime-health
+├ ƒ /search
+├ ƒ /services
+└ ƒ /work
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+{"ended":"2026-10-26T18:37:25.641Z","exitCode":0}
+{"started":"2026-10-26T18:37:25.641Z","cwd":"/workspace/guanheng-wp24/systems/project-ops/","command":["/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node","--experimental-strip-types","/workspace/guanheng-wp24/docs/work-packages/WP-24/browser-check.mjs","/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs","/usr/bin/chromium",""],"basePath":""}
+{
+  "runtime": "/tmp/guanheng-wp24-browser-uE4I2j",
+  "base": "http://127.0.0.1:35665",
+  "results": [
+    {
+      "check": "页面元数据解析正确，真实浏览器请求favicon204且零字节，HEAD204",
+      "status": "通过",
+      "favicon": {
+        "href": "/favicon.ico",
+        "path": "/favicon.ico",
+        "status": 204,
+        "bytes": 0
+      }
+    },
+    {
+      "check": "匿名页面转登录，两个诊断API GET/HEAD均401",
+      "status": "通过"
+    },
+    {
+      "check": "管理员API实际返回G0、36表、未注册runner/预算，18个登记页面均HTTP200，POST405",
+      "status": "通过"
+    },
+    {
+      "check": "375px真实布局、44px按钮、键盘焦点、刷新时间及两个管理员导航可操作",
+      "status": "通过",
+      "dimensions": {
+        "viewport": 375,
+        "document": 375,
+        "body": 375
+      }
+    },
+    {
+      "check": "768px真实布局、44px按钮、键盘焦点、刷新时间及两个管理员导航可操作",
+      "status": "通过",
+      "dimensions": {
+        "viewport": 768,
+        "document": 768,
+        "body": 768
+      }
+    },
+    {
+      "check": "1440px真实布局、44px按钮、键盘焦点、刷新时间及两个管理员导航可操作",
+      "status": "通过",
+      "dimensions": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      }
+    },
+    {
+      "check": "FINANCE实际登录后API403、页面拒绝、不泄露目录，返回总览可操作",
+      "status": "通过"
+    },
+    {
+      "check": "DEPARTMENT_MANAGER实际登录后API403、页面拒绝、不泄露目录，返回总览可操作",
+      "status": "通过"
+    },
+    {
+      "check": "PROJECT_MEMBER实际登录后API403、页面拒绝、不泄露目录，返回总览可操作",
+      "status": "通过"
+    },
+    {
+      "check": "纯临时库故障注入：API固定中文500、375px中文错误页、恢复后真实retry重取成功",
+      "status": "通过",
+      "expectedFaultConsoleCount": 2
+    },
+    {
+      "check": "严格浏览器控制台与页面异常",
+      "status": "通过",
+      "errors": [],
+      "resources": []
+    }
+  ]
+}
+临时服务已停止；纯合成数据库与截图：/tmp/guanheng-wp24-browser-uE4I2j
+{"ended":"2026-10-26T18:37:40.281Z","exitCode":0}
+{"started":"2026-10-26T18:37:40.282Z","cwd":"/workspace/guanheng-wp24/systems/project-ops/","command":["pnpm","build"],"basePath":"/pms"}
+$ pnpm runtime:check && next build
+$ node -e "const p=require('./package.json');if(process.versions.node!==p.engines.node){console.error('Node.js 版本不兼容：当前 '+process.versions.node+'，请安装 '+p.engines.node+' 后重试。');process.exit(1)}" && node --experimental-strip-types lib/runtime-health.ts --check
+通过：Node.js 版本符合已验证基线。
+通过：pnpm 版本符合已验证基线。
+通过：Next.js 版本符合已验证基线。
+通过：React 版本符合已验证基线。
+通过：React DOM 版本符合已验证基线。
+▲ Next.js 16.3.3 (Turbopack)
+✓ Running next.config.ts took 72ms
+- Experiments (use with caution):
+  · serverActions
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 7.6s
+  Running TypeScript ...
+  Finished TypeScript in 3.4s ...
+  Collecting page data using 4 workers ...
+  Generating static pages using 4 workers (0/10) ...
+  Generating static pages using 4 workers (2/10) 
+  Generating static pages using 4 workers (4/10) 
+  Generating static pages using 4 workers (7/10) 
+✓ Generating static pages using 4 workers (10/10) in 372ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /api/auth/login
+├ ƒ /api/auth/logout
+├ ƒ /api/auth/me
+├ ƒ /api/auth/request-code
+├ ƒ /api/customers/[id]
+├ ƒ /api/documents/[id]
+├ ƒ /api/excel/import-errors/[id]
+├ ƒ /api/excel/receivables
+├ ƒ /api/excel/template
+├ ƒ /api/finance/[kind]
+├ ƒ /api/integration-health
+├ ƒ /api/runtime-health
+├ ƒ /api/search
+├ ƒ /audit
+├ ƒ /commissions
+├ ƒ /contracts
+├ ƒ /customers
+├ ƒ /customers/[id]
+├ ƒ /data
+├ ƒ /documents
+├ ƒ /finance
+├ ƒ /integration-health
+├ ○ /login
+├ ƒ /notifications
+├ ƒ /organization
+├ ƒ /profile
+├ ƒ /projects
+├ ƒ /reports
+├ ƒ /rules
+├ ƒ /runtime-health
+├ ƒ /search
+├ ƒ /services
+└ ƒ /work
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+{"ended":"2026-10-26T18:37:57.796Z","exitCode":0}
+{"started":"2026-10-26T18:37:57.797Z","cwd":"/workspace/guanheng-wp24/systems/project-ops/","command":["/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node","--experimental-strip-types","/workspace/guanheng-wp24/docs/work-packages/WP-24/browser-check.mjs","/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs","/usr/bin/chromium","/pms"],"basePath":"/pms"}
+{
+  "runtime": "/tmp/guanheng-wp24-browser-tgaqU1",
+  "base": "http://127.0.0.1:39891/pms",
+  "results": [
+    {
+      "check": "页面元数据解析正确，真实浏览器请求favicon204且零字节，HEAD204",
+      "status": "通过",
+      "favicon": {
+        "href": "/pms/favicon.ico",
+        "path": "/pms/favicon.ico",
+        "status": 204,
+        "bytes": 0
+      }
+    },
+    {
+      "check": "匿名页面转登录，两个诊断API GET/HEAD均401",
+      "status": "通过"
+    },
+    {
+      "check": "管理员API实际返回G0、36表、未注册runner/预算，18个登记页面均HTTP200，POST405",
+      "status": "通过"
+    },
+    {
+      "check": "375px真实布局、44px按钮、键盘焦点、刷新时间及两个管理员导航可操作",
+      "status": "通过",
+      "dimensions": {
+        "viewport": 375,
+        "document": 375,
+        "body": 375
+      }
+    },
+    {
+      "check": "768px真实布局、44px按钮、键盘焦点、刷新时间及两个管理员导航可操作",
+      "status": "通过",
+      "dimensions": {
+        "viewport": 768,
+        "document": 768,
+        "body": 768
+      }
+    },
+    {
+      "check": "1440px真实布局、44px按钮、键盘焦点、刷新时间及两个管理员导航可操作",
+      "status": "通过",
+      "dimensions": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      }
+    },
+    {
+      "check": "FINANCE实际登录后API403、页面拒绝、不泄露目录，返回总览可操作",
+      "status": "通过"
+    },
+    {
+      "check": "DEPARTMENT_MANAGER实际登录后API403、页面拒绝、不泄露目录，返回总览可操作",
+      "status": "通过"
+    },
+    {
+      "check": "PROJECT_MEMBER实际登录后API403、页面拒绝、不泄露目录，返回总览可操作",
+      "status": "通过"
+    },
+    {
+      "check": "纯临时库故障注入：API固定中文500、375px中文错误页、恢复后真实retry重取成功",
+      "status": "通过",
+      "expectedFaultConsoleCount": 2
+    },
+    {
+      "check": "严格浏览器控制台与页面异常",
+      "status": "通过",
+      "errors": [],
+      "resources": []
+    }
+  ]
+}
+临时服务已停止；纯合成数据库与截图：/tmp/guanheng-wp24-browser-tgaqU1
+{"ended":"2026-10-26T18:38:21.987Z","exitCode":0}
+{
+  "results": [
+    {
+      "basePath": "",
+      "build": 0,
+      "browser": 0
+    },
+    {
+      "basePath": "/pms",
+      "build": 0,
+      "browser": 0
+    }
+  ]
+}
+
+EXIT_CODE: 0
+UTC_END: 2026-10-26T18:38:22.021141+00:00
+ELAPSED_SECONDS: 72.455

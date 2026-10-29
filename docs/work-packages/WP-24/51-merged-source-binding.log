@@ -1,0 +1,44 @@
+UTC_START: 2026-10-26T17:55:38.863989+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: python3 /tmp/wp24-merged-report.py
+{
+  "merged_code_sha": "db00c3411b7ed143bf4ccc4e9a07de843d11b9c6",
+  "application_tree": "a868b4354a951b0a89b3daa49bb5381f2a3162af",
+  "commands_verified": [
+    {
+      "COMMAND": "pnpm test",
+      "EXIT_CODE": "0"
+    },
+    {
+      "COMMAND": "pnpm typecheck",
+      "EXIT_CODE": "0"
+    },
+    {
+      "COMMAND": "pnpm lint",
+      "EXIT_CODE": "0"
+    },
+    {
+      "COMMAND": "pnpm build",
+      "EXIT_CODE": "0"
+    },
+    {
+      "COMMAND": "node tests/favicon-browser.mjs",
+      "EXIT_CODE": "0"
+    }
+  ],
+  "runtime_pairs": [
+    [
+      "/tmp/guanheng-wp24-browser-Ht0SEt",
+      "http://127.0.0.1:34063"
+    ],
+    [
+      "/tmp/guanheng-wp24-browser-vrFEZq",
+      "http://127.0.0.1:34825/pms"
+    ]
+  ],
+  "scope": "G0 pending root release; runner/G1 untouched"
+}
+
+EXIT_CODE: 0
+UTC_END: 2026-10-26T17:55:38.971873+00:00
+ELAPSED_SECONDS: 0.108

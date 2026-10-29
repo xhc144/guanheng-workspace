@@ -1,0 +1,12 @@
+{"cwd": "/workspace/guanheng-wp03/systems/pms-suite/Kimi版/frontend", "command": ["npm", "run", "dev"], "time": "2026-10-26T16:53:46.966143+00:00"}
+
+> pms-frontend@0.1.0 dev
+> vite
+
+
+  VITE v5.4.21  ready in 489 ms
+
+  ➜  Local:   http://127.0.0.1:5181/
+4:53:58 PM [vite] http proxy error: /api/v1/auth/login
+Error: connect ECONNREFUSED 127.0.0.1:8101
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1864:16)

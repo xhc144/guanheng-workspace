@@ -1,0 +1,13 @@
+[
+  {
+    "cwd": "/workspace/guanheng-wp04",
+    "command": [
+      "node",
+      "tools/capability-inventory/generate.mjs"
+    ],
+    "startedAt": "2026-10-26T17:46:55.292983+00:00",
+    "finishedAt": "2026-10-26T17:46:57.128907+00:00",
+    "exitCode": 0,
+    "log": "docs/work-packages/WP-04/29-sync-regenerate.log"
+  }
+]

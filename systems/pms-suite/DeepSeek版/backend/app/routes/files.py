@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models import User, ActivityLog
 from app.auth import get_current_user
+from app.routes.project_access import require_project
 from pathlib import Path
 
 UPLOAD_DIR = Path(__file__).resolve().parent.parent.parent / "uploads"
@@ -24,6 +25,7 @@ async def upload_file(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
+    require_project(db, current_user, project_id)
     # 文件大小限制 50MB
     contents = await file.read()
     if len(contents) > 50 * 1024 * 1024:
@@ -63,6 +65,7 @@ def list_files(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
+    require_project(db, current_user, project_id)
     ensure_upload_dir()
     project_dir = UPLOAD_DIR / project_id
     if not project_dir.exists():
@@ -90,6 +93,7 @@ def download_file(
     # Check path traversal BEFORE any file access
     if ".." in file_id or ".." in project_id or "/" in file_id or "\\" in file_id:
         raise HTTPException(status_code=400, detail="非法路径")
+    require_project(db, current_user, project_id)
     file_path = UPLOAD_DIR / project_id / file_id
     if not file_path.exists():
         raise HTTPException(status_code=404, detail="文件不存在")
@@ -105,6 +109,7 @@ def delete_file(
 ):
     if ".." in file_id or ".." in project_id or "/" in file_id or "\\" in file_id:
         raise HTTPException(status_code=400, detail="非法路径")
+    require_project(db, current_user, project_id)
     file_path = UPLOAD_DIR / project_id / file_id
     if not file_path.exists():
         raise HTTPException(status_code=404, detail="文件不存在")

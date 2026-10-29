@@ -1,0 +1,26 @@
+UTC_START: 2026-10-26T17:31:26.352435+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: node --experimental-strip-types ../../docs/work-packages/WP-24/browser-check.mjs /opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs /usr/bin/chromium
+临时服务已停止；纯合成数据库与截图：/tmp/guanheng-wp24-browser-Of21OJ
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+500 !== 204
+
+    at file:///workspace/guanheng-wp24/docs/work-packages/WP-24/browser-check.mjs:74:65 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 500,
+  expected: 204,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
+
+EXIT_CODE: 1
+UTC_END: 2026-10-26T17:31:29.728049+00:00
+ELAPSED_SECONDS: 3.376

@@ -1,0 +1,59 @@
+UTC_START: 2026-10-26T18:34:40.617534+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: node --experimental-strip-types /tmp/wp24-baseline-wait-probe.mjs
+{
+  "runtime": "/tmp/wp24-runtime-attention-CIZZ2c",
+  "fixture": "pnpm absent only from temporary server PATH; no installation or source modification",
+  "actualHeading": "运行环境需要处理",
+  "baselineFailure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('heading', { name: '运行版本检查通过', exact: true }) to be visible\u001b[22m\n",
+  "baselineDurationMs": 30002,
+  "runtimeApi": {
+    "status": "attention",
+    "checkedAt": "2026-10-26T18:35:15.093Z",
+    "checks": [
+      {
+        "component": "Node.js",
+        "expected": "24.19.0",
+        "actual": "24.19.0",
+        "status": "ok",
+        "message": "Node.js 版本符合已验证基线。"
+      },
+      {
+        "component": "pnpm",
+        "expected": "11.19.0",
+        "actual": null,
+        "status": "unknown",
+        "message": "无法读取 pnpm 版本，请在项目目录核对并安装 11.19.0。"
+      },
+      {
+        "component": "Next.js",
+        "expected": "16.3.3",
+        "actual": "16.3.3",
+        "status": "ok",
+        "message": "Next.js 版本符合已验证基线。"
+      },
+      {
+        "component": "React",
+        "expected": "19.2.8",
+        "actual": "19.2.8",
+        "status": "ok",
+        "message": "React 版本符合已验证基线。"
+      },
+      {
+        "component": "React DOM",
+        "expected": "19.2.8",
+        "actual": "19.2.8",
+        "status": "ok",
+        "message": "React DOM 版本符合已验证基线。"
+      }
+    ]
+  },
+  "assertion": "运行诊断已返回实际状态但未通过：运行环境需要处理\n+ actual - expected\n\n+ '运行环境需要处理'\n- '运行版本检查通过'\n     ^\n",
+  "durationMs": 11,
+  "originalBudgetMs": 30000,
+  "strictConsoleErrors": []
+}
+
+EXIT_CODE: 0
+UTC_END: 2026-10-26T18:35:15.284532+00:00
+ELAPSED_SECONDS: 34.668

@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 
 from .. import models
 from ..db import get_db
-from ..security import get_current_user
+from ..security import get_current_user, require_perm
 from ..services import activity, audit, finance_summary, project_progress
 
 router = APIRouter(tags=["项目"])
@@ -19,6 +19,14 @@ def can_access_project(user, project) -> bool:
     if project.owner_id == user.id:
         return True
     return any(m.user_id == user.id for m in project.members)
+
+
+def _require_member_management(user, project) -> None:
+    """Granting project access requires management authority, not membership."""
+    require_perm("project:update")(user=user)
+    perms = {p for r in user.roles for p in (r.permissions or "").split(",")}
+    if "*" not in perms and "project:*" not in perms and project.owner_id != user.id:
+        raise HTTPException(403, "无权维护该项目成员")
 
 
 class ProjectIn(BaseModel):
@@ -108,6 +116,9 @@ def update_project(pid: int, data: dict, db: Session = Depends(get_db), user=Dep
         raise HTTPException(404, "项目不存在")
     if not can_access_project(user, p):
         raise HTTPException(403, "无权修改该项目")
+    if "owner_id" in data and data["owner_id"] != p.owner_id:
+        # Otherwise a member could take ownership and then grant project access.
+        _require_member_management(user, p)
     before = {k: str(getattr(p, k, None)) for k in data.keys() if hasattr(p, k)}
     for k in ("name", "customer_id", "department_id", "owner_id", "priority", "stage",
               "status", "plan_start", "plan_end", "actual_start", "actual_end",
@@ -126,9 +137,13 @@ def add_member(pid: int, data: dict, db: Session = Depends(get_db), user=Depends
     p = db.get(models.Project, pid)
     if not p:
         raise HTTPException(404, "项目不存在")
+    _require_member_management(user, p)
     uid = data.get("user_id")
-    if not db.get(models.User, uid):
+    target = db.get(models.User, uid)
+    if not target:
         raise HTTPException(404, "用户不存在")
+    if not target.is_active:
+        raise HTTPException(422, "用户已停用")
     if any(m.user_id == uid for m in p.members):
         raise HTTPException(409, "已是项目成员")
     m = models.ProjectMember(project_id=pid, user_id=uid, role_in_project=data.get("role", "成员"))

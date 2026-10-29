@@ -4,10 +4,15 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.19.0",
+  "engines": {
+    "node": "24.19.0",
+    "pnpm": "11.19.0"
+  },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "runtime:check": "node -e \"const p=require('./package.json');if(process.versions.node!==p.engines.node){console.error('Node.js 版本不兼容：当前 '+process.versions.node+'，请安装 '+p.engines.node+' 后重试。');process.exit(1)}\" && node --experimental-strip-types lib/runtime-health.ts --check",
+    "dev": "pnpm runtime:check && next dev",
+    "build": "pnpm runtime:check && next build",
+    "start": "pnpm runtime:check && next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "node --experimental-strip-types --test tests/*.test.ts",
@@ -17,21 +22,21 @@
     "db:cleanup:legacy": "node --experimental-strip-types scripts/cleanup-legacy-data.ts"
   },
   "dependencies": {
-    "exceljs": "^4.4.0",
-    "lucide-react": "latest",
-    "next": "latest",
-    "nodemailer": "^9.0.6",
-    "react": "latest",
-    "react-dom": "latest",
-    "zod": "^4.4.3"
+    "exceljs": "4.4.0",
+    "lucide-react": "1.35.0",
+    "next": "16.3.3",
+    "nodemailer": "9.0.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "4.4.3"
   },
   "devDependencies": {
-    "@types/node": "latest",
-    "@types/nodemailer": "^8.0.1",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
+    "@types/node": "24.19.2",
+    "@types/nodemailer": "8.0.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
     "eslint": "9.39.2",
-    "eslint-config-next": "latest",
+    "eslint-config-next": "16.3.3",
     "typescript": "6.0.2"
   }
 }

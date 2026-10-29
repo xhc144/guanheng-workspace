@@ -6,7 +6,8 @@ from typing import Optional
 from app.database import get_db
 from app.models import Customer, Project, ProjectMember, Task, Milestone, ActivityLog, User, Risk, RiskFollowUp, Issue, Receipt
 from app.schemas import CustomerCreate, CustomerOut, ProjectCreate, ProjectOut, TaskCreate, TaskOut, MilestoneCreate, IssueCreate, IssueUpdate, RiskFollowUpCreate, ProjectSummary, PaginatedResponse
-from app.auth import get_current_user
+from app.auth import get_current_user, require_role
+from app.routes.project_access import is_project_admin, require_project, scope_project_rows, visible_project_ids
 
 router = APIRouter(prefix="/api/customers", tags=["客户"])
 
@@ -56,7 +57,7 @@ def list_projects(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    q = db.query(Project).filter(Project.is_archived == False)
+    q = scope_project_rows(db.query(Project), Project.id, current_user).filter(Project.is_archived == False)
     if search:
         q = q.filter(Project.name.contains(search) | Project.code.contains(search))
     if status:
@@ -68,6 +69,9 @@ def list_projects(
 
 @proj_router.post("", response_model=ProjectOut)
 def create_project(req: ProjectCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    require_role("member")(current_user)
+    if (req.manager_id or current_user.id) != current_user.id and not is_project_admin(current_user):
+        raise HTTPException(status_code=403, detail="只能为自己创建项目，指定其他负责人需要管理员权限")
     if db.query(Project).filter(Project.code == req.code).first():
         raise HTTPException(status_code=400, detail="项目编号已存在")
     data = req.model_dump()
@@ -90,17 +94,18 @@ def project_summary(db: Session = Depends(get_db), current_user: User = Depends(
     receipts as the available, persisted financial aggregate instead of adding
     a risky runtime schema migration.
     """
-    all_proj = db.query(Project).filter(Project.is_archived == False).all()
+    project_ids = visible_project_ids(current_user)
+    all_proj = db.query(Project).filter(Project.id.in_(project_ids), Project.is_archived == False).all()
     total = len(all_proj)
     active = sum(1 for p in all_proj if p.status == "active")
     at_risk = sum(1 for p in all_proj if p.health in ("yellow", "red"))
-    tasks = db.query(Task).all()
+    tasks = db.query(Task).filter(Task.project_id.in_(project_ids)).all()
     done = sum(1 for t in tasks if t.status == "done")
     completion_rate = round(done / len(tasks) * 100, 1) if tasks else 0
     confirmed_receipts = {
         project_id: amount
         for project_id, amount in db.query(Receipt.project_id, func.coalesce(func.sum(Receipt.amount), 0))
-        .filter(Receipt.status == "confirmed")
+        .filter(Receipt.status == "confirmed", Receipt.project_id.in_(project_ids))
         .group_by(Receipt.project_id)
         .all()
     }
@@ -116,19 +121,20 @@ def project_summary(db: Session = Depends(get_db), current_user: User = Depends(
 
 @proj_router.get("/{project_id}", response_model=ProjectOut)
 def get_project(project_id: str, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
-    p = db.query(Project).filter(Project.id == project_id).first()
-    if not p:
-        raise HTTPException(status_code=404, detail="项目不存在")
-    return p
+    return require_project(db, current_user, project_id)
 
 
 @proj_router.put("/{project_id}")
 def update_project(project_id: str, req: dict, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
-    p = db.query(Project).filter(Project.id == project_id).first()
-    if not p:
-        raise HTTPException(status_code=404, detail="项目不存在")
+    p = require_project(db, current_user, project_id)
+    scope_fields = {"manager_id", "customer_id", "department_id"}
+    if scope_fields.intersection(req) and p.manager_id != current_user.id and not is_project_admin(current_user):
+        raise HTTPException(status_code=403, detail="只有项目负责人或管理员可修改项目归属")
+    columns = set(Project.__table__.columns.keys()) - {"id", "code", "created_at"}
+    if set(req) - columns:
+        raise HTTPException(status_code=400, detail="请求包含不可修改的项目字段")
     for k, v in req.items():
-        if hasattr(p, k) and k not in ("id", "code", "created_at"):
+        if k in columns:
             setattr(p, k, v)
     db.commit()
     return {"ok": True}
@@ -145,8 +151,9 @@ def list_tasks(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    q = db.query(Task)
+    q = scope_project_rows(db.query(Task), Task.project_id, current_user)
     if project_id:
+        require_project(db, current_user, project_id)
         q = q.filter(Task.project_id == project_id)
     if assignee_id:
         q = q.filter(Task.assignee_id == assignee_id)
@@ -157,6 +164,15 @@ def list_tasks(
 
 @task_router.post("", response_model=TaskOut)
 def create_task(req: TaskCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    require_project(db, current_user, req.project_id)
+    if req.parent_id:
+        parent = db.get(Task, req.parent_id)
+        if parent is None or parent.project_id != req.project_id:
+            raise HTTPException(status_code=400, detail="父任务不属于当前项目")
+    if req.milestone_id:
+        milestone = db.get(Milestone, req.milestone_id)
+        if milestone is None or milestone.project_id != req.project_id:
+            raise HTTPException(status_code=400, detail="里程碑不属于当前项目")
     t = Task(**req.model_dump())
     db.add(t)
     db.add(ActivityLog(project_id=t.project_id, user_id=current_user.id, action="创建任务", detail=t.title))
@@ -172,6 +188,9 @@ def batch_complete_tasks(req: dict, db: Session = Depends(get_db), current_user:
     if not ids:
         raise HTTPException(status_code=400, detail="任务ID列表不能为空")
     tasks = db.query(Task).filter(Task.id.in_(ids)).all()
+    # Authorize the entire batch before modifying even the first row.
+    for task in tasks:
+        require_project(db, current_user, task.project_id)
     for task in tasks:
         task.status = "done"
     for project_id in {task.project_id for task in tasks}:
@@ -185,6 +204,7 @@ def update_task(task_id: str, req: dict, db: Session = Depends(get_db), current_
     t = db.query(Task).filter(Task.id == task_id).first()
     if not t:
         raise HTTPException(status_code=404, detail="任务不存在")
+    require_project(db, current_user, t.project_id)
     old_status = t.status
     for k, v in req.items():
         if hasattr(t, k) and k not in ("id", "project_id", "created_at"):
@@ -202,6 +222,7 @@ def delete_task(task_id: str, db: Session = Depends(get_db), current_user: User 
     t = db.query(Task).filter(Task.id == task_id).first()
     if not t:
         raise HTTPException(status_code=404, detail="任务不存在")
+    require_project(db, current_user, t.project_id)
     pid = t.project_id
     db.delete(t)
     _recalc_project_progress(db, pid)
@@ -214,11 +235,13 @@ milestone_router = APIRouter(prefix="/api/milestones", tags=["里程碑"])
 
 @milestone_router.get("")
 def list_milestones(project_id: str = Query(...), db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    require_project(db, current_user, project_id)
     return db.query(Milestone).filter(Milestone.project_id == project_id).order_by(Milestone.sort_order).all()
 
 
 @milestone_router.post("")
 def create_milestone(req: MilestoneCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    require_project(db, current_user, req.project_id)
     m = Milestone(**req.model_dump())
     db.add(m)
     db.commit()
@@ -231,6 +254,7 @@ def update_milestone(milestone_id: str, req: dict, db: Session = Depends(get_db)
     m = db.query(Milestone).filter(Milestone.id == milestone_id).first()
     if not m:
         raise HTTPException(status_code=404, detail="里程碑不存在")
+    require_project(db, current_user, m.project_id)
     for k, v in req.items():
         if hasattr(m, k) and k not in ("id", "project_id", "created_at"):
             setattr(m, k, v)
@@ -243,6 +267,7 @@ def delete_milestone(milestone_id: str, db: Session = Depends(get_db), current_u
     m = db.query(Milestone).filter(Milestone.id == milestone_id).first()
     if not m:
         raise HTTPException(status_code=404, detail="里程碑不存在")
+    require_project(db, current_user, m.project_id)
     db.delete(m)
     db.commit()
     return {"ok": True}
@@ -269,6 +294,7 @@ def create_risk_followup(risk_id: str, req: RiskFollowUpCreate, db: Session = De
     risk = db.query(Risk).filter(Risk.id == risk_id).first()
     if not risk:
         raise HTTPException(status_code=404, detail="风险不存在")
+    require_project(db, current_user, risk.project_id)
     f = RiskFollowUp(risk_id=risk_id, content=req.content, created_by=current_user.id)
     db.add(f)
     db.add(ActivityLog(project_id=risk.project_id, user_id=current_user.id, action="风险跟进", detail=req.content[:100]))
@@ -279,6 +305,10 @@ def create_risk_followup(risk_id: str, req: RiskFollowUpCreate, db: Session = De
 
 @risk_followup_router.get("/{risk_id}/follow-ups")
 def list_risk_followups(risk_id: str, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    risk = db.get(Risk, risk_id)
+    if risk is None:
+        raise HTTPException(status_code=404, detail="风险不存在")
+    require_project(db, current_user, risk.project_id)
     return db.query(RiskFollowUp).filter(RiskFollowUp.risk_id == risk_id).order_by(RiskFollowUp.created_at.desc()).all()
 
 
@@ -286,13 +316,15 @@ issue_router = APIRouter(prefix="/api/issues", tags=["问题"])
 
 @issue_router.get("")
 def list_issues(project_id: Optional[str] = Query(None), db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
-    q = db.query(Issue)
+    q = scope_project_rows(db.query(Issue), Issue.project_id, current_user)
     if project_id:
+        require_project(db, current_user, project_id)
         q = q.filter(Issue.project_id == project_id)
     return q.order_by(Issue.created_at.desc()).all()
 
 @issue_router.post("")
 def create_issue(req: IssueCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    require_project(db, current_user, req.project_id)
     issue = Issue(**req.model_dump())
     db.add(issue)
     db.add(ActivityLog(project_id=issue.project_id, user_id=current_user.id, action="记录问题", detail=issue.title))
@@ -305,6 +337,7 @@ def update_issue(issue_id: str, req: IssueUpdate, db: Session = Depends(get_db),
     issue = db.query(Issue).filter(Issue.id == issue_id).first()
     if not issue:
         raise HTTPException(status_code=404, detail="问题不存在")
+    require_project(db, current_user, issue.project_id)
     for k, v in req.model_dump(exclude_unset=True).items():
         if hasattr(issue, k):
             setattr(issue, k, v)
@@ -317,6 +350,7 @@ def delete_issue(issue_id: str, db: Session = Depends(get_db), current_user: Use
     issue = db.query(Issue).filter(Issue.id == issue_id).first()
     if not issue:
         raise HTTPException(status_code=404, detail="问题不存在")
+    require_project(db, current_user, issue.project_id)
     db.delete(issue)
     db.commit()
     return {"ok": True}

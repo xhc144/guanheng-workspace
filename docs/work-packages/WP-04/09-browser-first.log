@@ -1,0 +1,20 @@
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Cookie'
+- 'Cookie'
+
+    at file:///workspace/guanheng-wp04/docs/work-packages/WP-04/browser-check.mjs:48:73 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Cookie',
+  expected: 'Cookie',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+▲ Next.js 16.3.3
+- Local:         http://127.0.0.1:39131
+- Network:       http://127.0.0.1:39131
+✓ Ready in 0ms
+✓ Running next.config took 1.9ms
+

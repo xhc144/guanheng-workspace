@@ -1,4 +1,5 @@
 import type { DatabaseSync } from "node:sqlite";
+import { inTransaction } from "./db.ts";
 
 const statements = [
   `CREATE TABLE IF NOT EXISTS departments (
@@ -409,28 +410,42 @@ const statements = [
   `CREATE INDEX IF NOT EXISTS idx_import_rows_job ON import_rows(job_id,row_number)`,
 ];
 
+// Baseline upgrades only: nullable columns or compatible constant defaults preserve old rows and CHECKs.
+const compatibilityColumns: Record<string, Readonly<Record<string, string>>> = {
+  documents: { voided_at: "TEXT", void_reason: "TEXT" },
+  projects: { project_version: "TEXT" },
+  customers: {
+    industry: "TEXT",
+    is_agency: "INTEGER NOT NULL DEFAULT 0 CHECK (is_agency IN (0,1))",
+    is_agency_confirmed: "INTEGER NOT NULL DEFAULT 0 CHECK (is_agency_confirmed IN (0,1))",
+  },
+  receivables: {
+    voided_at: "TEXT", void_reason: "TEXT", correction_of_id: "TEXT REFERENCES receivables(id)",
+    due_date_is_estimated: "INTEGER NOT NULL DEFAULT 0 CHECK (due_date_is_estimated IN (0,1))",
+  },
+  service_periods: {
+    previous_period_id: "TEXT REFERENCES service_periods(id)",
+    date_is_estimated: "INTEGER NOT NULL DEFAULT 0 CHECK (date_is_estimated IN (0,1))",
+  },
+  invoices: { date_is_estimated: "INTEGER NOT NULL DEFAULT 0 CHECK (date_is_estimated IN (0,1))" },
+  receipts: { date_is_estimated: "INTEGER NOT NULL DEFAULT 0 CHECK (date_is_estimated IN (0,1))" },
+  idempotency_keys: { request_hash: "TEXT" },
+};
+
 export function initializeSchema(db: DatabaseSync) {
   db.exec("PRAGMA foreign_keys = ON");
   db.exec("PRAGMA journal_mode = WAL");
-  for (const sql of statements) db.prepare(sql).run();
-  const documentColumns=new Set((db.prepare("PRAGMA table_info(documents)").all() as {name:string}[]).map(x=>String(x.name)));
-  if(!documentColumns.has("voided_at"))db.exec("ALTER TABLE documents ADD COLUMN voided_at TEXT");
-  if(!documentColumns.has("void_reason"))db.exec("ALTER TABLE documents ADD COLUMN void_reason TEXT");
-  const projectColumns=new Set((db.prepare("PRAGMA table_info(projects)").all() as {name:string}[]).map(x=>String(x.name)));
-  if(!projectColumns.has("project_version"))db.exec("ALTER TABLE projects ADD COLUMN project_version TEXT");
-  const customerColumns=new Set((db.prepare("PRAGMA table_info(customers)").all() as {name:string}[]).map(x=>String(x.name)));
-  if(!customerColumns.has("industry"))db.exec("ALTER TABLE customers ADD COLUMN industry TEXT");
-  if(!customerColumns.has("is_agency"))db.exec("ALTER TABLE customers ADD COLUMN is_agency INTEGER NOT NULL DEFAULT 0 CHECK (is_agency IN (0,1))");
-  if(!customerColumns.has("is_agency_confirmed"))db.exec("ALTER TABLE customers ADD COLUMN is_agency_confirmed INTEGER NOT NULL DEFAULT 0 CHECK (is_agency_confirmed IN (0,1))");
-  const receivableColumns=new Set((db.prepare("PRAGMA table_info(receivables)").all() as {name:string}[]).map(x=>String(x.name)));
-  if(!receivableColumns.has("due_date_is_estimated"))db.exec("ALTER TABLE receivables ADD COLUMN due_date_is_estimated INTEGER NOT NULL DEFAULT 0 CHECK (due_date_is_estimated IN (0,1))");
-  const servicePeriodColumns=new Set((db.prepare("PRAGMA table_info(service_periods)").all() as {name:string}[]).map(x=>String(x.name)));
-  if(!servicePeriodColumns.has("date_is_estimated"))db.exec("ALTER TABLE service_periods ADD COLUMN date_is_estimated INTEGER NOT NULL DEFAULT 0 CHECK (date_is_estimated IN (0,1))");
-  const invoiceColumns=new Set((db.prepare("PRAGMA table_info(invoices)").all() as {name:string}[]).map(x=>String(x.name)));
-  if(!invoiceColumns.has("date_is_estimated"))db.exec("ALTER TABLE invoices ADD COLUMN date_is_estimated INTEGER NOT NULL DEFAULT 0 CHECK (date_is_estimated IN (0,1))");
-  const receiptColumns=new Set((db.prepare("PRAGMA table_info(receipts)").all() as {name:string}[]).map(x=>String(x.name)));
-  if(!receiptColumns.has("date_is_estimated"))db.exec("ALTER TABLE receipts ADD COLUMN date_is_estimated INTEGER NOT NULL DEFAULT 0 CHECK (date_is_estimated IN (0,1))");
-  const idempotencyColumns=new Set((db.prepare("PRAGMA table_info(idempotency_keys)").all() as {name:string}[]).map(x=>String(x.name)));
-  if(!idempotencyColumns.has("request_hash"))db.exec("ALTER TABLE idempotency_keys ADD COLUMN request_hash TEXT");
+  inTransaction(db, () => {
+    for (const sql of statements.filter(sql => sql.startsWith("CREATE TABLE"))) db.prepare(sql).run();
+    // Only internal constants enter this SQL. Domain migrations use the separate declarative contract.
+    for (const [table, additions] of Object.entries(compatibilityColumns)) {
+      const existing = new Set((db.prepare(`PRAGMA table_info(${table})`).all() as { name: string }[]).map(c => c.name));
+      for (const [name, definition] of Object.entries(additions)) {
+        if (!existing.has(name)) db.exec(`ALTER TABLE ${table} ADD COLUMN ${name} ${definition}`);
+      }
+    }
+    // Indexes may depend on columns missing from an old database.
+    for (const sql of statements.filter(sql => !sql.startsWith("CREATE TABLE"))) db.prepare(sql).run();
+  });
   db.exec("PRAGMA optimize");
 }

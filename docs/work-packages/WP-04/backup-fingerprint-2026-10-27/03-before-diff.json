@@ -1,0 +1,19 @@
+{
+  "base": "7cda6f5b8955715cc456b3c3aaffcd844fcaf42a",
+  "baseTree": "db953f96c98395d3e211591e0eb611a8326465cd",
+  "entryCount": 409,
+  "entriesByteEquivalent": true,
+  "sourceFiles": 193,
+  "changedFingerprints": [
+    {
+      "path": "systems/project-ops/scripts/backup.ts",
+      "oldSha256": "f8188f2d298c9fe47000c52d230970414b6a7393e54c83dba7f5e0caf8cea8f7",
+      "actualSha256": "c149ab2f5f104e4f96d2bf6d62428d5f0e664d6a6f171135854458359019c471"
+    }
+  ],
+  "oldSourceFilesDigest": "28e942dca7668f6bf4bf3afe98cd1c45693c31b33ab7502ed012a0a40cc695fe",
+  "actualSourceFilesDigest": "0a512fd9ea0003f61cdd7c7fe9e2d3b490ce6fe6cb2f9cd949fba76c44d11895",
+  "sourceDigestUnchanged": true,
+  "sourceBaseUnchanged": "44b05e5e3e6917bc60041d29657e67cc37a5c551",
+  "meaning": "Only the mapped backup script fingerprint is stale before this repair. No route or business decision changed."
+}

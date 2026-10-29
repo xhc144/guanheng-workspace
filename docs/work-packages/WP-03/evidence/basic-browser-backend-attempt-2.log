@@ -1,0 +1,32 @@
+{"cwd": "/tmp/guanheng-WP-03-basic/backend", "command": ["/tmp/guanheng-WP-03-basic/venv/bin/python", "-m", "uvicorn", "app.main:app", "--host", "127.0.0.1", "--port", "8100"], "time": "2026-10-26T16:43:51.951317+00:00"}
+INFO:     Started server process [3764]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8100 (Press CTRL+C to quit)
+INFO:     127.0.0.1:53404 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50492 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34318 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:34324 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:34336 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34340 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34350 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34352 - "GET /api/dashboard HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34376 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34378 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:34380 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:34394 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34408 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34422 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34428 - "GET /api/dashboard HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34444 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34452 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:34458 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:34472 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52200 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52202 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52206 - "GET /api/dashboard HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52218 - "GET /api/dashboard HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3764]

@@ -1,0 +1,21 @@
+cwd: /workspace/guanheng-wp04
+command: ["node", "docs/work-packages/WP-04/browser-check.mjs", "/opt/codex/runtimes/cua/lib/node_modules/playwright/index.mjs", "/usr/bin/chromium"]
+startedAt: 2026-10-26T17:34:02.285235+00:00
+
+locator.innerText: Error: strict mode violation: getByRole('alert') resolved to 2 elements:
+    1) <section role="alert" class="work-panel capabilities-module__PyHjHa__panel">…</section> aka getByText('无法应用筛选页码须为1到999999的整数重置筛选')
+    2) <div role="alert" aria-live="assertive" id="__next-route-announcer__"></div> aka locator('[id="__next-route-announcer__"]')
+
+Call log:
+[2m  - waiting for getByRole('alert')[22m
+
+    at /workspace/guanheng-wp04/docs/work-packages/WP-04/browser-check.mjs:77:162
+▲ Next.js 16.3.3
+- Local:         http://127.0.0.1:44349
+- Network:       http://127.0.0.1:44349
+✓ Ready in 0ms
+✓ Running next.config took 1.6ms
+
+
+finishedAt: 2026-10-26T17:34:26.476609+00:00
+exitCode: 1

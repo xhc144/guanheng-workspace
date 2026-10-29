@@ -1,0 +1,13 @@
+开始时间: 2026-10-26T16:35:02.689834+00:00
+实际cwd: /workspace/guanheng-wp01/systems/project-ops
+完整命令: pnpm runtime:check
+$ node -e "const p=require('./package.json');if(process.versions.node!==p.engines.node){console.error('Node.js 版本不兼容：当前 '+process.versions.node+'，请安装 '+p.engines.node+' 后重试。');process.exit(1)}" && node --experimental-strip-types lib/runtime-health.ts --check
+通过：Node.js 版本符合已验证基线。
+通过：pnpm 版本符合已验证基线。
+通过：Next.js 版本符合已验证基线。
+通过：React 版本符合已验证基线。
+通过：React DOM 版本符合已验证基线。
+
+退出码: 0
+结束时间: 2026-10-26T16:35:05.581450+00:00
+用时秒: 2.89

@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ConfigProvider, App as AntApp, theme } from 'antd';
 import zhCN from 'antd/locale/zh_CN';
 import App from './App';
+import ArchiveShell from './components/archive/ArchiveShell';
 import './index.css';
 
 const queryClient = new QueryClient({
@@ -23,7 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       >
         <AntApp>
           <BrowserRouter>
-            <App />
+            <ArchiveShell><App /></ArchiveShell>
           </BrowserRouter>
         </AntApp>
       </ConfigProvider>

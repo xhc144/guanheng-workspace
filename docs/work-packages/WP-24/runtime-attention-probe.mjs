@@ -1,0 +1,50 @@
+// Negative fixture: actual Next page/API with pnpm deliberately unavailable only in a temporary server.
+import assert from "node:assert/strict";
+import { cpSync, mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { createServer } from "node:net";
+import { join } from "node:path";
+import { spawn } from "node:child_process";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import { openDatabase } from "../../../systems/project-ops/lib/db.ts";
+import { hashPassword } from "../../../systems/project-ops/lib/auth.ts";
+import { assertRuntimeNavigation } from "./browser-runtime.mjs";
+const { chromium } = await import(pathToFileURL(process.argv[2] ?? "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs").href);
+const project = fileURLToPath(new URL("../../../systems/project-ops/", import.meta.url));
+const runtime = mkdtempSync(join(tmpdir(), "wp24-runtime-attention-"));
+cpSync(join(project, ".next/standalone"), runtime, { recursive: true, verbatimSymlinks: true });
+cpSync(join(project, ".next/static"), join(runtime, ".next/static"), { recursive: true });
+const unavailablePath = join(runtime, "empty-bin"); mkdirSync(unavailablePath);
+const password = "Wp24-Synthetic-Only-2026!", db = openDatabase(join(runtime, "data/synthetic.db"));
+db.prepare("INSERT INTO users(id,username,name,password_hash,role) VALUES('a','synthetic_admin','纯合成管理员',?,'ADMIN')").run(hashPassword(password)); db.close();
+const reservation = createServer(); await new Promise(resolve => reservation.listen(0, "127.0.0.1", resolve));
+const port = reservation.address().port; await new Promise(resolve => reservation.close(resolve));
+const base = `http://127.0.0.1:${port}`;
+const server = spawn(process.execPath, [join(runtime, "server.js")], { cwd: runtime,
+  env: { PATH: unavailablePath, NODE_ENV: "production", HOSTNAME: "127.0.0.1", PORT: String(port), DATABASE_FILENAME: "synthetic.db" }, stdio: ["ignore","pipe","pipe"] });
+let output = "", browser; server.stdout.on("data", c => output += c); server.stderr.on("data", c => output += c);
+try {
+  let ready = false;
+  for (let n = 0; n < 80; n++) { try { ready = (await fetch(`${base}/login`)).ok; } catch {} if (ready) break; await new Promise(resolve => setTimeout(resolve, 250)); }
+  assert.ok(ready);
+  browser = await chromium.launch({ executablePath: process.argv[3] ?? "/usr/bin/chromium", headless: true });
+  const context = await browser.newContext(), page = await context.newPage(), errors = [];
+  page.on("pageerror", e => errors.push(e.message)); page.on("console", m => { if (m.type() === "error") errors.push(m.text()); });
+  await page.goto(`${base}/login`); await page.getByLabel("用户名或邮箱").fill("synthetic_admin");
+  await page.getByLabel("密码", { exact: true }).fill(password); await page.getByRole("button", { name: "登录", exact: true }).click();
+  await page.waitForURL(url => url.pathname === "/"); await page.locator(".app-shell").waitFor();
+  await page.goto(`${base}/runtime-health`); await page.locator("#runtime-summary").waitFor();
+  const heading = await page.locator("#runtime-summary").innerText(); assert.equal(heading, "运行环境需要处理");
+  const began = performance.now(); let assertion;
+  try { await assertRuntimeNavigation(page, "/runtime-health"); } catch (error) { assertion = error.message; }
+  const durationMs = Math.round(performance.now() - began);
+  assert.match(assertion, /运行诊断已返回实际状态但未通过：运行环境需要处理/); assert.ok(durationMs < 30_000);
+  const cookie = (await context.cookies()).find(c => c.name === "pms_session");
+  const response = await context.request.get(`${base}/api/runtime-health`, { headers: { cookie: `${cookie.name}=${cookie.value}`, Connection: "close" }, maxRetries: 0 });
+  assert.equal(response.status(), 200); const health = await response.json(); assert.equal(health.status, "attention");
+  assert.equal(health.checks.find(c => c.component === "pnpm").status, "unknown"); assert.deepEqual(errors, []);
+  console.log(JSON.stringify({ runtime, fixture: "pnpm absent only from temporary server PATH; no installation or source modification", actualHeading: heading, runtimeApi: health, assertion, durationMs, originalBudgetMs: 30_000, strictConsoleErrors: errors }, null, 2));
+} finally {
+  if (browser) await browser.close(); const stopped = new Promise(resolve => server.once("exit", resolve));
+  if (server.exitCode === null) { server.kill("SIGTERM"); await stopped; } writeFileSync(join(runtime, "server.log"), output);
+}

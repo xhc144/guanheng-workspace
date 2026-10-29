@@ -1,0 +1,12 @@
+UTC_START: 2026-10-26T17:41:58.331089+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: python3 /tmp/wp24-self-review.py
+Traceback (most recent call last):
+  File "/tmp/wp24-self-review.py", line 9, in <module>
+    invalid=sorted(p for p in changed if not owned(p)); assert not invalid,invalid
+                                                               ^^^^^^^^^^^
+AssertionError: ['systems/project-ops/next-env.d.ts']
+
+EXIT_CODE: 1
+UTC_END: 2026-10-26T17:41:58.449616+00:00
+ELAPSED_SECONDS: 0.119

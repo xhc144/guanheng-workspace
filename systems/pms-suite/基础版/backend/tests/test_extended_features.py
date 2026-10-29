@@ -1,17 +1,7 @@
 """覆盖基础版菜单和写操作的扩展 API 回归测试。"""
+from decimal import Decimal
 from io import BytesIO
 from uuid import uuid4
-
-from fastapi.testclient import TestClient
-
-from app.main import app
-
-
-def session():
-    client = TestClient(app)
-    response = client.post("/api/auth/login", json={"username": "admin", "password": "Admin@123456"})
-    assert response.status_code == 200
-    return client, {"Authorization": f"Bearer {response.json()['access_token']}"}
 
 
 def create_project(client, headers):
@@ -21,8 +11,8 @@ def create_project(client, headers):
     return response.json()["id"], suffix
 
 
-def test_project_task_milestone_dependency_risk_and_activity():
-    client, headers = session()
+def test_project_task_milestone_dependency_risk_and_activity(api_session):
+    client, headers = api_session
     project_id, _ = create_project(client, headers)
     assert client.post(f"/api/projects/{project_id}/members", headers=headers, json={"user_id": 1, "role": "manager"}).status_code == 200
     first = client.post("/api/tasks", headers=headers, json={"project_id": project_id, "title": "任务一"})
@@ -40,8 +30,8 @@ def test_project_task_milestone_dependency_risk_and_activity():
     assert client.get(f"/api/projects/{project_id}/progress", headers=headers).status_code == 200
 
 
-def test_finance_invoice_payment_reverse_and_idempotency():
-    client, headers = session()
+def test_finance_invoice_payment_reverse_and_idempotency(api_session):
+    client, headers = api_session
     project_id, suffix = create_project(client, headers)
     contract = client.post("/api/finance/contracts", headers=headers, json={"code": f"EXT-C-{suffix}", "project_id": project_id, "name": "扩展合同", "amount": "3000"})
     assert contract.status_code == 200
@@ -59,11 +49,18 @@ def test_finance_invoice_payment_reverse_and_idempotency():
     confirm = client.post(f"/api/finance/payments/{payment_id}/confirm", headers={**headers, "Idempotency-Key": f"confirm-{suffix}"}, json=[{"plan_id": plan.json()["id"], "amount": "3000"}])
     assert confirm.status_code == 200
     assert client.post(f"/api/finance/payments/{payment_id}/reverse", headers={**headers, "Idempotency-Key": f"reverse-{suffix}"}).status_code == 200
-    assert client.get("/api/finance/summary", headers=headers).status_code == 200
+    summary = client.get(f"/api/finance/summary?project_id={project_id}", headers=headers)
+    assert summary.status_code == 200
+    assert Decimal(summary.json()["received"]) == Decimal("0.00")
+    assert Decimal(summary.json()["receivable"]) == Decimal("3000.00")
+    plans = client.get(f"/api/finance/plans?contract_id={contract_id}", headers=headers)
+    assert plans.status_code == 200
+    assert plans.json()[0]["status"] == "pending"
+    assert Decimal(plans.json()[0]["allocated"]) == Decimal("0.00")
 
 
-def test_approval_budget_cost_timesheet_documents_wiki_templates_dict_import_backup():
-    client, headers = session()
+def test_approval_budget_cost_timesheet_documents_wiki_templates_dict_import_backup(api_session):
+    client, headers = api_session
     project_id, suffix = create_project(client, headers)
     template = client.post("/api/approvals/templates", headers=headers, json={"name": f"审批{suffix}", "object_type": "project"})
     assert template.status_code == 200

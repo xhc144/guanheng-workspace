@@ -1,0 +1,33 @@
+{"started": "2026-10-26T19:10:10.503066+00:00", "cwd": "/workspace/guanheng-g0-stability/systems/project-ops", "source": "875fb80613e7626c774d4d7ec3a9eadafb7ae66f", "command": ["node", "--experimental-strip-types", "--test", "--test-name-pattern=启动器版本每次", "tests/runtime-health.test.ts"]}
+✖ 启动器版本每次从实际文件读取；不兼容、损坏或删除不能沿用健康结果 (628.981122ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1023.52834
+
+✖ failing tests:
+
+test at tests/runtime-health.test.ts:65:1
+✖ 启动器版本每次从实际文件读取；不兼容、损坏或删除不能沿用健康结果 (628.981122ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  '11.19.0' !== '0.0.1'
+  
+      at TestContext.<anonymous> (file:///workspace/guanheng-g0-stability/systems/project-ops/tests/runtime-health.test.ts:82:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '11.19.0',
+    expected: '0.0.1',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+{"ended": "2026-10-26T19:10:11.581990+00:00", "exitCode": 1, "elapsedSeconds": 1.0742669500000375}

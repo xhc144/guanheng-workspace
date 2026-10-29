@@ -1,0 +1,31 @@
+{"cwd": "/tmp/guanheng-WP-03-basic/backend", "command": ["/tmp/guanheng-WP-03-basic/venv/bin/python", "-m", "uvicorn", "app.main:app", "--host", "127.0.0.1", "--port", "8100"], "time": "2026-10-26T16:45:37.999844+00:00"}
+INFO:     Started server process [4406]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8100 (Press CTRL+C to quit)
+INFO:     127.0.0.1:37354 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41218 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41230 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:41246 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:49016 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49028 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49034 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49046 - "GET /api/dashboard HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49060 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49066 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:49076 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:49088 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49096 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49104 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49120 - "GET /api/dashboard HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49138 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49152 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:49158 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:49160 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49168 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49170 - "GET /api/auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49176 - "GET /api/dashboard HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4406]

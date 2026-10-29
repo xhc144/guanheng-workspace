@@ -4,25 +4,26 @@
 
 ## 环境要求
 
-- Node.js 22.13 或更高版本（项目使用稳定版 `node:sqlite`）。
-- pnpm 11。
+- Node.js **24.19.0**（项目使用稳定版 `node:sqlite`）。
+- pnpm **11.19.0**，与 `package.json` / 锁文件一致。
 - Windows、Linux 或 macOS 均可直接运行，不依赖 Docker。
 
 ## 本地启动
 
 ```bash
-pnpm install
+pnpm install --frozen-lockfile
+export DATABASE_FILENAME=demo.db
 pnpm db:seed
 pnpm dev
 ```
 
-打开终端显示的本地地址。演示账号为 `admin`、`finance`、`manager`、`member`，未配置环境变量时开发密码为 `Admin@123456`。生产环境必须先设置强密码并重新初始化数据库，不能继续使用演示密码。
+上例是 Bash；PowerShell 先执行 `$env:DATABASE_FILENAME = "demo.db"`，然后在同一终端运行 seed 和 dev。两步必须选同一个数据库。seed 默认 `demo.db`，应用未显式配置时默认 `app.db`，所以开发时必须显式设置。Next 会读取 `.env.local`，这些独立 Node 运维脚本不会自动加载它，请在终端设置变量。
 
-首次启动和 `pnpm db:seed` 都会幂等创建数据库结构；重复执行不会重复生成演示客户、合同、项目、应收、服务周期或研发事项。
+打开终端显示的本地地址。演示账号为 `admin`、`finance`、`manager`、`member`，未配置环境变量时开发密码为 `Admin@123456`，脚本不会打印密码。演示 seed 在事务中执行，重复执行不会重复生成演示记录；它拒绝 `app.db` 和 `NODE_ENV=production`，`ALLOW_PRODUCTION_SEED` 不再生效。生产升级仅使用下文的 `--upgrade-only`，不创建演示账号。
 
 ## 环境变量
 
-复制 `.env.example` 为 `.env.local`，至少修改：
+本地应用配置可复制 `.env.example` 为 `.env.local`，并核对以下变量；运维脚本执行时须在终端显式设置所用变量：
 
 - `SESSION_SECRET`：不少于 32 位的随机字符串。
 - `ADMIN_INITIAL_PASSWORD`：首次管理员和演示账号的初始密码。
@@ -55,21 +56,43 @@ pnpm db:import:legacy -- "<20260830.xlsx 的绝对路径>" --commit
 
 ## 备份与恢复
 
-创建一致性数据库快照并同时复制私有附件：
+停止应用以及其他数据库、附件写入进程后，显式选择数据库和附件目录，再创建 SQLite 一致快照与附件备份：
 
 ```bash
+# 仅示例；操作前确认终端位于独立数据工作区并选择目标库
+export DATABASE_FILENAME=app.db
+export UPLOAD_DIRECTORY=uploads
 pnpm db:backup
 ```
 
-备份写入 `data/backups/`。数据库使用 SQLite `VACUUM INTO` 创建一致快照，附件复制到同时间戳目录。
+备份写入 `data/backups/<时间戳-随机ID>/`，含数据库、完整附件目录和 `manifest.json`。清单记录相对路径、大小和 SHA-256，含空目录；脚本核对复制前后的附件、拒绝符号链接和不安全路径，失败会清理本次临时备份。跨数据库与附件的一致恢复点要求所有写入已经停止，SQLite 快照本身不能冻结附件。
 
-恢复步骤：
+只恢复到一个**不存在的新数据目录**，保留原库和原附件：
 
-1. 停止应用，确认没有写入进程。
-2. 另外保存当前 `data/app.db*` 和 `data/uploads/`，避免误覆盖。
-3. 把选定的数据库备份复制为 `data/<DATABASE_FILENAME>`。
-4. 把对应时间戳的附件目录恢复为 `data/uploads/`。
-5. 执行 `pnpm db:seed` 以补齐向后兼容的表结构，再启动应用并核对客户数和财务汇总。
+```bash
+node --experimental-strip-types scripts/upgrade.ts --restore "<备份目录>" --to "<全新的恢复data目录>"
+```
+
+恢复会验证整个清单、数据库 `integrity_check` 与附件 hash；清单外文件、篡改、缺失和链接都会报错，已有目标目录拒绝覆盖。先在恢复工作区检查行数、作废原因、推定日期与票款分摊，再由运维安排停机切换，脚本不替换运行中的目录。旧格式备份没有本清单，需单独人工核验，不能冒充新格式已验收。
+
+已有库仅升级结构（先备份并停止写入），不灌演示：
+
+```bash
+export DATABASE_FILENAME=app.db
+pnpm db:seed -- --upgrade-only
+# 等价入口，无需修改 package scripts：
+node --experimental-strip-types scripts/upgrade.ts --upgrade-only
+```
+
+当前入口执行 G0 既有兼容升级；WP23 声明式 runner 已可独立调用，**领域启动汇总仍待 WP24 G1 接回**，本包不修改全局 schema/db/注册表。迁移只允许 `createTable/addColumn/createIndex`，有 SHA-256、账本、整批事务和历史行保留测试。贡献说明见 [WP23迁移契约](../../docs/work-packages/WP-23/MIGRATIONS.md)。
+
+本包唯一 seed/backup 自动演练入口：
+
+```bash
+node --experimental-strip-types scripts/verify-migration-workspace.ts
+```
+
+驱动自动创建、清理 `mkdtemp` 工作区，复制冻结 manifest/lock/workspace 文本，链接已安装依赖和批准源码；只重定位临时 pnpm 工作区元数据的项目路径，保留原验证时间与配置，并将依赖检查收紧为不一致即报错，演练不安装依赖。它在真实临时 cwd 对合成旧账两次仅升级，对另一个 demo 库两次 seed，再备份恢复；逐条输出 cwd/dataRoot/备份路径/退出码。仓库 `data/uploads` 不作输入。
 
 生产环境应把 `data/` 放在持久磁盘，至少每日异地备份，并定期实际演练恢复。
 
@@ -84,6 +107,8 @@ pnpm build
 pnpm start
 ```
 
+生产结构准备使用上面的 `--upgrade-only`；不运行演示 seed。生产管理员的安全初始化流程仍由公共身份/启动 owner 维护，不能借演示账号进入生产。
+
 在 Node 进程前配置 HTTPS 反向代理；只开放 Web 端口，不暴露 SQLite 和附件目录。为进程分配 `data/` 读写权限，环境变量由部署平台的密钥管理提供。多实例横向扩展前应把 SQLite 迁移到 PostgreSQL，并把附件迁移到具备私有访问控制的对象存储。
 
 ## 验证
@@ -93,6 +118,7 @@ pnpm test
 pnpm typecheck
 pnpm lint
 pnpm build
+node --experimental-strip-types scripts/verify-migration-workspace.ts
 ```
 
 自动化测试覆盖密码和会话、四类角色数据范围、财务分摊与幂等、服务续期、多人提成、规则版本、研发历史、通知失败隔离、附件安全和 Excel 导入导出。发布前还应使用真实浏览器完成管理员主流程及 375px、平板、桌面布局检查。

@@ -1,0 +1,66 @@
+? Verifying lockfile against supply-chain policies (483 entries)...
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +425
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 425, reused 0, downloaded 0, added 0
+
+   ╭──────────────────────────────────────────╮
+   │                                          │
+   │   Update available! 11.19.0 → 12.15.0.   │
+   │   Changelog: https://pnpm.io/v/12.15.0   │
+   │     To update, run: pnpm add -g pnpm     │
+   │                                          │
+   ╰──────────────────────────────────────────╯
+
+Progress: resolved 425, reused 0, downloaded 1, added 0
+Packages are hard linked from the content-addressable store to the virtual store.
+  Content-addressable store is at: /home/agent/.local/share/pnpm/store/v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 425, reused 0, downloaded 23, added 16
+Progress: resolved 425, reused 0, downloaded 63, added 63
+Progress: resolved 425, reused 0, downloaded 64, added 63
+Progress: resolved 425, reused 0, downloaded 76, added 75
+Progress: resolved 425, reused 0, downloaded 105, added 103
+Progress: resolved 425, reused 0, downloaded 118, added 116
+Progress: resolved 425, reused 0, downloaded 124, added 124
+Progress: resolved 425, reused 0, downloaded 145, added 137
+[WARN] Request took 10541ms: https://registry.npmjs.org/@typescript-eslint%2Futils
+Progress: resolved 425, reused 0, downloaded 165, added 145
+Progress: resolved 425, reused 0, downloaded 199, added 152
+[WARN] Request took 13042ms: https://registry.npmjs.org/@typescript-eslint%2Ftypes
+Progress: resolved 425, reused 0, downloaded 237, added 161
+Progress: resolved 425, reused 0, downloaded 287, added 245
+[WARN] Request took 14913ms: https://registry.npmjs.org/@typescript-eslint%2Feslint-plugin
+[WARN] Request took 14998ms: https://registry.npmjs.org/@typescript-eslint%2Fvisitor-keys
+Progress: resolved 425, reused 0, downloaded 314, added 314
+[WARN] Request took 11541ms: https://registry.npmjs.org/axe-core
+[WARN] Request took 15583ms: https://registry.npmjs.org/@typescript-eslint%2Fparser
+Progress: resolved 425, reused 0, downloaded 343, added 343
+Progress: resolved 425, reused 0, downloaded 364, added 364
+Progress: resolved 425, reused 0, downloaded 367, added 367
+Progress: resolved 425, reused 0, downloaded 419, added 419
+Progress: resolved 425, reused 0, downloaded 425, added 425, done
+✓ Lockfile passes supply-chain policies (483 entries in 25.6s)
+.../node_modules/unrs-resolver postinstall$ node postinstall.js
+.../node_modules/unrs-resolver postinstall: Done
+
+dependencies:
++ exceljs 4.4.0
++ lucide-react 1.35.0
++ next 16.3.3
++ nodemailer 9.0.6
++ react 19.2.8
++ react-dom 19.2.8
++ zod 4.4.3
+
+devDependencies:
++ @types/node 24.19.2
++ @types/nodemailer 8.0.1
++ @types/react 19.2.18
++ @types/react-dom 19.2.5
++ eslint 9.39.2
++ eslint-config-next 16.3.3
++ typescript 6.0.2
+
+Done in 27.9s using pnpm v11.19.0

@@ -1,0 +1,107 @@
+UTC_START: 2026-10-26T17:25:54.791572+00:00
+CWD: /workspace/guanheng-wp24/systems/project-ops
+COMMAND: node --experimental-strip-types ../../docs/work-packages/WP-24/browser-check.mjs /opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs /usr/bin/chromium
+{
+  "runtime": "/tmp/guanheng-wp24-browser-kcP7y9",
+  "base": "http://127.0.0.1:35811",
+  "results": [
+    {
+      "check": "匿名页面转登录，两个诊断API GET/HEAD均401",
+      "status": "通过"
+    },
+    {
+      "check": "管理员API实际返回G0、36表、未注册runner/预算，18个登记页面均HTTP200，POST405",
+      "status": "通过"
+    },
+    {
+      "check": "375px真实布局、44px按钮、键盘焦点、刷新时间及两个管理员导航可操作",
+      "status": "通过",
+      "dimensions": {
+        "viewport": 375,
+        "document": 375,
+        "body": 375
+      }
+    },
+    {
+      "check": "768px真实布局、44px按钮、键盘焦点、刷新时间及两个管理员导航可操作",
+      "status": "通过",
+      "dimensions": {
+        "viewport": 768,
+        "document": 768,
+        "body": 768
+      }
+    },
+    {
+      "check": "1440px真实布局、44px按钮、键盘焦点、刷新时间及两个管理员导航可操作",
+      "status": "通过",
+      "dimensions": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      }
+    },
+    {
+      "check": "FINANCE实际登录后API403、页面拒绝、不泄露目录，返回总览可操作",
+      "status": "通过"
+    },
+    {
+      "check": "DEPARTMENT_MANAGER实际登录后API403、页面拒绝、不泄露目录，返回总览可操作",
+      "status": "通过"
+    },
+    {
+      "check": "PROJECT_MEMBER实际登录后API403、页面拒绝、不泄露目录，返回总览可操作",
+      "status": "通过"
+    },
+    {
+      "check": "纯临时库故障注入：API固定中文500、375px中文错误页、恢复后真实retry重取成功",
+      "status": "通过",
+      "expectedFaultConsoleCount": 2
+    },
+    {
+      "check": "严格浏览器控制台与页面异常",
+      "status": "失败",
+      "errors": [
+        {
+          "message": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "location": "http://127.0.0.1:35811/favicon.ico"
+        }
+      ],
+      "resources": []
+    }
+  ]
+}
+临时服务已停止；纯合成数据库与截图：/tmp/guanheng-wp24-browser-kcP7y9
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: 浏览器存在控制台错误或页面异常；保留favicon失败，不忽略断言
++ actual - expected
+
++ [
++   {
++     location: 'http://127.0.0.1:35811/favicon.ico',
++     message: 'Failed to load resource: the server responded with a status of 404 (Not Found)'
++   }
++ ]
+- []
+
+    at file:///workspace/guanheng-wp24/docs/work-packages/WP-24/browser-check.mjs:163:10 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+    {
+      message: 'Failed to load resource: the server responded with a status of 404 (Not Found)',
+      location: 'http://127.0.0.1:35811/favicon.ico'
+    }
+  ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
+
+EXIT_CODE: 1
+UTC_END: 2026-10-26T17:26:19.686860+00:00
+ELAPSED_SECONDS: 24.896
