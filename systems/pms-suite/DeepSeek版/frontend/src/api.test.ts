@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { AxiosError, type AxiosResponse, type InternalAxiosRequestConfig } from 'axios';
-import api, { portalApi, fetchPortalProjects, login } from './api';
+import api, { portalApi, fetchPortalProjects, fetchPortalProject, portalLogin, login } from './api';
 
 const internalAdapter = api.defaults.adapter;
 const portalAdapter = portalApi.defaults.adapter;
@@ -25,6 +25,55 @@ afterEach(() => {
 });
 
 describe('archive session regressions', () => {
+  it.each([
+    ['list', () => fetchPortalProjects()],
+    ['detail', () => fetchPortalProject('synthetic-project')],
+  ] as const)('does not expire a new portal login for a delayed old %s 401', async (_, request) => {
+    localStorage.setItem('token', 'internal-session');
+    localStorage.setItem('user', '{"id":"internal-user"}');
+    localStorage.setItem('portal_token', 'old-portal-session');
+    localStorage.setItem('portal_user', '{"id":"old-portal-user"}');
+    let releaseOld!: () => void;
+    let started!: () => void;
+    const oldStarted = new Promise<void>(resolve => { started = resolve; });
+    portalApi.defaults.adapter = config => {
+      if (config.url === '/portal/login') return Promise.resolve({
+        status: 200, statusText: 'OK', config, headers: {},
+        data: { access_token: 'new-portal-session', user: { id: 'new-portal-user' } },
+      });
+      return new Promise((_, reject) => {
+        releaseOld = () => { unauthorized(config).catch(reject); };
+        started();
+      });
+    };
+    const expired = vi.fn();
+    window.addEventListener('pms:portal-session-expired', expired);
+    try {
+      const oldRequest = request();
+      const rejectedOld = expect(oldRequest).rejects.toBeInstanceOf(AxiosError);
+      await oldStarted;
+      localStorage.removeItem('portal_token');
+      localStorage.removeItem('portal_user');
+      const data = await portalLogin('synthetic-user', 'Synthetic@123');
+      localStorage.setItem('portal_token', data.access_token);
+      localStorage.setItem('portal_user', JSON.stringify(data.user));
+      releaseOld();
+      await rejectedOld;
+      expect(localStorage.getItem('portal_token')).toBe('new-portal-session');
+      expect(localStorage.getItem('portal_user')).toBe('{"id":"new-portal-user"}');
+      expect(expired).not.toHaveBeenCalled();
+      expect(localStorage.getItem('token')).toBe('internal-session');
+      expect(localStorage.getItem('user')).toBe('{"id":"internal-user"}');
+      portalApi.defaults.adapter = unauthorized;
+      await expect(request()).rejects.toBeInstanceOf(AxiosError);
+      expect(localStorage.getItem('portal_token')).toBeNull();
+      expect(expired).toHaveBeenCalledTimes(1);
+      expect(localStorage.getItem('token')).toBe('internal-session');
+    } finally {
+      window.removeEventListener('pms:portal-session-expired', expired);
+    }
+  });
+
   it('sends each identity only through its own API client', async () => {
     localStorage.setItem('token', 'internal-test-token');
     localStorage.setItem('portal_token', 'portal-test-token');

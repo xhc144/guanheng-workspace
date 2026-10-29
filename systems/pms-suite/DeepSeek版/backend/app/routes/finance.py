@@ -70,8 +70,20 @@ def _add_receipt(req: ReceiptCreate, db: Session, user: User):
     r = Receipt(**req.model_dump(exclude={"allocations"}), status="draft")
     db.add(r)
     db.flush()
+    # Numeric uses a floating-point binding on SQLite. Read the stored column;
+    # the ORM identity may still contain the exact input after flush.
+    stored_amount = db.query(Receipt.amount).filter(Receipt.id == r.id).scalar()
+    if stored_amount != req.amount:
+        raise HTTPException(status_code=400, detail="回款金额无法按两位小数精确保存，请核对金额")
     for alloc in req.allocations:
-        db.add(ReceiptAllocation(receipt_id=r.id, **alloc.model_dump()))
+        allocation = ReceiptAllocation(receipt_id=r.id, **alloc.model_dump())
+        db.add(allocation)
+        db.flush()
+        stored_allocation = db.query(ReceiptAllocation.allocated_amount).filter(
+            ReceiptAllocation.id == allocation.id,
+        ).scalar()
+        if stored_allocation != alloc.allocated_amount:
+            raise HTTPException(status_code=400, detail="核销金额无法按两位小数精确保存，请核对金额")
     db.add(ActivityLog(project_id=r.project_id, user_id=user.id, action="登记回款", detail=f"¥{r.amount}"))
     db.add(AuditLog(user_id=user.id, action="create", target_type="receipt", target_id=r.id, new_value=str(r.amount)))
     return r

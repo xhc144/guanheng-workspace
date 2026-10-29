@@ -61,14 +61,14 @@ const PortalPage: React.FC = () => {
 
   const { data: projectsData, isLoading: projectsLoading } = useQuery({
     queryKey: ['portal-projects', user?.id],
-    queryFn: fetchPortalProjects,
+    queryFn: ({ signal }) => fetchPortalProjects(signal),
     enabled: !!user && view === 'list',
   });
   const projects = Array.isArray(projectsData) ? projectsData : (projectsData?.items || []);
 
   const { data: detailData, isLoading: detailLoading } = useQuery({
     queryKey: ['portal-project', user?.id, selectedId],
-    queryFn: () => fetchPortalProject(selectedId),
+    queryFn: ({ signal }) => fetchPortalProject(selectedId, signal),
     enabled: !!user && view === 'detail' && !!selectedId,
   });
 

@@ -24,7 +24,11 @@ portalApi.interceptors.request.use((config) => {
 portalApi.interceptors.response.use(
   (res) => res,
   (err) => {
-    if (err.response?.status === 401 && err.config?.url !== '/portal/login') {
+    const currentToken = localStorage.getItem('portal_token');
+    const requestAuthorization = err.config?.headers?.get?.('Authorization')
+      ?? err.config?.headers?.Authorization;
+    if (err.response?.status === 401 && err.config?.url !== '/portal/login'
+      && currentToken && requestAuthorization === `Bearer ${currentToken}`) {
       localStorage.removeItem('portal_token');
       localStorage.removeItem('portal_user');
       window.dispatchEvent(new Event('pms:portal-session-expired'));
@@ -175,8 +179,8 @@ export const deleteSavedView = (id: string) => api.delete(`/saved-views/${id}`).
 
 // ============ P1: 客户门户 ============
 export const portalLogin = (username: string, password: string) => portalApi.post('/portal/login', { username, password }).then(r => r.data);
-export const fetchPortalProjects = () => portalApi.get('/portal/projects').then(r => r.data);
-export const fetchPortalProject = (id: string) => portalApi.get(`/portal/projects/${id}`).then(r => r.data);
+export const fetchPortalProjects = (signal?: AbortSignal) => portalApi.get('/portal/projects', { signal }).then(r => r.data);
+export const fetchPortalProject = (id: string, signal?: AbortSignal) => portalApi.get(`/portal/projects/${id}`, { signal }).then(r => r.data);
 export const grantPortalUser = (customerId: string, data: any) => api.post(`/customers/${customerId}/portal-users`, data).then(r => r.data);
 export const fetchPortalUsers = (customerId: string) => api.get(`/customers/${customerId}/portal-users`).then(r => r.data);
 
