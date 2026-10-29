@@ -71,3 +71,25 @@ test("customer detail returns complete financial drill-down and denies out-of-sc
   assert.equal(getCustomerDetail(db, outsider, "c1"), null);
   assert.equal(getCustomerDetail(db, manager, "missing"), null);
 });
+
+test("共用合同中的指定项目应收不回落公共范围，合同三项聚合遵循同一范围", t => {
+  const db = fixture(); t.after(() => db.close());
+  db.exec(`INSERT INTO projects(id,name,customer_id,manager_user_id,department_id)
+      VALUES('hidden','同客户未参与项目','c1','other','d2');
+    INSERT INTO contract_projects(contract_id,project_id) VALUES('ct1','hidden');
+    INSERT INTO receivables(id,contract_id,project_id,name,category,amount_cents,due_date,owner_user_id) VALUES
+      ('common','ct1',NULL,'合同公共款','其他',10000,'2026-03-01','other'),
+      ('hidden','ct1','hidden','未参与项目款','其他',10000,'2026-03-01','other');
+    INSERT INTO invoices(id,invoice_number,customer_id,invoice_date,amount_cents,tax_cents)
+      VALUES('hidden','FP-HIDDEN','c1','2026-03-02',4000,0);
+    INSERT INTO invoice_allocations(id,invoice_id,receivable_id,amount_cents) VALUES('hidden','hidden','hidden',4000);
+    INSERT INTO receipts(id,customer_id,received_date,amount_cents) VALUES('hidden','c1','2026-03-02',2000);
+    INSERT INTO receipt_allocations(id,receipt_id,receivable_id,amount_cents) VALUES('hidden','hidden','hidden',2000);`);
+  const detail = getCustomerDetail(db, user("member", "PROJECT_MEMBER", "d1"), "c1");
+  assert.ok(detail);
+  assert.deepEqual(detail.receivables.map(row => row.id).sort(), ["common", "r1"]);
+  assert.deepEqual(detail.projects.map(row => row.id), ["p1"]);
+  const contract = detail.contracts.find(row => row.id === "ct1")!;
+  assert.deepEqual([contract.receivable_cents, contract.received_cents, contract.invoiced_cents], [90000, 30000, 40000]);
+  assert.deepEqual([detail.summary.receivableCents, detail.summary.receivedCents, detail.summary.invoiceCents], [90000, 30000, 40000]);
+});
