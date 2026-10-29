@@ -10,7 +10,9 @@ node tools/capability-inventory/generate.mjs --check
 node tools/capability-inventory/generate.mjs --stdout
 ```
 
-默认更新 `docs/功能对照.md` 和 `systems/project-ops/lib/capabilities/catalog.json`。`--check` 不写文件，逐字比较重新提取后的两个输出，不一致或无法分类/解析时退出1；参数错误也退出1。`--stdout` 输出完整 JSON，不写文件。不得在不审查 diff 的情况下用重新生成掩盖遗漏能力。
+默认更新 `docs/功能对照.md`、`systems/project-ops/lib/capabilities/catalog.ts` 及 `catalog/` 内的元数据索引和连续记录分片，并移除旧单体 `catalog.json`。分片保留全部字段和顺序，以240000字节为目标，每个JSON不得超过256000个UTF-8字节；单条记录或元数据超限会报错，不丢内容。静态聚合入口受 `catalog-types.ts` 检查，运行时不读取源码或文件系统。
+
+`--check` 不写文件，从真实源码重新构造全部期望输出，严格核对分片目录文件全集及每片、索引、聚合入口、Markdown的完整字节；缺片、多片、篡改或伪造同步索引均退出1，旧单体残留也失败。生成时不自动删除多余分片；数量减少时应审查并显式移除旧生成片。不一致或无法分类/解析时退出1；参数错误也退出1。`build()` 和 `--stdout` 仍返回原完整对象，`--stdout` 不写文件，可逆重建单体JSON。不得在不审查 diff 的情况下用重新生成掩盖遗漏能力。
 
 提取范围：
 

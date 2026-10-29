@@ -67,10 +67,11 @@ export function getCustomerDetail(db: DatabaseSync, user: SessionUser, customerI
   if (!customer) return null;
   const contract = contractScopeSql(user), receivable = receivableScopeSql(user), project = projectScopeSql(user, "p");
   const contracts = records(db.prepare(`SELECT ct.*,
-      COALESCE((SELECT SUM(r.amount_cents) FROM receivables r WHERE r.contract_id=ct.id AND r.voided_at IS NULL),0) receivable_cents,
-      COALESCE((SELECT SUM(ra.amount_cents) FROM receipt_allocations ra JOIN receipts x ON x.id=ra.receipt_id JOIN receivables r ON r.id=ra.receivable_id WHERE r.contract_id=ct.id AND r.voided_at IS NULL AND x.voided_at IS NULL),0) received_cents,
-      COALESCE((SELECT SUM(ia.amount_cents) FROM invoice_allocations ia JOIN invoices x ON x.id=ia.invoice_id JOIN receivables r ON r.id=ia.receivable_id WHERE r.contract_id=ct.id AND r.voided_at IS NULL AND x.voided_at IS NULL),0) invoiced_cents
-    FROM contracts ct WHERE ct.customer_id=? AND ${contract.sql} ORDER BY ct.signed_date IS NULL,ct.signed_date DESC,ct.created_at DESC`).all(customerId, ...contract.params));
+      COALESCE((SELECT SUM(r.amount_cents) FROM receivables r WHERE r.contract_id=ct.id AND r.voided_at IS NULL AND ${receivable.sql}),0) receivable_cents,
+      COALESCE((SELECT SUM(ra.amount_cents) FROM receipt_allocations ra JOIN receipts x ON x.id=ra.receipt_id JOIN receivables r ON r.id=ra.receivable_id WHERE r.contract_id=ct.id AND r.voided_at IS NULL AND x.voided_at IS NULL AND ${receivable.sql}),0) received_cents,
+      COALESCE((SELECT SUM(ia.amount_cents) FROM invoice_allocations ia JOIN invoices x ON x.id=ia.invoice_id JOIN receivables r ON r.id=ia.receivable_id WHERE r.contract_id=ct.id AND r.voided_at IS NULL AND x.voided_at IS NULL AND ${receivable.sql}),0) invoiced_cents
+    FROM contracts ct WHERE ct.customer_id=? AND ${contract.sql} ORDER BY ct.signed_date IS NULL,ct.signed_date DESC,ct.created_at DESC`)
+    .all(...receivable.params, ...receivable.params, ...receivable.params, customerId, ...contract.params));
   const projects = records(db.prepare(`SELECT p.*,u.name manager_name,d.name department_name,
       (SELECT GROUP_CONCAT(ct.number,'、') FROM contract_projects cp JOIN contracts ct ON ct.id=cp.contract_id WHERE cp.project_id=p.id) contract_numbers
     FROM projects p LEFT JOIN users u ON u.id=p.manager_user_id LEFT JOIN departments d ON d.id=p.department_id

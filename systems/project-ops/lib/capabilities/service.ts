@@ -1,5 +1,5 @@
 import type { SessionUser } from "../auth.ts";
-import catalogData from "./catalog.json" with { type: "json" };
+import catalogData from "./catalog.ts";
 
 export class CapabilityError extends Error {
   status: number;

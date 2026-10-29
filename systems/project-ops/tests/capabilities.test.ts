@@ -11,7 +11,7 @@ import { GET } from "../app/api/capabilities/route.ts";
 import { createSession, type Role, type SessionUser } from "../lib/auth.ts";
 import { openDatabase } from "../lib/db.ts";
 import { getCapabilities } from "../lib/capabilities/service.ts";
-import catalog from "../lib/capabilities/catalog.json" with { type: "json" };
+import catalog from "../lib/capabilities/catalog.ts";
 
 const root = fileURLToPath(new URL("../../../", import.meta.url));
 const generator = join(root, "tools/capability-inventory/generate.mjs");
